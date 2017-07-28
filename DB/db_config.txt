@@ -1,0 +1,5 @@
+Host:172.16.4.24
+Port:3306
+DB:accSystem
+User:root
+Password:root1234
