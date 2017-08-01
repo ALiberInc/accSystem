@@ -1,9 +1,9 @@
 spring:
   datasource:
-    username: root
+    username: postgres
     password: root1234
-    url: jdbc:mysql://localhost:3306/accSystem
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:postgresql://localhost:5432/accsystem
+    driver-class-name: org.postgresql.Driver
     
   thymeleaf: 
     mode: HTML5

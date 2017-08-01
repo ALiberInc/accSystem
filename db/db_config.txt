@@ -1,0 +1,5 @@
+Host:172.16.4.24
+Port:5432
+DB:accsystem
+User:postgres
+Password:root1234

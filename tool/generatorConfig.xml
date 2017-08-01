@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
-	<classPathEntry location="C:/Users/zhong_zengqiang/.m2/repository/mysql/mysql-connector-java/5.1.37/mysql-connector-java-5.1.37.jar"/>
+	<classPathEntry location="C:/Users/jack8/.m2/repository/org/postgresql/postgresql/42.1.3/postgresql-42.1.3.jar"/>
 
 	<context id="context1">
 		<commentGenerator>
@@ -9,9 +9,9 @@
 		</commentGenerator>
 
 		<!-- JDBCの設定 -->
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/accSystem"
-			userId="root"
+		<jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://localhost:5432/accsystem"
+			userId="postgres"
 			password="root1234"  />
 
 		<javaModelGenerator targetPackage="jp.co.aliber.accsystem.entity.auto" targetProject="src/main/java" >
@@ -21,7 +21,8 @@
 
 		<javaClientGenerator targetPackage="jp.co.aliber.accsystem.mapper.auto" targetProject="src/main/java" type="XMLMAPPER" />
 
-		<table schema="accSystem"
+		<table
+			schema="public" 
 			tableName="%"
 			enableInsert="true"
 			enableSelectByPrimaryKey="true"
