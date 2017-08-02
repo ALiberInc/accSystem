@@ -2,7 +2,7 @@ spring:
   datasource:
     username: postgres
     password: root1234
-    url: jdbc:postgresql://localhost:5432/accsystem
+    url: jdbc:postgresql://192.168.0.5:5432/accsystem
     driver-class-name: org.postgresql.Driver
     
   thymeleaf: 
@@ -10,3 +10,7 @@ spring:
     encoding: UTF-8
     content-type: text/html
     cache: false
+ 
+mybatis:
+ typeAliasesPackage: jp.co.aliber.accsystem.entity
+ mapperLocations: classpath:jp.co.aliber.accsystem.mapper/*.xml
