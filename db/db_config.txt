@@ -1,3 +1,5 @@
+PostgreSQL
+Version:9.6.3
 Host:172.16.4.24
 Port:5432
 DB:accsystem
