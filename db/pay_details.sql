@@ -3,7 +3,7 @@ create table "public".pay_details (
   , employ_name character varying(256) not null
   , department character varying(256) not null
   , email character varying(256) not null
-  , primary key (employ_id)
+  , primary key (pay_details_id)
 );
 
 comment on table pay_details is '給与明細情報';

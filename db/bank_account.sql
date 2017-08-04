@@ -9,7 +9,7 @@ create table "public".bank_account(
   , primary key (bank_account_id)
 );
 
-comment on table bank_accountis '口座情報';
+comment on table bank_account is '口座情報';
 comment on column bank_account.bank_account_id is '口座番号';
 comment on column bank_account.account_kana is '口座名義人(カナ)';
 comment on column bank_account.bank_code is '銀行コード';
