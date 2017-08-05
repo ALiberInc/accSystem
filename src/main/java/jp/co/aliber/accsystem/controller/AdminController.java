@@ -14,7 +14,7 @@ import jp.co.aliber.accsystem.service.AdminService;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-	
+
 	@Autowired
 	private AdminService adminService;
 
@@ -33,18 +33,18 @@ public class AdminController {
 	@RequestMapping(value = "/mybatistest", method = RequestMethod.GET)
 	public String mybatisTest(Model model) {
 		User firstUser = adminService.getFirstUser();
-		model.addAttribute("userId", firstUser.getId());
-		model.addAttribute("email", firstUser.getMail());
+		model.addAttribute("userId", firstUser.getUserId());
+		model.addAttribute("email", firstUser.getEmail());
 		return "useMybatis";
 	}
-	
+
 	@RequestMapping(value = "/formtest", method = RequestMethod.GET)
 	public String formTest(UserInfoFrom userForm) {
 		User firstUser = adminService.getFirstUser();
-		userForm.setId(firstUser.getId());
+		userForm.setId(firstUser.getUserId());
 		userForm.setName("Jack");
-		userForm.setEmail(firstUser.getMail());
+		userForm.setEmail(firstUser.getEmail());
 		return "useForm";
 	}
-	
+
 }
