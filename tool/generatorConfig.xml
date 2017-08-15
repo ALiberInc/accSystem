@@ -10,9 +10,9 @@
 
 		<!-- JDBCの設定 -->
 		<jdbcConnection driverClass="org.postgresql.Driver"
-			connectionURL="jdbc:postgresql://localhost:5432/accsystem"
+			connectionURL="jdbc:postgresql://47.74.7.212:5432/accsystem"
 			userId="postgres"
-			password="root1234"  />
+			password="postgres00"  />
 
 		<javaModelGenerator targetPackage="jp.co.aliber.accsystem.entity.auto" targetProject="src/main/java" >
 		</javaModelGenerator>
