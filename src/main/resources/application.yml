@@ -1,8 +1,8 @@
 spring:
   datasource:
     username: postgres
-    password: root1234
-    url: jdbc:postgresql://172.16.4.24:5432/accsystem
+    password: postgres00
+    url: jdbc:postgresql://47.74.7.212:5432/accsystem
     driver-class-name: org.postgresql.Driver
     
   thymeleaf: 
