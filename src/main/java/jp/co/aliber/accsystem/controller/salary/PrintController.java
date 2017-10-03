@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.co.aliber.accsystem.form.salary.PrintFrom;
-import jp.co.aliber.accsystem.service.TEmployeeService;
 import jp.co.aliber.accsystem.service.UtilService;
 
 /**
@@ -35,19 +33,7 @@ import jp.co.aliber.accsystem.service.UtilService;
 public class PrintController {
 
     @Autowired
-    private MailSender sender;
-
-    /**
-     * 從業員情報サービス
-     */
-    @Autowired
-    private TEmployeeService tEmployeeService;
-
-    @Autowired
     private UtilService utilService;
-
-    // PDFのタイプ
-    private static final String CONTENTTYPE_PDF = "application/pdf";
 
     /**
      * データのバンディング
@@ -88,8 +74,7 @@ public class PrintController {
         pdf = new File(pdfPath);
         response.setContentLength((int) pdf.length());
         fis = new FileInputStream(pdf);
-        int readBytes = -1;
-        while ((readBytes = fis.read(buffer, 0, 1024 * 1024)) != -1) {
+        while ((fis.read(buffer, 0, 1024 * 1024)) != -1) {
             sos.write(buffer, 0, 1024 * 1024);
         }
         sos.close();
