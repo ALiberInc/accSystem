@@ -6,7 +6,7 @@ create table "public".t_login_user (
   , last_name_kana character varying(50)
   , first_name_kana character varying(50)
   , alphabet_name character varying(50)
-  , email character varying(50) not null
+  , email character varying(100) not null
   , last_login_datetime timestamp without time zone
   , login_id character varying(50) not null
   , password character varying(50) not null

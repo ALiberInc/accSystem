@@ -1,0 +1,4 @@
+CREATE SEQUENCE t_employee_employee_id_seq 
+	INCREMENT 1
+	MINVALUE 1
+	MAXVALUE 2147483647
