@@ -1,7 +1,7 @@
 PostgreSQL
 Version:9.6.3
-Host:47.74.7.212
+Host:172.16.4.38
 Port:5432
-DB:accsystem
+DB:postgres
 User:postgres
 Password:postgres00
