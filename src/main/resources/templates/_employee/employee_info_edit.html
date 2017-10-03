@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="_accTemp :: headerImp ('__従業員データ入力__')">
+</head>
+<body>
+<div th:replace="_accTemp :: accMenuArea"></div>
+<form th:action="@{/employee_info_edit/save}" th:object="${employeeInfoEditForm}" method="post">
+<input type="hidden" name="creationflag" id="creationflag" th:value="${employeeInfoEditForm.creationflag}"/>
+<input type="hidden" name="employeeId" id="employeeId" th:value="${employeeInfoEditForm.employeeId}"/>
+<table id="tableA"  class="tableA" border="1" bordercolor="#a0c6e5">
+		<tr>
+			<td width="20%" align="center" bgcolor="#CFDDFF"><span >従業員番号<font color="#FF0000">※</font></span></td>
+			<td width="" colspan="3">
+			<input type="text"  name="employeeNo" th:value="${employeeInfoEditForm.employeeNo}"  maxlength="8"  />　<span>※登録後は変更できません</span>
+			</td>
+		</tr>
+		<tr>
+			<td width="14%" align="center" bgcolor="#CFDDFF">
+				<span>ﾌﾌﾘｶﾞﾅ</span>
+			</td>
+			<td width="85%" colspan="1">
+				<input type="text" name="firstNameKana" id="firstNameKana" th:value="${employeeInfoEditForm.firstNameKana}" maxlength="15"  />
+			</td>
+			<td width="14%" align="center" bgcolor="#CFDDFF">
+				<span>ﾌﾌﾘｶﾞﾅ</span>
+			</td>
+			<td width="85%" colspan="1">
+				<input type="text" name="lastNameKana" id="lastNameKana" th:value="${employeeInfoEditForm.lastNameKana}" maxlength="15"  />
+			</td>
+		</tr>
+		<tr>
+			<td width="14%" align="center" bgcolor="#CFDDFF">
+				<span >姓<font color="#FF0000">※</font></span>
+			</td>
+			<td width="" colspan="1">
+				<input  type="text" name="lastName" id="lastName"  maxlength="15" th:value="${employeeInfoEditForm.lastName}" />
+			</td>
+			<td width="14%" align="center" bgcolor="#CFDDFF">
+				<span >名<font color="#FF0000">※</font></span>
+			</td>
+			<td width="" colspan="1">
+				<input  type="text" name="firstName" id="firstName"  maxlength="15" th:value="${employeeInfoEditForm.firstName}" />
+			</td>
+			<td width="" align="center" bgcolor="#CFDDFF"><span>性別</span>
+			</td>
+			<td width=""  >
+			    <select id="jobId" name="sex">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.sex} == 0" >男</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.sex} == 1" >女</option>
+    			</select>
+			</td>
+		</tr>
+		<tr>
+			<td  bgcolor="#CFDDFF" align="center">
+				<span>部署</span>
+			</td>
+			<td >
+			<select id="jobId" name="department">
+ 				<option  th:if="${not #lists.isEmpty(employeeInfoEditForm.departmentList)}" th:each="department : ${employeeInfoEditForm.departmentList}" th:value="${department.deptId}" th:selected="${employeeInfoEditForm.department} == ${department.deptId}" th:text="${department.deptName}"></option>
+    			<option  th:if="${#lists.isEmpty(employeeInfoEditForm.departmentList)}" value="0">未設定</option>
+    		</select>
+    		</td>
+		</tr>
+		<tr>
+			<td colspan="4" bgcolor="#CFDDFF" align="center">
+				<span>口座情報</span>
+			</td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >口座名義人(ｶﾅ)</span></td>
+			<td  colspan="3"><input  type="text" name="accountHolder"  maxlength="30"  th:value="${employeeInfoEditForm.accountHolder}"/></td>
+		</tr>
+		<tr>
+			<td width="16%" height="25" bgcolor="#CFDDFF" align="center"><span>銀行コード</span></td>
+			<td width="8%"><input type="text"  name="bankCode"   maxlength="4" th:value="${employeeInfoEditForm.bankCode}"/></td>
+			<td width="10%" bgcolor="#CFDDFF" align="center"><span >銀行名</span></td>
+			<td width="40%"><input type="text" name="bankName" th:value="${employeeInfoEditForm.bankName}"  maxlength="30" /></td>
+			<td width="12%" bgcolor="#CFDDFF" align="center"><span >口座種別</span></td>
+			<td width="13%">
+				<select id="jobId" name="accountType">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.accountType} == 0" >普通</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.accountType} == 1" >当座</option>
+    			</select>
+			</td>
+		</tr>
+		<tr>
+			<td width="16%" height="25" bgcolor="#CFDDFF" align="center"><span>本支店コード</span></td>
+			<td width="8%"><input type="text" name="branchCode" maxlength="3" th:value="${employeeInfoEditForm.branchCode}"/></td>
+			<td width="10%" bgcolor="#CFDDFF" align="center"><span >本支店名</span></td>
+			<td width="40%"><input type="text" name="branchName" maxlength="30" th:value="${employeeInfoEditForm.branchName}"/></td>
+			<td width="12%" bgcolor="#CFDDFF" align="center"><span >口座番号</span></td>
+			<td width="13%"><input type="text"  name="accountNumber" maxlength="8" th:value="${employeeInfoEditForm.accountNumber}"/></td>
+		</tr>
+		<tr>
+			<td width="97"  bgcolor="#CFDDFF" colspan="4" align="center"><span >所得税</span></td>
+		</tr>
+		<tr>
+			<td align="center" width="105"  bgcolor="#CFDDFF"><span >所得税区分</span></td>
+			<td colspan="3">
+				<select id="jobId" name="incomeTaxDistinction">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.incomeTaxDistinction} == 0" >甲欄</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.incomeTaxDistinction} == 1" >乙欄</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.incomeTaxDistinction} == 2" >対象外</option>
+    			</select>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" width="105"  bgcolor="#CFDDFF"><span >控除対象配偶者</span></td>
+			<td colspan="1">
+				<select id="jobId" name="consort">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.consort} == 0" >無し</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.consort} == 1" >有り</option>
+    			</select>
+			</td>
+			<td width="105"  bgcolor="#CFDDFF">
+				<span >扶養控除等の申告</span></td>
+			<td>
+				<select id="jobId" name="dependents">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.dependents} == 0" >無</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.dependents} == 1" >有</option>
+    			</select>
+			</td>
+		</tr>
+		<tr>
+			<td width="12%" bgcolor="#CFDDFF" align="center"><span >扶養人数</span></td>
+			<td width="13%" colspan="3"><input type="text"  name="dependentsNumber" maxlength="8" th:value="${employeeInfoEditForm.dependentsNumber}"/></td>
+		</tr>
+		<tr>
+			<td width="105" align="center" bgcolor="#CFDDFF"><span >世帯主名</span></td>
+			<td width="208">
+				<input  class="inpK" type="text" name="householdName" maxlength="20" th:value="${employeeInfoEditForm.householdName}"/></td>
+			<td width="105" align="center" bgcolor="#CFDDFF"><span >続柄</span></td>
+			<td>
+				<input  class="inpK" type="text" name="relationship" maxlength="4" th:value="${employeeInfoEditForm.relationship}"/></td>
+		</tr>
+		<tr>
+			<td width="105" align="center" bgcolor="#CFDDFF"><span>条約免除</span></td>
+			<td width="208">
+				<li><label> <input type="checkbox" name="treatyExemption" th:checked="${employeeInfoEditForm.treatyExemption}"/></label></li>
+			</td>
+			<td width="105" align="center" bgcolor="#CFDDFF"><span >青色専従者</span></td>
+			<td>
+				<li><label> <input type="checkbox" name="blueOfficer" th:checked="${employeeInfoEditForm.blueOfficer}"/></label></li>
+			</td>
+		</tr>
+		<tr>
+			<td width="97"  bgcolor="#CFDDFF" colspan="4" align="center"><span >社会保険</span></td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#CFDDFF"><span >雇用保険</span></td>
+			<td colspan="3">
+				<select id="jobId" name="insuranceFlag">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.insuranceFlag} == 0" >加入</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.insuranceFlag} == 1" >加入（徴収なし）</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.insuranceFlag} == 2" >非加入</option>
+    			</select>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#CFDDFF"><span >健康保険</span></td>
+				<td colspan="3">
+				<select id="jobId" name="healthInsuranceFlag">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 0" >加入:介護非該当</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 1" >加入:介護該当者</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 2" >非加入</option>
+    			</select>
+				</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#CFDDFF"><span >健康保険種別</span></td>
+				<td colspan="3">
+				<select id="jobId" name="healthInsuranceType">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.healthInsuranceType} == 0" >1.一般男</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.healthInsuranceType} == 1" >2.一般女</option>
+       				 <option  value="2" th:selected="${employeeInfoEditForm.healthInsuranceType} == 2" >3.坑内夫</option>
+       				 <option  value="3" th:selected="${employeeInfoEditForm.healthInsuranceType} == 3" >4.第四種</option>
+       				 <option  value="4" th:selected="${employeeInfoEditForm.healthInsuranceType} == 4" >5.基金男</option>
+       				 <option  value="5" th:selected="${employeeInfoEditForm.healthInsuranceType} == 5" >6.基金女</option>
+    			</select>
+				</td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >健康保険標準報酬</span></td>
+			<td  colspan="3"><input  type="text" name="healthCompensation"  maxlength="30"  th:value="${employeeInfoEditForm.healthCompensation}"/></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >保険者番号</span></td>
+			<td  colspan="3"><input  type="text" name="insurerNumber"  maxlength="30"  th:value="${employeeInfoEditForm.insurerNumber}"/></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >被保険者整理番号</span></td>
+			<td  colspan="3"><input  type="text" name="insuredPersonnelNumber"  maxlength="30"  th:value="${employeeInfoEditForm.insuredPersonnelNumber}"/></td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#CFDDFF"><span >厚生年金</span></td>
+				<td colspan="3">
+				<select id="jobId" name="welfarePensionFlag">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.welfarePensionFlag} == 0" >加入</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.welfarePensionFlag} == 1" >非加入</option>
+    			</select>
+				</td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >厚生年金標準報酬</span></td>
+			<td  colspan="3"><input  type="text" name="welfareCompensation"  maxlength="30"  th:value="${employeeInfoEditForm.welfareCompensation}"/></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >基礎年金番号</span></td>
+			<td  colspan="3"><input  type="text" name="welfareNumber"  maxlength="30"  th:value="${employeeInfoEditForm.welfareNumber}"/></td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#CFDDFF"><span >厚生年金基金</span></td>
+				<td colspan="3">
+				<select id="jobId" name="welfareFund">
+       				 <option  value="0" th:selected="${employeeInfoEditForm.welfareFund} == 0" >加入</option>
+       				 <option  value="1" th:selected="${employeeInfoEditForm.welfareFund} == 1" >非加入</option>
+    			</select>
+				</td>
+		</tr>
+		<tr>
+			<td align="center" rowspan="16" bgcolor="#CFDDFF">
+				<span class="F2">固定項目</span></td>
+			<td align="center" colspan="4" bgcolor="#CFDDFF" height="19">
+				<span class="F2">固定支給金額</span></td>
+			<td colspan="4" align="center" bgcolor="#CFDDFF">
+				<span class="F2">固定控除金額</span></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >基本給</span></td>
+			<td  colspan="3"><input  type="text" name="basicSalary"  maxlength="30"  th:value="${employeeInfoEditForm.basicSalary}"/></td>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >積立金</span></td>
+			<td  colspan="3"><input  type="text" name="accumulateGold"  maxlength="30"  th:value="${employeeInfoEditForm.accumulateGold}"/></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >役職手当</span></td>
+			<td  colspan="3"><input  type="text" name="jobAllowance"  maxlength="30"  th:value="${employeeInfoEditForm.jobAllowance}"/></td>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >借入等返済</span></td>
+			<td  colspan="3"><input  type="text" name="repayment"  maxlength="30"  th:value="${employeeInfoEditForm.repayment}"/></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >資格手当</span></td>
+			<td  colspan="3"><input  type="text" name="requirementsAllowance"  maxlength="30"  th:value="${employeeInfoEditForm.requirementsAllowance}"/></td>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >その他の控除</span></td>
+			<td  colspan="3"><input  type="text" name="otherDeductions"  maxlength="30"  th:value="${employeeInfoEditForm.otherDeductions}"/></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >住宅手当</span></td>
+			<td  colspan="3"><input  type="text" name="housingAllowance"  maxlength="30"  th:value="${employeeInfoEditForm.housingAllowance}"/></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >家族手当</span></td>
+			<td  colspan="3"><input  type="text" name="familyAllowance"  maxlength="30"  th:value="${employeeInfoEditForm.familyAllowance}"/></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >その他の手当</span></td>
+			<td  colspan="3"><input  type="text" name="otherAllowance"  maxlength="30"  th:value="${employeeInfoEditForm.otherAllowance}"/></td>
+		</tr>
+		<tr>
+			<td width="40%" height="25" bgcolor="#CFDDFF" align="center"><span style="position: relative;" width="40%" height="25" >非課税交通費</span></td>
+			<td  colspan="3"><input  type="text" name="taxExpense"  maxlength="30"  th:value="${employeeInfoEditForm.taxExpense}"/></td>
+		</tr>
+</table>
+	 <input style="position: relative; left: 50%; width: 20%; height: 15%" type="submit" value="設定保存" />
+</form>
+</body>
+</html>

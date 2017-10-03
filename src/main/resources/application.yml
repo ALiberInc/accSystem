@@ -4,13 +4,24 @@ spring:
     password: postgres00
     url: jdbc:postgresql://172.16.4.38:5432/postgres
     driver-class-name: org.postgresql.Driver
-    
-  thymeleaf: 
+
+  thymeleaf:
     mode: HTML5
     encoding: UTF-8
     content-type: text/html
     cache: false
- 
+
+  mail:
+    host: smtp14.gmoserver.jp
+    port: 587
+    username: accsystem@aliber.co.jp
+    password: SE$OCbf4
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+
+server:
+  contextPath: /accsystem
+
 mybatis:
  typeAliasesPackage: jp.co.aliber.accsystem.entity
  mapperLocations: classpath:jp.co.aliber.accsystem.mapper/*.xml

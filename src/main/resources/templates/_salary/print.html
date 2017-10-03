@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="_accTemp :: headerImp ('__給与明細印刷__')">
+</head>
+<body>
+	<embed th:src="${printFrom.pdfpath}"  style="width: 900px; height: 800px" type="application/pdf" internalinstanceid="13"></embed>
+</body>
+</html>

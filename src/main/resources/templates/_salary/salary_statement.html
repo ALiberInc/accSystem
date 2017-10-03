@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="_accTemp :: headerImp ('__給与明細印刷__')">
+</head>
+<body >
+<div th:replace="_accTemp :: accMenuArea"></div>
+<p>給与明細印刷</p>
+	<div class="monthly_statement_search">
+		<span class="monthly_statement_search_dataList_text">給与明細印刷</span>
+		<span class="monthly_statement_search_dataList_text"><input type="text" id="freeWord" name="freeWord" value="" /></span>
+		<input type="button" onclick="" disabled="disabled" name="freeWordButton" value="検索" />
+		<input type="button" onclick="salaryPrint();"  name="print"  value="印刷" />
+		<input type="button" onclick="goToSendMail();"  name="freeWordButton" value="メール送信" />
+		<input type="button" onclick=""  name="" disabled="disabled" value="用紙設定" />
+	</div>
+	<div  style="width: 1120px ">
+		<table border="1" bordercolor="#a0c6e5" class="monthly_statement_search_table">
+			<tr>
+				<td width="100" align="center">
+				<input type="button" value="全選択/解除" disabled="disabled" onclick="checkBoxSelectAll();" style="position: relative; width: 90px;left:0px" tabindex="4"/></td>
+				<td width="80" align="center"><span >No.</span></td>
+				<td width="250"><span >氏名</span></td>
+				<td width="250"><span >部署</span></td>
+				<td width="450"><span >メールアドレス</span></td>
+			</tr>
+		</table>
+	</div>
+	<DIV  style="width:1120px">
+	<table id="monthly_statement_list" border="1" bordercolor="#a0c6e5" class="monthly_statement_search_table">
+			<tr th:each="TEmployee,iterStat : ${salaryStatementFrom.listTEmployee}">
+				<td width="100" align="center" >
+				<input name="monthlyCheckBox" type='checkbox' th:value="${TEmployee.employeeId}"  style="position: relative; width: 90px;left:0px" tabindex="4"/></td>
+				<td width="80" align="center" th:text="${TEmployee.employeeId}"></td>
+				<td width="250" th:text="${TEmployee.lastName}"></td>
+				<td width="250" th:text="${TEmployee.deptId}"></td>
+				<td width="450" th:text="${TEmployee.mailAddress}"></td>
+			</tr>
+	</table>
+	</DIV>
+</body>
+</html>

@@ -33,3 +33,7 @@ hs_err_pid*
 .classpath
 
 .settings/org.eclipse.wst.common.project.facet.core.xml
+src/test/resources/Blank_A4_Landscape.pdf
+src/test/java/CreatePdfReportServlet2.java
+src/test/java/CreatePdfReportServlet.java
+src/main/resources/static/js/11201709.pdf

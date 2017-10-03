@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_Landscape" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoPages" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fbff5d92-94ea-46aa-be2a-00fe086a3195">
+	<property name="ireport.zoom" value="2.3579476910000237"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1335"/>
+	<property name="net.sf.jasperreports.export.pdf.force.linebreak.policy" value="true"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<field name="restDay" class="java.lang.String">
+		<fieldDescription><![CDATA[restDay]]></fieldDescription>
+	</field>
+	<field name="code" class="java.lang.String">
+		<fieldDescription><![CDATA[code]]></fieldDescription>
+	</field>
+	<field name="numberOfDependents" class="java.lang.String">
+		<fieldDescription><![CDATA[numberOfDependents]]></fieldDescription>
+	</field>
+	<field name="transportationCosts" class="java.lang.String">
+		<fieldDescription><![CDATA[transportationCosts]]></fieldDescription>
+	</field>
+	<field name="daysAttendance" class="java.lang.String">
+		<fieldDescription><![CDATA[daysAttendance]]></fieldDescription>
+	</field>
+	<field name="overtimeAllowance" class="java.lang.String">
+		<fieldDescription><![CDATA[overtimeAllowance]]></fieldDescription>
+	</field>
+	<field name="year" class="java.lang.String">
+		<fieldDescription><![CDATA[year]]></fieldDescription>
+	</field>
+	<field name="absence" class="java.lang.String">
+		<fieldDescription><![CDATA[absence]]></fieldDescription>
+	</field>
+	<field name="totaltransferPaymentAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[totaltransferPaymentAmount]]></fieldDescription>
+	</field>
+	<field name="housingAllowance" class="java.lang.String">
+		<fieldDescription><![CDATA[housingAllowance]]></fieldDescription>
+	</field>
+	<field name="holidayWork" class="java.lang.String">
+		<fieldDescription><![CDATA[holidayWork]]></fieldDescription>
+	</field>
+	<field name="late" class="java.lang.String">
+		<fieldDescription><![CDATA[late]]></fieldDescription>
+	</field>
+	<field name="cumulativeSocialInsurancePremium" class="java.lang.String">
+		<fieldDescription><![CDATA[cumulativeSocialInsurancePremium]]></fieldDescription>
+	</field>
+	<field name="department" class="java.lang.String">
+		<fieldDescription><![CDATA[department]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="day" class="java.lang.String">
+		<fieldDescription><![CDATA[day]]></fieldDescription>
+	</field>
+	<field name="workingHours" class="java.lang.String">
+		<fieldDescription><![CDATA[workingHours]]></fieldDescription>
+	</field>
+	<field name="qualificationAllowance" class="java.lang.String">
+		<fieldDescription><![CDATA[qualificationAllowance]]></fieldDescription>
+	</field>
+	<field name="cumulativeIncomeTax" class="java.lang.String">
+		<fieldDescription><![CDATA[cumulativeIncomeTax]]></fieldDescription>
+	</field>
+	<field name="transferPaymentAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[transferPaymentAmount]]></fieldDescription>
+	</field>
+	<field name="jobAllowance" class="java.lang.String">
+		<fieldDescription><![CDATA[jobAllowance]]></fieldDescription>
+	</field>
+	<field name="lateNightOvertime" class="java.lang.String">
+		<fieldDescription><![CDATA[lateNightOvertime]]></fieldDescription>
+	</field>
+	<field name="otherDeductions" class="java.lang.String">
+		<fieldDescription><![CDATA[otherDeductions]]></fieldDescription>
+	</field>
+	<field name="inkindPaymentAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[inkindPaymentAmount]]></fieldDescription>
+	</field>
+	<field name="familyAllowance" class="java.lang.String">
+		<fieldDescription><![CDATA[familyAllowance]]></fieldDescription>
+	</field>
+	<field name="totalSupply" class="java.lang.String">
+		<fieldDescription><![CDATA[totalSupply]]></fieldDescription>
+	</field>
+	<field name="taxSchedule" class="java.lang.String">
+		<fieldDescription><![CDATA[taxSchedule]]></fieldDescription>
+	</field>
+	<field name="leaveEarly" class="java.lang.String">
+		<fieldDescription><![CDATA[leaveEarly]]></fieldDescription>
+	</field>
+	<field name="lateNightLabor" class="java.lang.String">
+		<fieldDescription><![CDATA[lateNightLabor]]></fieldDescription>
+	</field>
+	<field name="month" class="java.lang.String">
+		<fieldDescription><![CDATA[month]]></fieldDescription>
+	</field>
+	<field name="totalDeduction" class="java.lang.String">
+		<fieldDescription><![CDATA[totalDeduction]]></fieldDescription>
+	</field>
+	<field name="basicSalary" class="java.lang.String">
+		<fieldDescription><![CDATA[basicSalary]]></fieldDescription>
+	</field>
+	<field name="incomeTax" class="java.lang.String">
+		<fieldDescription><![CDATA[incomeTax]]></fieldDescription>
+	</field>
+	<field name="subscriptionAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[subscriptionAmount]]></fieldDescription>
+	</field>
+	<field name="cashPaymentAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[cashPaymentAmount]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="accumulateGold" class="java.lang.String">
+		<fieldDescription><![CDATA[accumulateGold]]></fieldDescription>
+	</field>
+	<field name="repaymentOfBorrowings" class="java.lang.String">
+		<fieldDescription><![CDATA[repaymentOfBorrowings]]></fieldDescription>
+	</field>
+	<field name="cumulativeTaxableAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[cumulativeTaxableAmount]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="555" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle" x="10" y="10" width="439" height="98" uuid="e4cd75ba-a5b6-4c76-8696-2b7d4bd894af"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText" x="320" y="21" width="84" height="46" uuid="2e572843-84ed-4cf0-9e9f-4bd936bd553d"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[明細書]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="230" y="20" width="80" height="46" uuid="ce1a6bc0-a662-473d-be16-291e47d1f300"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[給与支払]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement key="rectangle" x="490" y="14" width="219" height="65" uuid="a21d30f9-fddb-4d63-8492-274cd1ce2f78"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="744" y="35" width="50" height="44" uuid="3989d4f5-103c-4a49-9fd3-c44ed5abdcdb"/>
+			</rectangle>
+			<elementGroup>
+				<staticText>
+					<reportElement key="staticText" mode="Opaque" x="36" y="40" width="76" height="21" uuid="b69a4711-9301-41cc-b9fb-85e7bafadaab"/>
+					<textElement>
+						<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+					</textElement>
+					<text><![CDATA[氏　名]]></text>
+				</staticText>
+			</elementGroup>
+			<staticText>
+				<reportElement key="staticText" x="36" y="64" width="76" height="21" uuid="cdcbf12d-59fb-400f-a2b8-a54132bef759"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[所　属]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="36" y="90" width="76" height="21" uuid="134a606f-f89f-4127-b0de-19c05932d209"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[コード]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="735" y="85" width="60" height="21" uuid="f2896f0b-7ceb-4c83-be65-9a7f54c1258b"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[          受領印]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="509" y="88" width="50" height="15" uuid="25a27e68-e6cf-46f0-a3d5-7515c4313971"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[       支給日]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="603" y="88" width="20" height="14" uuid="27cbe002-4f88-4ef0-8413-8040e45cf567"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[年
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="649" y="89" width="20" height="14" uuid="dd19e041-aee6-4325-a06e-4a8780fc1a56"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[月]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="693" y="89" width="20" height="14" uuid="70d6e031-4000-4edf-94d4-71a0233fcfde"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[日]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement key="rectangle" x="10" y="150" width="88" height="319" uuid="a343e7c6-10b0-4177-bd7b-043f52eaec16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="220" y="150" width="91" height="362" uuid="010fe11e-ece8-4902-8c42-57797cd1d817"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="10" y="490" width="88" height="20" uuid="e98f987c-5e4c-4d5d-9050-a83482e828e9"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="10" y="510" width="85" height="20" uuid="232eef67-7759-4d2a-bf79-67f0a3777949"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="98" y="150" width="80" height="319" uuid="36b1855e-6a78-4971-bbe1-0c49489703a8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="10" y="119" width="168" height="31" uuid="fc9e504b-0c5e-4857-b6b7-b6a899bfdd1d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="220" y="510" width="90" height="21" uuid="a2632db4-7dfb-4ca5-b732-22fa14113654"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="310" y="150" width="88" height="362" uuid="4a083ade-cc08-4eed-b1a7-d288ec827577"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="310" y="510" width="88" height="21" uuid="e004907d-87c5-420d-8a2a-8e3de8013c20"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="220" y="120" width="178" height="30" uuid="600d27e4-27d8-4f86-9d36-98a4e9f6b26c"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="435" y="150" width="91" height="362" uuid="7d995df2-0733-4245-9e6a-ae91ac020e7d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="525" y="150" width="88" height="362" uuid="13bbe7df-7c99-4885-a22a-b509917077a1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="435" y="120" width="178" height="30" uuid="da748aaa-d3eb-4299-b37a-a2d99a24306d"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="435" y="510" width="90" height="21" uuid="8ea40227-24ad-4803-9387-1fd417c4ec53"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="525" y="510" width="88" height="21" uuid="5acae46c-cec1-4a8a-b290-5deb09a0e808"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="95" y="490" width="83" height="21" uuid="2d7bb53b-199e-4ab0-a92b-7141f74db83f"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="95" y="510" width="83" height="20" uuid="c257415c-53b1-4c5b-bd10-8a7dc5349f27">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="629" y="121" width="178" height="19" uuid="06c47128-a8c9-4044-8d17-c56b3de1e44a"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="629" y="139" width="89" height="81" uuid="8366b98f-561d-4d0b-aeea-f40ccf7384c5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="718" y="139" width="88" height="81" uuid="83b1c36e-4bc9-4d0f-8470-590a2d32d24e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="629" y="220" width="90" height="21" uuid="0ef36a6b-e3bb-404d-9094-808fb3b819a7"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="719" y="220" width="88" height="21" uuid="a63a5c59-ec2d-463b-8e42-6b0e3b5dc165"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="630" y="258" width="90" height="21" uuid="72ed12e9-b3cc-4f25-8d6c-56e35797f1f5"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="720" y="258" width="88" height="21" uuid="8426030c-d4c6-4e55-ac82-d14fd9fc72dc"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="631" y="294" width="178" height="18" uuid="b941b515-cf0b-459d-a18f-059ef964a3e4"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="631" y="312" width="90" height="47" uuid="1fb18c1b-7720-4991-8b12-5894182f1bfb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="721" y="312" width="88" height="47" uuid="22c374df-868c-4c7f-8ed5-657bd6f88730"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="721" y="358" width="88" height="21" uuid="9eab5923-0472-4660-b8ce-987028ad307c"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="631" y="358" width="90" height="21" uuid="63aaa03f-4d07-48d4-aaeb-a387717f5df7"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="631" y="391" width="90" height="21" uuid="0cded097-caff-47b3-8bf7-271765598e21"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="721" y="391" width="88" height="21" uuid="6bde4f9f-fd90-4cc5-b62b-6af8e91e2ce6"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="631" y="423" width="90" height="21" uuid="f0020a1e-f6b4-49b7-9160-32025a24ac05"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="721" y="423" width="88" height="21" uuid="1fa0f2d8-8f2f-46b0-b058-0cf6e1ec7551"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="630" y="460" width="20" height="70" uuid="65721a2b-9833-4e07-8eec-6fec9197890b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="650" y="460" width="71" height="20" uuid="21f2f04c-fbff-459f-b394-b7d788e41547"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="650" y="480" width="71" height="20" uuid="e7944c05-98e9-4908-a5cb-c9e9ede74676"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="650" y="500" width="71" height="30" uuid="dc251aaa-1178-45d7-8709-c72f58991308"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="721" y="500" width="86" height="30" uuid="e564bb28-6e2b-40f4-bd96-b04889052e63"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="721" y="460" width="87" height="20" uuid="0716a49b-eb9b-4e75-b0d3-8e35786d1b35"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="721" y="480" width="87" height="20" uuid="daf2cfb2-8105-4e70-bbad-82c08250553f"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText" x="46" y="130" width="100" height="17" uuid="bbcb18e8-a69e-4656-a1b9-cff60c919ced"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[勤　　怠]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="29" y="494" width="48" height="18" uuid="139b76d4-ab00-4e0c-ab60-458e524a15b8"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[税額表]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="29" y="514" width="48" height="18" uuid="cecceb4d-6ac2-4aa8-86c1-e1670f19d478"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[扶養人数]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="260" y="129" width="100" height="17" uuid="7b6a2d0b-8b01-4c74-a5cb-2b29bb8def6e"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" size="12" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[支　　給]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="242" y="514" width="48" height="18" uuid="2c910428-f64f-4534-bae7-42b0edcd5984"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[合　計]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="476" y="129" width="100" height="17" uuid="48f6d29a-16ca-4e83-803c-abdb854b66f5"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" size="12" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[控　　除]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="456" y="514" width="48" height="18" uuid="f4e464b9-6d4a-4d14-8181-999395d973cc"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[合　計]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="669" y="122" width="100" height="17" uuid="db2a3b26-97d6-4dc2-8d19-a533e6d472c4"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" size="12" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[そ　の　他]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="652" y="224" width="48" height="18" uuid="63014127-ae21-47e4-b114-610a8559e72b"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[合　計]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="644" y="261" width="65" height="18" uuid="a963de9a-57e0-47d8-9477-fc18e11b89f0"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[差引支給額]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="671" y="296" width="100" height="17" uuid="059aa01c-ab17-428f-bc53-378000549b76"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" size="12" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[振込支給額]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="652" y="360" width="48" height="18" uuid="d642f081-8b5b-425a-9b02-ca33bf726efc"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[合　計]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="644" y="396" width="65" height="18" uuid="081eb422-a95c-4399-b580-9ad2f36beec6"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[現金支給額]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="645" y="428" width="65" height="18" uuid="0ee8953f-b5a0-4782-a220-93ed66beaea4"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[現物支給額]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="634" y="481" width="14" height="34" uuid="3546e7e2-1e38-4469-969b-0e9263690e01"/>
+				<textElement textAlignment="Center" rotation="None">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[累
+計]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="653" y="464" width="65" height="18" uuid="d0b36750-3339-4dc7-8de1-3769a56664d7"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[課税支給額]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="653" y="483" width="65" height="18" uuid="ec432577-27b7-4fde-9237-28f3cbcbd46b"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[社会保険料]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="653" y="508" width="65" height="18" uuid="cc4f13c1-d5cf-4549-99c1-77474f74cdf5"/>
+				<textElement textAlignment="Center">
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[所得税]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="40" width="89" height="22" uuid="3ceaa991-7697-4551-a7b8-547bac5a13e5"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="64" width="89" height="22" uuid="879813f5-44d3-497c-9d30-0a649739fec0"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{department}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="90" width="89" height="22" uuid="30ff60a0-ae9b-41b3-8d10-7c5313442508"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="17" y="157" width="77" height="17" uuid="9717219d-8737-4e1b-8fd9-7620cbd6c08f"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[出勤日数]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="17" y="179" width="77" height="17" uuid="ad3d3e44-1a9a-4018-bbf9-a7abe11c980e"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[勤務時間]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="17" y="201" width="77" height="17" uuid="528d7526-3698-4608-b855-020beb08fa39"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[時間外手当]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="17" y="223" width="77" height="17" uuid="e556e7dc-017c-4739-8b48-a7a4ca2aaded"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[深夜労働]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="17" y="244" width="77" height="17" uuid="6b8ffad6-36ca-4e5e-8315-e986fcb1397c"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[深夜残業]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="17" y="266" width="77" height="17" uuid="70868fe1-6f93-40c9-9029-ca7dc630cf78"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[休日出勤]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="17" y="287" width="77" height="17" uuid="6e85a71f-0eed-4d5e-9e63-25a721bd7849"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[休日残業]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="17" y="308" width="77" height="17" uuid="82b6874b-d503-4e4a-a094-7947260e045d"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[欠勤]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="17" y="329" width="77" height="17" uuid="d6b9b003-6fde-4cec-a4a9-b4303b65ff73"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[遅刻]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="17" y="349" width="77" height="17" uuid="d7d2526e-fd7f-4832-b8bf-833aceeecb3a"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[早退]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="229" y="157" width="77" height="17" uuid="8af82fee-636b-45ec-a95b-7e764abdeec4"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[基本給]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="229" y="180" width="77" height="17" uuid="5782dfef-d239-4bab-89ab-b5c2f3fc0e3a"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[役職手当]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="229" y="202" width="77" height="17" uuid="d1d856a3-a131-42d2-bcd1-3b26654d61e3"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[資格手当]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="229" y="224" width="77" height="17" uuid="584bfb4b-eee2-4558-a78f-1752b1a5e82a"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[住宅手当]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="229" y="245" width="77" height="17" uuid="cbd9c188-268e-4a9a-baa6-12e66bbe141c"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[家族手当]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="229" y="268" width="77" height="17" uuid="b9d22ae4-c2d4-4a29-b66c-252a3aefaf81"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[交通費]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="443" y="157" width="77" height="17" uuid="ca2e322f-b9cd-4d2e-a17d-8ecdc33127c8"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[所得税]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="443" y="180" width="77" height="17" uuid="a393e152-74a8-43b0-8a3d-a36c643d8bf4"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[積立金]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="443" y="202" width="77" height="17" uuid="b101df8d-f781-4e52-b25c-74a0787644a5"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[借入等返済]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="443" y="224" width="77" height="17" uuid="696e41e1-76a8-4bf5-bfb1-3f3f7b154a5c"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[その他の控除]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="157" width="75" height="18" uuid="6fc43e79-7209-43ef-b745-2496994b81b3"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{daysAttendance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="179" width="75" height="18" uuid="68291e2d-d33f-4ba4-ac0f-4e651c13d632"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{workingHours}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="201" width="75" height="18" uuid="41745751-4431-4e31-952c-2f428d762417"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{overtimeAllowance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="564" y="88" width="44" height="13" uuid="f53b79ba-5f1a-40e5-bf13-9b17ed513ed2"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="671" y="88" width="42" height="13" uuid="d81e8b10-501f-455f-8a63-cc26c6a79625"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="630" y="88" width="40" height="13" uuid="b7f57057-b481-40cb-83c0-c3a467ba72e8"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="224" width="75" height="17" uuid="df7b055e-87c1-4312-940c-329140cfe8c1"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lateNightLabor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="245" width="75" height="16" uuid="1f3d14be-eb13-42f5-a265-875dbc7aa404"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lateNightOvertime}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="267" width="75" height="16" uuid="623cb318-5370-4c6f-81d0-aa25644fee4d"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{holidayWork}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="287" width="75" height="17" uuid="5ed84b75-f30f-4788-a04e-88c3ee81eaa5"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{restDay}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="309" width="75" height="16" uuid="ff89900b-1232-4984-9058-f8c8bde39d31"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{absence}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="329" width="75" height="17" uuid="e861b627-41e1-47d6-9b3f-43401076d10d"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{late}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="349" width="75" height="17" uuid="6388ec9b-5658-4bf9-95f5-3a24e20c2f63"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{leaveEarly}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="494" width="75" height="16" uuid="7cd6b5ea-dba0-4eb1-ba0d-423e867cbda6"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{taxSchedule}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="103" y="512" width="75" height="18" uuid="a355ade2-ad6d-4f3d-9e1c-1565f6bddb32"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numberOfDependents}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="316" y="157" width="82" height="17" uuid="1cffa8ce-6dac-486b-9185-aeaa0a0696c6"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{basicSalary}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="316" y="179" width="82" height="17" uuid="89a89e55-3bbb-4eb9-8a51-e73d732aa957"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jobAllowance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="315" y="201" width="82" height="17" uuid="67e659bd-0022-42e6-b2a9-5f1e5d7d52e5"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qualificationAllowance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="315" y="224" width="82" height="18" uuid="e396ef7f-98e3-4b9d-96ae-37037e7ce5c6"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{housingAllowance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="315" y="245" width="83" height="16" uuid="85788947-c90a-4480-bebb-7195e02470bd"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{familyAllowance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="315" y="268" width="83" height="17" uuid="b1979f47-2384-4cc4-8a7a-8c429675597b"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transportationCosts}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="317" y="514" width="81" height="16" uuid="4ce344d7-1692-4d41-a7f8-e1680b6989ab"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalSupply}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="532" y="157" width="81" height="17" uuid="92a31b2a-3aae-4388-bcfe-28a097a1d902"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incomeTax}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="532" y="179" width="80" height="17" uuid="4a463eda-954c-41a2-941c-f739bee4e942"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{accumulateGold}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="532" y="201" width="78" height="19" uuid="0854e64b-b768-48a5-9d76-d580107eb020"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{repaymentOfBorrowings}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="531" y="224" width="77" height="17" uuid="8e1ca7bf-6a01-4740-b019-b3a513739ca9"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otherDeductions}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="532" y="514" width="81" height="16" uuid="7cd705b6-7a85-4e74-adcd-286f6bc392ac"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalDeduction}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="730" y="261" width="70" height="18" uuid="cdf501b8-0d8b-492e-88bd-3fbd3ab00231"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subscriptionAmount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="727" y="327" width="68" height="18" uuid="ddc576e3-584e-4b85-9f29-d6fe141b62c1"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transportationCosts}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="727" y="362" width="64" height="15" uuid="2b082135-17db-4ab3-8ff3-5cf89d06e037"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totaltransferPaymentAmount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="727" y="395" width="72" height="16" uuid="4964c1a9-a649-49cf-8cd9-22990d2a3270"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cashPaymentAmount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="727" y="426" width="70" height="16" uuid="90077be4-03f8-45d6-b67f-5d760a6abf34"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inkindPaymentAmount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="727" y="464" width="71" height="15" uuid="a7a9ba1b-907c-4a6b-aa63-21acc8fc0655"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cumulativeTaxableAmount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="727" y="483" width="71" height="17" uuid="e008b079-aead-4ea4-a71d-3d3d9590e26d"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cumulativeSocialInsurancePremium}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="727" y="508" width="70" height="18" uuid="04773dbf-e517-4992-a786-577167436527"/>
+				<textElement>
+					<font fontName="ＭＳ 明朝" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cumulativeIncomeTax}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
