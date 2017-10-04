@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="accTemp :: headerImp ('__会社基本情報__')"></head>
+<body>
+	<form name="companyBasicInfoForm" id="companyBasicInfoForm"
+		method="POST" th:action="@{/company/save}"
+		th:object="${companyBasicInfoForm}">
+		<div id="headerArea">
+			<table>
+				<tr>
+					<td><span>基本情報設定</span></td>
+					<td><button type="submit" name="edit" value="編集">編集</button></td>
+					<td><button type="submit" name="delete" value="削除">削除</button></td>
+					<td><button type="submit" name="submit" value="登録">登録</button></td>
+					<td><button type="submit" name="end" value="終了">終了</button></td>
+				</tr>
+				<tr>
+					<td width="100%" colspan="7" height="30"></td>
+				</tr>
+			</table>
+		</div>
+		<table>
+			<tr>
+				<td rowspan="23"><span>会社情報</span></td>
+				<td width="15%" bgcolor="#CFDDFF"><span>(ﾌﾘｶﾞﾅ)</span></td>
+				<td width="80%"><input type="text" th:field="*{compKana}"
+					tabindex="1" /></td>
+			</tr>
+			<tr>
+				<td width="15%" bgcolor="#CFDDFF"><span>法人名又は氏名</span></td>
+				<td width="80%"><input type="text" th:field="*{compName}"
+					maxlength="40" style="width: 450px;" tabindex="2" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>〒</span></td>
+				<td width="80%"><input type="text" th:field="*{compZip1}"
+					maxlength="3" style="width: 30px;" tabindex="3" /> - <input
+					type="text" th:field="*{compZip2}" maxlength="4"
+					style="width: 40px;" tabindex="3" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>(ﾌﾘｶﾞﾅ)</span></td>
+				<td width="80%"><input type="text" th:field="*{compAdd1Kana}"
+					maxlength="40" style="width: 450px;" tabindex="5" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"></td>
+				<td width="80%"><input type="text" th:field="*{compAdd2Kana}"
+					maxlength="40" style="width: 450px;" tabindex="5" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>住所</span></td>
+				<td width="80%"><input type="text" th:field="*{compAdd1}"
+					maxlength="40" style="width: 450px;" tabindex="4" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"></td>
+				<td width="80%"><input type="text" th:field="*{compAdd2}"
+					maxlength="40" style="width: 450px;" tabindex="4" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>電話番号</span></td>
+				<td width="80%">
+					<table>
+						<tr>
+							<td><input type="text" th:field="*{compTel1}" value=""
+								maxlength="5" style="width: 40px;" tabindex="6" /></td>
+							<td><span>-</span></td>
+							<td><input type="text" th:field="*{compTel2}" value=""
+								maxlength="5" style="width: 40px;" tabindex="6" /></td>
+							<td><span>-</span></td>
+							<td><input type="text" th:field="*{compTel3}" value=""
+								maxlength="5" style="width: 40px;" tabindex="6" /></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>事業区分</span></td>
+				<td width="80%">
+					<table>
+						<tr>
+							<td width="90px"><label> <input
+									th:field="*{classification}" type="radio" value="0"
+									tabindex="6" /><span>法人</span>
+							</label></td>
+							<td width="90px"><label> <input
+									th:field="*{classification}" type="radio" value="1"
+									tabindex="6" /><span>個人</span>
+							</label></td>
+							<td width=""></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<tr>
+				<td bgcolor="#CFDDFF"><span>法人番号</span></td>
+				<td width="80%"><input type="text" th:field="*{corporationId}"
+					maxlength="13" style="width: 105px;" tabindex="6" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>(ﾌﾘｶﾞﾅ)</span></td>
+				<td width="80%"><input type="text"
+					th:field="*{corpOwnerNameKana}" maxlength="20"
+					style="width: 200px;" tabindex="7" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>事業主氏名</span></td>
+				<td width="80%"><input type="text" th:field="*{corpOwnerName}"
+					maxlength="20" style="width: 200px;" tabindex="6" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>事業所整理記号</span></td>
+				<td width="80%"><input type="text" maxlength="4"
+					th:field="*{corpSortNo1}" style="width: 40px;" tabindex="8" />-<input
+					type="text" maxlength="5" th:field="*{corpSortNo2}"
+					style="width: 60px;" tabindex="8" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>事業所番号</span></td>
+				<td width="80%"><input type="text" th:field="*{corpNo}"
+					maxlength="10" style="width: 80px;" tabindex="9" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>事業種目</span></td>
+				<td width="80%"><input type="text" th:field="*{corpKind}"
+					maxlength="20" style="width: 200px;" tabindex="9" /></td>
+			</tr>
+
+			<tr>
+				<td bgcolor="#CFDDFF"><span>締め日</span></td>
+				<td width="10%"><label> <input
+						th:field="*{deadlineDay}" type="radio" value="0" tabindex="9" /><span>末日</span>
+				</label></td>
+				<td width="10%"><label> <input
+						th:field="*{deadlineDay}" type="radio" value="1" tabindex="9" /><span>末日以外</span>
+				</label></td>
+				<td width="10%"><span>( <input
+						th:field="*{deadlineAdjustDays}" type="text" tabindex="9" />日)
+				</span></td>
+			</tr>
+
+			<tr>
+				<td bgcolor="#CFDDFF"><span>支給日</span></td>
+				<td width="90px"><label> <input
+						th:field="*{paymentDay}" value="0" type="radio" tabindex="9" /><span>末日</span>
+				</label></td>
+				<td width="90px"><label> <input
+						th:field="*{paymentDay}" value="1" type="radio" tabindex="9" /><span>末日以外</span>
+				</label></td>
+				<td width=""><span>( <input
+						th:field="*{paymentAdjustDays}" type="text" tabindex="9" />日)
+				</span></td>
+			</tr>
+
+			<tr>
+				<td bgcolor="#CFDDFF"><span>経理責任者 </span></td>
+				<td width="80%"><input type="text"
+					th:field="*{accountingManager}" maxlength="20"
+					style="width: 200px;" tabindex="10" /></td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>利用者識別番号</span></td>
+				<td width="80%">
+					<table>
+						<tr>
+							<td width="150"><input type="text"
+								th:field="*{userRecongId}" maxlength="16" style="width: 130px;"
+								tabindex="10" /></td>
+							<td><span><font>※国税の電子申告を行う場合は必須</font></span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>利用者ID</span></td>
+				<td width="80%">
+					<table>
+						<tr>
+							<td width="150"><input type="text" th:field="*{userId}"
+								maxlength="11" style="width: 90px;" tabindex="10" /></td>
+							<td><span><font>※地方税の電子申告を行う場合は必須</font></span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>税理士・税務署</span></td>
+				<td width="80%">
+					<table>
+						<tr>
+							<td><input type="button" value="編集" /></td>
+							<td><span>税理士：</span></td>
+							<td><input type="text"
+								style="background-color: #EEEEEE; float: left; width: 175px;"
+								th:field="*{taxAccountant}" maxlength="20" tabindex="" /></td>
+							<td style="padding-left: 10px"><span>税務署：</span></td>
+							<td style="padding-left: 0px"><input type="text"
+								style="background-color: #EEEEEE; float: left; width: 150px;"
+								th:field="*{taxOffice}" maxlength="20" tabindex="" /></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<tr>
+				<td bgcolor="#CFDDFF"><span>データ共有ＩＤ</span></td>
+				<td width="80%">
+					<table>
+						<tr>
+							<td><input type="text" id="ClientNenchoID"
+								th:field="*{dataShareId}" maxlength="10" style="width: 100px;"
+								tabindex="10" /></td>
+							<td style="padding-left: 10px"><font color="#FF0000"><span><a>データ共有ＩＤについて</a></span></font>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#CFDDFF"><span>マイナンバー</span></td>
+				<td width="80%">
+					<table>
+						<tr>
+							<td width="50%"><label> <input type="checkbox"
+									id="myNumber" th:checked="${companyBasicInfoForm.myNumber}" />
+									<span>FWマイナンバー から個人番号を取得する</span>
+							</label></td>
+							<td width=""><span>会社コード：<input type="text"
+									th:field="*{compCode}" maxlength="10" style="width: 80px;"
+									tabindex="10" /></span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<table>
+			<tr>
+				<td width="5%" rowspan="11" align="center" bgcolor="#CFDDFF"><span>社会保険
+				</span></td>
+				<td align="center" bgcolor="#CFDDFF" width="15%"><span>種別</span></td>
+				<td height="25" align="center" bgcolor="#CFDDFF"><span>項目</span></td>
+				<td align="center" bgcolor="#CFDDFF">
+					<table>
+						<tr>
+							<td><span>料率・端数処理 </span></td>
+							<td width="10"></td>
+							<td><input type="button" class="btn" value="最新の料率に更新"
+								onclick="UpdateRate()" style="width: 130px" /></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="2" bgcolor="#CFDDFF"><span>雇用保険</span></td>
+				<td width="35%"><span>被保険者負担率</span></td>
+				<td width="45%">
+					<table>
+						<tr>
+							<td width="10%" align="left"><input type="text"
+								th:field="*{employInsurRate}" maxlength="2" style="width: 25px;float: left"
+								tabindex="11" readOnly="readOnly" /></td>
+							<td width="90%"><span>/1000</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="30%"><span>端数処理</span></td>
+				<td width="50%">
+					<table>
+						<tr>
+							<!--端数処理の値はjava.math.roundingModeによって設定する-->
+							<td width="10%" align="center"><input
+								th:field="*{employRounding}" type="radio" value="4" checked="checked"
+								tabindex="12" readOnly="readOnly" /></td>
+							<td width="23%"><span>50捨51入</span></td>
+							<td width="10%" align="center"><input
+								th:field="*{employRounding}" type="radio" value="1"
+								tabindex="12" readOnly="readOnly" /></td>
+							<td width="23%"><span>切り捨て</span></td>
+							<td width="10%" align="center"><input
+								th:field="*{employRounding}" type="radio" value="0"
+								tabindex="12" readOnly="readOnly" /></td>
+							<td width="23%"><span>切り上げ</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="3" bgcolor="#CFDDFF"><span>健康保険</span></td>
+				<td width="30%"><span>保険料率（介護保険該当なし）</span></td>
+				<td width="50%">
+					<table>
+						<tr>
+							<td width="10%" align="right"><input type="text"
+								th:field="*{healthInsurRate}" maxlength="6" style="width: 45px;"
+								tabindex="13" readOnly="readOnly" /></td>
+							<td width="90%"><span>％</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="30%"><span>保険料率（介護保険該当者）</span></td>
+				<td width="50%">
+					<table>
+						<tr>
+							<td width="10%" align="right" height="11"><input type="text"
+								th:field="*{healthInsurRate2}" maxlength="6"
+								style="width: 45px;" tabindex="14" readOnly="readOnly" /></td>
+							<td width="85%" height="11"><span>％</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="30%"><span>端数処理</span></td>
+				<td width="50%">
+					<table>
+						<tr>
+							<!--端数処理の値はjava.math.roundingModeによって設定する-->
+							<td width="10%" align="center"><input
+								th:field="*{healthRounding}" type="radio" value="4"
+								tabindex="14" readOnly="readOnly" /></td>
+							<td width="23%"><span>50捨51入</span></td>
+							<td width="10%" align="center"><input
+								th:field="*{healthRounding}" type="radio" value="1"
+								tabindex="14" readOnly="readOnly" /></td>
+							<td width="23%"><span>切り捨て</span></td>
+							<td width="10%" align="center"><input
+								th:field="*{healthRounding}" type="radio" value="0"
+								tabindex="14" readOnly="readOnly" /></td>
+							<td width="23%"><span>切り上げ</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="2" bgcolor="#CFDDFF"><span>厚生年金</span></td>
+				<td width="30%"><span>保険料率</span></td>
+				<td width="50%">
+					<table>
+						<tr>
+							<td width="10%" align="right"><input type="text"
+								th:field="*{welfareInsurance}" maxlength="6"
+								style="width: 45px;" tabindex="16" readOnly="readOnly" /></td>
+							<td width="90%"><span>％</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="30%"><span>端数処理</span></td>
+				<td width="50%">
+					<table>
+						<tr>
+							<td width="10%" align="center" height="16"><input
+								th:field="*{welfareRounding}" type="radio" value="4" checked="checked"
+								tabindex="16" readOnly="readOnly" /></td>
+							<td width="23%" height="16"><span>50捨51入</span></td>
+							<td width="10%" align="center" height="16"><input
+								th:field="*{welfareRounding}" type="radio" value="1"
+								tabindex="16" readOnly="readOnly" /></td>
+							<td width="23%" height="16"><span>切り捨て</span></td>
+							<td width="10%" align="center" height="16"><input
+								th:field="*{welfareRounding}" type="radio" value="0"
+								tabindex="16" readOnly="readOnly" /></td>
+							<td width="23%" height="16"><span>切り上げ</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="3" bgcolor="#CFDDFF"><span>厚生年金基金</span></td>
+				<td width="30%"><span>基金免除保険料率</span></td>
+				<td width="50%">
+					<table>
+						<tr>
+							<td width="10%" align="right"><input
+								th:field="*{welfareExemptionRate}" type="text" value=""
+								maxlength="6" style="width: 45px;" tabindex="17" readOnly="readOnly" /></td>
+							<td width="90%"><span>％</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="30%"><span>基金独自給付加算率(従業員負担分)</span></td>
+				<td width="50%">
+					<table>
+						<tr>
+							<td width="10%" align="right"><input
+								th:field="*{welfareAdditionRate}" type="text" value=""
+								maxlength="6" style="width: 45px;" tabindex="18" readOnly="readOnly" /></td>
+							<td width="90%"><span>％ <font color="#FF0000">※事務費掛金含む</font></span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="30%"><span>基金独自給付加算定額(従業員負担分)</span></td>
+				<td width="50%">
+					<table>
+						<tr>
+							<td width="20%" align="right"><input
+								th:field="*{welfareAdditionRation}" type="text" value=""
+								maxlength="9" style="width: 80px;" tabindex="19" /></td>
+							<td width="80%"><span>円</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		</br>
+	</form>
+</body>
+</html>
