@@ -29,7 +29,7 @@ comment on column t_login_user.last_name is '氏名_姓';
 comment on column t_login_user.first_name is '氏名_名';
 comment on column t_login_user.last_name_kana is 'ふりがな_姓';
 comment on column t_login_user.first_name_kana is 'ふりがな_名';
-comment on column t_login_user.alphabetical_name is 'アルファベット名';
+comment on column t_login_user.alphabet_name is 'アルファベット名';
 comment on column t_login_user.email is 'メールアドレス';
 comment on column t_login_user.last_login_datetime is '最終ログイン日時';
 comment on column t_login_user.login_id is 'ログインID';
