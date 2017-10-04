@@ -111,7 +111,7 @@ public class EmployeeInfoEditController {
         if (emplyeeId == null) {
             // 登録の場合
             form.setCreationflag(false);
-            return "_employee/employee_info_edit";
+            return "employee/employee_info_edit";
         }
         // 更新の場合
         form.setCreationflag(true);
