@@ -1,11 +1,14 @@
-function employeeSearch(flag) {
+$('input[name="show_btn"]').each(
+		function() {
+			$(this).click(
+					function() {
+						window.open(getContextPath()
+								+ "employee_info_edit?emplyeeId="
+								+ $(this).attr('id'));
 
-}
-function employeeShow(companyId){
-	var root = getContextPath();
-	window.open(root+"employee_info_edit?emplyeeId="+companyId);
-}
-function employeeAdd(){
-	var root = getContextPath();
-	window.open(root+"employee_info_edit");
-}
+					});
+		});
+
+$('#add_btn').click(function() {
+	window.open(getContextPath() + "employee_info_edit");
+});
