@@ -1,34 +1,46 @@
-function goToSendMail() {
-	var chk_value = [];
-	$('input[name="monthlyCheckBox"]:checked').each(function() {
-		chk_value.push($(this).val());
-	});
-	if (chk_value.length > 0) {
-		var root = getContextPath();
-		window.open(root + "send_mail?sendMailStr=" + chk_value.join(","),"","location=no,top="+(screen.width - 1600) / 2+",left="+(screen.width - 600) / 2+",width=700,height=600");
-	} else {
-		alert("誰も選択されていません。")
-	}
-}
+$('#sendMail').click(
+		function() {
+			var chk_value = [];
+			$('input[name="salaryCheckBox"]:checked').each(function() {
+				chk_value.push($(this).val());
+			});
+			if (chk_value.length > 0) {
+				window.open(getContextPath() + "send_mail?sendMailStr="
+						+ chk_value.join(","), "", "location=no,top="
+						+ (screen.width - 1600) / 2 + ",left="
+						+ (screen.width - 600) / 2 + ",width=700,height=600");
+			} else {
+				alert("誰も選択されていません。")
+			}
+		});
 
-function checkBoxSelectAll(){
-	var notCheckNo = $('input[name="monthlyCheckBox"]:not(:checked)').length;
-	if (notCheckNo> 0) {
-			$("input[name='monthlyCheckBox']").attr("checked","true");
+$('#checkAll').click(function() {
+	var checkBoxArray = $('input[name="salaryCheckBox"]');
+	if (checkBoxArray.length != $("input:checked").length) {
+		checkBoxArray.each(function() {
+			$(this).prop("checked", true);
+		});
 	} else {
-		$("input[name='monthlyCheckBox']").removeAttr("checked");
+		checkBoxArray.each(function() {
+			$(this).prop("checked", false);
+		});
 	}
-}
+});
 
-function salaryPrint(){
-	var chk_value = [];
-	$('input[name="monthlyCheckBox"]:checked').each(function() {
-		chk_value.push($(this).val());
-	});
-	if (chk_value.length > 0) {
-		var root = getContextPath();
-		window.open(root + "print?employeeId=" + chk_value.join(",")+"&compId=1&salaryYearMonth=201709","","location=no,top="+(screen.width - 1600) / 2+",left="+(screen.width - 600) / 2+",width=700,height=600");
-	} else {
-		alert("誰も選択されていません。")
-	}
-}
+$('#add_btn').click(
+		function() {
+			var chk_value = [];
+			$('input[name="salaryCheckBox"]:checked').each(function() {
+				chk_value.push($(this).val());
+			});
+			if (chk_value.length > 0) {
+				var root = getContextPath();
+				window.open(root + "print?employeeId=" + chk_value.join(",")
+						+ "&compId=1&salaryYearMonth=201709", "",
+						"location=no,top=" + (screen.width - 1600) / 2
+								+ ",left=" + (screen.width - 600) / 2
+								+ ",width=700,height=600");
+			} else {
+				alert("誰も選択されていません。")
+			}
+		});
