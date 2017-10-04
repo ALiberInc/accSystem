@@ -1,5 +1,4 @@
-function SendMail() {
-	console.log(document.getElementById('Body1').innerText);
+$('#sendMailBtn').click(function() {
 	var cmsg = 'メール送信を開始します。\n\n';
 	cmsg = cmsg + 'よろしいですか？';
 	var res = confirm(cmsg);
@@ -33,21 +32,24 @@ function SendMail() {
 			alert("メールが送信失敗しました");
 		}
 	}
-}
-function ChgBodyType() {
-	if ($('#bodyType0').is(':checked')) {
-		document.getElementById('Subject').style.display = 'none';
-		document.getElementById('AutoSubject').style.display = 'block';
-		document.getElementById('Body1').style.display = 'none';
-		document.getElementById('Body2').style.display = 'none';
-		document.getElementById('AutoBody1').style.display = 'block';
-		document.getElementById('AutoBody2').style.display = 'block';
-	} else {
-		document.getElementById('Subject').style.display = 'block';
-		document.getElementById('AutoSubject').style.display = 'none';
-		document.getElementById('Body1').style.display = 'block';
-		document.getElementById('Body2').style.display = 'block';
-		document.getElementById('AutoBody1').style.display = 'none';
-		document.getElementById('AutoBody2').style.display = 'none';
-	}
-}
+});
+
+$('input[name="BodyType"]').each(function() {
+	$(this).click(function() {
+		if ($('#bodyType0').is(':checked')) {
+			$('#Subject').hide();
+			$('#AutoSubject').show();
+			$('#Body1').hide();
+			$('#Body2').hide();
+			$('#AutoBody1').show();
+			$('#AutoBody2').show();
+		} else {
+			$('#Subject').show();
+			$('#AutoSubject').hide();
+			$('#Body1').show();
+			$('#Body2').show();
+			$('#AutoBody1').hide();
+			$('#AutoBody2').hide();
+		}
+	});
+});
