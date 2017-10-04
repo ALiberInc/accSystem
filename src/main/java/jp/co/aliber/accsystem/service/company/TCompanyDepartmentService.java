@@ -1,4 +1,4 @@
-package jp.co.aliber.accsystem.service;
+package jp.co.aliber.accsystem.service.company;
 
 import java.util.List;
 

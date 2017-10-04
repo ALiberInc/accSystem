@@ -34,7 +34,7 @@ public class CompanyInfoController {
     @RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
     public String index(Locale locale, Model model, CompanyInfoFrom form) {
 
-        return "_company/company_info";
+        return "company/company_info";
     }
 
 }

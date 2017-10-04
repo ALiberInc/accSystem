@@ -1,4 +1,4 @@
-package jp.co.aliber.accsystem.service;
+package jp.co.aliber.accsystem.service.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeFixedDeductionMapper;
  *
  */
 @Service
-public class TWmployeeFixedDeductionService {
+public class TEmployeeFixedDeductionService {
 
     @Autowired
     TEmployeeFixedDeductionMapper tEmployeeFixedDeductionMapper;

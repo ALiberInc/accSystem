@@ -34,6 +34,6 @@ public class EmployeeController {
     @RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
     public String index(Locale locale, Model model, EmployeeInfoFrom form) {
 
-        return "_employee/employee";
+        return "employee/employee";
     }
 }

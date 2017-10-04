@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
 import jp.co.aliber.accsystem.form.employee.EmployeeInfoFrom;
-import jp.co.aliber.accsystem.service.TEmployeeService;
+import jp.co.aliber.accsystem.service.employee.TEmployeeService;
 
 /**
  * 從業員情報一覧画面
@@ -52,6 +52,6 @@ public class EmployeeInfoController {
         // 從業員情報リストを取得
         List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(1);
         form.setListTEmployee(listTEmployee);
-        return "_employee/employee_info";
+        return "employee/employee_info";
     }
 }

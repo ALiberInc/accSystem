@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
 import jp.co.aliber.accsystem.form.salary.SendMailFrom;
-import jp.co.aliber.accsystem.service.TEmployeeService;
+import jp.co.aliber.accsystem.service.employee.TEmployeeService;
 
 /**
  * メール送信画面
@@ -66,7 +66,7 @@ public class SendMailController {
 	public String index(Locale locale, Model model, SendMailFrom form,
 			@RequestParam(value = "sendMailStr", required = false) String sendMailStr) {
 		form.setSendMailStr(sendMailStr);
-		return "_salary/send_mail";
+		return "salary/send_mail";
 	}
 
 	/**

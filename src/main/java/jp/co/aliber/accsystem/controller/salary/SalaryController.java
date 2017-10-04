@@ -35,7 +35,7 @@ public class SalaryController {
     @RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
     public String index(Locale locale, Model model, SalaryFrom form) {
 
-        return "_salary/salary";
+        return "salary/salary";
     }
 
 }

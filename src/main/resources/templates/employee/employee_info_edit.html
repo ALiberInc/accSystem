@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head th:replace="_accTemp :: headerImp ('__従業員データ入力__')">
+<head th:replace="accTemp :: headerImp ('__従業員データ入力__')">
 </head>
 <body>
-<div th:replace="_accTemp :: accMenuArea"></div>
+<div th:replace="accTemp :: accMenuArea"></div>
 <form th:action="@{/employee_info_edit/save}" th:object="${employeeInfoEditForm}" method="post">
 <input type="hidden" name="creationflag" id="creationflag" th:value="${employeeInfoEditForm.creationflag}"/>
 <input type="hidden" name="employeeId" id="employeeId" th:value="${employeeInfoEditForm.employeeId}"/>

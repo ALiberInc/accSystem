@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
 import jp.co.aliber.accsystem.form.salary.SalaryStatementFrom;
-import jp.co.aliber.accsystem.service.TEmployeeService;
+import jp.co.aliber.accsystem.service.employee.TEmployeeService;
 
 /**
  * 給与明細印刷画面
@@ -54,7 +54,7 @@ public class SalaryStatementController {
         // 從業員情報リストを取得
         List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(1);
         form.setListTEmployee(listTEmployee);
-        return "_salary/salary_statement";
+        return "salary/salary_statement";
     }
 
     // /**

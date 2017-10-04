@@ -1,4 +1,4 @@
-package jp.co.aliber.accsystem.service;
+package jp.co.aliber.accsystem.service.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

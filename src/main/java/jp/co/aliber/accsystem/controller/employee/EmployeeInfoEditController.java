@@ -22,13 +22,13 @@ import jp.co.aliber.accsystem.entity.auto.TEmployeeFixedDeduction;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeFixedPayment;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeIncomeTax;
 import jp.co.aliber.accsystem.form.employee.EmployeeInfoEditForm;
-import jp.co.aliber.accsystem.service.TCompanyDepartmentService;
-import jp.co.aliber.accsystem.service.TEmployeeBankAccountService;
-import jp.co.aliber.accsystem.service.TEmployeeFixedPaymentService;
-import jp.co.aliber.accsystem.service.TEmployeeIncomeTaxService;
-import jp.co.aliber.accsystem.service.TEmployeeService;
-import jp.co.aliber.accsystem.service.TWmployeeFixedDeductionService;
 import jp.co.aliber.accsystem.service.UtilService;
+import jp.co.aliber.accsystem.service.company.TCompanyDepartmentService;
+import jp.co.aliber.accsystem.service.employee.TEmployeeBankAccountService;
+import jp.co.aliber.accsystem.service.employee.TEmployeeFixedDeductionService;
+import jp.co.aliber.accsystem.service.employee.TEmployeeFixedPaymentService;
+import jp.co.aliber.accsystem.service.employee.TEmployeeIncomeTaxService;
+import jp.co.aliber.accsystem.service.employee.TEmployeeService;
 
 /**
  * 従業員データ入力画面
@@ -56,7 +56,7 @@ public class EmployeeInfoEditController {
      * 固定控除金額情報サービス
      */
     @Autowired
-    private TWmployeeFixedDeductionService tWmployeeFixedDeductionService;
+    private TEmployeeFixedDeductionService tEmployeeFixedDeductionService;
 
     /**
      * 固定支給金額情報サービス
@@ -144,7 +144,7 @@ public class EmployeeInfoEditController {
             form.setBranchName(tEmployeeBankAccount.getBranchName());
         }
         // 固定控除金額情報
-        TEmployeeFixedDeduction tEmployeeFixedDeduction = tWmployeeFixedDeductionService.getTEmployeeFixedDeduction(
+        TEmployeeFixedDeduction tEmployeeFixedDeduction = tEmployeeFixedDeductionService.getTEmployeeFixedDeduction(
                 emplyeeIdL,
                 1);
         if (tEmployeeFixedDeduction != null) {
@@ -175,7 +175,7 @@ public class EmployeeInfoEditController {
             form.setTreatyExemption(tEmployeeIncomeTax.getTreatyException());
             form.setBlueOfficer(tEmployeeIncomeTax.getBlueOfficer());
         }
-        return "_employee/employee_info_edit";
+        return "employee/employee_info_edit";
     }
 
     /**
@@ -263,7 +263,7 @@ public class EmployeeInfoEditController {
             tEmployeeBankAccountService.update(tEmployeeBankAccount);
             // 固定控除金額情報
             tEmployeeFixedDeduction.setEmployeeId(form.getEmployeeId());
-            tWmployeeFixedDeductionService.update(tEmployeeFixedDeduction);
+            tEmployeeFixedDeductionService.update(tEmployeeFixedDeduction);
             // 固定支給金額情報
             tEmployeeFixedPayment.setEmployeeId(form.getEmployeeId());
             tEmployeeFixedPaymentService.update(tEmployeeFixedPayment);
@@ -271,7 +271,7 @@ public class EmployeeInfoEditController {
             tEmployeeIncomeTax.setEmployeeId(form.getEmployeeId());
             tEmployeeIncomeTaxService.update(tEmployeeIncomeTax);
 
-            return "_employee/employee_info_edit";
+            return "employee/employee_info_edit";
         }
         // 新規の場合
 
@@ -293,7 +293,7 @@ public class EmployeeInfoEditController {
         tEmployeeFixedDeduction.setEmployeeId(employeeId.intValue());
         tEmployeeFixedDeduction.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
         tEmployeeFixedDeduction.setRegistDate(date);
-        tWmployeeFixedDeductionService.regist(tEmployeeFixedDeduction);
+        tEmployeeFixedDeductionService.regist(tEmployeeFixedDeduction);
 
         // 固定支給金額情報
         tEmployeeFixedPayment.setEmployeeId(employeeId.intValue());
@@ -307,6 +307,6 @@ public class EmployeeInfoEditController {
         tEmployeeIncomeTax.setRegistDate(date);
         tEmployeeIncomeTaxService.regist(tEmployeeIncomeTax);
 
-        return "_employee/employee_info_edit";
+        return "employee/employee_info_edit";
     }
 }
