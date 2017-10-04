@@ -2,36 +2,36 @@
 <html>
 <head th:replace="accTemp :: headerImp ('__従業員データ機能__')">
 </head>
-<body >
-<div th:replace="accTemp :: accMenuArea"></div>
+<body>
+	<div th:replace="accTemp :: accMenuArea"></div>
 	<p>従業員データ管理機能</p>
-	<div class="employee_data_search">
-		<span class="employee_data_search_dataList_text">従業員データ一覧</span>
-		<span class="employee_data_search_dataList_text">フリーワード<input type="text" id="freeWord" name="freeWord" value="" /></span>
-		<input type="button" onclick="employeeSearch(1)" disabled="disabled" name="freeWordButton" value="検索" />
-		<input type="button" name="allButton" onclick="employeeSearch(2)" disabled="disabled" value="全件" />
-	</div>
-	<div  style="width: 650px ">
-		<table border="1" bordercolor="#a0c6e5" class="employee_data_search_table">
+	<div style="width: 650px">
+		<table border="1" bordercolor="#a0c6e5"
+			class="employee_data_search_table">
 			<tr>
-				<td width="81" align="center">
-				<input type="button" value="新規追加" onclick="employeeAdd()" style="position: relative; width: 70px;left:0px" tabindex="4"/></td>
-				<td width="80" align="center"><span >No.</span></td>
-				<td width="250"><span >氏名</span></td>
-				<td width=""><span >部署</span></td>
+				<td width="81" align="center"><input type="button" value="新規追加"
+					id="add_btn" style="position: relative; width: 70px; left: 0px"
+					tabindex="4" /></td>
+				<td width="80" align="center"><span>No.</span></td>
+				<td width="250"><span>氏名</span></td>
+				<td width=""><span>部署</span></td>
 			</tr>
 		</table>
 	</div>
-	<DIV  style="width:650px;height:405px">
-	<table id="employee_data_list" border="1" bordercolor="#a0c6e5" class="employee_data_search_table">
-				<tr th:each="TEmployees,iterStat : ${employeeInfoFrom.listTEmployee}">
-				<td width="80" align="center" >
-				<input type='button'  value='選択' name='show_btn' th:onclick="'javascript:employeeShow('+${TEmployees.employeeId}+');'" style="position: relative; width: 50px;left:0px" tabindex="4"/></td>
-				<td width="80" align="center" th:text="${TEmployees.employeeId}"></td>
-				<td width="250" th:text="${TEmployees.lastName}"></td>
+	<div style="width: 650px; height: 405px">
+		<table id="employee_data_list" border="1" bordercolor="#a0c6e5"
+			class="employee_data_search_table">
+			<tr th:each="TEmployees,iterStat : ${employeeInfoFrom.listTEmployee}">
+				<td width="80" align="center"><input type='button' value='選択'
+					name='show_btn' th:id="${TEmployees.employeeId}"
+					style="position: relative; width: 50px; left: 0px" tabindex="4" /></td>
+				<td width="80" align="center" th:text="${TEmployees.employeeNo}"></td>
+				<td width="250"
+					th:text="${TEmployees.lastName}+' '+${TEmployees.firstName}"></td>
 				<td width="" th:text="${TEmployees.deptId}"></td>
 			</tr>
-	</table>
-	</DIV>
+		</table>
+	</div>
 </body>
+<script src="./js/employee_info.js" type="text/javascript"></script>
 </html>
