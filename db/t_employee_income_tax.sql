@@ -26,7 +26,7 @@ comment on column t_employee_income_tax.dependency_deduction_declaration is '扶
 comment on column t_employee_income_tax.dependency_count is '扶養人数';
 comment on column t_employee_income_tax.head_household_name is '世帯主名';
 comment on column t_employee_income_tax.relationship is '続柄';
-comment on column t_employee_income_tax.treaty_exemption is '条約免除';
+comment on column t_employee_income_tax.treaty_exception is '条約免除';
 comment on column t_employee_income_tax.blue_officer is '青色専従者';
 comment on column t_employee_income_tax.delete_flg is '削除フラグ';
 comment on column t_employee_income_tax.regist_date is '登録日';

@@ -97,10 +97,3 @@ comment on column t_company.regist_date is '登録日';
 comment on column t_company.regist_id is '登録者ID';
 comment on column t_company.update_date is '最終更新日';
 comment on column t_company.update_id is '最終更新者ID';
-
-
-
-
-
-
-
