@@ -4,44 +4,30 @@
 </head>
 <body>
 	<div th:replace="accTemp :: accMenuArea"></div>
-	<p>給与明細印刷</p>
-	<div class="monthly_statement_search">
-		<span class="monthly_statement_search_dataList_text">給与明細印刷</span> <span
-			class="monthly_statement_search_dataList_text"><input
-			type="text" id="freeWord" name="freeWord" value="" /></span> <input
-			type="button" onclick="" disabled="disabled" name="freeWordButton"
-			value="検索" /> <input type="button" id="salaryPrint" name="print"
-			value="印刷" /> <input type="button" id="sendMail"
-			name="freeWordButton" value="メール送信" /> <input type="button"
-			onclick="" name="" disabled="disabled" value="用紙設定" />
+	<div class="centerDiv">
+		<label for="exampleInputName2">給与明細印刷</label>
+		<span class="monthly_statement_search_dataList_text">
+			<input type="text" id="freeWord" name="freeWord" value="" />
+		</span>
+		<button type="button" class="btn btn-info btn-sm" id="freeWordButton">検索</button>
+		<button type="button" class="btn btn-info btn-sm" id="salaryPrint">印刷</button>
+		<button type="button" class="btn btn-info btn-sm" id="sendMail">メール送信</button>
 	</div>
-	<div style="width: 1120px">
-		<table border="1" bordercolor="#a0c6e5"
-			class="monthly_statement_search_table">
+	<div class="centerDiv">
+		<table class="table table-striped">
 			<tr>
-				<td width="100" align="center"><input type="button"
-					value="全選択/解除" id="checkAll"
-					style="position: relative; width: 90px; left: 0px" tabindex="4" /></td>
-				<td width="80" align="center"><span>No.</span></td>
-				<td width="250"><span>氏名</span></td>
-				<td width="250"><span>部署</span></td>
-				<td width="450"><span>メールアドレス</span></td>
+				<td class="td0"><button type="button" class="btn btn-info btn-sm" id="checkAll">全選択/解除</button></td>
+				<td class="td1">No.</td>
+				<td class="td2">氏名</td>
+				<td class="td3">部署</td>
+				<td class="td4">メールアドレス</td>
 			</tr>
-		</table>
-	</div>
-	<div style="width: 1120px">
-		<table id="monthly_statement_list" border="1" bordercolor="#a0c6e5"
-			class="monthly_statement_search_table">
-			<tr
-				th:each="TEmployee,iterStat : ${salaryStatementFrom.listTEmployee}">
-				<td width="100" align="center"><input name="salaryCheckBox"
-					type='checkbox' th:value="${TEmployee.employeeNo}"
-					style="position: relative; width: 90px; left: 0px" tabindex="4" /></td>
-				<td width="80" align="center" th:text="${TEmployee.employeeId}"></td>
-				<td width="250"
-					th:text="${TEmployee.lastName} + ' ' +${TEmployee.firstName}"></td>
-				<td width="250" th:text="${TEmployee.deptId}"></td>
-				<td width="450" th:text="${TEmployee.mailAddress}"></td>
+			<tr th:each="TEmployee,iterStat : ${salaryStatementFrom.listTEmployee}">
+				<td class="td0"><input name="salaryCheckBox" type='checkbox' th:value="${TEmployee.employeeNo}"/></td>
+				<td class="td1" th:text="${TEmployee.employeeId}"></td>
+				<td class="td2" th:text="${TEmployee.lastName} + ' ' +${TEmployee.firstName}"></td>
+				<td class="td3" th:text="${TEmployee.deptId}"></td>
+				<td class="td4" th:text="${TEmployee.mailAddress}"></td>
 			</tr>
 		</table>
 	</div>

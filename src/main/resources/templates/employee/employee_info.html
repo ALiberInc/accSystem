@@ -2,33 +2,22 @@
 <html>
 <head th:replace="accTemp :: headerImp ('__従業員データ機能__')">
 </head>
-<body>
+<body >
 	<div th:replace="accTemp :: accMenuArea"></div>
 	<p>従業員データ管理機能</p>
-	<div style="width: 650px">
-		<table border="1" bordercolor="#a0c6e5"
-			class="employee_data_search_table">
+	<div class="centerDiv">
+		<table class="table table-striped">
 			<tr>
-				<td width="81" align="center"><input type="button" value="新規追加"
-					id="add_btn" style="position: relative; width: 70px; left: 0px"
-					tabindex="4" /></td>
-				<td width="80" align="center"><span>No.</span></td>
-				<td width="250"><span>氏名</span></td>
-				<td width=""><span>部署</span></td>
+				<td class="td1"><button type="button" class="btn btn-info btn-lg active" id="add_btn">新規追加</button></td>
+				<td class="td2"><span>No.</span></td>
+				<td class="td3"><span>氏名</span></td>
+				<td class="td4"><span>部署</span></td>
 			</tr>
-		</table>
-	</div>
-	<div style="width: 650px; height: 405px">
-		<table id="employee_data_list" border="1" bordercolor="#a0c6e5"
-			class="employee_data_search_table">
 			<tr th:each="TEmployees,iterStat : ${employeeInfoFrom.listTEmployee}">
-				<td width="80" align="center"><input type='button' value='選択'
-					name='show_btn' th:id="${TEmployees.employeeId}"
-					style="position: relative; width: 50px; left: 0px" tabindex="4" /></td>
-				<td width="80" align="center" th:text="${TEmployees.employeeNo}"></td>
-				<td width="250"
-					th:text="${TEmployees.lastName}+' '+${TEmployees.firstName}"></td>
-				<td width="" th:text="${TEmployees.deptId}"></td>
+				<td class="td1"><button type="button" class="btn btn-info btn-lg active" name="show_btn" th:id="${TEmployees.employeeId}">選択</button></td>
+				<td class="td2" th:text="${TEmployees.employeeNo}"></td>
+				<td class="td3" th:text="${TEmployees.lastName}+' '+${TEmployees.firstName}"></td>
+				<td class="td4" th:text="${TEmployees.deptId}"></td>
 			</tr>
 		</table>
 	</div>

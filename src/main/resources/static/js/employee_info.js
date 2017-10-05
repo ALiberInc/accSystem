@@ -1,4 +1,4 @@
-$('input[name="show_btn"]').each(
+$('button[name="show_btn"]').each(
 		function() {
 			$(this).click(
 					function() {
