@@ -27,15 +27,15 @@ $('#checkAll').click(function() {
 	}
 });
 
-$('#add_btn').click(
+$('#salaryPrint').click(
 		function() {
 			var chk_value = [];
 			$('input[name="salaryCheckBox"]:checked').each(function() {
 				chk_value.push($(this).val());
 			});
 			if (chk_value.length > 0) {
-				var root = getContextPath();
-				window.open(root + "print?employeeId=" + chk_value.join(",")
+				window.open(getContextPath() + "print?employeeId="
+						+ chk_value.join(",")
 						+ "&compId=1&salaryYearMonth=201709", "",
 						"location=no,top=" + (screen.width - 1600) / 2
 								+ ",left=" + (screen.width - 600) / 2
