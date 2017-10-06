@@ -36,10 +36,7 @@ $('#salaryPrint').click(
 			if (chk_value.length > 0) {
 				window.open(getContextPath() + "print?employeeId="
 						+ chk_value.join(",")
-						+ "&compId=1&salaryYearMonth=201709", "",
-						"location=no,top=" + (screen.width - 1600) / 2
-								+ ",left=" + (screen.width - 600) / 2
-								+ ",width=700,height=600");
+						+ "&compId=1&salaryYearMonth=201709", "", "");
 			} else {
 				alert("誰も選択されていません。")
 			}

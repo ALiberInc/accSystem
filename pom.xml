@@ -52,11 +52,13 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
-		<!-- IText Core -->
+		<!-- IText Asian -->
 		<dependency>
-			<groupId>com.itextpdf</groupId>
-			<artifactId>itextpdf</artifactId>
-			<version>5.5.12</version>
+			<groupId>iTextAsian.jar</groupId>
+			<artifactId>iTextAsian.jar</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/iTextAsian.jar</systemPath>
 		</dependency>
 
 		<!-- JasperReports -->
