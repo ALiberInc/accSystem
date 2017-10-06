@@ -3,6 +3,7 @@
 <head th:replace="accTemp :: headerImp ('__給与明細入力__')">
 </head>
 <body>
+	<div th:replace="accTemp :: accMenuArea"></div>
 	<form name="salaryDetailsInputForm" id="salaryDetailsInputForm"
 		method="POST" th:action="@{detail/save}"
 		th:object="${salaryDetailsInputForm}">
@@ -137,8 +138,6 @@
 			</table>
 			<table class="table table-striped">
 				<tr>
-					<td class="ct"><input class="btn btn-info btn-sm"
-						type="submit" name="edit" value="編集" /></td>
 					<td class="ct"><input class="btn btn-info btn-sm"
 						type="submit" name="delete" value="削除" /></td>
 					<td class="ct"><input class="btn btn-info btn-sm"
