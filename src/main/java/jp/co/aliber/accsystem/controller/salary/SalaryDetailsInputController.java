@@ -32,7 +32,7 @@ import jp.co.aliber.accsystem.service.SalaryDetailsInputService;
  *
  */
 @Controller
-@RequestMapping("/salary/detail")
+@RequestMapping("/detail")
 public class SalaryDetailsInputController {
     @Autowired
     SalaryDetailsInputService salaryDetailsInputService;
@@ -68,7 +68,8 @@ public class SalaryDetailsInputController {
     public String index(Locale locale, Model model,
             @ModelAttribute SalaryDetailsInputForm form,
             @RequestParam(value = "yearMonth", required = false) String yearMonth,
-            @RequestParam(value = "employeeId", required = false) Integer employeeId, @AuthenticationPrincipal LoginUser loginUser) {
+            @RequestParam(value = "employeeId", required = false) Integer employeeId,
+            @AuthenticationPrincipal LoginUser loginUser) {
 
         // 年月がnullの場合、デフォルトが今の年月を設定する
         if (yearMonth == null || yearMonth.isEmpty()) {
@@ -77,7 +78,7 @@ public class SalaryDetailsInputController {
             DateFormat df = new SimpleDateFormat("yyyyMM");
             yearMonth = df.format(date);
         }
-        if(employeeId == null){
+        if (employeeId == null) {
             employeeId = 1;
         }
         // 先画面から取得する
@@ -89,9 +90,9 @@ public class SalaryDetailsInputController {
         TEmployeeIncomeTax tEmployeeIncomeTax = tEmployeeIncomeTaxMapper.selectByPrimaryKey(employeeId,
                 compId);
 
-        //扶養親族等の数
+        // 扶養親族等の数
         Integer person = 0;
-        if(tEmployeeIncomeTax != null){
+        if (tEmployeeIncomeTax != null) {
             person = tEmployeeIncomeTax.getDependencyCount();
         }
 

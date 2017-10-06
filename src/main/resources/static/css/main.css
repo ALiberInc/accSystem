@@ -2,23 +2,44 @@
 	margin: 0 auto;
 	width: 80%;
 }
+
 .td0 {
-	text-align:center;
+	text-align: center;
 	width: 5%;
 }
+
 .td1 {
-	text-align:center;
+	text-align: center;
 	width: 10%;
 }
+
 .td2 {
-	text-align:center;
+	text-align: center;
 	width: 20%;
 }
+
 .td3 {
-	text-align:center;
+	text-align: center;
 	width: 30%;
 }
+
 .td4 {
-	text-align:center;
+	text-align: center;
 	width: 40%;
+}
+
+.tdbg {
+	background: #CFDDFF
+}
+
+.tdwd {
+	width: 20%;
+}
+
+.ct {
+	text-align: center
+}
+
+.ipwd {
+	width: 75px
 }
