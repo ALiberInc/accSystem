@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import jp.co.aliber.accsystem.form.salary.PrintFrom;
 import jp.co.aliber.accsystem.service.UtilService;
 import net.sf.jasperreports.engine.JRException;
 
@@ -44,20 +43,16 @@ public class PrintController {
 	}
 
 	/**
-	 * メール送信画面
-	 *
-	 * @param form
-	 *            メール送信画面FORM
-	 * @param sendMailStr
-	 * @return
-	 * @throws IOException
-	 * @throws JRException
-	 * @throws NumberFormatException
+	 * @param employeeId
+	 * @param compId
+	 * @param salaryYearMonth
+	 * @param response
+	 * @param request
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public void index(PrintFrom form, @RequestParam(value = "employeeId", required = false) String employeeId,
-			@RequestParam(value = "compId", required = false) String compId,
-			@RequestParam(value = "salaryYearMonth", required = false) String salaryYearMonth,
+	public void index(@RequestParam(value = "employeeId", required = true) String employeeId,
+			@RequestParam(value = "compId", required = true) String compId,
+			@RequestParam(value = "salaryYearMonth", required = true) String salaryYearMonth,
 			HttpServletResponse response, HttpServletRequest request) {
 
 		response.setContentType("application/pdf");
