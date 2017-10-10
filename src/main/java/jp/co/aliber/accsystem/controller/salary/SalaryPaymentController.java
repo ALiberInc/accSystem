@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.aliber.accsystem.form.salary.SalaryPaymentFrom;
+import jp.co.aliber.accsystem.form.salary.SalaryPaymentForm;
 
 /**
  * 給与明細画面
@@ -37,7 +37,7 @@ public class SalaryPaymentController {
      *
      */
     @RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-    public String index(Locale locale, Model model, SalaryPaymentFrom form) {
+    public String index(Locale locale, Model model, SalaryPaymentForm form) {
 
         return "salary/salary_payment";
     }

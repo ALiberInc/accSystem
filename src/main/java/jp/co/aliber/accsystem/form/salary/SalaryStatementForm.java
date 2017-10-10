@@ -1,10 +1,10 @@
-package jp.co.aliber.accsystem.form.employee;
+package jp.co.aliber.accsystem.form.salary;
 
 import java.util.List;
 
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
 
-public class EmployeeInfoFrom {
+public class SalaryStatementForm {
 
     private List<TEmployee> listTEmployee;
 
@@ -21,5 +21,6 @@ public class EmployeeInfoFrom {
     public void setListTEmployee(List<TEmployee> listTEmployee) {
         this.listTEmployee = listTEmployee;
     }
+
 
 }

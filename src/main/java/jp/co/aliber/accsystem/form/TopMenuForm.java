@@ -1,3 +1,3 @@
 package jp.co.aliber.accsystem.form;
 
-public class TopMenuFrom {}
+public class TopMenuForm {}

@@ -1,6 +1,6 @@
 package jp.co.aliber.accsystem.form.salary;
 
-public class SendMailFrom {
+public class SendMailForm {
 
     /**
      *メールアドレス

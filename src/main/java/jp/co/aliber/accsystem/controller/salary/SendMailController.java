@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
-import jp.co.aliber.accsystem.form.salary.SendMailFrom;
+import jp.co.aliber.accsystem.form.salary.SendMailForm;
 import jp.co.aliber.accsystem.service.employee.TEmployeeService;
 
 /**
@@ -63,7 +63,7 @@ public class SendMailController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(Locale locale, Model model, SendMailFrom form,
+	public String index(Locale locale, Model model, SendMailForm form,
 			@RequestParam(value = "sendMailStr", required = false) String sendMailStr) {
 		form.setSendMailStr(sendMailStr);
 		return "salary/send_mail";
@@ -92,7 +92,7 @@ public class SendMailController {
 	 */
 	@RequestMapping(value = { "/send" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public String send(Locale locale, Model model, SendMailFrom form, @RequestParam(value = "forName") String forName,
+	public String send(Locale locale, Model model, SendMailForm form, @RequestParam(value = "forName") String forName,
 			@RequestParam(value = "bodyType") String bodyType, @RequestParam(value = "subject") String subject,
 			@RequestParam(value = "body1") String body1, @RequestParam(value = "body2") String body2,
 			@RequestParam(value = "sendMailStr") String sendMailStr) {

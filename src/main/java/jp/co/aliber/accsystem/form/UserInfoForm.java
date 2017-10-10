@@ -1,6 +1,6 @@
 package jp.co.aliber.accsystem.form;
 
-public class UserInfoFrom {
+public class UserInfoForm {
 	
     private Long id;
 

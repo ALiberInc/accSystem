@@ -1,3 +1,3 @@
 package jp.co.aliber.accsystem.form.company;
 
-public class CompanyInfoFrom {}
+public class CompanyInfoForm {}

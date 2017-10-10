@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
-import jp.co.aliber.accsystem.form.employee.EmployeeInfoFrom;
+import jp.co.aliber.accsystem.form.employee.EmployeeInfoForm;
 import jp.co.aliber.accsystem.service.employee.TEmployeeService;
 
 /**
@@ -45,7 +45,7 @@ public class EmployeeInfoController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(EmployeeInfoFrom form) {
+	public String index(EmployeeInfoForm form) {
 
 		// 從業員情報リストを取得
 		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(1);
