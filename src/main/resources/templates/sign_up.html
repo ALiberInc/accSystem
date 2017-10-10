@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="accTemp :: headerImp ('__アカウントの作成__')"></head>
+<body>
+	<form name="loginUserInfoForm" id="loginUserInfoForm" method="POST" th:action="@{/sign_up/save}" th:object="${loginUserInfoForm}">
+		<table>
+			<tr>
+				<td>
+					<span>会社番号</span>
+				</td>
+				<td>
+					<input type="number" th:field="*{compId}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>姓</span>
+				</td>
+				<td>
+					<input type="text" th:field="*{lastName}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>姓（カナ）</span>
+				</td>
+				<td>
+					<input type="text" th:field="*{lastNameKana}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>名</span>
+				</td>
+				<td>
+					<input type="text" th:field="*{firstName}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>名（カナ）</span>
+				</td>
+				<td>
+					<input type="text" th:field="*{firstNameKana}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>アルファベット名</span>
+				</td>
+				<td>
+					<input type="text" th:field="*{alphabetName}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>メールアドレス</span>
+				</td>
+				<td>
+					<input type="email" th:field="*{email}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>ユーザ名</span>
+				</td>
+				<td>
+					<input type="text" th:field="*{loginId}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>暗証番号</span>
+				</td>
+				<td>
+					<input type="password" th:field="*{password}" />
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td>
+					<button type="submit" name="submit" value="登録">登録</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
