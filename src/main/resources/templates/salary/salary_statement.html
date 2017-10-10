@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="accTemp :: headerImp ('__給与明細印刷__')">
 </head>
 <body>
-	<div th:replace="accTemp :: accMenuArea"></div>
+	<div th:replace="accTemp :: accBackButton"></div>
 	<div class="centerDiv">
 		<label for="exampleInputName2">給与明細印刷</label>
 		<span class="monthly_statement_search_dataList_text">
@@ -16,18 +16,18 @@
 	<div class="centerDiv">
 		<table class="table table-striped">
 			<tr>
-				<td class="td0"><button type="button" class="btn btn-info btn-sm" id="checkAll">全選択/解除</button></td>
-				<td class="td1">No.</td>
-				<td class="td2">氏名</td>
-				<td class="td3">部署</td>
-				<td class="td4">メールアドレス</td>
+				<td class="td0 text-center"><button type="button" class="btn btn-info btn-sm" id="checkAll">全選択/解除</button></td>
+				<td class="td1 text-center">No.</td>
+				<td class="td2 text-center">氏名</td>
+				<td class="td3 text-center">部署</td>
+				<td class="td4 text-center">メールアドレス</td>
 			</tr>
 			<tr th:each="TEmployee,iterStat : ${salaryStatementFrom.listTEmployee}">
-				<td class="td0"><input name="salaryCheckBox" type='checkbox' th:value="${TEmployee.employeeNo}"/></td>
-				<td class="td1" th:text="${TEmployee.employeeId}"></td>
-				<td class="td2" th:text="${TEmployee.lastName} + ' ' +${TEmployee.firstName}"></td>
-				<td class="td3" th:text="${TEmployee.deptId}"></td>
-				<td class="td4" th:text="${TEmployee.mailAddress}"></td>
+				<td class="td0 text-center"><input name="salaryCheckBox" type='checkbox' th:value="${TEmployee.employeeNo}"/></td>
+				<td class="td1 text-center" th:text="${TEmployee.employeeId}"></td>
+				<td class="td2 text-center" th:text="${TEmployee.lastName} + ' ' +${TEmployee.firstName}"></td>
+				<td class="td3 text-center" th:text="${TEmployee.deptId}"></td>
+				<td class="td4 text-center" th:text="${TEmployee.mailAddress}"></td>
 			</tr>
 		</table>
 	</div>
