@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="accTemp :: headerImp ('__給与明細入力__')">
 </head>
 <body>
-	<div th:replace="accTemp :: accMenuArea"></div>
+	<div th:replace="accTemp :: accBackButton"></div>
 	<form name="salaryDetailsInputForm" id="salaryDetailsInputForm"
 		method="POST" th:action="@{detail/save}"
 		th:object="${salaryDetailsInputForm}">
@@ -16,131 +16,128 @@
 			</div>
 			<table class="table table-striped">
 				<tr>
-					<td class="tdbg ct tdwd"><span>基本給</span></td>
-					<td class="tdbg ct tdwd"><span>役職手当</span></td>
-					<td class="tdbg ct tdwd"><span>資格手当</span></td>
-					<td class="tdbg ct tdwd"><span>住宅手当</span></td>
-					<td class="tdbg ct tdwd"><span>家族手当</span></td>
+					<td class="tdbg text-center tdwd"><span>基本給</span></td>
+					<td class="tdbg text-center tdwd"><span>役職手当</span></td>
+					<td class="tdbg text-center tdwd"><span>資格手当</span></td>
+					<td class="tdbg text-center tdwd"><span>住宅手当</span></td>
+					<td class="tdbg text-center tdwd"><span>家族手当</span></td>
 				</tr>
-				<tr height="30">
-					<td class="tdwd ct"><input type="text"
-						th:field="*{basicSalary}" maxlength="9" class="ipwd"
+				<tr >
+					<td class="tdwd text-center"><input type="text"
+						th:field="*{basicSalary}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="tdwd ct"><input type="text"
-						th:field="*{positionAllowance}" maxlength="9" class="ipwd"
+					<td class="tdwd text-center"><input type="text"
+						th:field="*{positionAllowance}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="tdwd ct"><input type="text"
-						th:field="*{qualificationAllowance}" maxlength="9" class="ipwd"
+					<td class="tdwd text-center"><input type="text"
+						th:field="*{qualificationAllowance}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="tdwd ct"><input type="text"
-						th:field="*{houseAllowance}" maxlength="9" class="ipwd"
+					<td class="tdwd text-center"><input type="text"
+						th:field="*{houseAllowance}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="tdwd ct"><input type="text"
-						th:field="*{familyAllowance}" maxlength="9" class="ipwd"
+					<td class="tdwd text-center"><input type="text"
+						th:field="*{familyAllowance}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-				</tr>
-				<tr>
-					<td class="tdbg ct tdwd"><span>その他の手当</span></td>
-					<td class="tdbg ct tdwd"><span> 非課税交通費</span></td>
-					<td class="tdbg ct tdwd"><b><span>支給額合計</span></b></td>
 				</tr>
 				<tr>
-					<td class="ct tdwd"><input type="text" class="ipwd"
+					<td class="tdbg text-center tdwd"><span>その他の手当</span></td>
+					<td class="tdbg text-center tdwd"><span> 非課税交通費</span></td>
+					<td class="tdbg text-center tdwd"><b><span>支給額合計</span></b></td>
+				</tr>
+				<tr>
+					<td class="text-center tdwd"><input type="text" class="td3"
 						th:field="*{otherAllowance}" maxlength="9"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text" class="ipwd"
+					<td class="text-center tdwd"><input type="text" class="td3"
 						th:field="*{transportFee}" maxlength="9"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text" class="ipwd"
+					<td class="text-center tdwd"><input type="text" class="td3"
 						th:field="*{sum}" maxlength="9" readOnly="readOnly" /><span>円</span></td>
 				</tr>
 			</table>
 			<table class="table table-striped">
 				<tr>
-					<td class="tdbg tdwd ct"><span>健康保険</span> <label><input
+					<td class="tdbg tdwd text-center"><span>健康保険</span> <label><input
 							type="checkbox" id="healthInsuranceFlag"
 							name="healthInsuranceFlag"
 							th:checked="${salaryDetailsInputForm.healthInsuranceFlag}" /><span>手入力</span></label></td>
-					<td class="tdbg tdwd ct"><span>厚生年金</span> <label><input
+					<td class="tdbg tdwd text-center"><span>厚生年金</span> <label><input
 							type="checkbox" id="welfareInsuranceFlag"
 							name="welfareInsuranceFlag"
 							th:checked="${salaryDetailsInputForm.welfareInsuranceFlag}" /><span>手入力</span></label></td>
-					<td class="tdbg tdwd ct"><span>雇用保険</span> <label><input
+					<td class="tdbg tdwd text-center"><span>雇用保険</span> <label><input
 							type="checkbox" id="employInsuranceFlag"
 							name="employInsuranceFlag"
 							th:checked="${salaryDetailsInputForm.employInsuranceFlag}" /><span>手入力</span></label></td>
-					<td class="tdbg tdwd ct"><span>社会保険合計</span></td>
-					<td class="tdbg tdwd ct"><span>所得税</span></td>
+					<td class="tdbg tdwd text-center"><span>社会保険合計</span></td>
+					<td class="tdbg tdwd text-center"><span>所得税</span></td>
 				</tr>
-				<tr height="30">
-					<td class="ct tdwd"><input type="text"
+				<tr >
+					<td class="text-center tdwd"><input type="text"
 						th:field="*{healthInsurance}" id="healthInsurance" maxlength="9"
-						class="ipwd" onchange="autoCalculate()" /> <span>円</span></td>
-					<td class="ct tdwd"><input type="text"
-						th:field="*{welfarePension}" maxlength="9" class="ipwd"
+						class="td3" onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{welfarePension}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text"
-						th:field="*{employmentInsurance}" maxlength="9" class="ipwd"
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{employmentInsurance}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text"
-						th:field="*{socialInsuranceSum}" maxlength="9" class="ipwd"
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{socialInsuranceSum}" maxlength="9" class="td3"
 						readOnly="readOnly" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text" th:field="*{incomeTax}"
-						maxlength="9" class="ipwd" onchange="autoCalculate()" /><span>円</span></td>
+					<td class="text-center tdwd"><input type="text" th:field="*{incomeTax}"
+						maxlength="9" class="td3" onchange="autoCalculate()" /><span>円</span></td>
 				</tr>
 				<tr>
-					<td class="tdbg tdwd ct"><span>住民税</span></td>
-					<td class="tdbg tdwd ct"><span>旅行積立金</span></td>
-					<td class="tdbg tdwd ct"><span>借入等返済</span></td>
-					<td class="tdbg tdwd ct"><span>年末控除</span></td>
-					<td class="tdbg tdwd ct"><span>家賃控除</span></td>
+					<td class="tdbg tdwd text-center"><span>住民税</span></td>
+					<td class="tdbg tdwd text-center"><span>旅行積立金</span></td>
+					<td class="tdbg tdwd text-center"><span>借入等返済</span></td>
+					<td class="tdbg tdwd text-center"><span>年末控除</span></td>
+					<td class="tdbg tdwd text-center"><span>家賃控除</span></td>
 				</tr>
-				<tr height="30">
-					<td class="ct tdwd"><input type="text"
-						th:field="*{inhabitantTax}" maxlength="9" class="ipwd"
+				<tr >
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{inhabitantTax}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text"
-						th:field="*{travelFund}" maxlength="9" class="ipwd"
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{travelFund}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text"
-						th:field="*{repaymentBorrowings}" maxlength="9" class="ipwd"
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{repaymentBorrowings}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text"
-						th:field="*{yearendDeduction}" maxlength="9" class="ipwd"
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{yearendDeduction}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text"
-						th:field="*{rentDeduction}" maxlength="9" class="ipwd"
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{rentDeduction}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
 				</tr>
 				<tr>
-					<td class="tdbg tdwd ct"><span> その他の控除</span></td>
-					<td class="tdbg tdwd ct"><b> <span>控除額合計</span></b></td>
+					<td class="tdbg tdwd text-center"><span> その他の控除</span></td>
+					<td class="tdbg tdwd text-center"><b> <span>控除額合計</span></b></td>
 				</tr>
-				<tr height="30">
-					<td class="ct tdwd"><input type="text"
-						th:field="*{otherDeduction}" maxlength="9" class="ipwd"
+				<tr >
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{otherDeduction}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /><span>円</span></td>
-					<td class="ct tdwd"><input type="text"
-						th:field="*{totalDeductibleSum}" maxlength="9" class="ipwd"
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{totalDeductibleSum}" maxlength="9" class="td3"
 						readOnly="readOnly" onchange="autoCalculate()" /><span>円</span></td>
 				</tr>
-			</table>
-
-			<table>
 				<tr>
-					<td class="tdbg tdwd ct"><b>差引支給額 </b></td>
+					<td class="tdbg tdwd text-center"><b>差引支給額 </b></td>
 				</tr>
-				<tr height="30">
-					<td class="ct tdwd"><input type="text"
+				<tr>
+					<td class="text-center tdwd"><input type="text"
 						th:field="*{subscriptionAmount}" maxlength="9" readOnly="readOnly"
-						class="ipwd" /><span>円</span></td>
+						class="td3" /><span>円</span></td>
 				</tr>
 			</table>
 			<table class="table table-striped">
 				<tr>
-					<td class="ct"><input class="btn btn-info btn-sm"
+					<td class="text-center"><input class="btn btn-info btn-sm"
 						type="submit" name="delete" value="削除" /></td>
-					<td class="ct"><input class="btn btn-info btn-sm"
+					<td class="text-center"><input class="btn btn-info btn-sm"
 						type="submit" name="submit" value="登録" /></td>
 				</tr>
 			</table>

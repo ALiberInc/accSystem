@@ -24,11 +24,9 @@
 			<!-- END pan -->
 		</div>
 	</div>
-	<div th:fragment="accMenuArea">
+	<div th:fragment="accBackButton">
 		<div>
-			<ul>
-				<li><a href="#" onClick="javascript :history.back(-1);">戻る</a></li>
-			</ul>
+			<button type="button" class="btn btn-primary btn-sm" onclick="javascript:history.go(-1)">戻る</button>
 		</div>
 	</div>
 </body>
