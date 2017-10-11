@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.entity.auto.TCompany;
 import jp.co.aliber.accsystem.form.company.CompanyBasicInfoForm;
-import jp.co.aliber.accsystem.security.userdetails.LoginUser;
+import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.CompanyBasicInfoService;
 
 /**
@@ -68,6 +68,7 @@ public class CompanyBasicInfoController {
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
 	public String save(CompanyBasicInfoForm form,
 			@AuthenticationPrincipal LoginUser loginUser) {
+		System.out.println(loginUser.getUser().getCompId());
 		// エンティティに会社情報を設定する
 		TCompany company = new TCompany();
 		// 法人名
@@ -238,9 +239,9 @@ public class CompanyBasicInfoController {
 		if (StringUtils.isNotEmpty(form.getWelfareAdditionRation())) {
 			company.setWelfareAdditionRation(Integer.valueOf(form.getWelfareAdditionRation()));
 		}
-		Integer userId = loginUser.getUserInfo().getUserId();
+//		Integer userId = loginUser.getUserInfo().getUserId();
 		// 登録処理を呼び出す
-		companyBasicInfoService.regist(company, userId);
+//		companyBasicInfoService.regist(company, userId);
 		return "company/companyBasicInfo";
 	}
 

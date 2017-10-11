@@ -16,7 +16,7 @@ import jp.co.aliber.accsystem.form.user.LoginForm;
  *
  */
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/")
 public class LoginController {
 
 	/**
@@ -29,20 +29,10 @@ public class LoginController {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 	}
 
-	@RequestMapping(value = { "/ ", "" }, method = RequestMethod.GET)
-	public String index() {
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String index(LoginForm form) {
 
 		return "/login";
-	}
-
-	/**
-	 * ログイン処理
-	 *
-	 */
-	@RequestMapping(value = { "/submit" }, method = RequestMethod.POST)
-	public String login(LoginForm form) {
-		System.out.println();
-		return "top_menu";
 	}
 
 }
