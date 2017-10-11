@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:lang="ja">
 <head th:replace="accTemp :: headerImp ('__アカウントの作成__')"></head>
 <body>
 	<form name="loginUserInfoForm" id="loginUserInfoForm" method="POST" th:action="@{/sign_up/save}" th:object="${loginUserInfoForm}">
 		<table>
+			<tr th:if="${#fields.hasErrors('compId')}">
+				<th:block th:errors="*{compId}"></th:block>
+			</tr>
 			<tr>
 				<td>
 					<span>会社番号</span>
@@ -11,6 +14,9 @@
 				<td>
 					<input type="number" th:field="*{compId}" />
 				</td>
+			</tr>
+			<tr th:if="${#fields.hasErrors('lastName')}">
+				<th:block th:errors="*{lastName}"></th:block>
 			</tr>
 			<tr>
 				<td>
@@ -20,6 +26,9 @@
 					<input type="text" th:field="*{lastName}" />
 				</td>
 			</tr>
+			<tr th:if="${#fields.hasErrors('lastNameKana')}">
+				<th:block th:errors="*{lastNameKana}"></th:block>
+			</tr>
 			<tr>
 				<td>
 					<span>姓（カナ）</span>
@@ -27,6 +36,9 @@
 				<td>
 					<input type="text" th:field="*{lastNameKana}" />
 				</td>
+			</tr>
+			<tr th:if="${#fields.hasErrors('firstName')}">
+				<th:block th:errors="*{firstName}"></th:block>
 			</tr>
 			<tr>
 				<td>
@@ -36,6 +48,9 @@
 					<input type="text" th:field="*{firstName}" />
 				</td>
 			</tr>
+			<tr th:if="${#fields.hasErrors('firstNameKana')}">
+				<th:block th:errors="*{firstNameKana}"></th:block>
+			</tr>
 			<tr>
 				<td>
 					<span>名（カナ）</span>
@@ -43,6 +58,9 @@
 				<td>
 					<input type="text" th:field="*{firstNameKana}" />
 				</td>
+			</tr>
+			<tr th:if="${#fields.hasErrors('alphabetName')}">
+				<th:block th:errors="*{alphabetName}"></th:block>
 			</tr>
 			<tr>
 				<td>
@@ -52,6 +70,9 @@
 					<input type="text" th:field="*{alphabetName}" />
 				</td>
 			</tr>
+			<tr th:if="${#fields.hasErrors('email')}">
+				<th:block th:errors="*{email}"></th:block>
+			</tr>
 			<tr>
 				<td>
 					<span>メールアドレス</span>
@@ -60,6 +81,9 @@
 					<input type="email" th:field="*{email}" />
 				</td>
 			</tr>
+			<tr th:if="${#fields.hasErrors('loginId')}">
+				<th:block th:errors="*{loginId}"></th:block>
+			</tr>
 			<tr>
 				<td>
 					<span>ユーザ名</span>
@@ -67,6 +91,9 @@
 				<td>
 					<input type="text" th:field="*{loginId}" />
 				</td>
+			</tr>
+			<tr th:if="${#fields.hasErrors('password')}">
+				<th:block th:errors="*{password}"></th:block>
 			</tr>
 			<tr>
 				<td>

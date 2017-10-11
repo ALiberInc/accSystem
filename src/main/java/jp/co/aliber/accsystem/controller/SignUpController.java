@@ -9,8 +9,10 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -64,7 +66,7 @@ public class SignUpController {
 	 * @return
 	 */
 	@RequestMapping(value = {"/", "" }, method = RequestMethod.GET)
-	public String index(Locale locale, Model model, LoginUserInfoForm form) {
+	public String index(Model model, LoginUserInfoForm form) {
 
 		return "sign_up";
 	}
@@ -84,11 +86,13 @@ public class SignUpController {
 	 * @return
 	 */
 	@RequestMapping(value = {"/save" }, method = RequestMethod.POST)
-	public String save(Locale locale, Model model, LoginUserInfoForm form,
+	public String save(Model model,
+			@Validated @ModelAttribute LoginUserInfoForm form,
 			BindingResult result) {
+		Locale locale = new Locale("ja", "JP");
 		// 入力チェック
 		if (!validate(locale, model, form, result)) {
-			return "t_common/loginuserinfoedit";
+			return "sign_up";
 		}
 		TLoginUser loginUser = new TLoginUser();
 		// 会社番号

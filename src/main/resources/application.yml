@@ -10,7 +10,9 @@ spring:
     encoding: UTF-8
     content-type: text/html
     cache: false
-
+  messages:
+    basename: i18n/messages
+      
   mail:
     host: smtp14.gmoserver.jp
     port: 587
