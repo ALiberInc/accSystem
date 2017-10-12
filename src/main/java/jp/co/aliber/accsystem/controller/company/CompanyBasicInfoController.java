@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.aliber.accsystem.entity.auto.TCompany;
 import jp.co.aliber.accsystem.form.company.CompanyBasicInfoForm;
 import jp.co.aliber.accsystem.security.LoginUser;
-import jp.co.aliber.accsystem.service.CompanyBasicInfoService;
+import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
 
 /**
  * 会社基本情報入力
