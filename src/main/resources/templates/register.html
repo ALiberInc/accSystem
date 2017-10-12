@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" th:lang="ja">
+<head th:replace="accTemp :: headerImp ('__アカウントの作成__')"></head>
+<body>
+	<div th:replace="accTemp :: accBackButton"></div>
+	<form name="loginUserInfoForm" id="loginUserInfoForm" method="POST"
+		th:action="@{/register/save}" th:object="${loginUserInfoForm}">
+		<div class="centerDiv">
+			<table class="table table-striped table-bordered">
+				<tr>
+					<td class="text-center" colspan="4"><span>アカウントの作成</span></td>
+				</tr>
+			</table>
+			<table class="table table-striped table-bordered">
+				<tr th:if="${#fields.hasErrors('compId')}">
+					<th:block th:errors="*{compId}"></th:block>
+				</tr>
+				<tr>
+					<td class="text-center td3"><span>会社番号</span></td>
+					<td><input type="number" th:field="*{compId}" min="0" step="1"/></td>
+				</tr>
+				<tr th:if="${#fields.hasErrors('lastName')}">
+					<th:block th:errors="*{lastName}"></th:block>
+				</tr>
+				<tr>
+					<td class="text-center td3"><span>姓</span></td>
+					<td><input type="text" th:field="*{lastName}" /></td>
+				</tr>
+				<tr th:if="${#fields.hasErrors('lastNameKana')}">
+					<th:block th:errors="*{lastNameKana}"></th:block>
+				</tr>
+				<tr>
+					<td class="text-center td3"><span>姓（カナ）</span></td>
+					<td><input type="text" th:field="*{lastNameKana}" /></td>
+				</tr>
+				<tr th:if="${#fields.hasErrors('firstName')}">
+					<th:block th:errors="*{firstName}"></th:block>
+				</tr>
+				<tr>
+					<td class="text-center td3"><span>名</span></td>
+					<td><input type="text" th:field="*{firstName}" /></td>
+				</tr>
+				<tr th:if="${#fields.hasErrors('firstNameKana')}">
+					<th:block th:errors="*{firstNameKana}"></th:block>
+				</tr>
+				<tr>
+					<td class="text-center td3"><span>名（カナ）</span></td>
+					<td><input type="text" th:field="*{firstNameKana}" /></td>
+				</tr>
+				<tr th:if="${#fields.hasErrors('alphabetName')}">
+					<th:block th:errors="*{alphabetName}"></th:block>
+				</tr>
+				<tr>
+					<td class="text-center td3"><span>アルファベット名</span></td>
+					<td><input type="text" th:field="*{alphabetName}" /></td>
+				</tr>
+				<tr th:if="${#fields.hasErrors('email')}">
+					<th:block th:errors="*{email}"></th:block>
+				</tr>
+				<tr>
+					<td class="text-center td3"><span>メールアドレス</span></td>
+					<td><input type="email" th:field="*{email}" /></td>
+				</tr>
+				<tr th:if="${#fields.hasErrors('loginId')}">
+					<th:block th:errors="*{loginId}"></th:block>
+				</tr>
+				<tr>
+					<td class="text-center td3"><span>ユーザ名</span></td>
+					<td><input type="text" th:field="*{loginId}" /></td>
+				</tr>
+				<tr th:if="${#fields.hasErrors('password')}">
+					<th:block th:errors="*{password}"></th:block>
+				</tr>
+				<tr>
+					<td class="text-center td3"><span>暗証番号</span></td>
+					<td><input type="password" th:field="*{password}" /></td>
+				</tr>
+			</table>
+			<table class="table table-striped">
+				<tr>
+					<td class="text-center"><input class="btn btn-info btn-sm"
+						type="submit" name="submit" value="登録" /></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</body>
+</html>

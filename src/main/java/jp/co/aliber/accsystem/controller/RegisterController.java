@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,13 +21,13 @@ import jp.co.aliber.accsystem.service.SignUpService;
 
 /**
  * アカウントの作成controller
- * 
+ *
  * @author yu_k
  *
  */
 @Controller
-@RequestMapping("/sign_up")
-public class SignUpController {
+@RequestMapping("/register")
+public class RegisterController {
 	/**
 	 * アカウントの作成サービス
 	 */
@@ -68,7 +67,7 @@ public class SignUpController {
 	@RequestMapping(value = {"/", "" }, method = RequestMethod.GET)
 	public String index(Model model, LoginUserInfoForm form) {
 
-		return "sign_up";
+		return "register";
 	}
 
 
@@ -87,12 +86,12 @@ public class SignUpController {
 	 */
 	@RequestMapping(value = {"/save" }, method = RequestMethod.POST)
 	public String save(Model model,
-			@Validated @ModelAttribute LoginUserInfoForm form,
+			@Validated  LoginUserInfoForm form,
 			BindingResult result) {
 		Locale locale = new Locale("ja", "JP");
 		// 入力チェック
 		if (!validate(locale, model, form, result)) {
-			return "sign_up";
+			return "register";
 		}
 		TLoginUser loginUser = new TLoginUser();
 		// 会社番号
