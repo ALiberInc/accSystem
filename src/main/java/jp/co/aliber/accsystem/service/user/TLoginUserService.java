@@ -1,6 +1,9 @@
 package jp.co.aliber.accsystem.service.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
@@ -31,6 +34,11 @@ public class TLoginUserService {
 	public TLoginUser getTLoginUser(String loginId) {
 		TLoginUserExample tLoginUserExample = new TLoginUserExample();
 		tLoginUserExample.createCriteria().andLoginIdEqualTo(loginId);
-		return tLoginUserMapper.selectByExample(tLoginUserExample).get(0);
+		List<TLoginUser> loginUserList = tLoginUserMapper.selectByExample(tLoginUserExample);
+		if (loginUserList == null || loginUserList.size() != 1) {
+			// ユーザー情報を取得できなかった場合
+			throw new UsernameNotFoundException("User not found for login id: " + loginId);
+		}
+		return loginUserList.get(0);
 	}
 }

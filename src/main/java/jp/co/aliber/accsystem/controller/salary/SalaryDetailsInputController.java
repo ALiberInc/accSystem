@@ -23,7 +23,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeFixedPaymentMapper;
 import jp.co.aliber.accsystem.mapper.auto.TEmployeeIncomeTaxMapper;
 import jp.co.aliber.accsystem.mapper.auto.TSalaryDetailMapper;
 import jp.co.aliber.accsystem.security.LoginUser;
-import jp.co.aliber.accsystem.service.SalaryDetailsInputService;
+import jp.co.aliber.accsystem.service.salary.SalaryDetailsInputService;
 
 /**
  * 給与明細入力controller

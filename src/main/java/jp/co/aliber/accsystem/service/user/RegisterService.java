@@ -1,4 +1,4 @@
-package jp.co.aliber.accsystem.service;
+package jp.co.aliber.accsystem.service.user;
 
 import java.util.Date;
 
@@ -15,7 +15,7 @@ import jp.co.aliber.accsystem.mapper.auto.TLoginUserMapper;
  *
  */
 @Service
-public class SignUpService {
+public class RegisterService {
 
 	@Autowired
 	TLoginUserMapper tLoginUserMapper;

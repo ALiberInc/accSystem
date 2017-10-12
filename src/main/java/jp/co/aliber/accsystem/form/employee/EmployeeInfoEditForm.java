@@ -2,6 +2,10 @@ package jp.co.aliber.accsystem.form.employee;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import jp.co.aliber.accsystem.entity.auto.TCompanyDepartment;
 
 public class EmployeeInfoEditForm {
@@ -14,41 +18,55 @@ public class EmployeeInfoEditForm {
     /**
      * 従業員番号
      */
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer employeeNo;
 
     /**
      * 従業員番号
      */
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer employeeId;
 
     /**
      * フリガナ
      */
+    @Size(max = 50)
+    @Pattern(regexp = "[ァ-ヶー]*")
     private String firstNameKana;
 
     /**
      * フリガナ
      */
+    @Size(max = 50)
+    @Pattern(regexp = "[ァ-ヶー]*")
     private String lastNameKana;
 
     /**
      * 氏名
      */
+    @NotNull
+    @Size(max = 50)
     private String firstName;
 
     /**
      * 氏名
      */
+    @NotNull
+    @Size(max = 50)
     private String lastName;
 
     /**
      * 性別
      */
+    @NotNull
     private int sex;
 
     /**
      * 部署
      */
+    @NotNull
     private Integer department;
 
     /**
@@ -59,67 +77,90 @@ public class EmployeeInfoEditForm {
     /**
      * 口座名義人
      */
+    @NotNull
+    @Size(max = 100)
     private String accountHolder;
 
     /**
      * 銀行コード
      */
+    @NotNull
+    @Size(max = 100)
     private Integer bankCode;
 
     /**
      * 銀行名
      */
+    @NotNull
+    @Size(max = 100)
     private String bankName;
 
     /**
      * 口座種別
      */
+    @NotNull
+    @Size(max = 10)
     private int accountType;
 
 
     /**
      * 本支店コード
      */
+    @NotNull
+    @Size(max = 10)
     private Integer branchCode;
 
     /**
      * 本支店名
      */
+    @NotNull
+    @Size(max = 100)
     private String branchName;
 
     /**
      * 口座番号
      */
+    @NotNull
+    @Size(max = 50)
     private Integer accountNumber;
 
     /**
      * 所得税区分
      */
+    @NotNull
     private int incomeTaxDistinction;
 
     /**
      * 控除対象配偶者
      */
+    @NotNull
     private int consort;
 
     /**
      * 扶養控除等の申告
      */
+    @NotNull
     private int dependents;
 
     /**
      * 扶養人数
      */
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer dependentsNumber;
 
     /**
      * 世帯主名
      */
+    @NotNull
+    @Size(max = 100)
     private String householdName;
 
     /**
      * 続柄
      */
+    @NotNull
+    @Size(max = 50)
     private String relationship;
 
     /**
@@ -185,6 +226,7 @@ public class EmployeeInfoEditForm {
     /**
      * 基本給
      */
+    @NotNull
     private Integer basicSalary;
 
     /**

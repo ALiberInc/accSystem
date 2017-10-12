@@ -1,4 +1,4 @@
-package jp.co.aliber.accsystem.form;
+package jp.co.aliber.accsystem.form.user;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.Email;
  * @author yu_k
  *
  */
-public class LoginUserInfoForm {
+public class RegisterForm {
 	// 会社番号
 	@NotNull
 	private String compId;

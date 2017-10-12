@@ -8,10 +8,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_login_user", schema = "public")
 public class MLoginUser implements java.io.Serializable {
+
 	@Id
+	private String userId;
+
+	@Column(name = "login_id", unique = true)
 	private String loginId;
+
+	@Column(name = "password")
 	private String password;
-	@Column
+
+	@Column(name = "comp_id")
 	private Integer compId;
 
 	public MLoginUser() {

@@ -2,6 +2,10 @@ package jp.co.aliber.accsystem.form.company;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 /**
  * 会社基本情報画面form
  *
@@ -11,86 +15,161 @@ import java.io.Serializable;
 public class CompanyBasicInfoForm implements Serializable {
     private static final long serialVersionUID = 1L;
     // 法人名
+    @NotNull
+	@Size(max = 256)
     private String compName;
     // 法人名フリガナ
+    @NotNull
+	@Size(max = 256)
     private String compKana;
     // 郵便番号
+    @NotNull
+    @Pattern(regexp = "[0-9]{3}*")
     private String compZip1;
     // 郵便番号
+    @NotNull
+    @Pattern(regexp = "[0-9]{4}*")
     private String compZip2;
     // 住所1
+    @NotNull
+   	@Size(max = 256)
     private String compAdd1;
     // 住所2
+    @NotNull
+   	@Size(max = 256)
     private String compAdd2;
     // 住所1フリガナ
+    @NotNull
+   	@Size(max = 256)
     private String compAdd1Kana;
     // 住所2フリガナ
+    @NotNull
+   	@Size(max = 256)
     private String compAdd2Kana;
     // 電話番号
+    @NotNull
+    @Pattern(regexp = "[0-9]{2,3}*")
     private String compTel1;
     // 電話番号
+    @NotNull
+    @Pattern(regexp = "[0-9]{4}*")
     private String compTel2;
     // 電話番号
+    @NotNull
+    @Pattern(regexp = "[0-9]{3}*")
     private String compTel3;
     // 事業区分
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private String classification;
     // 法人番号
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer corporationId;
     // 事業主氏名
+    @NotNull
+   	@Size(max = 100)
     private String corpOwnerName;
     // 事業主氏名フリガナ
+    @NotNull
+   	@Size(max = 100)
+    @Pattern(regexp = "[ァ-ヶー]*")
     private String corpOwnerNameKana;
     // 事業所整理記号
+    @NotNull
+   	@Size(max = 25)
     private String corpSortNo1;
     // 事業所整理記号
+    @NotNull
+   	@Size(max = 25)
     private String corpSortNo2;
     // 事業所番号
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer corpNo;
     // 事業種目
+    @NotNull
+   	@Size(max = 100)
     private String corpKind;
     // 締め日が末日
+    @NotNull
     private String deadlineDay;
     // 締め日の末日以外日数
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer deadlineAdjustDays;
     // 支給日が末日
+    @NotNull
     private String paymentDay;
     // 支給日の末日以外日数
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer paymentAdjustDays;
     // 経理責任者
+    @NotNull
+   	@Size(max = 100)
     private String accountingManager;
     // 利用者識別番号
+    @Pattern(regexp = "[0-9]*")
     private Integer userRecongId;
     // 利用者ID
+    @Pattern(regexp = "[0-9]*")
     private Integer userId;
     // 税理者
+    @NotNull
+   	@Size(max = 100)
     private String taxAccountant;
     // 税理署
+    @NotNull
+ 	@Size(max = 256)
     private String taxOffice;
     // データ共有ID
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer dataShareId;
     // マイナンバーマスタから個人番号を取得する
+    @NotNull
     private Boolean myNumber;
     // 会社コード
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Long compCode;
     // 雇用保険被保険者負担率
+    @NotNull
+   	@Size(max = 5)
     private String employInsurRate;
     // 雇用保険被保険者負担率
+    @NotNull
     private String employRounding;
     // 健康保険料率(介護保険該当なし)
+    @NotNull
+    @Size(max = 5)
     private String healthInsurRate;
     // 健康保険料率（介護保険該当者）
+    @NotNull
+    @Size(max = 5)
     private String healthInsurRate2;
     // 健康保険端数処理
+    @NotNull
     private String healthRounding;
     // 厚生年金保険料率
+    @NotNull
+    @Size(max = 5)
     private String welfareInsurance;
     // 厚生年金端数処理
+    @NotNull
     private String welfareRounding;
     // 基金免除保険料率
+    @NotNull
+    @Size(max = 5)
     private String welfareExemptionRate;
     // 基金免除保険料率
+    @NotNull
+    @Size(max = 5)
     private String welfareAdditionRate;
     // 基金独自給付加算定額
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private String welfareAdditionRation;
 
     /**
