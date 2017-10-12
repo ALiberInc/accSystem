@@ -3,7 +3,6 @@ package jp.co.aliber.accsystem.controller.user;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,27 +32,17 @@ public class RegisterController {
 	private RegisterService registerService;
 
 	/**
-	 * メッセージ設定
-	 */
-	@Autowired
-	private MessageSource messages;
-
-
-	/**
 	 * データのバンディング
 	 *
 	 * @param binder
 	 */
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(String.class,
-				new StringTrimmerEditor(true));
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 	}
-
 
 	/**
 	 * 初期表示
-	 *
 	 * @param locale
 	 *            ロケ－ル
 	 * @param model
@@ -62,12 +51,11 @@ public class RegisterController {
 	 *            アカウントの作成用form
 	 * @return
 	 */
-	@RequestMapping(value = {"/", "" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(Model model, RegisterForm form) {
 
 		return "register";
 	}
-
 
 	/**
 	 * 登録処理
@@ -82,10 +70,8 @@ public class RegisterController {
 	 *            Resultバンディング
 	 * @return
 	 */
-	@RequestMapping(value = {"/save" }, method = RequestMethod.POST)
-	public String save(Model model,
-			@Validated  RegisterForm form,
-			BindingResult result) {
+	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
+	public String save(Model model, @Validated RegisterForm form, BindingResult result) {
 		// 入力チェック
 		if (!validate(model, form, result)) {
 			return "register";
@@ -121,7 +107,6 @@ public class RegisterController {
 		return "login";
 	}
 
-
 	/**
 	 * 入力チェック
 	 *
@@ -134,8 +119,7 @@ public class RegisterController {
 	 * @return validateResult<br>
 	 *         入力チェック結果
 	 */
-	private boolean validate(Locale locale, Model model, RegisterForm form,
-			BindingResult result) {
+	private boolean validate(Model model, RegisterForm form, BindingResult result) {
 
 		boolean validateResult = true;
 
