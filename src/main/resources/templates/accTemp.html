@@ -12,6 +12,7 @@
 <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script src="./js/ap_common.js" type="text/javascript"></script>
 <script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="./js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 <body>
 	<div th:fragment="accTopMenuArea">
@@ -26,7 +27,8 @@
 	</div>
 	<div th:fragment="accBackButton">
 		<div>
-			<button type="button" class="btn btn-primary btn-sm" onclick="javascript:history.go(-1)">戻る</button>
+			<button type="button" class="btn btn-primary btn-sm"
+				onclick="javascript:history.go(-1)">戻る</button>
 		</div>
 	</div>
 </body>
