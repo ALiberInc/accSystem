@@ -2,6 +2,9 @@ package jp.co.aliber.accsystem.form.salary;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * 従業員給与明細入力form
  *
@@ -11,8 +14,12 @@ import java.io.Serializable;
 public class SalaryDetailsInputForm implements Serializable {
     private static final long serialVersionUID = 1L;
     // 従業員ID
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer employeeId;
     // 年月
+    @NotNull
+    @Pattern(regexp = "[0-9]{5,6}*")
     private String salaryYearMonth;
     // 固定支給金額番号
     private Integer fixedPaymentId;
