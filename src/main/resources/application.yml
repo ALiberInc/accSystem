@@ -11,7 +11,7 @@ spring:
     content-type: text/html
     cache: false
   messages:
-    basename: i18n/messages
+    basename: messages
       
   mail:
     host: smtp14.gmoserver.jp
