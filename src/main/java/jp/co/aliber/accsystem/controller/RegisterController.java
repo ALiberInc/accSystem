@@ -1,7 +1,5 @@
 package jp.co.aliber.accsystem.controller;
 
-import java.util.Locale;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -88,9 +86,8 @@ public class RegisterController {
 	public String save(Model model,
 			@Validated  LoginUserInfoForm form,
 			BindingResult result) {
-		Locale locale = new Locale("ja", "JP");
 		// 入力チェック
-		if (!validate(locale, model, form, result)) {
+		if (!validate(model, form, result)) {
 			return "register";
 		}
 		TLoginUser loginUser = new TLoginUser();
@@ -128,8 +125,6 @@ public class RegisterController {
 	/**
 	 * 入力チェック
 	 *
-	 * @param locale<br>
-	 *            ロケール
 	 * @param model<br>
 	 *            モデル
 	 * @param LoginuserinfoeditForm<br>
@@ -139,15 +134,13 @@ public class RegisterController {
 	 * @return validateResult<br>
 	 *         入力チェック結果
 	 */
-	private boolean validate(Locale locale, Model model, LoginUserInfoForm form,
+	private boolean validate(Model model, LoginUserInfoForm form,
 			BindingResult result) {
 
 		boolean validateResult = true;
 
 		// 入力チェック
 		if (result.hasErrors()) {
-			model.addAttribute("validationError", messages
-					.getMessage("validation.error.message", null, locale));
 			validateResult = false;
 		}
 		// 入力チェック結果

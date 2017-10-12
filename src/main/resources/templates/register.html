@@ -23,10 +23,6 @@
 							</p>
 						</div> <input type="number" th:field="*{compId}" min="0" step="1" />
 					</td>
-					<td><input type="number" th:field="*{compId}" min="0" step="1" /></td>
-				</tr>
-				<tr th:if="${#fields.hasErrors('lastName')}">
-					<th:block th:errors="*{lastName}"></th:block>
 				</tr>
 				<tr>
 					<td class="text-center td3"><span>姓</span></td>
@@ -64,12 +60,17 @@
 						</div> <input type="text" th:field="*{firstName}" />
 					</td>
 				</tr>
-				<tr th:if="${#fields.hasErrors('firstNameKana')}">
-					<th:block th:errors="*{firstNameKana}"></th:block>
-				</tr>
 				<tr>
 					<td class="text-center td3"><span>名（カナ）</span></td>
-					<td><input type="text" th:field="*{firstNameKana}" /></td>
+					<td>
+						<div th:if="${#fields.hasErrors('firstNameKana')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{firstNameKana}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{firstNameKana}" />
+					</td>
 				</tr>
 				<tr>
 					<td class="text-center td3"><span>アルファベット名</span></td>
