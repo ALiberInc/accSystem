@@ -120,7 +120,8 @@ public class RegisterController {
 		loginUser.setPassword(form.getPassword());
 
 		signUpService.regist(loginUser);
-		return "sign_up";
+
+		return "login";
 	}
 
 

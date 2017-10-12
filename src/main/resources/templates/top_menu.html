@@ -4,11 +4,27 @@
 </head>
 <body>
 	<p>トップメニュー</p>
-	<div>
-		<ul>
-			<li><a href="company_info">会社データ管理機能</a></li>
-			<li><a href="employee">従業員データ機能</a></li>
-			<li><a href="salary">給与明細情報</a></li>
+	<div class="centerDiv">
+		<ul class="nav nav-tabs">
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown" role="button" aria-haspopup="true"
+				aria-expanded="false">会社データ管理機能<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="company">会社基本情報入力</a></li>
+				</ul></li>
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown" role="button" aria-haspopup="true"
+				aria-expanded="false">従業員データ機能<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="employee_info">従業員データ管理機能</a></li>
+				</ul></li>
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown" role="button" aria-haspopup="true"
+				aria-expanded="false">給与明細情報<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="detail">給与明細入力</a></li>
+					<li><a href="salary_statement">給与明細印刷</a></li>
+				</ul></li>
 		</ul>
 	</div>
 </body>

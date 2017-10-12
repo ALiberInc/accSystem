@@ -34,3 +34,46 @@
 .vertical-middle {
 	vertical-align: middle;
 }
+/* error */
+.error-box {
+	margin: 0 auto 24px;
+	border: 1px solid #bd2930;
+	background-color: #f7e8e9;
+}
+
+.error-box p {
+	margin: 0;
+	padding: 24px 0;
+	color: #bd2930;
+	font-size: 1.4rem;
+	font-weight: normal;
+	text-align: center;
+	font-weight: bold;
+}
+
+div.error-after {
+	clear: both;
+	display: none;
+	padding-top: 6px;
+}
+
+div.error-after p {
+	position: relative;
+	display: inline-block;
+	margin: 0 0 7px !important;
+	padding: 4px 0.6em;
+	background: #bd2930;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+div.error-after p i {
+	display: block;
+	position: absolute;
+	border: 5px solid transparent;
+	-webkit-transform: scaleX(.6);
+	transform: scaleX(.6);
+	top: auto;
+	bottom: -10px;
+	border-top-color: #bd2930;
+}
