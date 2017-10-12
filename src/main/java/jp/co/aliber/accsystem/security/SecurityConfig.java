@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				// login,registerは制限なし
-				.antMatchers("/login/**", "/register/**", "/css/**", "/fonts/**", "/imgs/**", "/js/**").permitAll().
+				.antMatchers("/login", "/register", "/css/**", "/fonts/**", "/imgs/**", "/js/**").permitAll().
 				// 他は制限なし
 				anyRequest().authenticated().and()
 				// ログイン処理の設定
