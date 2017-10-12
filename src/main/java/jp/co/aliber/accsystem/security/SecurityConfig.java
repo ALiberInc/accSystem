@@ -19,14 +19,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				// login,registerは制限なし
-				.antMatchers("/login", "/register", "/css/**", "/fonts/**", "/imgs/**", "/js/**").permitAll().
+				.antMatchers("/login/**", "/register/**", "/css/**", "/fonts/**", "/imgs/**", "/js/**").permitAll().
 				// 他は制限なし
 				anyRequest().authenticated().and()
 				// ログイン処理の設定
 				.formLogin()
 				// ログイン処理のURL
 				.loginPage("/login")
-				.defaultSuccessUrl("/top_menu")     // 認証成功時の遷移先
+				// 認証成功時の遷移先
+				.defaultSuccessUrl("/top_menu")
 				// usernameのパラメタ名
 				.usernameParameter("username")
 				// passwordのパラメタ名
@@ -46,30 +47,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			auth.userDetailsService(userDetailsService);
 		}
 	}
-
-	// @Override
-	// protected void configure(AuthenticationManagerBuilder
-	// authenticationManagerBuilder) throws Exception {
-	// authenticationManagerBuilder.userDetailsService(this.userDetailsService);
-	// }
-	//
-	// @Autowired
-	// public void setUserDetailsService(UserDetailsService userDetailsService)
-	// {
-	// this.userDetailsService = userDetailsService;
-	// }
-
-	// @Autowired
-	// public void configureGlobal(AuthenticationManagerBuilder auth) throws
-	// Exception {
-	//
-	// auth.userDetailsService(loginId -> {
-	// TLoginUser tLoginUser = tLoginUserService.getTLoginUser(loginId);
-	// System.out.println(loginId);
-	// return new User(tLoginUser.getLoginId(), tLoginUser.getPassword(), true,
-	// true, true, true,
-	// AuthorityUtils.createAuthorityList("USER"));
-	// });
-	//
-	// }
 }
