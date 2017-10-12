@@ -1,4 +1,4 @@
-package jp.co.aliber.accsystem.controller;
+package jp.co.aliber.accsystem.controller.user;
 
 import java.util.Locale;
 
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
-import jp.co.aliber.accsystem.form.LoginUserInfoForm;
-import jp.co.aliber.accsystem.service.SignUpService;
+import jp.co.aliber.accsystem.form.user.RegisterForm;
+import jp.co.aliber.accsystem.service.user.RegisterService;
 
 /**
  * アカウントの作成controller
@@ -32,7 +32,7 @@ public class RegisterController {
 	 * アカウントの作成サービス
 	 */
 	@Autowired
-	private SignUpService signUpService;
+	private RegisterService registerService;
 
 	/**
 	 * メッセージ設定
@@ -65,7 +65,7 @@ public class RegisterController {
 	 * @return
 	 */
 	@RequestMapping(value = {"/", "" }, method = RequestMethod.GET)
-	public String index(Model model, LoginUserInfoForm form) {
+	public String index(Model model, RegisterForm form) {
 
 		return "register";
 	}
@@ -86,7 +86,7 @@ public class RegisterController {
 	 */
 	@RequestMapping(value = {"/save" }, method = RequestMethod.POST)
 	public String save(Model model,
-			@Validated  LoginUserInfoForm form,
+			@Validated  RegisterForm form,
 			BindingResult result) {
 		Locale locale = new Locale("ja", "JP");
 		// 入力チェック
@@ -119,7 +119,7 @@ public class RegisterController {
 		// 暗証番号
 		loginUser.setPassword(form.getPassword());
 
-		signUpService.regist(loginUser);
+		registerService.regist(loginUser);
 
 		return "login";
 	}
@@ -139,7 +139,7 @@ public class RegisterController {
 	 * @return validateResult<br>
 	 *         入力チェック結果
 	 */
-	private boolean validate(Locale locale, Model model, LoginUserInfoForm form,
+	private boolean validate(Locale locale, Model model, RegisterForm form,
 			BindingResult result) {
 
 		boolean validateResult = true;
