@@ -12,7 +12,7 @@ public class MLoginUser implements java.io.Serializable {
 	private String loginId;
 	private String password;
 	@Column
-	private String compId;
+	private Integer compId;
 
 	public MLoginUser() {
 	}
@@ -33,12 +33,11 @@ public class MLoginUser implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public String getCompId() {
+	public Integer getCompId() {
 		return compId;
 	}
 
-	public void setCompId(String compId) {
+	public void setCompId(Integer compId) {
 		this.compId = compId;
 	}
-
 }

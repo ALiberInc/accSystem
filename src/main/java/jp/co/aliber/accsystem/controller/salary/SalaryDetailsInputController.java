@@ -22,7 +22,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeFixedDeductionMapper;
 import jp.co.aliber.accsystem.mapper.auto.TEmployeeFixedPaymentMapper;
 import jp.co.aliber.accsystem.mapper.auto.TEmployeeIncomeTaxMapper;
 import jp.co.aliber.accsystem.mapper.auto.TSalaryDetailMapper;
-import jp.co.aliber.accsystem.security.userdetails.LoginUser;
+import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.SalaryDetailsInputService;
 
 /**
@@ -161,7 +161,7 @@ public class SalaryDetailsInputController {
             @ModelAttribute SalaryDetailsInputForm form, @AuthenticationPrincipal LoginUser loginUser) {
         // formから必要情報を取得する
         Integer employeeID = form.getEmployeeId();
-        Integer compId = loginUser.getUserInfo().getCompId();
+        Integer compId = loginUser.getUser().getCompId();
         String yearMonth = form.getSalaryYearMonth();
         TSalaryDetail tSalaryDetail = new TSalaryDetail();
         // 従業員ID
