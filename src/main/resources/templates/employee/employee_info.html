@@ -13,7 +13,7 @@
 				<td class="td3"><span>氏名</span></td>
 				<td class="td4"><span>部署</span></td>
 			</tr>
-			<tr th:each="TEmployees,iterStat : ${employeeInfoFrom.listTEmployee}">
+			<tr th:each="TEmployees,iterStat : *{listTEmployee}">
 				<td class="td1"><button type="button" class="btn btn-info btn-lg active" name="show_btn" th:id="${TEmployees.employeeId}">選択</button></td>
 				<td class="td2" th:text="${TEmployees.employeeNo}"></td>
 				<td class="td3" th:text="${TEmployees.lastName}+' '+${TEmployees.firstName}"></td>
