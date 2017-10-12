@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Email;
  */
 public class LoginUserInfoForm {
 	// 会社番号
-	@NotNull(message = " {0}は必須項目です。")  
+	@NotNull
 	private String compId;
 	// 姓
 	@NotNull

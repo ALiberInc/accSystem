@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// 認証成功時の遷移先
 				.defaultSuccessUrl("/top_menu")
 				// usernameのパラメタ名
-				.usernameParameter("username")
+				.usernameParameter("loginId")
 				// passwordのパラメタ名
 				.passwordParameter("password").permitAll().and()
 				// ログアウト処理の設定
