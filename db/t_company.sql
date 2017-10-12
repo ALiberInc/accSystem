@@ -42,9 +42,9 @@ create table "public".t_company (
   , welfare_addition_rate numeric(5, 2) not null
   , welfare_addition_ration integer not null
   , delete_flg boolean default false not null
-  , regist_date timestamp without time zone not null
+  , regist_date timestamp without time zone default CURRENT_TIMESTAMP not null
   , regist_id integer not null
-  , update_date timestamp without time zone not null
+  , update_date timestamp without time zone default CURRENT_TIMESTAMP not null
   , update_id integer not null
   , primary key (comp_id)
 );

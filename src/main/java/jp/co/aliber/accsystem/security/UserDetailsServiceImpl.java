@@ -13,7 +13,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	/*
 	 * (非 Javadoc)
-	 * 
+	 *
 	 * @see org.springframework.security.core.userdetails.UserDetailsService#
 	 * loadUserByUsername(java.lang.String)
 	 */

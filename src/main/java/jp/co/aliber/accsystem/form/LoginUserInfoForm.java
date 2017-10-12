@@ -14,41 +14,41 @@ import org.hibernate.validator.constraints.Email;
  */
 public class LoginUserInfoForm {
 	// 会社番号
-	@NotNull(message = " {0}は必須項目です。")  
+	@NotNull
 	private String compId;
 	// 姓
 	@NotNull
-	@Size(max = 128)
+	@Size(max = 50)
 	private String lastName;
 	// 名
 	@NotNull
-	@Size(max = 128)
+	@Size(max = 50)
 	private String firstName;
 	// 姓カナ
-	@Size(max = 128) 
+	@Size(max = 50) 
 	@Pattern(regexp = "[ァ-ヶー]*")
 	private String lastNameKana;
 	// 名カナ
-	@Size(max = 128)
+	@Size(max = 50)
 	@Pattern(regexp = "[ァ-ヶー]*")
 	private String firstNameKana;
 	// アルファベット名
-	@Size(max = 128)
+	@Size(max = 50)
 	@Pattern(regexp = "[a-zA-Z0-9\\s_./?+\\-]*")
 	private String alphabetName;
 	// メールアドレス
 	@NotNull
-	@Size(max = 128)
+	@Size(max = 100)
 	@Email
 	@Pattern(regexp = "^[a-zA-Z0-9_./?+\\-]+[a-zA-Z0-9_./?+\\-@]+$")
 	private String email;
 	// ログインID
 	@NotNull
-	@Size(max = 64)
+	@Size(max = 50)
 	private String loginId;
 	// 暗証番号
 	@NotNull
-	@Size(min = 5, max = 128)
+	@Size(min = 5, max = 50)
 	@Pattern(regexp = "[a-zA-Z0-9\\]\\[!\"#$%&|\'()*+,-./:;<=>?@^_`{|}~\\\\]*")
 	private String password;
 

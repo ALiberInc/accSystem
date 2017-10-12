@@ -8,16 +8,16 @@ create table "public".t_login_user (
   , alphabet_name character varying(50)
   , email character varying(100) not null
   , last_login_datetime timestamp without time zone
-  , login_id character varying(50) not null
+  , login_id character varying(50) UNIQUE not null
   , password character varying(50) not null
   , password_modify_datetime timestamp without time zone not null
   , fail_datetime timestamp without time zone
   , fail_count smallint default 0 not null
   , lockuser boolean default false not null
   , delete_flg boolean default false not null
-  , regist_date timestamp without time zone not null
+  , regist_date timestamp without time zone default CURRENT_TIMESTAMP not null
   , regist_id integer not null
-  , update_date timestamp without time zone not null
+  , update_date timestamp without time zone default CURRENT_TIMESTAMP not null
   , update_id integer not null
   , primary key (user_id)
 );

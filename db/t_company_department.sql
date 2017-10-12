@@ -4,9 +4,9 @@ create table "public".t_company_department (
   , dept_no integer not null
   , dept_name character varying(100) not null
   , delete_flg boolean default false not null
-  , regist_date timestamp without time zone not null
+  , regist_date timestamp without time zone default CURRENT_TIMESTAMP not null
   , regist_id integer not null
-  , update_date timestamp without time zone not null
+  , update_date timestamp without time zone default CURRENT_TIMESTAMP not null
   , update_id integer not null
   , primary key (dept_id,comp_id)
 );
