@@ -5,6 +5,9 @@ function callAjax(p_url, param) {
 		dataType : 'json',
 		data : param,
 		async : false,
+        headers: {
+            'X-CSRF-TOKEN': $('*[name="_csrf"]').val()
+        },
 		success : function(data) {
 			return data;
 		},

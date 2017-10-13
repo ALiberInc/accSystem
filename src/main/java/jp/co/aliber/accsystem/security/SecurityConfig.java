@@ -18,8 +18,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				// login,registerは制限なし
-				.antMatchers("/login", "/register/**", "/css/**", "/fonts/**", "/imgs/**", "/js/**").permitAll().
+				// login,register,companyは制限なし
+				.antMatchers("/login", "/register/**", "/company/**", "/css/**", "/fonts/**", "/imgs/**", "/js/**")
+				.permitAll().
 				// 他は制限なし
 				anyRequest().authenticated().and()
 				// ログイン処理の設定
