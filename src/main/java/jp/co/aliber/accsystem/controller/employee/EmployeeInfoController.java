@@ -50,7 +50,7 @@ public class EmployeeInfoController {
 	public String index(@AuthenticationPrincipal LoginUser loginUser, EmployeeInfoForm form) {
 
 		// 從業員情報リストを取得
-		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(1);
+		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
 		form.setListTEmployee(listTEmployee);
 		return "employee/employee_info";
 	}
