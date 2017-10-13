@@ -1,5 +1,5 @@
 create table "public".t_employee (
-  employee_id integer default nextval('t_employee_employee_id_seq'::regclass) not null
+  employee_id serial
   , comp_id integer not null
   , employee_no integer not null
   , last_name character varying(50) not null

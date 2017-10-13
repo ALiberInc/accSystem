@@ -1,5 +1,5 @@
 create table "public".t_company (
-  comp_id integer default nextval('t_company_comp_id_seq'::regclass) not null
+  comp_id serial
   , comp_name character varying(256) not null
   , comp_kana character varying(256) not null
   , comp_zip1 character varying(3) not null
@@ -50,7 +50,7 @@ create table "public".t_company (
 );
 
 comment on table t_company is '会社情報';
-comment on column t_company.comp_id is '勤怠番号';
+comment on column t_company.comp_id is '会社ID';
 comment on column t_company.comp_name is '法人名';
 comment on column t_company.comp_kana is '法人名フリガナ';
 comment on column t_company.comp_zip1 is '郵便番号1';

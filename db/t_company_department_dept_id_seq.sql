@@ -1,4 +1,0 @@
-CREATE SEQUENCE t_company_department_dept_id_seq 
-	INCREMENT 1
-	MINVALUE 1
-	MAXVALUE 2147483647

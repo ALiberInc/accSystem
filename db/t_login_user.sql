@@ -1,5 +1,5 @@
 create table "public".t_login_user (
-  user_id integer default nextval('t_login_user_user_id_seq'::regclass) not null
+  user_id serial
   , comp_id integer not null
   , last_name character varying(50) not null
   , first_name character varying(50) not null
