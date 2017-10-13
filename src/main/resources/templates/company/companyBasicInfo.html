@@ -208,12 +208,6 @@
 								<th:block th:errors="*{corpSortNo2}"></th:block>
 							</p>
 						</div>
-						<div th:if="${#fields.hasErrors('corpSortNo3')}" class="error-after" style="display: block;">
-							<p>
-								<i></i>
-								<th:block th:errors="*{corpSortNo3}"></th:block>
-							</p>
-						</div>
 						<input type="text" maxlength="4" th:field="*{corpSortNo1}" class="td0" />-<input type="text" maxlength="5"
 							th:field="*{corpSortNo2}" class="td1"
 						/>
