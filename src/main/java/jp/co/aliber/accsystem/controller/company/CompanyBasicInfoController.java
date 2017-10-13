@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,8 @@ import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
 public class CompanyBasicInfoController {
 	@Autowired
 	CompanyBasicInfoService companyBasicInfoService;
+    @Autowired
+    MessageSource messages;
 
 
 	/**
@@ -217,9 +220,10 @@ public class CompanyBasicInfoController {
 		// 基金独自給付加算定額
 		company.setWelfareAdditionRation(
 				Integer.valueOf(form.getWelfareAdditionRation()));
-		Integer userId = Integer.valueOf(loginUser.getUser().getLoginId());
+		// Integer userId = Integer.valueOf(loginUser.getUser().getLoginId());
 		// 登録処理を呼び出す
-		companyBasicInfoService.regist(company, userId);
+		companyBasicInfoService.regist(company,
+				ImmutableValues.DEFAULT_USER_ID);
 		return "company/companyBasicInfo";
 	}
 
@@ -244,6 +248,14 @@ public class CompanyBasicInfoController {
 		// 入力チェック
 		if (result.hasErrors()) {
 			validateResult = false;
+		}
+		//会社名重複チェック
+		if(StringUtils.isNotEmpty(form.getCompName())){
+			if(!companyBasicInfoService.searchCompName(form.getCompName())){
+				result.rejectValue("compName", "error.duplicated",
+	                    new Object[] {messages.getMessage("companyBasicInfoForm.compName", null, null) }, "");
+				validateResult = false;
+			};
 		}
 
 		// 日数チェック

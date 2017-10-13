@@ -33,5 +33,7 @@ public class ImmutableValues {
 	public static final String WELFARE_ADDITION_RATE = "0.00";
 	// 締め日/支給日が末日の場合
 	public static final String LAST_DAY = "0";
+	// デフォルトユーザID
+	public static final Integer DEFAULT_USER_ID = 9999;
 
 }

@@ -45,7 +45,7 @@ public class CompanyBasicInfoForm {
 	private String compAdd2Kana;
 	// 電話番号
 	@NotNull
-	@Pattern(regexp = "[0-9]{1}")
+	@Pattern(regexp = "[0-9]{2,3}")
 	private String compTel1;
 	// 電話番号
 	@NotNull
@@ -53,7 +53,7 @@ public class CompanyBasicInfoForm {
 	private String compTel2;
 	// 電話番号
 	@NotNull
-	@Pattern(regexp = "[0-9]{3}")
+	@Pattern(regexp = "[0-9]{4}")
 	private String compTel3;
 	// 事業区分
 	@NotNull
