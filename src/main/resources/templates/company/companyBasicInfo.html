@@ -79,7 +79,8 @@
 								<th:block th:errors="*{compAdd1}"></th:block>
 							</p>
 						</div>
-						<input type="text" th:field="*{compAdd1}" maxlength="40" class="td4" /><br></br>
+						<input type="text" th:field="*{compAdd1}" maxlength="40" class="td4" />
+						<br></br>
 						<input type="text" th:field="*{compAdd2}" maxlength="40" class="td4" />
 					</td>
 				</tr>
@@ -94,7 +95,8 @@
 								<th:block th:errors="*{compAdd1Kana}"></th:block>
 							</p>
 						</div>
-						<input type="text" th:field="*{compAdd1Kana}" maxlength="40" class="td4" /><br></br>
+						<input type="text" th:field="*{compAdd1Kana}" maxlength="40" class="td4" />
+						<br></br>
 						<input type="text" th:field="*{compAdd2Kana}" maxlength="40" class="td4" />
 					</td>
 				</tr>
@@ -261,14 +263,14 @@
 									</label>
 								</td>
 								<td>
-									<label> <input th:field="*{deadlineDay}" type="radio" value="1" /> <span>末日以外</span>
-									</label>
 									<div th:if="${#fields.hasErrors('deadlineAdjustDays')}" class="error-after" style="display: block;">
 										<p>
 											<i></i>
 											<th:block th:errors="*{deadlineAdjustDays}"></th:block>
 										</p>
 									</div>
+									<label> <input th:field="*{deadlineDay}" type="radio" value="1" /> <span>末日以外</span>
+									</label>
 									<span>
 										( <input th:field="*{deadlineAdjustDays}" type="text" class="td2" />日)
 									</span>
@@ -295,14 +297,14 @@
 									</label>
 								</td>
 								<td>
-									<label> <input th:field="*{paymentDay}" type="radio" value="1" /> <span>末日以外</span>
-									</label>
 									<div th:if="${#fields.hasErrors('paymentAdjustDays')}" class="error-after" style="display: block;">
 										<p>
 											<i></i>
 											<th:block th:errors="*{paymentAdjustDays}"></th:block>
 										</p>
 									</div>
+									<label> <input th:field="*{paymentDay}" type="radio" value="1" /> <span>末日以外</span>
+									</label>
 									<span>
 										( <input th:field="*{paymentAdjustDays}" type="text" class="td2" />日)
 									</span>
@@ -678,7 +680,7 @@
 						<table>
 							<tr>
 								<td class="td4">
-																	<div th:if="${#fields.hasErrors('welfareAdditionRate')}" class="error-after" style="display: block;">
+									<div th:if="${#fields.hasErrors('welfareAdditionRate')}" class="error-after" style="display: block;">
 										<p>
 											<i></i>
 											<th:block th:errors="*{welfareAdditionRate}"></th:block>
