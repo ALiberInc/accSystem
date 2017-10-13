@@ -111,13 +111,13 @@
 								<th:block th:errors="*{compTel1}"></th:block>
 							</p>
 						</div>
-						<div th:if="${#fields.hasErrors('compTel2')}" class="error-after" style="display: block;">
+						<div th:if="${!(#fields.hasErrors('compTel1')) and #fields.hasErrors('compTel2')}" class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{compTel2}"></th:block>
 							</p>
 						</div>
-						<div th:if="${#fields.hasErrors('compTel3')}" class="error-after" style="display: block;">
+						<div th:if="${!(#fields.hasErrors('compTel1')) and !(#fields.hasErrors('compTel2'))and #fields.hasErrors('compTel3')}" class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{compTel3}"></th:block>
