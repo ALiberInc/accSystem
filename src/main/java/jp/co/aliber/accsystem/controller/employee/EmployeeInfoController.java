@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
 import jp.co.aliber.accsystem.form.employee.EmployeeInfoForm;
+import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.employee.TEmployeeService;
 
 /**
@@ -45,10 +47,10 @@ public class EmployeeInfoController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(EmployeeInfoForm form) {
+	public String index(@AuthenticationPrincipal LoginUser loginUser, EmployeeInfoForm form) {
 
 		// 從業員情報リストを取得
-		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(1);
+		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
 		form.setListTEmployee(listTEmployee);
 		return "employee/employee_info";
 	}

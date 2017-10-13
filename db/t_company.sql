@@ -5,9 +5,9 @@ create table "public".t_company (
   , comp_zip1 character varying(3) not null
   , comp_zip2 character varying(4) not null
   , comp_add1 character varying(256) not null
-  , comp_add2 character varying(256) not null
+  , comp_add2 character varying(256)
   , comp_add1_kana character varying(256) not null
-  , comp_add2_kana character varying(256) not null
+  , comp_add2_kana character varying(256)
   , comp_tel1 character varying(33) not null
   , comp_tel2 character varying(33) not null
   , comp_tel3 character varying(33) not null
@@ -20,9 +20,9 @@ create table "public".t_company (
   , corp_no bigint not null
   , corp_kind character varying(100) not null
   , deadline_day boolean not null
-  , deadline_adjust_days integer not null
+  , deadline_adjust_days integer
   , payment_day boolean not null
-  , payment_adjust_days integer not null
+  , payment_adjust_days integer
   , accounting_manager character varying(100) not null
   , user_recognize_id bigint
   , user_id bigint

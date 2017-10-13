@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="accTemp :: headerImp ('__従業員データ機能__')">
+<head th:replace="accTemp :: headerImp ('__従業員データ管理__')">
 </head>
-<body >
+<body>
 	<div th:replace="accTemp :: accBackButton"></div>
-	<p>従業員データ管理機能</p>
+	<p>従業員データ管理</p>
 	<div class="centerDiv">
 		<table class="table table-striped">
 			<tr>
-				<td class="td1"><button type="button" class="btn btn-info btn-lg active" id="add_btn">新規追加</button></td>
-				<td class="td2"><span>No.</span></td>
-				<td class="td3"><span>氏名</span></td>
-				<td class="td4"><span>部署</span></td>
+				<th class="td1"><button type="button"
+						class="btn btn-info btn-sm" id="add_btn">新規追加</button></th>
+				<th class="td2"><span>No.</span></th>
+				<th class="td3"><span>氏名</span></th>
+				<th class="td4"><span>部署</span></th>
 			</tr>
-			<tr th:each="TEmployees,iterStat : ${employeeInfoFrom.listTEmployee}">
-				<td class="td1"><button type="button" class="btn btn-info btn-lg active" name="show_btn" th:id="${TEmployees.employeeId}">選択</button></td>
-				<td class="td2" th:text="${TEmployees.employeeNo}"></td>
-				<td class="td3" th:text="${TEmployees.lastName}+' '+${TEmployees.firstName}"></td>
-				<td class="td4" th:text="${TEmployees.deptId}"></td>
+			<tr th:each="TEmployee,iterStat : ${employeeInfoForm.listTEmployee}">
+				<td class="td1"><button type="button"
+						class="btn btn-info btn-sm" name="show_btn"
+						th:id="${TEmployee.employeeId}">選択</button></td>
+				<td class="td2" th:text="${TEmployee.employeeNo}"></td>
+				<td class="td3"
+					th:text="${TEmployee.lastName}+' '+${TEmployee.firstName}"></td>
+				<td class="td4" th:text="${TEmployee.deptId}"></td>
 			</tr>
 		</table>
 	</div>

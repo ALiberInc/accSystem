@@ -18,12 +18,12 @@ public class SalaryDetailsInputForm implements Serializable {
     @Pattern(regexp = "[0-9]*")
     private Integer employeeId;
     // 年月
-    @NotNull
-    @Pattern(regexp = "[0-9]{5,6}*")
     private String salaryYearMonth;
     // 固定支給金額番号
     private Integer fixedPaymentId;
     // 基本給
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer basicSalary;
     // 役職手当
     private Integer positionAllowance;
@@ -38,18 +38,30 @@ public class SalaryDetailsInputForm implements Serializable {
     // 交通費(実費)
     private Integer transportFee;
     // 総支給
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer sum;
     // 固定控除金額番号
     private Integer fixedDeductionId;
     // 健康保険
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer healthInsurance;
     // 厚生年金
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer welfarePension;
     // 雇用保険
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer employmentInsurance;
     // 社会保険合計
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer socialInsuranceSum;
     // 所得税
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer incomeTax;
     // 住民税
     private Integer inhabitantTax;
@@ -64,8 +76,12 @@ public class SalaryDetailsInputForm implements Serializable {
     // その他控除
     private Integer otherDeduction;
     // 控除額合計
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer totalDeductibleSum;
     // 差引支給額
+    @NotNull
+    @Pattern(regexp = "[0-9]*")
     private Integer subscriptionAmount;
     // 健康保険手入力
     private boolean healthInsuranceFlag;
