@@ -10,20 +10,22 @@ spring:
     encoding: UTF-8
     content-type: text/html
     cache: false
+
   messages:
     basename: messages
-      
+
   mail:
     host: smtp14.gmoserver.jp
     port: 587
     username: accsystem@aliber.co.jp
     password: SE$OCbf4
-    properties.mail.smtp.auth: true
-    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
 
 server:
   contextPath: /accsystem
 
 mybatis:
- typeAliasesPackage: jp.co.aliber.accsystem.entity
- mapperLocations: classpath:jp.co.aliber.accsystem.mapper/*.xml
+  typeAliasesPackage: jp.co.aliber.accsystem.entity
+  mapperLocations: classpath:jp.co.aliber.accsystem.mapper/*.xml
