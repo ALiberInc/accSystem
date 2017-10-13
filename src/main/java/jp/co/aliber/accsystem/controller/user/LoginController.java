@@ -16,7 +16,7 @@ import jp.co.aliber.accsystem.form.user.LoginForm;
  *
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/login")
 public class LoginController {
 
 	/**
@@ -29,7 +29,7 @@ public class LoginController {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 	}
 
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(LoginForm form) {
 
 		return "/login";

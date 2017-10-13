@@ -10,6 +10,6 @@ public interface SelectSeqLastValueMapper {
      *
      * @return シーケンスの最新値
      */
-    public Long selectLastValue();
+    public Integer selectLastValue();
 
 }

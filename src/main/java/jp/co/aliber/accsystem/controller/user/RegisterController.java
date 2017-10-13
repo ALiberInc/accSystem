@@ -118,7 +118,7 @@ public class RegisterController {
 
         registerService.regist(loginUser);
 
-        return "login";
+        return "redirect:/login";
     }
 
     /**

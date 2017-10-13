@@ -276,7 +276,7 @@ public class EmployeeInfoEditController {
         tEmployeeService.regist(tEmployee);
 
         // シーケンスを取得
-        Long employeeId = utilService.getSeqLastValue();
+        Integer employeeId = utilService.getSeqLastValue();
 
         // 口座情報
         tEmployeeBankAccount.setEmployeeId(employeeId.intValue());

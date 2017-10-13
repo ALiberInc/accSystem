@@ -47,7 +47,7 @@ public class UtilService {
 	 *
 	 * @return シーケンス
 	 */
-	public Long getSeqLastValue() {
+	public Integer getSeqLastValue() {
 		return selectSeqLastValueMapper.selectLastValue();
 	}
 

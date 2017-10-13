@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
+import jp.co.aliber.accsystem.mapper.SelectSeqLastValueMapper;
 import jp.co.aliber.accsystem.mapper.auto.TLoginUserMapper;
 
 /**
@@ -19,7 +20,9 @@ public class RegisterService {
 
 	@Autowired
 	TLoginUserMapper tLoginUserMapper;
-
+	
+    @Autowired
+    SelectSeqLastValueMapper selectSeqLastValueMapper;
 
 	/**
 	 * 登録処理
@@ -30,9 +33,13 @@ public class RegisterService {
 	 *            ユーザＩＤ
 	 */
 	public void regist(TLoginUser loginUser) {
+
+		//ユーザーIDを取得
+		int userId =selectSeqLastValueMapper.selectLastValue();
+		// ユーザID
+		loginUser.setUserId(userId);
 		// 登録時削除フラグをfalseにする
 		loginUser.setDeleteFlg(false);
-
 		// システム日付を取得する
 		Date systemDate = new Date();
 		// パスワード変更日時
@@ -48,8 +55,8 @@ public class RegisterService {
 		// 削除フラグ
 		loginUser.setDeleteFlg(false);
 		// ユーザID
-		loginUser.setRegistId(1);
-		loginUser.setUpdateId(1);
+		loginUser.setRegistId(userId);
+		loginUser.setUpdateId(userId);
 
 		tLoginUserMapper.insertSelective(loginUser);
 	}
