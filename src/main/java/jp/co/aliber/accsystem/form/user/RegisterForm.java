@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Email;
 
 /**
  * ユーザ情報
- * 
+ *
  * @author yu_k
  *
  */
@@ -16,6 +16,9 @@ public class RegisterForm {
 	// 会社番号
 	@NotNull
 	private String compId;
+	// 会社番号
+    @NotNull
+    private String compName;
 	// 姓
 	@NotNull
 	@Size(max = 50)
@@ -25,7 +28,7 @@ public class RegisterForm {
 	@Size(max = 50)
 	private String firstName;
 	// 姓カナ
-	@Size(max = 50) 
+	@Size(max = 50)
 	@Pattern(regexp = "[ァ-ヶー]*")
 	private String lastNameKana;
 	// 名カナ
@@ -204,5 +207,21 @@ public class RegisterForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
+    /**
+     * @return compName
+     */
+    public String getCompName() {
+        return compName;
+    }
+
+
+    /**
+     * @param compName セットする compName
+     */
+    public void setCompName(String compName) {
+        this.compName = compName;
+    }
 
 }

@@ -1,4 +1,8 @@
+$(document).ready(function() {
+	compNameSearch();
+});
 function compNameSearch() {
+	$("#compId").val("");
 	$("#searchTable").remove();
 	var compName = $("#compName").val();
 	var url = getContextPath();
@@ -18,7 +22,7 @@ function compNameSearch() {
 	var htmlStr = "<table id='searchTable' class='table table-striped table-bordered'><tr><td class='text-center'></td><td class='text-center'><span>会社名前</span></td><td class='text-center'><span>会社電話</span></td><td class='text-center'><span>会社住所</span></td></tr>";
 	for ( var o in result) {
 		if (result[o] != null) {
-			htmlStr += "<tr><td class='text-center'><input onclick='changeCompId(this.value)' name='compId' type='radio' value='"
+			htmlStr += "<tr><td class='text-center'><input onclick='changeCompId(this.value)' name='searchCompId' type='radio' value='"
 					+ result[o].compId
 					+ "' /><td class='text-center'><span>"
 					+ result[o].compName

@@ -16,14 +16,14 @@
 				<tr>
 					<td class="text-center td3"><span>会社名前</span></td>
 					<td id="compNameTd">
-						<div th:if="${#fields.hasErrors('compId')}" class="error-after"
+						<div th:if="${#fields.hasErrors('compName')}" class="error-after"
 							style="display: block;">
 							<p>
 								<i></i>
-								<th:block th:errors="*{compId}"></th:block>
+								<th:block th:errors="*{compName}"></th:block>
 							</p>
 						</div> <input id="compName" type="text"
-						onkeyup="compNameSearch()" /><a href="company">会社新規</a>
+						onkeyup="compNameSearch()"  th:field="*{compName}" /><a href="company">会社新規</a>
 					</td>
 				</tr>
 				<tr>
