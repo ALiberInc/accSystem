@@ -14,7 +14,7 @@
 			</table>
 			<table class="table table-striped table-bordered">
 				<tr>
-					<td class="text-center td3"><span>会社名前</span></td>
+					<td class="text-center td3"><span>会社名前<font color="#FF0000">※</font></span></td>
 					<td id="compNameTd">
 						<div th:if="${#fields.hasErrors('compName')}" class="error-after"
 							style="display: block;">
@@ -27,7 +27,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="text-center td3"><span>姓</span></td>
+					<td class="text-center td3"><span>姓<font color="#FF0000">※</font></span></td>
 					<td>
 						<div th:if="${#fields.hasErrors('lastName')}" class="error-after"
 							style="display: block;">
@@ -51,7 +51,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="text-center td3"><span>名</span></td>
+					<td class="text-center td3"><span>名<font color="#FF0000">※</font></span></td>
 					<td>
 						<div th:if="${#fields.hasErrors('firstName')}" class="error-after"
 							style="display: block;">
@@ -87,7 +87,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="text-center td3"><span>メールアドレス</span></td>
+					<td class="text-center td3"><span>メールアドレス<font color="#FF0000">※</font></span></td>
 					<td>
 						<div th:if="${#fields.hasErrors('email')}" class="error-after"
 							style="display: block;">
@@ -99,7 +99,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="text-center td3"><span>ユーザ名</span></td>
+					<td class="text-center td3"><span>ユーザ名<font color="#FF0000">※</font></span></td>
 					<td>
 						<div th:if="${#fields.hasErrors('loginId')}" class="error-after"
 							style="display: block;">
@@ -111,7 +111,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="text-center td3"><span>暗証番号</span></td>
+					<td class="text-center td3"><span>暗証番号<font color="#FF0000">※</font></span></td>
 					<td>
 						<div th:if="${#fields.hasErrors('password')}" class="error-after"
 							style="display: block;">
