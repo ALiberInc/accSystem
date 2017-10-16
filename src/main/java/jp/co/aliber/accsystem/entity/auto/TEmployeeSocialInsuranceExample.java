@@ -325,52 +325,52 @@ public class TEmployeeSocialInsuranceExample {
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgEqualTo(Boolean value) {
+        public Criteria andEmployInsurJoinFlgEqualTo(Short value) {
             addCriterion("employ_insur_join_flg =", value, "employInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgNotEqualTo(Boolean value) {
+        public Criteria andEmployInsurJoinFlgNotEqualTo(Short value) {
             addCriterion("employ_insur_join_flg <>", value, "employInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgGreaterThan(Boolean value) {
+        public Criteria andEmployInsurJoinFlgGreaterThan(Short value) {
             addCriterion("employ_insur_join_flg >", value, "employInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andEmployInsurJoinFlgGreaterThanOrEqualTo(Short value) {
             addCriterion("employ_insur_join_flg >=", value, "employInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgLessThan(Boolean value) {
+        public Criteria andEmployInsurJoinFlgLessThan(Short value) {
             addCriterion("employ_insur_join_flg <", value, "employInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgLessThanOrEqualTo(Boolean value) {
+        public Criteria andEmployInsurJoinFlgLessThanOrEqualTo(Short value) {
             addCriterion("employ_insur_join_flg <=", value, "employInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgIn(List<Boolean> values) {
+        public Criteria andEmployInsurJoinFlgIn(List<Short> values) {
             addCriterion("employ_insur_join_flg in", values, "employInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgNotIn(List<Boolean> values) {
+        public Criteria andEmployInsurJoinFlgNotIn(List<Short> values) {
             addCriterion("employ_insur_join_flg not in", values, "employInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgBetween(Boolean value1, Boolean value2) {
+        public Criteria andEmployInsurJoinFlgBetween(Short value1, Short value2) {
             addCriterion("employ_insur_join_flg between", value1, value2, "employInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andEmployInsurJoinFlgNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andEmployInsurJoinFlgNotBetween(Short value1, Short value2) {
             addCriterion("employ_insur_join_flg not between", value1, value2, "employInsurJoinFlg");
             return (Criteria) this;
         }
@@ -385,52 +385,52 @@ public class TEmployeeSocialInsuranceExample {
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgEqualTo(Boolean value) {
+        public Criteria andHealthInsurJoinFlgEqualTo(Short value) {
             addCriterion("health_insur_join_flg =", value, "healthInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgNotEqualTo(Boolean value) {
+        public Criteria andHealthInsurJoinFlgNotEqualTo(Short value) {
             addCriterion("health_insur_join_flg <>", value, "healthInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgGreaterThan(Boolean value) {
+        public Criteria andHealthInsurJoinFlgGreaterThan(Short value) {
             addCriterion("health_insur_join_flg >", value, "healthInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andHealthInsurJoinFlgGreaterThanOrEqualTo(Short value) {
             addCriterion("health_insur_join_flg >=", value, "healthInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgLessThan(Boolean value) {
+        public Criteria andHealthInsurJoinFlgLessThan(Short value) {
             addCriterion("health_insur_join_flg <", value, "healthInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgLessThanOrEqualTo(Boolean value) {
+        public Criteria andHealthInsurJoinFlgLessThanOrEqualTo(Short value) {
             addCriterion("health_insur_join_flg <=", value, "healthInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgIn(List<Boolean> values) {
+        public Criteria andHealthInsurJoinFlgIn(List<Short> values) {
             addCriterion("health_insur_join_flg in", values, "healthInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgNotIn(List<Boolean> values) {
+        public Criteria andHealthInsurJoinFlgNotIn(List<Short> values) {
             addCriterion("health_insur_join_flg not in", values, "healthInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgBetween(Boolean value1, Boolean value2) {
+        public Criteria andHealthInsurJoinFlgBetween(Short value1, Short value2) {
             addCriterion("health_insur_join_flg between", value1, value2, "healthInsurJoinFlg");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurJoinFlgNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andHealthInsurJoinFlgNotBetween(Short value1, Short value2) {
             addCriterion("health_insur_join_flg not between", value1, value2, "healthInsurJoinFlg");
             return (Criteria) this;
         }

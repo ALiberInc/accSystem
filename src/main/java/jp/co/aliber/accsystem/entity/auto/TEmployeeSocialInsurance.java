@@ -28,7 +28,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    private Boolean employInsurJoinFlg;
+    private Short employInsurJoinFlg;
 
     /**
      *
@@ -37,7 +37,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    private Boolean healthInsurJoinFlg;
+    private Short healthInsurJoinFlg;
 
     /**
      *
@@ -212,7 +212,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public Boolean getEmployInsurJoinFlg() {
+    public Short getEmployInsurJoinFlg() {
         return employInsurJoinFlg;
     }
 
@@ -224,7 +224,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public void setEmployInsurJoinFlg(Boolean employInsurJoinFlg) {
+    public void setEmployInsurJoinFlg(Short employInsurJoinFlg) {
         this.employInsurJoinFlg = employInsurJoinFlg;
     }
 
@@ -236,7 +236,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public Boolean getHealthInsurJoinFlg() {
+    public Short getHealthInsurJoinFlg() {
         return healthInsurJoinFlg;
     }
 
@@ -248,7 +248,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public void setHealthInsurJoinFlg(Boolean healthInsurJoinFlg) {
+    public void setHealthInsurJoinFlg(Short healthInsurJoinFlg) {
         this.healthInsurJoinFlg = healthInsurJoinFlg;
     }
 

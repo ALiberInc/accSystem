@@ -1,8 +1,8 @@
 create table "public".t_employee_social_insurance (
   employee_id integer not null
   , comp_id integer not null
-  , employ_insur_join_flg boolean not null
-  , health_insur_join_flg boolean not null
+  , employ_insur_join_flg smallint not null
+  , health_insur_join_flg smallint not null
   , health_insur_join_catagory smallint
   , health_insur_standard_reward_level smallint
   , insurers_no bigint
