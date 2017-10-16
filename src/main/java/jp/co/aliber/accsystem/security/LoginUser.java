@@ -1,11 +1,14 @@
 package jp.co.aliber.accsystem.security;
 
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
 
 /**
  * 認証ユーザーの情報を格納するクラス
  */
-public class LoginUser extends org.springframework.security.core.userdetails.User {
+public class LoginUser extends User {
+
+	private static final long serialVersionUID = 1L;
 	/**
 	 * ログインユーザー
 	 */

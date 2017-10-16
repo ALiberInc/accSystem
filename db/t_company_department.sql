@@ -1,5 +1,5 @@
 create table "public".t_company_department (
-  dept_id integer default nextval('t_company_department_dept_id_seq'::regclass) not null
+  dept_id serial
   , comp_id integer not null
   , dept_no integer not null
   , dept_name character varying(100) not null
