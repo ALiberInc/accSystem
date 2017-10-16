@@ -160,6 +160,8 @@ public class EmployeeInfoEditController {
 			form.setBranchCode(Integer
 					.valueOf(tEmployeeBankAccount.getBranchCode()).intValue());
 			form.setBranchName(tEmployeeBankAccount.getBranchName());
+			form.setAccountNumber(
+					Integer.valueOf(tEmployeeBankAccount.getAccountNo()));
 		}
 		// 固定控除金額情報
 		TEmployeeFixedDeduction tEmployeeFixedDeduction = tEmployeeFixedDeductionService
@@ -204,31 +206,38 @@ public class EmployeeInfoEditController {
 			form.setBlueOfficer(tEmployeeIncomeTax.getBlueOfficer());
 		}
 		// 社会保険
-		TEmployeeSocialInsurance a = tEmployeeSocialInsuranceService
+		TEmployeeSocialInsurance tEmployeeSocialInsurance = tEmployeeSocialInsuranceService
 				.getTEmployeeIncomeTax(emplyeeIdEdit,
 						loginUser.getUser().getCompId());
-		if (a != null) {
-			// TODO
+		if (tEmployeeSocialInsurance != null) {
 			// 雇用保険加入フラグ
-			form.setInsuranceFlag(a.getEmployInsurJoinFlg());
+			form.setInsuranceFlag(
+					tEmployeeSocialInsurance.getEmployInsurJoinFlg());
 			// 健康保険加入フラグ
-			form.setHealthInsuranceFlag(a.getHealthInsurJoinFlg());
+			form.setHealthInsuranceFlag(
+					tEmployeeSocialInsurance.getHealthInsurJoinFlg());
 			// 健康保険種別
-			form.setHealthInsuranceType(a.getHealthInsurJoinCatagory());
+			form.setHealthInsuranceType(
+					tEmployeeSocialInsurance.getHealthInsurJoinCatagory());
 			// 健康保険標準報酬レベル
-			form.setHealthCompensation(a.getHealthInsurStandardRewardLevel());
+			form.setHealthCompensation(tEmployeeSocialInsurance
+					.getHealthInsurStandardRewardLevel());
 			// 保険者番号
-			form.setInsurerNumber(a.getInsurersNo());
+			form.setInsurerNumber(tEmployeeSocialInsurance.getInsurersNo());
 			// 被保険者整理番号
-			form.setInsuredPersonnelNumber(a.getInsuredSortNo());
+			form.setInsuredPersonnelNumber(
+					tEmployeeSocialInsurance.getInsuredSortNo());
 			// 厚生年金加入フラグ
-			form.setWelfarePensionFlag(a.getWelfareJoinFlg() ? 0 : 1);
+			form.setWelfarePensionFlag(
+					tEmployeeSocialInsurance.getWelfareJoinFlg() ? 0 : 1);
 			// 厚生年金標準報酬レベル
-			form.setWelfareCompensation(a.getWelfareStandardRewardLevel());
+			form.setWelfareCompensation(
+					tEmployeeSocialInsurance.getWelfareStandardRewardLevel());
 			// 基礎年金番号
-			form.setWelfareNumber(a.getBasicWelfareNo());
+			form.setWelfareNumber(tEmployeeSocialInsurance.getBasicWelfareNo());
 			// 厚生年金基金加入フラグ
-			form.setWelfareFund(a.getWelfareFundJoinFlg() ? 0 : 1);
+			form.setWelfareFund(
+					tEmployeeSocialInsurance.getWelfareFundJoinFlg() ? 0 : 1);
 		}
 
 		return "employee/employee_info_edit";
@@ -353,8 +362,7 @@ public class EmployeeInfoEditController {
 		tEmployeeFixedPayment.setUpdateDate(date);
 		// 所得税情報
 		TEmployeeIncomeTax tEmployeeIncomeTax = new TEmployeeIncomeTax();
-		
-		
+
 		tEmployeeIncomeTax.setCompId(loginUser.getUser().getCompId());
 		// 所得税区分
 		tEmployeeIncomeTax
@@ -386,30 +394,44 @@ public class EmployeeInfoEditController {
 
 		tEmployeeIncomeTax.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
 		tEmployeeIncomeTax.setUpdateDate(date);
-		
-		//社会保険
+
+		// 社会保険
 		TEmployeeSocialInsurance tEmployeeSocialInsurance = new TEmployeeSocialInsurance();
 		tEmployeeSocialInsurance.setCompId(loginUser.getUser().getCompId());
-		//雇用保険
+		// 雇用保険
 		tEmployeeSocialInsurance.setEmployInsurJoinFlg(form.getInsuranceFlag());
-		//健康保険
-		tEmployeeSocialInsurance.setHealthInsurJoinFlg(form.getHealthInsuranceFlag());
-		//健康保険種別
-		tEmployeeSocialInsurance.setHealthInsurJoinCatagory(form.getHealthInsuranceType() != null?form.getHealthInsuranceType():null);
-		//健康保険の標準報酬
-		tEmployeeSocialInsurance.setHealthInsurStandardRewardLevel(form.getHealthCompensation()!=null?form.getHealthCompensation():null);
-		//保険者番号
-		tEmployeeSocialInsurance.setInsurersNo(form.getInsurerNumber()!=null?form.getInsurerNumber():null);
-		//被保険者整理番号
-		tEmployeeSocialInsurance.setInsuredSortNo(form.getInsuredPersonnelNumber()!=null?form.getInsuredPersonnelNumber():null	);
-		//厚生年金
-		tEmployeeSocialInsurance.setWelfareJoinFlg(form.getWelfarePensionFlag()==0?true:false);
-		//厚生年金の標準報酬
-		tEmployeeSocialInsurance.setWelfareStandardRewardLevel(form.getWelfareCompensation()!=null?form.getWelfareCompensation():null);
-		//基礎年金番号
-		tEmployeeSocialInsurance.setBasicWelfareNo(form.getWelfareNumber()!=null?form.getWelfareNumber():null);
-		//厚生年金基金
-		tEmployeeSocialInsurance.setWelfareFundJoinFlg(form.getWelfareFund()==0?true:false);
+		// 健康保険
+		tEmployeeSocialInsurance
+				.setHealthInsurJoinFlg(form.getHealthInsuranceFlag());
+		// 健康保険種別
+		tEmployeeSocialInsurance.setHealthInsurJoinCatagory(
+				form.getHealthInsuranceType() != null
+						? form.getHealthInsuranceType() : null);
+		// 健康保険の標準報酬
+		tEmployeeSocialInsurance.setHealthInsurStandardRewardLevel(
+				form.getHealthCompensation() != null
+						? form.getHealthCompensation() : null);
+		// 保険者番号
+		tEmployeeSocialInsurance.setInsurersNo(form.getInsurerNumber() != null
+				? form.getInsurerNumber() : null);
+		// 被保険者整理番号
+		tEmployeeSocialInsurance
+				.setInsuredSortNo(form.getInsuredPersonnelNumber() != null
+						? form.getInsuredPersonnelNumber() : null);
+		// 厚生年金
+		tEmployeeSocialInsurance.setWelfareJoinFlg(
+				form.getWelfarePensionFlag() == 0 ? true : false);
+		// 厚生年金の標準報酬
+		tEmployeeSocialInsurance.setWelfareStandardRewardLevel(
+				form.getWelfareCompensation() != null
+						? form.getWelfareCompensation() : null);
+		// 基礎年金番号
+		tEmployeeSocialInsurance
+				.setBasicWelfareNo(form.getWelfareNumber() != null
+						? form.getWelfareNumber() : null);
+		// 厚生年金基金
+		tEmployeeSocialInsurance.setWelfareFundJoinFlg(
+				form.getWelfareFund() == 0 ? true : false);
 		tEmployeeSocialInsurance.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
 
 		if (form.isCreationflag()) {
@@ -465,8 +487,8 @@ public class EmployeeInfoEditController {
 		tEmployeeIncomeTax.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
 		tEmployeeIncomeTax.setRegistDate(date);
 		tEmployeeIncomeTaxService.regist(tEmployeeIncomeTax);
-		
-		//社会保険
+
+		// 社会保険
 		tEmployeeSocialInsurance.setEmployeeId(employeeId.intValue());
 		tEmployeeSocialInsurance.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
 		tEmployeeSocialInsurance.setRegistDate(date);
