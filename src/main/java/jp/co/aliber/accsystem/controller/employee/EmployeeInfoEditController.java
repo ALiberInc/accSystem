@@ -3,10 +3,13 @@ package jp.co.aliber.accsystem.controller.employee;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +23,9 @@ import jp.co.aliber.accsystem.entity.auto.TEmployeeBankAccount;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeFixedDeduction;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeFixedPayment;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeIncomeTax;
+import jp.co.aliber.accsystem.entity.auto.TEmployeeSocialInsurance;
 import jp.co.aliber.accsystem.form.employee.EmployeeInfoEditForm;
+import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.UtilService;
 import jp.co.aliber.accsystem.service.company.TCompanyDepartmentService;
 import jp.co.aliber.accsystem.service.employee.TEmployeeBankAccountService;
@@ -28,6 +33,7 @@ import jp.co.aliber.accsystem.service.employee.TEmployeeFixedDeductionService;
 import jp.co.aliber.accsystem.service.employee.TEmployeeFixedPaymentService;
 import jp.co.aliber.accsystem.service.employee.TEmployeeIncomeTaxService;
 import jp.co.aliber.accsystem.service.employee.TEmployeeService;
+import jp.co.aliber.accsystem.service.employee.TEmployeeSocialInsuranceService;
 
 /**
  * 従業員データ入力画面
@@ -39,297 +45,462 @@ import jp.co.aliber.accsystem.service.employee.TEmployeeService;
 @RequestMapping("/employee_info_edit")
 public class EmployeeInfoEditController {
 
-    /**
-     * 從業員情報サービス
-     */
-    @Autowired
-    private TEmployeeService tEmployeeService;
+	/**
+	 * 從業員情報サービス
+	 */
+	@Autowired
+	private TEmployeeService tEmployeeService;
 
-    /**
-     * 從業員口座情報サービス
-     */
-    @Autowired
-    private TEmployeeBankAccountService tEmployeeBankAccountService;
+	/**
+	 * 從業員口座情報サービス
+	 */
+	@Autowired
+	private TEmployeeBankAccountService tEmployeeBankAccountService;
 
-    /**
-     * 固定控除金額情報サービス
-     */
-    @Autowired
-    private TEmployeeFixedDeductionService tEmployeeFixedDeductionService;
+	/**
+	 * 固定控除金額情報サービス
+	 */
+	@Autowired
+	private TEmployeeFixedDeductionService tEmployeeFixedDeductionService;
 
-    /**
-     * 固定支給金額情報サービス
-     */
-    @Autowired
-    private TEmployeeFixedPaymentService tEmployeeFixedPaymentService;
+	/**
+	 * 固定支給金額情報サービス
+	 */
+	@Autowired
+	private TEmployeeFixedPaymentService tEmployeeFixedPaymentService;
 
-    /**
-     * 所得税情報サービス
-     */
-    @Autowired
-    private TEmployeeIncomeTaxService tEmployeeIncomeTaxService;
+	/**
+	 * 所得税情報サービス
+	 */
+	@Autowired
+	private TEmployeeIncomeTaxService tEmployeeIncomeTaxService;
 
-    /**
-     * 会社部署情報サービス
-     */
-    @Autowired
-    private TCompanyDepartmentService tCompanyDepartmentService;
+	/**
+	 * 社会保険サービス
+	 */
+	@Autowired
+	private TEmployeeSocialInsuranceService tEmployeeSocialInsuranceService;
 
-    /**
-     * utilサービス
-     */
-    @Autowired
-    private UtilService utilService;
+	/**
+	 * 会社部署情報サービス
+	 */
+	@Autowired
+	private TCompanyDepartmentService tCompanyDepartmentService;
 
-    /**
-     * データのバンディング
-     *
-     * @param binder
-     */
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-    }
+	/**
+	 * utilサービス
+	 */
+	@Autowired
+	private UtilService utilService;
 
-    /**
-     * 従業員データ入力画面
-     *
-     * @param form
-     *            従業員データ入力画面Form
-     * @param emplyeeId
-     *            従業員ID
-     * @return 従業員データ入力画面
-     */
-    @RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-    public String index(EmployeeInfoEditForm form,
-            @RequestParam(value = "emplyeeId", required = false) String emplyeeId) {
-        if (emplyeeId == null) {
-            // 登録の場合
-            form.setCreationflag(false);
-            return "employee/employee_info_edit";
-        }
-        // 更新の場合
-        form.setCreationflag(true);
-        Integer emplyeeIdEdit = Integer.valueOf(emplyeeId);
-        // 從業員番号
-        form.setEmployeeId(emplyeeIdEdit);
-        // 部署リスト
-        List<TCompanyDepartment> listTCompanyDepartmen = tCompanyDepartmentService.getListTCompanyDepartmen(1);
-        form.setDepartmentList(listTCompanyDepartmen);
 
-        // 從業員情報
-        TEmployee employee = tEmployeeService.getTEmployee(emplyeeIdEdit, 1);
-        if (employee != null) {
-            form.setEmployeeNo(employee.getEmployeeNo());
-            form.setFirstName(employee.getFirstName());
-            form.setLastName(employee.getLastName());
-            form.setDepartment(employee.getDeptId());
-            form.setLastNameKana(employee.getLastNameKana());
-            form.setFirstNameKana(employee.getFirstNameKana());
-            form.setSex(employee.getSex() ? 0 : 1);
-        }
-        // 口座情報
-        TEmployeeBankAccount tEmployeeBankAccount = tEmployeeBankAccountService.getTEmployeeBankAccount(emplyeeIdEdit,
-                1);
-        if (tEmployeeBankAccount != null) {
-            form.setAccountHolder(tEmployeeBankAccount.getAccountKana());
-            form.setBankCode(Integer.valueOf(tEmployeeBankAccount.getBankCode()).intValue());
-            form.setBankName(tEmployeeBankAccount.getBankName());
-            form.setAccountType(Integer.valueOf(tEmployeeBankAccount.getAccountCategory()).intValue());
-            form.setBranchCode(Integer.valueOf(tEmployeeBankAccount.getBranchCode()).intValue());
-            form.setBranchName(tEmployeeBankAccount.getBranchName());
-        }
-        // 固定控除金額情報
-        TEmployeeFixedDeduction tEmployeeFixedDeduction = tEmployeeFixedDeductionService
-                .getTEmployeeFixedDeduction(emplyeeIdEdit, 1);
-        if (tEmployeeFixedDeduction != null) {
-            form.setRepayment(tEmployeeFixedDeduction.getRepaymentBorrowings());
-            form.setOtherDeductions(tEmployeeFixedDeduction.getOtherDeduction());
-        }
-        // 固定支給金額情報
-        TEmployeeFixedPayment tEmployeeFixedPayment = tEmployeeFixedPaymentService
-                .getTEmployeeFixedPayment(emplyeeIdEdit, 1);
-        if (tEmployeeFixedPayment != null) {
-            form.setBasicSalary(tEmployeeFixedPayment.getBasicSalary());
-            form.setJobAllowance(tEmployeeFixedPayment.getPositionAllowance());
-            form.setRequirementsAllowance(tEmployeeFixedPayment.getQualificationAllowance());
-            form.setHealthCompensation(tEmployeeFixedPayment.getHouseAllowance());
-            form.setFamilyAllowance(tEmployeeFixedPayment.getFamilyAllowance());
-            form.setOtherAllowance(tEmployeeFixedPayment.getOtherAllowance());
-            form.setTaxExpense(tEmployeeFixedPayment.getTransportFee());
-        }
-        // 所得税情報
-        TEmployeeIncomeTax tEmployeeIncomeTax = tEmployeeIncomeTaxService.getTEmployeeIncomeTax(emplyeeIdEdit, 1);
-        if (tEmployeeIncomeTax != null) {
-            form.setHouseholdName(tEmployeeIncomeTax.getHeadHouseholdName());
-            form.setDependentsNumber(tEmployeeIncomeTax.getDependencyCount());
-            form.setIncomeTaxDistinction(tEmployeeIncomeTax.getIncomeTaxType());
-            form.setConsort(tEmployeeIncomeTax.getDeductibleSpouse() ? 1 : 0);
-            form.setDependents(tEmployeeIncomeTax.getDependencyDeductionDeclaration() ? 1 : 0);
-            form.setRelationship(tEmployeeIncomeTax.getRelationship());
-            form.setTreatyExemption(tEmployeeIncomeTax.getTreatyException());
-            form.setBlueOfficer(tEmployeeIncomeTax.getBlueOfficer());
-        }
-        return "employee/employee_info_edit";
-    }
+	/**
+	 * データのバンディング
+	 *
+	 * @param binder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(String.class,
+				new StringTrimmerEditor(true));
+	}
 
-    /**
-     * 保存処理
-     *
-     * @param form
-     *            従業員データ入力画面Form
-     * @return 従業員データ入力画面
-     */
-    @RequestMapping(value = { "/save" }, method = RequestMethod.POST)
-    public String save(EmployeeInfoEditForm form, BindingResult result) {
-        // 入力チェック
-        if (!validate(form, result)) {
-            return "t_system/tenantSystemSetting";
-        }
 
-        // システム日付を取得する
-        Date date = new Date();
+	/**
+	 * 従業員データ入力画面
+	 *
+	 * @param form
+	 *            従業員データ入力画面Form
+	 * @param emplyeeId
+	 *            従業員ID
+	 * @return 従業員データ入力画面
+	 */
+	@RequestMapping(value = {"/", "" }, method = RequestMethod.GET)
+	public String index(EmployeeInfoEditForm form,
+			@RequestParam(value = "emplyeeId", required = false) String emplyeeId,
+			@AuthenticationPrincipal LoginUser loginUser) {
+		if (emplyeeId == null) {
+			// 登録の場合
+			form.setCreationflag(false);
+			return "employee/employee_info_edit";
+		}
+		// 更新の場合
+		form.setCreationflag(true);
+		Integer emplyeeIdEdit = Integer.valueOf(emplyeeId);
+		// 從業員番号
+		form.setEmployeeId(emplyeeIdEdit);
+		// 部署リスト
+		List<TCompanyDepartment> listTCompanyDepartmen = tCompanyDepartmentService
+				.getListTCompanyDepartmen(1);
+		form.setDepartmentList(listTCompanyDepartmen);
 
-        // 從業員情報
-        TEmployee tEmployee = new TEmployee();
-        tEmployee.setEmployeeNo(form.getEmployeeNo());
-        tEmployee.setCompId(1);
-        tEmployee.setDeptId(form.getDepartment());
-        tEmployee.setLastName(form.getLastName());
-        tEmployee.setFirstName(form.getFirstName());
-        tEmployee.setLastNameKana(form.getLastNameKana());
-        tEmployee.setFirstName(form.getFirstNameKana());
-        tEmployee.setSex(form.getSex() == 0 ? true : false);
-        tEmployee.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployee.setUpdateDate(date);
-        // 口座情報
-        TEmployeeBankAccount tEmployeeBankAccount = new TEmployeeBankAccount();
-        tEmployeeBankAccount.setCompId(1);
-        tEmployeeBankAccount.setAccountNo(form.getAccountNumber() != null ? form.getAccountNumber().toString() : null);
-        tEmployeeBankAccount.setAccountKana(form.getAccountHolder());
-        tEmployeeBankAccount.setBankCode(form.getBankCode() != null ? form.getBankCode().toString() : null);
-        tEmployeeBankAccount.setBankName(form.getBankName());
-        tEmployeeBankAccount.setAccountCategory(String.valueOf(form.getAccountType()));
-        tEmployeeBankAccount.setBranchCode(form.getBranchCode() != null ? form.getBranchCode().toString() : null);
-        tEmployeeBankAccount.setBranchName(form.getBranchName());
-        tEmployeeBankAccount.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployeeBankAccount.setUpdateDate(date);
-        // 固定控除金額情報
-        TEmployeeFixedDeduction tEmployeeFixedDeduction = new TEmployeeFixedDeduction();
-        tEmployeeFixedDeduction.setCompId(1);
-        tEmployeeFixedDeduction.setRepaymentBorrowings(form.getRepayment());
-        tEmployeeFixedDeduction.setOtherDeduction(form.getOtherDeductions());
-        tEmployeeFixedDeduction.setTravelFund(form.getAccumulateGold());
-        tEmployeeFixedDeduction.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployeeFixedDeduction.setUpdateDate(date);
-        // 固定支給金額情報
-        TEmployeeFixedPayment tEmployeeFixedPayment = new TEmployeeFixedPayment();
-        tEmployeeFixedPayment.setCompId(1);
-        tEmployeeFixedPayment.setBasicSalary(form.getBasicSalary());
-        tEmployeeFixedPayment.setPositionAllowance(form.getJobAllowance());
-        tEmployeeFixedPayment.setQualificationAllowance(form.getRequirementsAllowance());
-        tEmployeeFixedPayment.setHouseAllowance(form.getHealthCompensation());
-        tEmployeeFixedPayment.setFamilyAllowance(form.getFamilyAllowance());
-        tEmployeeFixedPayment.setOtherAllowance(form.getOtherAllowance());
-        tEmployeeFixedPayment.setTransportFee(form.getTaxExpense());
-        tEmployeeFixedPayment.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployeeFixedPayment.setUpdateDate(date);
-        // 所得税情報
-        TEmployeeIncomeTax tEmployeeIncomeTax = new TEmployeeIncomeTax();
-        tEmployeeIncomeTax.setCompId(1);
-        tEmployeeIncomeTax.setHeadHouseholdName(form.getHouseholdName());
-        tEmployeeIncomeTax.setDependencyCount(form.getDependentsNumber());
-        tEmployeeIncomeTax.setIncomeTaxType(form.getIncomeTaxDistinction());
-        tEmployeeIncomeTax.setDeductibleSpouse(form.getConsort() == 0 ? false : true);
-        tEmployeeIncomeTax.setDependencyDeductionDeclaration(form.getDependents() == 0 ? false : true);
-        tEmployeeIncomeTax.setRelationship(form.getRelationship());
-        tEmployeeIncomeTax.setTreatyException(form.isTreatyExemption());
-        tEmployeeIncomeTax.setBlueOfficer(form.isBlueOfficer());
-        tEmployeeIncomeTax.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployeeIncomeTax.setUpdateDate(date);
+		// 從業員情報
+		TEmployee employee = tEmployeeService.getTEmployee(emplyeeIdEdit,
+				loginUser.getUser().getCompId());
+		if (employee != null) {
+			form.setEmployeeNo(employee.getEmployeeNo());
+			form.setFirstName(employee.getFirstName());
+			form.setLastName(employee.getLastName());
+			form.setDepartment(employee.getDeptId());
+			form.setLastNameKana(employee.getLastNameKana());
+			form.setFirstNameKana(employee.getFirstNameKana());
+			form.setSex(employee.getSex() ? 0 : 1);
+		}
+		// 口座情報
+		TEmployeeBankAccount tEmployeeBankAccount = tEmployeeBankAccountService
+				.getTEmployeeBankAccount(emplyeeIdEdit, 1);
+		if (tEmployeeBankAccount != null) {
+			form.setAccountHolder(tEmployeeBankAccount.getAccountKana());
+			form.setBankCode(Integer.valueOf(tEmployeeBankAccount.getBankCode())
+					.intValue());
+			form.setBankName(tEmployeeBankAccount.getBankName());
+			form.setAccountType(
+					Integer.valueOf(tEmployeeBankAccount.getAccountCategory())
+							.intValue());
+			form.setBranchCode(Integer
+					.valueOf(tEmployeeBankAccount.getBranchCode()).intValue());
+			form.setBranchName(tEmployeeBankAccount.getBranchName());
+		}
+		// 固定控除金額情報
+		TEmployeeFixedDeduction tEmployeeFixedDeduction = tEmployeeFixedDeductionService
+				.getTEmployeeFixedDeduction(emplyeeIdEdit,
+						loginUser.getUser().getCompId());
+		if (tEmployeeFixedDeduction != null) {
+			form.setTravelFund(tEmployeeFixedDeduction.getTravelFund());
+			form.setRepaymentBorrowings(
+					tEmployeeFixedDeduction.getRepaymentBorrowings());
+			form.setOtherDeductions(
+					tEmployeeFixedDeduction.getOtherDeduction());
 
-        if (form.isCreationflag()) {
-            // 更新の場合
-            // 從業員情報
-            tEmployee.setEmployeeId(form.getEmployeeId());
-            tEmployeeService.update(tEmployee);
-            // 口座情報
-            tEmployeeBankAccount.setEmployeeId(form.getEmployeeId());
-            tEmployeeBankAccountService.update(tEmployeeBankAccount);
-            // 固定控除金額情報
-            tEmployeeFixedDeduction.setEmployeeId(form.getEmployeeId());
-            tEmployeeFixedDeductionService.update(tEmployeeFixedDeduction);
-            // 固定支給金額情報
-            tEmployeeFixedPayment.setEmployeeId(form.getEmployeeId());
-            tEmployeeFixedPaymentService.update(tEmployeeFixedPayment);
-            // 所得税情報
-            tEmployeeIncomeTax.setEmployeeId(form.getEmployeeId());
-            tEmployeeIncomeTaxService.update(tEmployeeIncomeTax);
+		}
+		// 固定支給金額情報
+		TEmployeeFixedPayment tEmployeeFixedPayment = tEmployeeFixedPaymentService
+				.getTEmployeeFixedPayment(emplyeeIdEdit,
+						loginUser.getUser().getCompId());
+		if (tEmployeeFixedPayment != null) {
+			form.setBasicSalary(tEmployeeFixedPayment.getBasicSalary());
+			form.setJobAllowance(tEmployeeFixedPayment.getPositionAllowance());
+			form.setRequirementsAllowance(
+					tEmployeeFixedPayment.getQualificationAllowance());
+			form.setHousingAllowance(tEmployeeFixedPayment.getHouseAllowance());
+			form.setFamilyAllowance(tEmployeeFixedPayment.getFamilyAllowance());
+			form.setOtherAllowance(tEmployeeFixedPayment.getOtherAllowance());
+			form.setTaxExpense(tEmployeeFixedPayment.getTransportFee());
+		}
+		// 所得税情報
+		TEmployeeIncomeTax tEmployeeIncomeTax = tEmployeeIncomeTaxService
+				.getTEmployeeIncomeTax(emplyeeIdEdit,
+						loginUser.getUser().getCompId());
+		if (tEmployeeIncomeTax != null) {
+			form.setHouseholdName(tEmployeeIncomeTax.getHeadHouseholdName());
+			form.setDependentsNumber(tEmployeeIncomeTax.getDependencyCount());
+			form.setIncomeTaxDistinction(tEmployeeIncomeTax.getIncomeTaxType());
+			form.setConsort(tEmployeeIncomeTax.getDeductibleSpouse() ? 1 : 0);
+			form.setDependents(
+					tEmployeeIncomeTax.getDependencyDeductionDeclaration() ? 1
+							: 0);
+			form.setRelationship(tEmployeeIncomeTax.getRelationship());
+			form.setTreatyExemption(tEmployeeIncomeTax.getTreatyException());
+			form.setBlueOfficer(tEmployeeIncomeTax.getBlueOfficer());
+		}
+		// 社会保険
+		TEmployeeSocialInsurance a = tEmployeeSocialInsuranceService
+				.getTEmployeeIncomeTax(emplyeeIdEdit,
+						loginUser.getUser().getCompId());
+		if (a != null) {
+			// TODO
+			// 雇用保険加入フラグ
+			form.setInsuranceFlag(a.getEmployInsurJoinFlg());
+			// 健康保険加入フラグ
+			form.setHealthInsuranceFlag(a.getHealthInsurJoinFlg());
+			// 健康保険種別
+			form.setHealthInsuranceType(a.getHealthInsurJoinCatagory());
+			// 健康保険標準報酬レベル
+			form.setHealthCompensation(a.getHealthInsurStandardRewardLevel());
+			// 保険者番号
+			form.setInsurerNumber(a.getInsurersNo());
+			// 被保険者整理番号
+			form.setInsuredPersonnelNumber(a.getInsuredSortNo());
+			// 厚生年金加入フラグ
+			form.setWelfarePensionFlag(a.getWelfareJoinFlg() ? 0 : 1);
+			// 厚生年金標準報酬レベル
+			form.setWelfareCompensation(a.getWelfareStandardRewardLevel());
+			// 基礎年金番号
+			form.setWelfareNumber(a.getBasicWelfareNo());
+			// 厚生年金基金加入フラグ
+			form.setWelfareFund(a.getWelfareFundJoinFlg() ? 0 : 1);
+		}
 
-            return "employee/employee_info";
-        }
-        // 新規の場合
+		return "employee/employee_info_edit";
+	}
 
-        // 從業員情報
-        tEmployee.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployee.setRegistDate(date);
-        tEmployeeService.regist(tEmployee);
 
-        // シーケンスを取得
-        Integer employeeId = utilService.getSeqLastValue();
+	/**
+	 * 保存処理
+	 *
+	 * @param form
+	 *            従業員データ入力画面Form
+	 * @return 従業員データ入力画面
+	 */
+	@RequestMapping(value = {"/save" }, method = RequestMethod.POST)
+	public String save(@Validated EmployeeInfoEditForm form,
+			BindingResult result,
+			@AuthenticationPrincipal LoginUser loginUser) {
+		// 入力チェック
+		if (!validate(form, result)) {
+			return "employee/employee_info_edit";
+		}
 
-        // 口座情報
-        tEmployeeBankAccount.setEmployeeId(employeeId.intValue());
-        tEmployeeBankAccount.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployeeBankAccount.setRegistDate(date);
-        tEmployeeBankAccountService.regist(tEmployeeBankAccount);
+		// システム日付を取得する
+		Date date = new Date();
 
-        // 固定控除金額情報
-        tEmployeeFixedDeduction.setEmployeeId(employeeId.intValue());
-        tEmployeeFixedDeduction.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployeeFixedDeduction.setRegistDate(date);
-        tEmployeeFixedDeductionService.regist(tEmployeeFixedDeduction);
+		// 從業員情報
+		TEmployee tEmployee = new TEmployee();
+		if (form.getEmployeeNo() != null) {
+			tEmployee.setEmployeeNo(form.getEmployeeNo());
+		}
+		tEmployee.setCompId(loginUser.getUser().getCompId());
+		if (form.getDepartment() != null) {
+			tEmployee.setDeptId(form.getDepartment());
+		}
+		if (StringUtils.isNotEmpty(form.getLastName())) {
+			tEmployee.setLastName(form.getLastName());
+		}
+		if (StringUtils.isNotEmpty(form.getFirstName())) {
+			tEmployee.setFirstName(form.getFirstName());
+		}
+		if (StringUtils.isNotEmpty(form.getLastNameKana())) {
+			tEmployee.setLastNameKana(form.getLastNameKana());
+		}
+		if (StringUtils.isNotEmpty(form.getFirstNameKana())) {
+			tEmployee.setFirstNameKana(form.getFirstNameKana());
+		}
+		if (form.getSex() != null) {
+			tEmployee.setSex(form.getSex() == 0 ? true : false);
+		}
 
-        // 固定支給金額情報
-        tEmployeeFixedPayment.setEmployeeId(employeeId.intValue());
-        tEmployeeFixedPayment.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployeeFixedPayment.setRegistDate(date);
-        tEmployeeFixedPaymentService.regist(tEmployeeFixedPayment);
+		tEmployee.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
 
-        // 所得税情報
-        tEmployeeIncomeTax.setEmployeeId(employeeId.intValue());
-        tEmployeeIncomeTax.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
-        tEmployeeIncomeTax.setRegistDate(date);
-        tEmployeeIncomeTaxService.regist(tEmployeeIncomeTax);
+		tEmployee.setUpdateDate(date);
 
-        return "employee/employee_info";
-    }
+		// 口座情報
+		TEmployeeBankAccount tEmployeeBankAccount = new TEmployeeBankAccount();
+		tEmployeeBankAccount.setCompId(loginUser.getUser().getCompId());
+		// TODO
+		tEmployeeBankAccount.setAccountNo(form.getAccountNumber() != null
+				? form.getAccountNumber().toString() : null);
+		tEmployeeBankAccount
+				.setAccountKana(StringUtils.isNotEmpty(form.getAccountHolder())
+						? form.getAccountHolder() : null);
+		tEmployeeBankAccount.setBankCode(form.getBankCode() != null
+				? form.getBankCode().toString() : null);
+		tEmployeeBankAccount
+				.setBankName(StringUtils.isNotEmpty(form.getBankName())
+						? form.getBankName() : null);
+		tEmployeeBankAccount.setAccountCategory(form.getAccountType() != null
+				? String.valueOf(form.getAccountType()) : null);
+		tEmployeeBankAccount.setBranchCode(form.getBranchCode() != null
+				? form.getBranchCode().toString() : null);
+		tEmployeeBankAccount
+				.setBranchName(StringUtils.isNotEmpty(form.getBranchName())
+						? form.getBranchName() : null);
+		tEmployeeBankAccount.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeBankAccount.setUpdateDate(date);
+		// 固定控除金額情報
+		TEmployeeFixedDeduction tEmployeeFixedDeduction = new TEmployeeFixedDeduction();
+		tEmployeeFixedDeduction.setCompId(loginUser.getUser().getCompId());
+		// 旅行積立金
+		tEmployeeFixedDeduction.setTravelFund(
+				form.getTravelFund() != null ? form.getTravelFund() : null);
+		// 借入等返済
+		tEmployeeFixedDeduction
+				.setRepaymentBorrowings(form.getRepaymentBorrowings() != null
+						? form.getRepaymentBorrowings() : null);
+		// その他控除
+		tEmployeeFixedDeduction
+				.setOtherDeduction(form.getOtherDeductions() != null
+						? form.getOtherDeductions() : null);
+		tEmployeeFixedDeduction.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeFixedDeduction.setUpdateDate(date);
+		// 固定支給金額情報
+		TEmployeeFixedPayment tEmployeeFixedPayment = new TEmployeeFixedPayment();
+		tEmployeeFixedPayment.setCompId(loginUser.getUser().getCompId());
+		// 基本給
+		tEmployeeFixedPayment.setBasicSalary(
+				form.getBasicSalary() != null ? form.getBasicSalary() : null);
+		// 役職手当
+		tEmployeeFixedPayment.setPositionAllowance(
+				form.getJobAllowance() != null ? form.getJobAllowance() : null);
+		// 資格手当
+		tEmployeeFixedPayment.setQualificationAllowance(
+				form.getRequirementsAllowance() != null
+						? form.getRequirementsAllowance() : null);
+		// 住宅手当
+		tEmployeeFixedPayment
+				.setHouseAllowance(form.getHousingAllowance() != null
+						? form.getHousingAllowance() : null);
+		// 家族手当
+		tEmployeeFixedPayment
+				.setFamilyAllowance(form.getFamilyAllowance() != null
+						? form.getFamilyAllowance() : null);
+		// その他手当
+		tEmployeeFixedPayment.setOtherAllowance(form.getOtherAllowance() != null
+				? form.getOtherAllowance() : null);
+		// 交通費(実費)
+		tEmployeeFixedPayment.setTransportFee(
+				form.getTaxExpense() != null ? form.getTaxExpense() : null);
+		tEmployeeFixedPayment.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeFixedPayment.setUpdateDate(date);
+		// 所得税情報
+		TEmployeeIncomeTax tEmployeeIncomeTax = new TEmployeeIncomeTax();
+		
+		
+		tEmployeeIncomeTax.setCompId(loginUser.getUser().getCompId());
+		// 所得税区分
+		tEmployeeIncomeTax
+				.setIncomeTaxType(form.getIncomeTaxDistinction() != null
+						? form.getIncomeTaxDistinction() : null);
+		// 控除対象配偶者
+		tEmployeeIncomeTax
+				.setDeductibleSpouse(form.getConsort() == 0 ? false : true);
+		// 扶養控除等の申告
+		tEmployeeIncomeTax.setDependencyDeductionDeclaration(
+				form.getDependents() == 0 ? false : true);
+		// 扶養人数
+		tEmployeeIncomeTax.setDependencyCount(form.getDependentsNumber() != null
+				? form.getDependentsNumber() : null);
+		// 世帯主名
+		tEmployeeIncomeTax.setHeadHouseholdName(
+				StringUtils.isNotEmpty(form.getHouseholdName())
+						? form.getHouseholdName() : null);
+		// 続柄
+		tEmployeeIncomeTax
+				.setRelationship(StringUtils.isNotEmpty(form.getRelationship())
+						? String.valueOf(form.getRelationship()) : null);
+		// 条約免除
+		tEmployeeIncomeTax.setTreatyException(form.getTreatyExemption() != null
+				? form.getTreatyExemption() : null);
+		// 青色専従者
+		tEmployeeIncomeTax.setBlueOfficer(
+				form.getBlueOfficer() != null ? form.getBlueOfficer() : null);
 
-    /**
-     * 入力チェック
-     *
-     * @param locale<br>
-     *            ロケール
-     * @param model<br>
-     *            モデル
-     * @param LoginuserinfoeditForm<br>
-     *            ログイン者情報編集Form
-     * @param BindingResult<br>
-     *            Resultバンディング
-     * @return validateResult<br>
-     *         入力チェック結果
-     */
-    private boolean validate(EmployeeInfoEditForm form, BindingResult result) {
+		tEmployeeIncomeTax.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeIncomeTax.setUpdateDate(date);
+		
+		//社会保険
+		TEmployeeSocialInsurance tEmployeeSocialInsurance = new TEmployeeSocialInsurance();
+		tEmployeeSocialInsurance.setCompId(loginUser.getUser().getCompId());
+		//雇用保険
+		tEmployeeSocialInsurance.setEmployInsurJoinFlg(form.getInsuranceFlag());
+		//健康保険
+		tEmployeeSocialInsurance.setHealthInsurJoinFlg(form.getHealthInsuranceFlag());
+		//健康保険種別
+		tEmployeeSocialInsurance.setHealthInsurJoinCatagory(form.getHealthInsuranceType() != null?form.getHealthInsuranceType():null);
+		//健康保険の標準報酬
+		tEmployeeSocialInsurance.setHealthInsurStandardRewardLevel(form.getHealthCompensation()!=null?form.getHealthCompensation():null);
+		//保険者番号
+		tEmployeeSocialInsurance.setInsurersNo(form.getInsurerNumber()!=null?form.getInsurerNumber():null);
+		//被保険者整理番号
+		tEmployeeSocialInsurance.setInsuredSortNo(form.getInsuredPersonnelNumber()!=null?form.getInsuredPersonnelNumber():null	);
+		//厚生年金
+		tEmployeeSocialInsurance.setWelfareJoinFlg(form.getWelfarePensionFlag()==0?true:false);
+		//厚生年金の標準報酬
+		tEmployeeSocialInsurance.setWelfareStandardRewardLevel(form.getWelfareCompensation()!=null?form.getWelfareCompensation():null);
+		//基礎年金番号
+		tEmployeeSocialInsurance.setBasicWelfareNo(form.getWelfareNumber()!=null?form.getWelfareNumber():null);
+		//厚生年金基金
+		tEmployeeSocialInsurance.setWelfareFundJoinFlg(form.getWelfareFund()==0?true:false);
+		tEmployeeSocialInsurance.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
 
-        boolean validateResult = true;
+		if (form.isCreationflag()) {
+			// 更新の場合
+			// 從業員情報
+			tEmployee.setEmployeeId(form.getEmployeeId());
+			tEmployeeService.update(tEmployee);
+			// 口座情報
+			tEmployeeBankAccount.setEmployeeId(form.getEmployeeId());
+			tEmployeeBankAccountService.update(tEmployeeBankAccount);
+			// 固定控除金額情報
+			tEmployeeFixedDeduction.setEmployeeId(form.getEmployeeId());
+			tEmployeeFixedDeductionService.update(tEmployeeFixedDeduction);
+			// 固定支給金額情報
+			tEmployeeFixedPayment.setEmployeeId(form.getEmployeeId());
+			tEmployeeFixedPaymentService.update(tEmployeeFixedPayment);
+			// 所得税情報
+			tEmployeeIncomeTax.setEmployeeId(form.getEmployeeId());
+			tEmployeeIncomeTaxService.update(tEmployeeIncomeTax);
 
-        // 入力チェック
-        if (result.hasErrors()) {
-            validateResult = false;
-        }
+			return "employee/employee_info";
+		}
 
-        // 入力チェック結果
-        return validateResult;
-    }
+		// 新規の場合
+		// 從業員情報
+		tEmployee.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployee.setRegistDate(date);
+		tEmployeeService.regist(tEmployee);
+
+		// シーケンスを取得
+		Integer employeeId = utilService.getSeqLastValue();
+
+		// 口座情報
+		tEmployeeBankAccount.setEmployeeId(employeeId.intValue());
+		tEmployeeBankAccount.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeBankAccount.setRegistDate(date);
+		tEmployeeBankAccountService.regist(tEmployeeBankAccount);
+
+		// 固定控除金額情報
+		tEmployeeFixedDeduction.setEmployeeId(employeeId.intValue());
+		tEmployeeFixedDeduction.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeFixedDeduction.setRegistDate(date);
+		tEmployeeFixedDeductionService.regist(tEmployeeFixedDeduction);
+
+		// 固定支給金額情報
+		tEmployeeFixedPayment.setEmployeeId(employeeId.intValue());
+		tEmployeeFixedPayment.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeFixedPayment.setRegistDate(date);
+		tEmployeeFixedPaymentService.regist(tEmployeeFixedPayment);
+
+		// 所得税情報
+		tEmployeeIncomeTax.setEmployeeId(employeeId.intValue());
+		tEmployeeIncomeTax.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeIncomeTax.setRegistDate(date);
+		tEmployeeIncomeTaxService.regist(tEmployeeIncomeTax);
+		
+		//社会保険
+		tEmployeeSocialInsurance.setEmployeeId(employeeId.intValue());
+		tEmployeeSocialInsurance.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeSocialInsurance.setRegistDate(date);
+		tEmployeeSocialInsuranceService.regist(tEmployeeSocialInsurance);
+
+		return "redirect:/employee_info";
+	}
+
+
+	/**
+	 * 入力チェック
+	 *
+	 * @param locale<br>
+	 *            ロケール
+	 * @param model<br>
+	 *            モデル
+	 * @param LoginuserinfoeditForm<br>
+	 *            ログイン者情報編集Form
+	 * @param BindingResult<br>
+	 *            Resultバンディング
+	 * @return validateResult<br>
+	 *         入力チェック結果
+	 */
+	private boolean validate(EmployeeInfoEditForm form, BindingResult result) {
+
+		boolean validateResult = true;
+
+		// 入力チェック
+		if (result.hasErrors()) {
+			validateResult = false;
+		}
+
+		// 入力チェック結果
+		return validateResult;
+	}
 
 }

@@ -546,13 +546,13 @@
 						<span>積立金</span>
 					</td>
 					<td>
-						<div th:if="${#fields.hasErrors('accumulateGold')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('travelFund')}" class="error-after" style="display: block;">
 							<p>
 								<i></i>
-								<th:block th:errors="*{accumulateGold}"></th:block>
+								<th:block th:errors="*{travelFund}"></th:block>
 							</p>
 						</div>
-						<input type="text" th:field="*{accumulateGold}" maxlength="30" />
+						<input type="text" th:field="*{travelFund}" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
@@ -572,13 +572,13 @@
 						<span>借入等返済</span>
 					</td>
 					<td>
-						<div th:if="${#fields.hasErrors('repayment')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('repaymentBorrowings')}" class="error-after" style="display: block;">
 							<p>
 								<i></i>
-								<th:block th:errors="*{repayment}"></th:block>
+								<th:block th:errors="*{repaymentBorrowings}"></th:block>
 							</p>
 						</div>
-						<input type="text" th:field="*{repayment}" maxlength="30" />
+						<input type="text" th:field="*{repaymentBorrowings}" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
