@@ -111,7 +111,7 @@ public class RegisterController {
 
 		registerService.regist(loginUser);
 
-		return "redirect:/login";
+		return "redirect:/finish?forwardURL=login";
 	}
 
 	/**
