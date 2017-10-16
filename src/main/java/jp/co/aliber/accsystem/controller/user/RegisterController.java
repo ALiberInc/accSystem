@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
@@ -35,154 +35,141 @@ import jp.co.aliber.accsystem.service.user.RegisterService;
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
-    /**
-     * アカウントの作成サービス
-     */
-    @Autowired
-    private RegisterService registerService;
 
-    @Autowired
-    private TCompanyMapper tCompanyMapper;
+	/**
+	 * アカウントの作成サービス
+	 */
+	@Autowired
+	private RegisterService registerService;
 
-    /**
-     * データのバンディング
-     *
-     * @param binder
-     */
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-    }
+	@Autowired
+	private TCompanyMapper tCompanyMapper;
 
-    /**
-     * 初期表示
-     *
-     * @param locale
-     *            ロケ－ル
-     * @param model
-     *            モデル
-     * @param form
-     *            アカウントの作成用form
-     * @return
-     */
-    @RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-    public String index(Model model, RegisterForm form) {
+	/**
+	 * データのバンディング
+	 *
+	 * @param binder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+	}
 
-        return "register";
-    }
+	/**
+	 * 初期表示
+	 *
+	 * @param form
+	 *            アカウントの作成用form
+	 * @return
+	 */
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
+	public String index(RegisterForm form) {
 
-    /**
-     * 登録処理
-     *
-     * @param locale
-     *            ロケ－ル
-     * @param model
-     *            モデル
-     * @param form
-     *            アカウントの作成用form
-     * @param result
-     *            Resultバンディング
-     * @return
-     */
-    @RequestMapping(value = { "/save" }, method = RequestMethod.POST)
-    public String save(Model model, @Validated RegisterForm form, BindingResult result) {
-        // 入力チェック
-        if (!validate(model, form, result)) {
-            return "register";
-        }
-        TLoginUser loginUser = new TLoginUser();
-        // 会社番号
-        loginUser.setCompId(Integer.valueOf(form.getCompId()));
-        // 姓
-        loginUser.setLastName(form.getLastName());
-        // 名
-        loginUser.setFirstName(form.getFirstName());
-        // 姓カナ
-        if (StringUtils.isNotEmpty(form.getLastNameKana())) {
-            loginUser.setLastNameKana(form.getLastNameKana());
-        }
-        // 名カナ
-        if (StringUtils.isNotEmpty(form.getFirstNameKana())) {
-            loginUser.setFirstNameKana(form.getFirstNameKana());
-        }
-        // アルファベット名
-        if (StringUtils.isNotEmpty(form.getAlphabetName())) {
-            loginUser.setAlphabetName(form.getAlphabetName());
-        }
-        // メールアドレス
-        loginUser.setEmail(form.getEmail());
-        // ユーザ名
-        loginUser.setLoginId(form.getLoginId());
-        // 暗証番号
-        loginUser.setPassword(form.getPassword());
+		return "register";
+	}
 
-        registerService.regist(loginUser);
+	/**
+	 * 登録処理
+	 *
+	 * @param form
+	 *            アカウントの作成用form
+	 * @param result
+	 *            Resultバンディング
+	 * @return
+	 */
+	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
+	public String save(@Validated RegisterForm form, BindingResult result) {
+		// 入力チェック
+		if (!validate(result)) {
+			return "register";
+		}
+		TLoginUser loginUser = new TLoginUser();
+		// 会社番号
+		loginUser.setCompId(Integer.valueOf(form.getCompId()));
+		// 姓
+		loginUser.setLastName(form.getLastName());
+		// 名
+		loginUser.setFirstName(form.getFirstName());
+		// 姓カナ
+		if (StringUtils.isNotEmpty(form.getLastNameKana())) {
+			loginUser.setLastNameKana(form.getLastNameKana());
+		}
+		// 名カナ
+		if (StringUtils.isNotEmpty(form.getFirstNameKana())) {
+			loginUser.setFirstNameKana(form.getFirstNameKana());
+		}
+		// アルファベット名
+		if (StringUtils.isNotEmpty(form.getAlphabetName())) {
+			loginUser.setAlphabetName(form.getAlphabetName());
+		}
+		// メールアドレス
+		loginUser.setEmail(form.getEmail());
+		// ユーザ名
+		loginUser.setLoginId(form.getLoginId());
+		// 暗証番号
+		loginUser.setPassword(form.getPassword());
 
-        return "redirect:/login";
-    }
+		registerService.regist(loginUser);
 
-    /**
-     * 検索処理
-     *
-     * @param compName
-     *            会社名前
-     * @return
-     */
-    @RequestMapping(value = {
-            "/search" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-    @ResponseBody
-    public String search(@RequestParam(value = "compName", required = false) String compName) {
+		return "redirect:/login";
+	}
 
-        TCompanyExample tCompanyExample = new TCompanyExample();
-        tCompanyExample.createCriteria().andCompNameLike("%" + compName + "%");
+	/**
+	 * 検索処理
+	 *
+	 * @param compName
+	 *            会社名前
+	 * @return JSONString
+	 */
+	@RequestMapping(value = { "/search" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String search(@RequestParam(value = "compName", required = true) String compName) {
 
-        List<TCompany> tCompanyMapperList = tCompanyMapper.selectByExample(tCompanyExample);
+		TCompanyExample tCompanyExample = new TCompanyExample();
+		tCompanyExample.createCriteria().andCompNameLike("%" + compName + "%");
 
-        Map<String, Map<String, String>> tCompanysMap = new HashMap<String, Map<String, String>>();
+		List<TCompany> tCompanyMapperList = tCompanyMapper.selectByExample(tCompanyExample);
 
-        if (tCompanyMapperList != null && !tCompanyMapperList.isEmpty()) {
+		Map<String, Map<String, String>> tCompanysMap = new HashMap<>();
 
-            for (TCompany tCompany : tCompanyMapperList) {
+		if (CollectionUtils.isNotEmpty(tCompanyMapperList)) {
 
-                Map<String, String> tCompanyMap = new HashMap<String, String>();
+			tCompanyMapperList.forEach(tCompany -> {
+				Map<String, String> tCompanyMap = new HashMap<>();
 
-                tCompanyMap.put("compId", tCompany.getCompId().toString());
+				tCompanyMap.put("compId", tCompany.getCompId().toString());
 
-                tCompanyMap.put("compName", tCompany.getCompName());
+				tCompanyMap.put("compName", tCompany.getCompName());
 
-                tCompanyMap.put("compTel", tCompany.getCompTel1());
+				tCompanyMap.put("compTel",
+						tCompany.getCompTel1() + "-" + tCompany.getCompTel2() + "-" + tCompany.getCompTel3());
 
-                tCompanyMap.put("compAdd", tCompany.getCompAdd1());
+				tCompanyMap.put("compAdd", tCompany.getCompAdd1());
 
-                tCompanysMap.put(tCompany.getCompName(), tCompanyMap);
-            }
-        }
+				tCompanysMap.put(tCompany.getCompName(), tCompanyMap);
+			});
 
-        return JSONValue.toJSONString(tCompanysMap);
+		}
+		return JSONValue.toJSONString(tCompanysMap);
+	}
 
-    }
+	/**
+	 * 入力チェック
+	 *
+	 * @param BindingResult<br>
+	 *            Resultバンディング
+	 * @return validateResult<br>
+	 *         入力チェック結果
+	 */
+	private boolean validate(BindingResult result) {
 
-    /**
-     * 入力チェック
-     *
-     * @param model<br>
-     *            モデル
-     * @param LoginuserinfoeditForm<br>
-     *            ログイン者情報編集Form
-     * @param BindingResult<br>
-     *            Resultバンディング
-     * @return validateResult<br>
-     *         入力チェック結果
-     */
-    private boolean validate(Model model, RegisterForm form, BindingResult result) {
+		boolean validateResult = true;
 
-        boolean validateResult = true;
-
-        // 入力チェック
-        if (result.hasErrors()) {
-            validateResult = false;
-        }
-        // 入力チェック結果
-        return validateResult;
-    }
+		// 入力チェック
+		if (result.hasErrors()) {
+			validateResult = false;
+		}
+		// 入力チェック結果
+		return validateResult;
+	}
 }

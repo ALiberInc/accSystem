@@ -33,9 +33,8 @@ import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
 public class CompanyBasicInfoController {
 	@Autowired
 	CompanyBasicInfoService companyBasicInfoService;
-    @Autowired
-    MessageSource messages;
-
+	@Autowired
+	MessageSource messages;
 
 	/**
 	 * データのバンディング
@@ -44,10 +43,8 @@ public class CompanyBasicInfoController {
 	 */
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(String.class,
-				new StringTrimmerEditor(true));
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 	}
-
 
 	/**
 	 * 初期表示
@@ -60,7 +57,7 @@ public class CompanyBasicInfoController {
 	 *            会社基本情報入力画面用form
 	 * @return
 	 */
-	@RequestMapping(value = {"/", "" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(Model model, CompanyBasicInfoForm form) {
 		// 社会保険について項目がデフォルト値を設定する
 		// 被保険者負担率
@@ -84,7 +81,6 @@ public class CompanyBasicInfoController {
 		return "company/companyBasicInfo";
 	}
 
-
 	/**
 	 * 登録ボタンを押下する
 	 * 
@@ -98,12 +94,11 @@ public class CompanyBasicInfoController {
 	 *            bindingresult
 	 * @return
 	 */
-	@RequestMapping(value = {"/save" }, method = RequestMethod.POST)
-	public String save(@AuthenticationPrincipal LoginUser loginUser,
-			@Validated CompanyBasicInfoForm form, BindingResult result,
-			Model model) {
+	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
+	public String save(@AuthenticationPrincipal LoginUser loginUser, @Validated CompanyBasicInfoForm form,
+			BindingResult result, Model model) {
 		// 入力チェック
-		if (!validate(model, form, result)) {
+		if (!validate(form, result)) {
 			return "company/companyBasicInfo";
 		}
 		// エンティティに会社情報を設定する
@@ -153,20 +148,16 @@ public class CompanyBasicInfoController {
 		// 事業種目
 		company.setCorpKind(form.getCorpKind());
 		// 締め日が末日
-		company.setDeadlineDay(form.getDeadlineDay() == ImmutableValues.LAST_DAY
-				? true : false);
+		company.setDeadlineDay(form.getDeadlineDay() == ImmutableValues.LAST_DAY ? true : false);
 		// 締め日の末日以外日数
 		if (form.getDeadlineAdjustDays() != null) {
-			company.setDeadlineAdjustDays(
-					Integer.valueOf(form.getDeadlineAdjustDays()));
+			company.setDeadlineAdjustDays(Integer.valueOf(form.getDeadlineAdjustDays()));
 		}
 		// 支給日が末日
-		company.setPaymentDay(form.getPaymentDay() == ImmutableValues.LAST_DAY
-				? true : false);
+		company.setPaymentDay(form.getPaymentDay() == ImmutableValues.LAST_DAY ? true : false);
 		// 支給日の末日以外日数
 		if (form.getPaymentAdjustDays() != null) {
-			company.setPaymentAdjustDays(
-					Integer.valueOf(form.getPaymentAdjustDays()));
+			company.setPaymentAdjustDays(Integer.valueOf(form.getPaymentAdjustDays()));
 		}
 		// 経理責任者
 		company.setAccountingManager(form.getAccountingManager());
@@ -189,50 +180,40 @@ public class CompanyBasicInfoController {
 		// 会社コード
 		company.setCompCode(Long.valueOf(form.getCompCode()));
 		// 雇用保険被保険者負担率
-		company.setEmployInsurRate(new BigDecimal(form.getEmployInsurRate())
-				.setScale(0, Integer.valueOf(form.getEmployRounding())));
+		company.setEmployInsurRate(
+				new BigDecimal(form.getEmployInsurRate()).setScale(0, Integer.valueOf(form.getEmployRounding())));
 		// 雇用保険被保険者負担率
 		company.setEmployRounding(Integer.valueOf(form.getEmployRounding()));
 		// 健康保険料率(介護保険該当なし)
 		company.setHealthInsurRateNoNursing(
-				new BigDecimal(form.getHealthInsurRate()).setScale(2,
-						Integer.valueOf(form.getHealthRounding())));
+				new BigDecimal(form.getHealthInsurRate()).setScale(2, Integer.valueOf(form.getHealthRounding())));
 		// 健康保険料率（介護保険該当者）
 		company.setHealthInsurRateWithNursing(
-				new BigDecimal(form.getHealthInsurRate2()).setScale(2,
-						Integer.valueOf(form.getHealthRounding())));
+				new BigDecimal(form.getHealthInsurRate2()).setScale(2, Integer.valueOf(form.getHealthRounding())));
 		// 健康保険端数処理
 		company.setHealthRounding(Integer.valueOf(form.getHealthRounding()));
 		// 厚生年金保険料率
 		company.setWelfareInsuranceRate(
-				new BigDecimal(form.getWelfareInsurance()).setScale(3,
-						Integer.valueOf(form.getWelfareRounding())));
+				new BigDecimal(form.getWelfareInsurance()).setScale(3, Integer.valueOf(form.getWelfareRounding())));
 		// 厚生年金端数処理
 		company.setWelfareRounding(Integer.valueOf(form.getWelfareRounding()));
 		// 基金免除保険料率
 		company.setWelfareExceptionRate(
-				new BigDecimal(form.getWelfareExemptionRate()).setScale(2,
-						BigDecimal.ROUND_HALF_UP));
+				new BigDecimal(form.getWelfareExemptionRate()).setScale(2, BigDecimal.ROUND_HALF_UP));
 		// 基金免除保険料率
 		company.setWelfareAdditionRate(
-				new BigDecimal(form.getWelfareAdditionRate()).setScale(2,
-						BigDecimal.ROUND_HALF_UP));
+				new BigDecimal(form.getWelfareAdditionRate()).setScale(2, BigDecimal.ROUND_HALF_UP));
 		// 基金独自給付加算定額
-		company.setWelfareAdditionRation(
-				Integer.valueOf(form.getWelfareAdditionRation()));
+		company.setWelfareAdditionRation(Integer.valueOf(form.getWelfareAdditionRation()));
 		// Integer userId = Integer.valueOf(loginUser.getUser().getLoginId());
 		// 登録処理を呼び出す
-		companyBasicInfoService.regist(company,
-				ImmutableValues.DEFAULT_USER_ID);
-		return "company/companyBasicInfo";
+		companyBasicInfoService.regist(company, ImmutableValues.DEFAULT_USER_ID);
+		return "redirect:/register";
 	}
-
 
 	/**
 	 * 入力チェック
 	 *
-	 * @param model<br>
-	 *            モデル
 	 * @param LoginuserinfoeditForm<br>
 	 *            ログイン者情報編集Form
 	 * @param BindingResult<br>
@@ -240,8 +221,7 @@ public class CompanyBasicInfoController {
 	 * @return validateResult<br>
 	 *         入力チェック結果
 	 */
-	private boolean validate(Model model, CompanyBasicInfoForm form,
-			BindingResult result) {
+	private boolean validate(CompanyBasicInfoForm form, BindingResult result) {
 
 		boolean validateResult = true;
 
@@ -249,39 +229,35 @@ public class CompanyBasicInfoController {
 		if (result.hasErrors()) {
 			validateResult = false;
 		}
-		//会社名重複チェック
-		if(StringUtils.isNotEmpty(form.getCompName())){
-			if(!companyBasicInfoService.searchCompName(form.getCompName())){
+		// 会社名重複チェック
+		if (StringUtils.isNotEmpty(form.getCompName())) {
+			if (!companyBasicInfoService.searchCompName(form.getCompName())) {
 				result.rejectValue("compName", "error.duplicated",
-	                    new Object[] {messages.getMessage("companyBasicInfoForm.compName", null, null) }, "");
+						new Object[] { messages.getMessage("companyBasicInfoForm.compName", null, null) }, "");
 				validateResult = false;
-			};
+			}
 		}
 
 		// 日数チェック
-		if (StringUtils.isNotEmpty(form.getDeadlineDay())
-				&& form.getDeadlineDay().equals("0")) {
+		if (StringUtils.isNotEmpty(form.getDeadlineDay()) && form.getDeadlineDay().equals("0")) {
 			if (StringUtils.isNotEmpty(form.getDeadlineAdjustDays())) {
 				result.rejectValue("deadlineAdjustDays", "error.adjustDays");
 				validateResult = false;
 			}
 		}
-		if (StringUtils.isNotEmpty(form.getDeadlineDay())
-				&& form.getDeadlineDay().equals("1")) {
+		if (StringUtils.isNotEmpty(form.getDeadlineDay()) && form.getDeadlineDay().equals("1")) {
 			if (StringUtils.isEmpty(form.getDeadlineAdjustDays())) {
 				result.rejectValue("deadlineAdjustDays", "error.noAdjustDays");
 				validateResult = false;
 			}
 		}
-		if (StringUtils.isNotEmpty(form.getPaymentDay())
-				&& form.getPaymentDay().equals("0")) {
+		if (StringUtils.isNotEmpty(form.getPaymentDay()) && form.getPaymentDay().equals("0")) {
 			if (StringUtils.isNotEmpty(form.getPaymentAdjustDays())) {
 				result.rejectValue("paymentAdjustDays", "error.adjustDays");
 				validateResult = false;
 			}
 		}
-		if (StringUtils.isNotEmpty(form.getPaymentDay())
-				&& form.getPaymentDay().equals("1")) {
+		if (StringUtils.isNotEmpty(form.getPaymentDay()) && form.getPaymentDay().equals("1")) {
 			if (StringUtils.isEmpty(form.getPaymentAdjustDays())) {
 				result.rejectValue("paymentAdjustDays", "error.noAdjustDays");
 				validateResult = false;
