@@ -1,8 +1,10 @@
 $(document).ready(function() {
 	compNameSearch();
+	// 選択された会社IDを保持
+	var compIdChecked = $("#compId").val();
+	$("#compInfoRadio" + compIdChecked).prop("checked", true)
 });
 function compNameSearch() {
-	$("#compId").val("");
 	$("#searchTable").remove();
 	var compName = $("#compName").val();
 	var url = getContextPath();
@@ -19,10 +21,12 @@ function compNameSearch() {
 		return false;
 	}
 	result = JSON.parse(result);
-	var htmlStr = "<table id='searchTable' class='table table-striped table-bordered'><tr><td class='text-center'></td><td class='text-center'><span>会社名前</span></td><td class='text-center'><span>会社電話</span></td><td class='text-center'><span>会社住所</span></td></tr>";
+	var htmlStr = "<table id='searchTable' class='table table-striped table-bordered'><tr><th class='text-center'></th><th class='text-center'><span>会社名前</span></th><th class='text-center'><span>会社電話</span></th><th class='text-center'><span>会社住所</span></th></tr>";
 	for ( var o in result) {
 		if (result[o] != null) {
-			htmlStr += "<tr><td class='text-center'><input onclick='changeCompId(this.value)' name='searchCompId' type='radio' value='"
+			htmlStr += "<tr><td class='text-center'><input onclick='changeCompId(this.value)' name='searchCompId' type='radio' id='compInfoRadio"
+					+ result[o].compId
+					+ "' value='"
 					+ result[o].compId
 					+ "' /><td class='text-center'><span>"
 					+ result[o].compName
@@ -33,10 +37,10 @@ function compNameSearch() {
 		}
 	}
 	htmlStr += "</table>"
-	if (htmlStr != null) {
-		$("#compNameTd").append(htmlStr);
-	}
+
+	$("#compNameTd").append(htmlStr);
 }
+
 function changeCompId(compId) {
 	$("#compId").val(compId);
 }
