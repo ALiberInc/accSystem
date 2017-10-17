@@ -5,6 +5,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * ユーザ情報
@@ -19,16 +20,16 @@ public class RegisterForm {
 	private Integer compId;
 
 	// 会社名
-	@NotNull
+	@NotBlank
 	private String compName;
 
 	// 姓
-	@NotNull
+	@NotBlank
 	@Size(max = 50)
 	private String lastName;
 
 	// 名
-	@NotNull
+	@NotBlank
 	@Size(max = 50)
 	private String firstName;
 
@@ -48,18 +49,19 @@ public class RegisterForm {
 	private String alphabetName;
 
 	// メールアドレス
-	@NotNull
+	@NotBlank
 	@Size(max = 100)
 	@Email
 	private String email;
 
 	// ログインID
-	@NotNull
+	@NotBlank
 	@Size(max = 50)
+	@Pattern(regexp = "^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$")
 	private String loginId;
 
 	// 暗証番号
-	@NotNull
+	@NotBlank
 	@Size(min = 5, max = 50)
 	@Pattern(regexp = "[a-zA-Z0-9\\]\\[!\"#$%&|\'()*+,-./:;<=>?@^_`{|}~\\\\]*")
 	private String password;
