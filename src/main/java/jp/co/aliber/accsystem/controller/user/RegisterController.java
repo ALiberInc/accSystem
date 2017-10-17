@@ -172,9 +172,18 @@ public class RegisterController {
 
 		// ログインIDの重複チェック
 		if (StringUtils.isNotEmpty(form.getLoginId())) {
-			if (registerService.CheckIfLoginIdExist(form.getLoginId())) {
+			if (registerService.checkIfLoginIdExist(form.getLoginId())) {
 				result.rejectValue("loginId", "error.duplicated",
 						new Object[] { messages.getMessage("registerForm.loginId", null, null) }, "");
+				validateResult = false;
+			}
+		}
+
+		// メールの重複チェック
+		if (StringUtils.isNotEmpty(form.getEmail())) {
+			if (registerService.checkIfEmailExist(form.getEmail())) {
+				result.rejectValue("email", "error.duplicated",
+						new Object[] { messages.getMessage("registerForm.email", null, null) }, "");
 				validateResult = false;
 			}
 		}

@@ -61,11 +61,27 @@ public class RegisterService {
 	 * @return true 存在 false 存在していない
 	 * 
 	 */
-	public boolean CheckIfLoginIdExist(String loginId) {
+	public boolean checkIfLoginIdExist(String loginId) {
 
 		TLoginUserExample loginUserExample = new TLoginUserExample();
 		loginUserExample.createCriteria().andLoginIdEqualTo(loginId);
 		long countLoginId = tLoginUserMapper.countByExample(loginUserExample);
 		return countLoginId != 0 ? true : false;
+	}
+
+	/**
+	 * メールの重複チェック
+	 *
+	 * @param email
+	 *            メールアドレス
+	 * @return true 存在 false 存在していない
+	 * 
+	 */
+	public boolean checkIfEmailExist(String email) {
+
+		TLoginUserExample loginUserExample = new TLoginUserExample();
+		loginUserExample.createCriteria().andEmailEqualTo(email);
+		long countEmail = tLoginUserMapper.countByExample(loginUserExample);
+		return countEmail != 0 ? true : false;
 	}
 }
