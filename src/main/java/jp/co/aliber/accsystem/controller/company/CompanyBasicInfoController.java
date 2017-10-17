@@ -231,7 +231,7 @@ public class CompanyBasicInfoController {
 		}
 		// 会社名重複チェック
 		if (StringUtils.isNotEmpty(form.getCompName())) {
-			if (!companyBasicInfoService.searchCompName(form.getCompName())) {
+			if (companyBasicInfoService.checkIfCompNameExist(form.getCompName())) {
 				result.rejectValue("compName", "error.duplicated",
 						new Object[] { messages.getMessage("companyBasicInfoForm.compName", null, null) }, "");
 				validateResult = false;

@@ -1,6 +1,7 @@
 package jp.co.aliber.accsystem.service.company;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,11 @@ import jp.co.aliber.accsystem.mapper.auto.TInsuranceMapper;
 public class CompanyBasicInfoService {
 
 	@Autowired
-	TCompanyMapper tcompanyMapper;
+	TCompanyMapper tCompanyMapper;
 	@Autowired
 	TInsuranceMapper tInsuranceMapper;
 	@Autowired
 	SelectSeqLastValueMapper selectSeqLastValueMapper;
-
 
 	/**
 	 * 登録処理
@@ -49,25 +49,35 @@ public class CompanyBasicInfoService {
 		company.setRegistId(userId);
 		company.setUpdateId(userId);
 
-		tcompanyMapper.insertSelective(company);
+		tCompanyMapper.insertSelective(company);
 	}
 
-
 	/**
+	 * 会社重複チェック
+	 *
 	 * @param compName
-	 *            会社重複チェック
-	 * @return
-	 * 		重複：false,不重複:true
+	 * 
+	 * @return 重複：true,不重複:false
 	 */
-	public boolean searchCompName(String compName) {
+	public boolean checkIfCompNameExist(String compName) {
 		TCompanyExample tCompanyExample = new TCompanyExample();
 		// 該当会社名を検索条件によって検索を実行する
 		tCompanyExample.createCriteria().andCompNameEqualTo(compName);
-		int size = tcompanyMapper.selectByExample(tCompanyExample).size();
-		if (size > 0) {
-			return false;
-		}
-		return true;
+		long countCompName = tCompanyMapper.countByExample(tCompanyExample);
+		return countCompName != 0 ? true : false;
+	}
+
+	/**
+	 * 曖昧検索で会社情報を取得
+	 * 
+	 * @param compName
+	 * 
+	 * @return List<TCompany> 会社情報リスト
+	 */
+	public List<TCompany> searchCompName(String compName) {
+		TCompanyExample tCompanyExample = new TCompanyExample();
+		tCompanyExample.createCriteria().andCompNameLike("%" + compName + "%");
+		return tCompanyMapper.selectByExample(tCompanyExample);
 	}
 
 }
