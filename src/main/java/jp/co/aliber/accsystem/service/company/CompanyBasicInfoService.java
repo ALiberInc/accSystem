@@ -68,6 +68,17 @@ public class CompanyBasicInfoService {
 	}
 
 	/**
+	 * 会社情報を取得
+	 * 
+	 * @param compName
+	 * 
+	 * @return TCompany 会社情報
+	 */
+	public TCompany searchComp(Integer compId) {
+		return tCompanyMapper.selectByPrimaryKey(compId);
+	}
+
+	/**
 	 * 曖昧検索で会社情報を取得
 	 * 
 	 * @param compName

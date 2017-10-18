@@ -74,19 +74,15 @@ public class CompanyBasicInfoForm {
 	private String corpOwnerNameKana;
 	// 事業所整理記号
 	@NotNull
-	// @Size(max = 25)
 	private String corpSortNo1;
 	// 事業所整理記号
 	@NotNull
-	// @Size(max = 25)
 	private String corpSortNo2;
 	// 事業所番号
 	@NotNull
-	// @Pattern(regexp = "[0-9]*")
 	private String corpNo;
 	// 事業種目
 	@NotNull
-	// @Size(max = 100)
 	private String corpKind;
 	// 締め日が末日
 	@NotNull
@@ -158,7 +154,7 @@ public class CompanyBasicInfoForm {
 	@NotNull
 	@Size(max = 6)
 	private String welfareExemptionRate;
-	// 基金免除保険料率
+	// 基金独自給付加算率
 	@NotNull
 	@Size(max = 6)
 	private String welfareAdditionRate;
