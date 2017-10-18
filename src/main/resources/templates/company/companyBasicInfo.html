@@ -20,7 +20,7 @@
 						<span>会社情報</span>
 					</td>
 					<td class="tdbg td2 text-center">
-						<span>法人名又は氏名</span>
+						<span>法人名又は氏名<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('compName')}" class="error-after" style="display: block;">
@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>法人名又は氏名(ﾌﾘｶﾞﾅ)</span>
+						<span>法人名又は氏名(ﾌﾘｶﾞﾅ)<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('compKana')}" class="error-after" style="display: block;">
@@ -48,19 +48,13 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>〒</span>
+						<span>〒<font color="#FF0000">※</font></span>
 					</td>
 					<td>
-						<div th:if="${#fields.hasErrors('compZip1')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('compZip1') or #fields.hasErrors('compZip2')}" class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{compZip1}"></th:block>
-							</p>
-						</div>
-						<div th:if="${#fields.hasErrors('compZip2')}" class="error-after" style="display: block;">
-							<p>
-								<i></i>
-								<th:block th:errors="*{compZip2}"></th:block>
 							</p>
 						</div>
 						<input type="text" th:field="*{compZip1}" maxlength="3" class="td0" /> - <input type="text" th:field="*{compZip2}"
@@ -70,7 +64,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>住所</span>
+						<span>住所<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('compAdd1')}" class="error-after" style="display: block;">
@@ -86,7 +80,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>住所(ﾌﾘｶﾞﾅ)</span>
+						<span>住所(ﾌﾘｶﾞﾅ)<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('compAdd1Kana')}" class="error-after" style="display: block;">
@@ -102,7 +96,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>電話番号</span>
+						<span>電話番号<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('compTel1')}" class="error-after" style="display: block;">
@@ -130,7 +124,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>事業区分</span>
+						<span>事業区分<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<table>
@@ -155,7 +149,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>法人番号</span>
+						<span>法人番号<font color="#FF0000">※</font></span>
 					</td>
 					<td width="80%">
 						<div th:if="${#fields.hasErrors('corporationId')}" class="error-after" style="display: block;">
@@ -169,7 +163,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>事業主氏名</span>
+						<span>事業主氏名<font color="#FF0000">※</font></span>
 					</td>
 					<td width="80%">
 						<div th:if="${#fields.hasErrors('corpOwnerName')}" class="error-after" style="display: block;">
@@ -183,7 +177,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>事業主氏名(ﾌﾘｶﾞﾅ)</span>
+						<span>事業主氏名(ﾌﾘｶﾞﾅ)<font color="#FF0000">※</font></span>
 					</td>
 					<td width="80%">
 						<div th:if="${#fields.hasErrors('corpOwnerNameKana')}" class="error-after" style="display: block;">
@@ -197,19 +191,13 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>事業所整理記号</span>
+						<span>事業所整理記号<font color="#FF0000">※</font></span>
 					</td>
 					<td>
-						<div th:if="${#fields.hasErrors('corpSortNo1')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('corpSortNo1') or #fields.hasErrors('corpSortNo2')}" class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{corpSortNo1}"></th:block>
-							</p>
-						</div>
-						<div th:if="${#fields.hasErrors('corpSortNo2')}" class="error-after" style="display: block;">
-							<p>
-								<i></i>
-								<th:block th:errors="*{corpSortNo2}"></th:block>
 							</p>
 						</div>
 						<input type="text" maxlength="4" th:field="*{corpSortNo1}" class="td0" />-<input type="text" maxlength="5"
@@ -219,7 +207,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>事業所番号</span>
+						<span>事業所番号<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('corpNo')}" class="error-after" style="display: block;">
@@ -233,7 +221,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>事業種目</span>
+						<span>事業種目<font color="#FF0000">※</font></span>
 					</td>
 					<td width="80%">
 						<div th:if="${#fields.hasErrors('corpKind')}" class="error-after" style="display: block;">
@@ -247,7 +235,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>締め日</span>
+						<span>締め日<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<table>
@@ -281,7 +269,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>支給日</span>
+						<span>支給日<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<table>
@@ -315,7 +303,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>経理責任者 </span>
+						<span>経理責任者<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('accountingManager')}" class="error-after" style="display: block;">
@@ -359,7 +347,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>税理士・税務署</span>
+						<span>税理士・税務署<font color="#FF0000">※</font></span>
 					</td>
 					<td width="80%">
 						<table>
@@ -394,7 +382,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>データ共有ＩＤ</span>
+						<span>データ共有ＩＤ<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('dataShareId')}" class="error-after" style="display: block;">
@@ -408,7 +396,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>マイナンバー</span>
+						<span>マイナンバー<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<table>
@@ -456,7 +444,7 @@
 				</tr>
 				<tr>
 					<td rowspan="2" class="tdbg td2 text-center" style="vertical-align: middle;">
-						<span>雇用保険</span>
+						<span>雇用保険<font color="#FF0000">※</font></span>
 					</td>
 					<td class=" td2 text-center">
 						<span>被保険者負担率</span>
@@ -510,7 +498,7 @@
 				</tr>
 				<tr>
 					<td rowspan="3" class="tdbg td2 text-center" style="vertical-align: middle;">
-						<span>健康保険</span>
+						<span>健康保険<font color="#FF0000">※</font></span>
 					</td>
 					<td class=" td2 text-center">
 						<span>保険料率（介護保険該当なし）</span>
@@ -591,7 +579,7 @@
 				</tr>
 				<tr>
 					<td rowspan="2" class="tdbg td2 text-center" style="vertical-align: middle;">
-						<span>厚生年金</span>
+						<span>厚生年金<font color="#FF0000">※</font></span>
 					</td>
 					<td class=" td2 text-center">
 						<span>保険料率</span>
@@ -650,7 +638,7 @@
 				</tr>
 				<tr>
 					<td rowspan="3" class="tdbg td2 text-center" style="vertical-align: middle;">
-						<span>厚生年金基金</span>
+						<span>厚生年金基金<font color="#FF0000">※</font></span>
 					</td>
 					<td class="td2 text-center">
 						<span>基金免除保険料率</span>
