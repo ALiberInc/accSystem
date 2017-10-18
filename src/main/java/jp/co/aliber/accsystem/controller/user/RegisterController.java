@@ -9,6 +9,7 @@ import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -20,10 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jp.co.aliber.accsystem.entity.auto.TCompany;
-import jp.co.aliber.accsystem.entity.auto.TCompanyExample;
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
 import jp.co.aliber.accsystem.form.user.RegisterForm;
-import jp.co.aliber.accsystem.mapper.auto.TCompanyMapper;
+import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
 import jp.co.aliber.accsystem.service.user.RegisterService;
 
 /**
@@ -43,7 +43,10 @@ public class RegisterController {
 	private RegisterService registerService;
 
 	@Autowired
-	private TCompanyMapper tCompanyMapper;
+	private CompanyBasicInfoService companyBasicInfoService;
+
+	@Autowired
+	MessageSource messages;
 
 	/**
 	 * データのバンディング
@@ -80,7 +83,7 @@ public class RegisterController {
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
 	public String save(@Validated RegisterForm form, BindingResult result) {
 		// 入力チェック
-		if (!validate(result)) {
+		if (!validate(form, result)) {
 			return "register";
 		}
 		TLoginUser loginUser = new TLoginUser();
@@ -111,7 +114,7 @@ public class RegisterController {
 
 		registerService.regist(loginUser);
 
-		return "redirect:/login";
+		return "redirect:/finish?forwardURL=login";
 	}
 
 	/**
@@ -125,10 +128,7 @@ public class RegisterController {
 	@ResponseBody
 	public String search(@RequestParam(value = "compName", required = true) String compName) {
 
-		TCompanyExample tCompanyExample = new TCompanyExample();
-		tCompanyExample.createCriteria().andCompNameLike("%" + compName + "%");
-
-		List<TCompany> tCompanyMapperList = tCompanyMapper.selectByExample(tCompanyExample);
+		List<TCompany> tCompanyMapperList = companyBasicInfoService.searchCompName(compName);
 
 		Map<String, Map<String, String>> tCompanysMap = new HashMap<>();
 
@@ -161,7 +161,7 @@ public class RegisterController {
 	 * @return validateResult<br>
 	 *         入力チェック結果
 	 */
-	private boolean validate(BindingResult result) {
+	private boolean validate(RegisterForm form, BindingResult result) {
 
 		boolean validateResult = true;
 
@@ -169,6 +169,25 @@ public class RegisterController {
 		if (result.hasErrors()) {
 			validateResult = false;
 		}
+
+		// ログインIDの重複チェック
+		if (StringUtils.isNotEmpty(form.getLoginId())) {
+			if (registerService.checkIfLoginIdExist(form.getLoginId())) {
+				result.rejectValue("loginId", "error.duplicated",
+						new Object[] { messages.getMessage("registerForm.loginId", null, null) }, "");
+				validateResult = false;
+			}
+		}
+
+		// メールの重複チェック
+		if (StringUtils.isNotEmpty(form.getEmail())) {
+			if (registerService.checkIfEmailExist(form.getEmail())) {
+				result.rejectValue("email", "error.duplicated",
+						new Object[] { messages.getMessage("registerForm.email", null, null) }, "");
+				validateResult = false;
+			}
+		}
+
 		// 入力チェック結果
 		return validateResult;
 	}

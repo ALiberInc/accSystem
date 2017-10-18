@@ -23,6 +23,16 @@
 								<i></i>
 								<th:block th:errors="*{compName}"></th:block>
 							</p>
+						</div>
+						<div
+							th:if="${registerForm.compName != null} and ${registerForm.compId == null}">
+							<div th:if="${#fields.hasErrors('compId')}" class="error-after"
+								style="display: block;">
+								<p>
+									<i></i>
+									<th:block th:errors="*{compId}"></th:block>
+								</p>
+							</div>
 						</div> <input id="compName" type="text" onkeyup="compNameSearch()"
 						th:field="*{compName}" />
 						<div>
@@ -103,7 +113,7 @@
 								<i></i>
 								<th:block th:errors="*{email}"></th:block>
 							</p>
-						</div> <input type="email" th:field="*{email}" />
+						</div> <input type="text" th:field="*{email}" />
 					</td>
 				</tr>
 				<tr>

@@ -5,6 +5,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * ユーザ情報
@@ -13,56 +14,76 @@ import org.hibernate.validator.constraints.Email;
  *
  */
 public class RegisterForm {
-	// 会社番号
+
+	// 会社ID
 	@NotNull
-	private String compId;
-	// 会社番号
-    @NotNull
-    private String compName;
+	private Integer compId;
+
+	// 会社名
+	@NotBlank
+	private String compName;
+
 	// 姓
-	@NotNull
+	@NotBlank
 	@Size(max = 50)
 	private String lastName;
+
 	// 名
-	@NotNull
+	@NotBlank
 	@Size(max = 50)
 	private String firstName;
+
 	// 姓カナ
 	@Size(max = 50)
 	@Pattern(regexp = "[ァ-ヶー]*")
 	private String lastNameKana;
+
 	// 名カナ
 	@Size(max = 50)
 	@Pattern(regexp = "[ァ-ヶー]*")
 	private String firstNameKana;
+
 	// アルファベット名
 	@Size(max = 50)
-	@Pattern(regexp = "[a-zA-Z0-9\\s_./?+\\-]*")
+	@Pattern(regexp = "^[\\p{L} .'-]+$")
 	private String alphabetName;
+
 	// メールアドレス
-	@NotNull
+	@NotBlank
 	@Size(max = 100)
 	@Email
-	@Pattern(regexp = "^[a-zA-Z0-9_./?+\\-]+[a-zA-Z0-9_./?+\\-@]+$")
 	private String email;
+
 	// ログインID
-	@NotNull
+	@NotBlank
 	@Size(max = 50)
+	@Pattern(regexp = "^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$")
 	private String loginId;
+
 	// 暗証番号
-	@NotNull
+	@NotBlank
 	@Size(min = 5, max = 50)
 	@Pattern(regexp = "[a-zA-Z0-9\\]\\[!\"#$%&|\'()*+,-./:;<=>?@^_`{|}~\\\\]*")
 	private String password;
 
+	// 暗証番号(確認)
+	private String passwordConfirm;
 
-	/**
-	 * @return compId
-	 */
-	public String getCompId() {
+	public Integer getCompId() {
 		return compId;
 	}
 
+	public void setCompId(Integer compId) {
+		this.compId = compId;
+	}
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
 
 	/**
 	 * @return lastName
@@ -71,14 +92,12 @@ public class RegisterForm {
 		return lastName;
 	}
 
-
 	/**
 	 * @return firstName
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
-
 
 	/**
 	 * @return lastNameKana
@@ -87,14 +106,12 @@ public class RegisterForm {
 		return lastNameKana;
 	}
 
-
 	/**
 	 * @return firstNameKana
 	 */
 	public String getFirstNameKana() {
 		return firstNameKana;
 	}
-
 
 	/**
 	 * @return alphabetName
@@ -103,14 +120,12 @@ public class RegisterForm {
 		return alphabetName;
 	}
 
-
 	/**
 	 * @return email
 	 */
 	public String getEmail() {
 		return email;
 	}
-
 
 	/**
 	 * @return loginId
@@ -119,23 +134,12 @@ public class RegisterForm {
 		return loginId;
 	}
 
-
 	/**
 	 * @return password
 	 */
 	public String getPassword() {
 		return password;
 	}
-
-
-	/**
-	 * @param compId
-	 *            セットする compId
-	 */
-	public void setCompId(String compId) {
-		this.compId = compId;
-	}
-
 
 	/**
 	 * @param lastName
@@ -145,7 +149,6 @@ public class RegisterForm {
 		this.lastName = lastName;
 	}
 
-
 	/**
 	 * @param firstName
 	 *            セットする firstName
@@ -153,7 +156,6 @@ public class RegisterForm {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 
 	/**
 	 * @param lastNameKana
@@ -163,7 +165,6 @@ public class RegisterForm {
 		this.lastNameKana = lastNameKana;
 	}
 
-
 	/**
 	 * @param firstNameKana
 	 *            セットする firstNameKana
@@ -171,7 +172,6 @@ public class RegisterForm {
 	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
 	}
-
 
 	/**
 	 * @param alphabetName
@@ -181,7 +181,6 @@ public class RegisterForm {
 		this.alphabetName = alphabetName;
 	}
 
-
 	/**
 	 * @param email
 	 *            セットする email
@@ -189,7 +188,6 @@ public class RegisterForm {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	/**
 	 * @param loginId
@@ -199,7 +197,6 @@ public class RegisterForm {
 		this.loginId = loginId;
 	}
 
-
 	/**
 	 * @param password
 	 *            セットする password
@@ -208,20 +205,19 @@ public class RegisterForm {
 		this.password = password;
 	}
 
+	/**
+	 * @return compName
+	 */
+	public String getCompName() {
+		return compName;
+	}
 
-    /**
-     * @return compName
-     */
-    public String getCompName() {
-        return compName;
-    }
-
-
-    /**
-     * @param compName セットする compName
-     */
-    public void setCompName(String compName) {
-        this.compName = compName;
-    }
+	/**
+	 * @param compName
+	 *            セットする compName
+	 */
+	public void setCompName(String compName) {
+		this.compName = compName;
+	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
+import jp.co.aliber.accsystem.entity.auto.TLoginUserExample;
 import jp.co.aliber.accsystem.mapper.auto.TLoginUserMapper;
 
 /**
@@ -24,10 +25,8 @@ public class RegisterService {
 	/**
 	 * 登録処理
 	 *
-	 * @param company
-	 *            TCompanyテーブルのエンティティ
-	 * @param userId
-	 *            ユーザＩＤ
+	 * @param loginUser
+	 *            ユーザー
 	 */
 	public void regist(TLoginUser loginUser) {
 
@@ -52,7 +51,37 @@ public class RegisterService {
 		loginUser.setUpdateId(ImmutableValues.DEFAULT_USER_ID);
 
 		tLoginUserMapper.insertSelective(loginUser);
-
 	}
 
+	/**
+	 * ログインID重複チェック
+	 *
+	 * @param loginUser
+	 *            ユーザー
+	 * @return true 存在 false 存在していない
+	 * 
+	 */
+	public boolean checkIfLoginIdExist(String loginId) {
+
+		TLoginUserExample loginUserExample = new TLoginUserExample();
+		loginUserExample.createCriteria().andLoginIdEqualTo(loginId);
+		long countLoginId = tLoginUserMapper.countByExample(loginUserExample);
+		return countLoginId != 0 ? true : false;
+	}
+
+	/**
+	 * メールの重複チェック
+	 *
+	 * @param email
+	 *            メールアドレス
+	 * @return true 存在 false 存在していない
+	 * 
+	 */
+	public boolean checkIfEmailExist(String email) {
+
+		TLoginUserExample loginUserExample = new TLoginUserExample();
+		loginUserExample.createCriteria().andEmailEqualTo(email);
+		long countEmail = tLoginUserMapper.countByExample(loginUserExample);
+		return countEmail != 0 ? true : false;
+	}
 }
