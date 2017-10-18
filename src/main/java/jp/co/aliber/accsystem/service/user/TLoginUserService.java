@@ -41,4 +41,18 @@ public class TLoginUserService {
 		}
 		return loginUserList.get(0);
 	}
+
+	/**
+	 * ログインユーザー情報を更新(1件)
+	 *
+	 * @param loginUser
+	 *            ログインユーザー
+	 */
+	public void update(TLoginUser tLoginUser) {
+
+		TLoginUserExample tLoginUserExample = new TLoginUserExample();
+		tLoginUserExample.createCriteria().andLoginIdEqualTo(tLoginUser.getLoginId());
+		tLoginUserMapper.updateByExampleSelective(tLoginUser, tLoginUserExample);
+	}
+
 }

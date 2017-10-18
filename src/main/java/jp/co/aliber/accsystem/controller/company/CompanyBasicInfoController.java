@@ -18,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TCompany;
+import jp.co.aliber.accsystem.entity.auto.TLoginUser;
 import jp.co.aliber.accsystem.form.company.CompanyBasicInfoForm;
 import jp.co.aliber.accsystem.security.LoginUser;
+import jp.co.aliber.accsystem.service.UtilService;
 import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
+import jp.co.aliber.accsystem.service.user.TLoginUserService;
 
 /**
  * 会社基本情報入力
@@ -31,8 +34,13 @@ import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
 @Controller
 @RequestMapping("/company")
 public class CompanyBasicInfoController {
+
+	@Autowired
+	TLoginUserService loginUserService;
 	@Autowired
 	CompanyBasicInfoService companyBasicInfoService;
+	@Autowired
+	UtilService utilService;
 	@Autowired
 	MessageSource messages;
 
@@ -214,12 +222,17 @@ public class CompanyBasicInfoController {
 		// Integer userId = Integer.valueOf(loginUser.getUser().getLoginId());
 		// 登録処理を呼び出す
 		companyBasicInfoService.regist(company, ImmutableValues.DEFAULT_USER_ID);
-		if (loginUser == null) {
-			return "redirect:/finish?forwardURL=register";
-		} else {
-			//TODO
-			return "redirect:/finish?forwardURL=一覧";
-		}
+
+		//会社新規の場合、会社IDを更新
+		TLoginUser tLoginUser = new TLoginUser();
+		Integer compId = utilService.getSeqLastValue();
+		tLoginUser.setCompId(compId);
+		tLoginUser.setLoginId(loginUser.getUser().getLoginId());
+		loginUserService.update(tLoginUser);
+
+		//会社IDを保持
+		loginUser.getUser().setCompId(compId);
+		return "redirect:/finish?forwardURL=top_menu";
 
 	}
 
