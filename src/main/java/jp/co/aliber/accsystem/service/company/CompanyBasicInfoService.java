@@ -1,7 +1,6 @@
 package jp.co.aliber.accsystem.service.company;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,19 +75,6 @@ public class CompanyBasicInfoService {
 	 */
 	public TCompany searchComp(Integer compId) {
 		return tCompanyMapper.selectByPrimaryKey(compId);
-	}
-
-	/**
-	 * 曖昧検索で会社情報を取得
-	 * 
-	 * @param compName
-	 * 
-	 * @return List<TCompany> 会社情報リスト
-	 */
-	public List<TCompany> searchCompName(String compName) {
-		TCompanyExample tCompanyExample = new TCompanyExample();
-		tCompanyExample.createCriteria().andCompNameLike("%" + compName + "%");
-		return tCompanyMapper.selectByExample(tCompanyExample);
 	}
 
 }
