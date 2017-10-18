@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import jp.co.aliber.accsystem.entity.auto.TCompanyDepartment;
 
 public class EmployeeInfoEditForm {
@@ -41,14 +43,14 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 氏名
 	 */
-	@NotNull
+	@NotBlank
 	@Size(max = 50)
 	private String firstName;
 
 	/**
 	 * 氏名
 	 */
-	@NotNull
+	@NotBlank
 	@Size(max = 50)
 	private String lastName;
 
@@ -72,7 +74,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 口座名義人
 	 */
-	@NotNull
+	@NotBlank
 	@Size(max = 100)
 	@Pattern(regexp = "[ァ-ヶー]*")
 	private String accountHolder;
@@ -86,7 +88,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 銀行名
 	 */
-	@NotNull
+	@NotBlank
 	@Size(max = 100)
 	private String bankName;
 

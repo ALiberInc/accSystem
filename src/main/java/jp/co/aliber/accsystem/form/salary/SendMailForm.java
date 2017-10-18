@@ -1,17 +1,17 @@
 package jp.co.aliber.accsystem.form.salary;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 public class SendMailForm {
 
     /**
      *メールアドレス
      */
-	@NotNull
+	@NotBlank
 	@Size(max = 100)
 	@Email
 	@Pattern(regexp = "^[a-zA-Z0-9_./?+\\-]+[a-zA-Z0-9_./?+\\-@]+$")
