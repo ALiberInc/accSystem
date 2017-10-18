@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="accTemp :: headerImp ('__給与明細印刷__')">
+<head th:replace="accTemp :: headerImp ('__給与明細一覧__')">
 </head>
 <body>
 	<div th:replace="accTemp :: accBackButton"></div>
 	<div class="centerDiv">
-		<label for="exampleInputName2">給与明細印刷</label>
-		<span class="monthly_statement_search_dataList_text">
-			<input type="text" id="freeWord" name="freeWord" value="" />
+		<label for="exampleInputName2">給与明細印刷</label> <span
+			class="monthly_statement_search_dataList_text"> <input
+			type="text" id="freeWord" name="freeWord" value="" />
 		</span>
 		<button type="button" class="btn btn-info btn-sm" id="freeWordButton">検索</button>
+		<button type="button" class="btn btn-info btn-sm"
+			id="salaryDetailChange">変更</button>
 		<button type="button" class="btn btn-info btn-sm" id="salaryPrint">印刷</button>
 		<button type="button" class="btn btn-info btn-sm" id="sendMail">メール送信</button>
 	</div>
 	<div class="centerDiv">
 		<table class="table table-striped">
 			<tr>
-				<td class="td0 text-center"><button type="button" class="btn btn-info btn-sm" id="checkAll">全選択/解除</button></td>
+				<td class="td0 text-center"><button type="button"
+						class="btn btn-info btn-sm" id="checkAll">全選択/解除</button></td>
 				<td class="td1 text-center">No.</td>
 				<td class="td2 text-center">氏名</td>
 				<td class="td3 text-center">部署</td>
 				<td class="td4 text-center">メールアドレス</td>
 			</tr>
-			<tr th:each="TEmployee,iterStat : ${salaryStatementFrom.listTEmployee}">
-				<td class="td0 text-center"><input name="salaryCheckBox" type='checkbox' th:value="${TEmployee.employeeNo}"/></td>
-				<td class="td1 text-center" th:text="${TEmployee.employeeId}"></td>
-				<td class="td2 text-center" th:text="${TEmployee.lastName} + ' ' +${TEmployee.firstName}"></td>
+			<tr
+				th:each="TEmployee,iterStat : ${salaryStatementForm.listTEmployee}">
+				<td class="td0 text-center"><input name="salaryCheckBox"
+					type='checkbox' th:value="${TEmployee.employeeId}" /></td>
+				<td class="td1 text-center" th:text="${TEmployee.employeeNo}"></td>
+				<td class="td2 text-center"
+					th:text="${TEmployee.lastName} + ' ' +${TEmployee.firstName}"></td>
 				<td class="td3 text-center" th:text="${TEmployee.deptId}"></td>
 				<td class="td4 text-center" th:text="${TEmployee.mailAddress}"></td>
 			</tr>
