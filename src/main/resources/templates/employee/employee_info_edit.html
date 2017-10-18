@@ -135,7 +135,7 @@
 						<span>口座情報</span>
 					</td>
 					<td class="tdbg td2 text-center">
-						<span>口座名義人(ｶﾅ)</span>
+						<span>口座名義人(ｶﾅ)<font color="#FF0000">※</font></span>
 					</td>
 					<td colspan="5">
 						<div th:if="${#fields.hasErrors('accountHolder')}" class="error-after" style="display: block;">
@@ -149,7 +149,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>銀行コード</span>
+						<span>銀行コード<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('bankCode')}" class="error-after" style="display: block;">
@@ -161,7 +161,7 @@
 						<input type="text" th:field="*{bankCode}" maxlength="4" />
 					</td>
 					<td class="tdbg td2 text-center">
-						<span>銀行名</span>
+						<span>銀行名<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('bankName')}" class="error-after" style="display: block;">
@@ -233,7 +233,7 @@
 						<span>所得税</span>
 					</td>
 					<td class="tdbg td2 text-center">
-						<span>所得税区分</span>
+						<span>所得税区分<font color="#FF0000">※</font></span>
 					</td>
 					<td colspan="1">
 						<div th:if="${#fields.hasErrors('incomeTaxDistinction')}" class="error-after" style="display: block;">
@@ -251,7 +251,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>控除対象配偶者</span>
+						<span>控除対象配偶者<font color="#FF0000">※</font></span>
 					</td>
 					<td colspan="1">
 						<div th:if="${#fields.hasErrors('consort')}" class="error-after" style="display: block;">
@@ -266,7 +266,7 @@
 						</select>
 					</td>
 					<td class="tdbg td2 text-center">
-						<span>扶養控除等の申告</span>
+						<span>扶養控除等の申告<font color="#FF0000">※</font></span>
 					</td>
 					<td colspan="1">
 						<div th:if="${#fields.hasErrors('dependents')}" class="error-after" style="display: block;">
@@ -283,7 +283,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>扶養人数</span>
+						<span>扶養人数<font color="#FF0000">※</font></span>
 					</td>
 					<td width="13%" colspan="1">
 						<div th:if="${#fields.hasErrors('dependentsNumber')}" class="error-after" style="display: block;">
@@ -297,7 +297,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>世帯主名</span>
+						<span>世帯主名<font color="#FF0000">※</font></span>
 					</td>
 					<td width="208">
 						<div th:if="${#fields.hasErrors('householdName')}" class="error-after" style="display: block;">
@@ -357,7 +357,7 @@
 						<span>社会保険</span>
 					</td>
 					<td class="tdbg td2 text-center">
-						<span>雇用保険</span>
+						<span>雇用保険<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('insuranceFlag')}" class="error-after" style="display: block;">
@@ -375,7 +375,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>健康保険</span>
+						<span>健康保険<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('healthInsuranceFlag')}" class="error-after" style="display: block;">
@@ -456,7 +456,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>厚生年金</span>
+						<span>厚生年金<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('welfarePensionFlag')}" class="error-after" style="display: block;">
@@ -501,7 +501,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>厚生年金基金</span>
+						<span>厚生年金基金<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('welfareFund')}" class="error-after" style="display: block;">
@@ -531,7 +531,7 @@
 				</tr>
 				<tr>
 					<td class="tdbg td2 text-center">
-						<span>基本給</span>
+						<span>基本給<font color="#FF0000">※</font></span>
 					</td>
 					<td>
 						<div th:if="${#fields.hasErrors('basicSalary')}" class="error-after" style="display: block;">
