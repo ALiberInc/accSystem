@@ -59,6 +59,11 @@ public class CompanyBasicInfoController {
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(Model model, CompanyBasicInfoForm form) {
+		// 事業区分のディフォルト値:法人
+		form.setClassification("0");
+		// 締め日、支給日のディフォルト値:未日
+		form.setPaymentDay("0");
+		form.setDeadlineDay("0");
 		// 社会保険について項目がデフォルト値を設定する
 		// 被保険者負担率
 		form.setEmployInsurRate(ImmutableValues.EMPLOY_INSURANCE_RATE);
@@ -78,6 +83,7 @@ public class CompanyBasicInfoController {
 		form.setWelfareExemptionRate(ImmutableValues.WELFARE_EXEMPTION_RATE);
 		// 基金独自給付加算率(従業員負担分)
 		form.setWelfareAdditionRate(ImmutableValues.WELFARE_ADDITION_RATE);
+
 		return "company/companyBasicInfo";
 	}
 
