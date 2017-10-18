@@ -1,12 +1,6 @@
 package jp.co.aliber.accsystem.controller.user;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.MessageSource;
@@ -17,13 +11,9 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import jp.co.aliber.accsystem.entity.auto.TCompany;
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
 import jp.co.aliber.accsystem.form.user.RegisterForm;
-import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
 import jp.co.aliber.accsystem.service.user.RegisterService;
 
 /**
@@ -41,9 +31,6 @@ public class RegisterController {
 	 */
 	@Autowired
 	private RegisterService registerService;
-
-	@Autowired
-	private CompanyBasicInfoService companyBasicInfoService;
 
 	@Autowired
 	MessageSource messages;
@@ -87,8 +74,6 @@ public class RegisterController {
 			return "register";
 		}
 		TLoginUser loginUser = new TLoginUser();
-		// 会社番号
-		loginUser.setCompId(Integer.valueOf(form.getCompId()));
 		// 姓
 		loginUser.setLastName(form.getLastName());
 		// 名
@@ -115,42 +100,6 @@ public class RegisterController {
 		registerService.regist(loginUser);
 
 		return "redirect:/finish?forwardURL=login";
-	}
-
-	/**
-	 * 検索処理
-	 *
-	 * @param compName
-	 *            会社名前
-	 * @return JSONString
-	 */
-	@RequestMapping(value = { "/search" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public String search(@RequestParam(value = "compName", required = true) String compName) {
-
-		List<TCompany> tCompanyMapperList = companyBasicInfoService.searchCompName(compName);
-
-		Map<String, Map<String, String>> tCompanysMap = new HashMap<>();
-
-		if (CollectionUtils.isNotEmpty(tCompanyMapperList)) {
-
-			tCompanyMapperList.forEach(tCompany -> {
-				Map<String, String> tCompanyMap = new HashMap<>();
-
-				tCompanyMap.put("compId", tCompany.getCompId().toString());
-
-				tCompanyMap.put("compName", tCompany.getCompName());
-
-				tCompanyMap.put("compTel",
-						tCompany.getCompTel1() + "-" + tCompany.getCompTel2() + "-" + tCompany.getCompTel3());
-
-				tCompanyMap.put("compAdd", tCompany.getCompAdd1());
-
-				tCompanysMap.put(tCompany.getCompName(), tCompanyMap);
-			});
-
-		}
-		return JSONValue.toJSONString(tCompanysMap);
 	}
 
 	/**

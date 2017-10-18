@@ -1,6 +1,5 @@
 package jp.co.aliber.accsystem.form.user;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -14,14 +13,6 @@ import org.hibernate.validator.constraints.NotBlank;
  *
  */
 public class RegisterForm {
-
-	// 会社ID
-	@NotNull
-	private Integer compId;
-
-	// 会社名
-	@NotBlank
-	private String compName;
 
 	// 姓
 	@NotBlank
@@ -68,14 +59,6 @@ public class RegisterForm {
 
 	// 暗証番号(確認)
 	private String passwordConfirm;
-
-	public Integer getCompId() {
-		return compId;
-	}
-
-	public void setCompId(Integer compId) {
-		this.compId = compId;
-	}
 
 	public String getPasswordConfirm() {
 		return passwordConfirm;
@@ -203,21 +186,6 @@ public class RegisterForm {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	/**
-	 * @return compName
-	 */
-	public String getCompName() {
-		return compName;
-	}
-
-	/**
-	 * @param compName
-	 *            セットする compName
-	 */
-	public void setCompName(String compName) {
-		this.compName = compName;
 	}
 
 }

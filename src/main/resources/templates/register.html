@@ -5,7 +5,6 @@
 	<div th:replace="accTemp :: accBackButton"></div>
 	<form name="registerForm" id="registerForm" method="POST"
 		th:action="@{/register/save}" th:object="${registerForm}">
-		<input type="hidden" th:field="*{compId}" />
 		<div class="centerDiv">
 			<table class="table table-striped table-bordered">
 				<tr>
@@ -13,34 +12,6 @@
 				</tr>
 			</table>
 			<table class="table table-striped table-bordered">
-				<tr>
-					<td class="text-center td3"><span>会社名前<font
-							color="#FF0000">※</font></span></td>
-					<td id="compNameTd">
-						<div th:if="${#fields.hasErrors('compName')}" class="error-after"
-							style="display: block;">
-							<p>
-								<i></i>
-								<th:block th:errors="*{compName}"></th:block>
-							</p>
-						</div>
-						<div
-							th:if="${registerForm.compName != null} and ${registerForm.compId == null}">
-							<div th:if="${#fields.hasErrors('compId')}" class="error-after"
-								style="display: block;">
-								<p>
-									<i></i>
-									<th:block th:errors="*{compId}"></th:block>
-								</p>
-							</div>
-						</div> <input id="compName" type="text" onkeyup="compNameSearch()"
-						th:field="*{compName}" />
-						<div>
-							会社名を入力しますと、下に会社情報の一覧が出てきます。<br /> 会社情報が表示されない場合は、会社情報の<strong><a
-								href="company">新規登録</a></strong>をお願いします。
-						</div>
-					</td>
-				</tr>
 				<tr>
 					<td class="text-center td3"><span>姓<font
 							color="#FF0000">※</font></span></td>
