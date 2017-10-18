@@ -247,7 +247,7 @@
 											<th:block th:errors="*{deadlineDay}"></th:block>
 										</p>
 									</div>
-									<label> <input th:field="*{deadlineDay}" type="radio" value="0" /> <span>末日</span>
+									<label> <input th:field="*{deadlineDay}" id="deadlineDay" name="deadlineDay" type="radio" value="0" /> <span>末日</span>
 									</label>
 								</td>
 								<td>
@@ -257,10 +257,10 @@
 											<th:block th:errors="*{deadlineAdjustDays}"></th:block>
 										</p>
 									</div>
-									<label> <input th:field="*{deadlineDay}" type="radio" value="1" /> <span>末日以外</span>
+									<label> <input th:field="*{deadlineDay}" id="deadlineDay" name="deadlineDay" type="radio" value="1" /> <span>末日以外</span>
 									</label>
 									<span>
-										( <input th:field="*{deadlineAdjustDays}" type="text" class="td2" />日)
+										( <input th:field="*{deadlineAdjustDays}" type="text" class="td2"/>日)
 									</span>
 								</td>
 							</tr>
@@ -281,7 +281,7 @@
 											<th:block th:errors="*{paymentDay}"></th:block>
 										</p>
 									</div>
-									<label> <input th:field="*{paymentDay}" type="radio" value="0" /> <span>末日</span>
+									<label> <input th:field="*{paymentDay}" id="paymentDay" name="paymentDay" type="radio" value="0" /> <span>末日</span>
 									</label>
 								</td>
 								<td>
@@ -291,10 +291,10 @@
 											<th:block th:errors="*{paymentAdjustDays}"></th:block>
 										</p>
 									</div>
-									<label> <input th:field="*{paymentDay}" type="radio" value="1" /> <span>末日以外</span>
+									<label> <input th:field="*{paymentDay}" id="paymentDay" name="paymentDay" type="radio" value="1" /> <span>末日以外</span>
 									</label>
 									<span>
-										( <input th:field="*{paymentAdjustDays}" type="text" class="td2" />日)
+										( <input th:field="*{paymentAdjustDays}" type="text" class="td2"/>日)
 									</span>
 								</td>
 							</tr>
@@ -716,4 +716,5 @@
 		</div>
 	</form>
 </body>
+<script th:src="@{/js/company_basic_info.js}" type="text/javascript"></script>
 </html>
