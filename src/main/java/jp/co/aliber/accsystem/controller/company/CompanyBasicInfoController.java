@@ -214,7 +214,13 @@ public class CompanyBasicInfoController {
 		// Integer userId = Integer.valueOf(loginUser.getUser().getLoginId());
 		// 登録処理を呼び出す
 		companyBasicInfoService.regist(company, ImmutableValues.DEFAULT_USER_ID);
-		return "redirect:/register";
+		if (loginUser == null) {
+			return "redirect:/finish?forwardURL=register";
+		} else {
+			//TODO
+			return "redirect:/finish?forwardURL=一覧";
+		}
+
 	}
 
 	/**
