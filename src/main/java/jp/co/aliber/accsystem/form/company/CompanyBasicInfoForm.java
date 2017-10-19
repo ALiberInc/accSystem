@@ -120,7 +120,6 @@ public class CompanyBasicInfoForm {
 	@Pattern(regexp = "[0-9]*")
 	private String dataShareId;
 	// マイナンバーマスタから個人番号を取得する
-	@NotNull
 	private Boolean myNumber;
 	// 会社コード
 	@NotBlank
@@ -128,7 +127,7 @@ public class CompanyBasicInfoForm {
 	private String compCode;
 	// 雇用保険被保険者負担率
 	@NotBlank
-	@Size(max = 2)
+	@Size(max = 6)
 	private String employInsurRate;
 	// 雇用保険被保険者負担率
 	@NotBlank

@@ -44,6 +44,9 @@ public class CompanyBasicInfoController {
 	@Autowired
 	MessageSource messages;
 
+	// 更新・新規フラグ、デフォルトは新規の場合false
+	boolean updateFlg = false;
+
 	/**
 	 * データのバンディング
 	 *
@@ -93,6 +96,8 @@ public class CompanyBasicInfoController {
 		form.setWelfareAdditionRate(ImmutableValues.WELFARE_ADDITION_RATE);
 		// 会社情報を編集の場合
 		if (loginUser.getUser().getCompId() != null) {
+			// 更新の場合フラグtrueにする
+			updateFlg = true;
 			// 会社番号
 			Integer compId = loginUser.getUser().getCompId();
 			// 会社情報を取得
@@ -311,19 +316,26 @@ public class CompanyBasicInfoController {
 				new BigDecimal(form.getWelfareAdditionRate()).setScale(2, BigDecimal.ROUND_HALF_UP));
 		// 基金独自給付加算定額
 		company.setWelfareAdditionRation(Integer.valueOf(form.getWelfareAdditionRation()));
-		// Integer userId = Integer.valueOf(loginUser.getUser().getLoginId());
-		// 登録処理を呼び出す
-		companyBasicInfoService.regist(company, ImmutableValues.DEFAULT_USER_ID);
+		// 新規の場合登録処理を呼び出す
+		if (!updateFlg) {
+			companyBasicInfoService.regist(company, ImmutableValues.DEFAULT_USER_ID);
+			// 会社IDを更新
+			TLoginUser tLoginUser = new TLoginUser();
+			Integer compId = utilService.getSeqLastValue();
+			tLoginUser.setCompId(compId);
+			tLoginUser.setLoginId(loginUser.getUser().getLoginId());
+			loginUserService.update(tLoginUser);
+			// 会社IDを保持
+			loginUser.getUser().setCompId(compId);
+		}
+		// 更新の場合会社情報を更新する
+		if (updateFlg) {
+			// ログイン情報から会社番号を取得する
+			company.setCompId(loginUser.getUser().getCompId());
+			// 更新処理を呼び出す
+			companyBasicInfoService.update(company, Integer.valueOf(loginUser.getUser().getLoginId()));
+		}
 
-		// 会社新規の場合、会社IDを更新
-		TLoginUser tLoginUser = new TLoginUser();
-		Integer compId = utilService.getSeqLastValue();
-		tLoginUser.setCompId(compId);
-		tLoginUser.setLoginId(loginUser.getUser().getLoginId());
-		loginUserService.update(tLoginUser);
-
-		// 会社IDを保持
-		loginUser.getUser().setCompId(compId);
 		return "redirect:/finish?forwardURL=top_menu";
 
 	}
@@ -346,8 +358,8 @@ public class CompanyBasicInfoController {
 		if (result.hasErrors()) {
 			validateResult = false;
 		}
-		// 会社名重複チェック
-		if (StringUtils.isNotEmpty(form.getCompName())) {
+		// 会社名重複チェック(新規場合のみ)
+		if (StringUtils.isNotEmpty(form.getCompName()) && !updateFlg) {
 			if (companyBasicInfoService.checkIfCompNameExist(form.getCompName())) {
 				result.rejectValue("compName", "error.duplicated",
 						new Object[] { messages.getMessage("companyBasicInfoForm.compName", null, null) }, "");

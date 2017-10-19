@@ -52,6 +52,25 @@ public class CompanyBasicInfoService {
 	}
 
 	/**
+	 * 更新処理
+	 *
+	 * @param company
+	 *            TCompanyテーブルのエンティティ
+	 * @param userId
+	 *            ユーザＩＤ
+	 */
+	public void update(TCompany company, Integer userId) {
+		// システム日付を取得する
+		Date systemDate = new Date();
+		company.setUpdateDate(systemDate);
+
+		// ユーザID
+		company.setUpdateId(userId);
+
+		tCompanyMapper.updateByPrimaryKeySelective(company);
+	}
+
+	/**
 	 * 会社重複チェック
 	 *
 	 * @param compName
