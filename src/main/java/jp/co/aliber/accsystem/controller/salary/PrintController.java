@@ -57,14 +57,14 @@ public class PrintController {
 
 		response.setContentType("application/pdf");
 		String[] employeeIdArray = employeeIdCommaSeperated.split(",");
-		for (int i = 0; i < employeeIdArray.length; i++) {
-			try (ByteArrayOutputStream pdfOutputStream = utilService
-					.creationPdfOutputStream(Integer.valueOf(employeeIdArray[i]), compId, salaryYearMonth);
-					ServletOutputStream sos = response.getOutputStream()) {
-				sos.write(pdfOutputStream.toByteArray());
-			} catch (NumberFormatException | JRException | IOException e) {
-				e.printStackTrace();
-			}
+		// 複数の従業員の場合は、まだ対応していない  下のソースは一番目の従業員のPDFを出力
+		try (ByteArrayOutputStream pdfOutputStream = utilService
+				.creationPdfOutputStream(Integer.parseInt(employeeIdArray[0]), compId, salaryYearMonth);
+				ServletOutputStream sos = response.getOutputStream()) {
+			sos.write(pdfOutputStream.toByteArray());
+		} catch (NumberFormatException | JRException | IOException e) {
+			e.printStackTrace();
 		}
 	}
+
 }
