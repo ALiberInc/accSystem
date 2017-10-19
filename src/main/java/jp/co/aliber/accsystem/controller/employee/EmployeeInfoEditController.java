@@ -141,7 +141,7 @@ public class EmployeeInfoEditController {
 			if (StringUtils.isNotEmpty(employee.getFirstName())) {
 				form.setFirstName(employee.getFirstName());
 			}
-			if (!employee.getLastName().isEmpty()) {
+			if (StringUtils.isNotEmpty(employee.getLastName())) {
 				form.setLastName(employee.getLastName());
 			}
 			if (employee.getDeptId() != null) {
@@ -155,6 +155,9 @@ public class EmployeeInfoEditController {
 			}
 			if (employee.getSex() != null) {
 				form.setSex(employee.getSex() ? 0 : 1);
+			}
+			if (StringUtils.isNotEmpty(employee.getMailAddress())) {
+				form.setEmail(employee.getMailAddress());
 			}
 		}
 
@@ -344,6 +347,9 @@ public class EmployeeInfoEditController {
 		}
 		if (form.getSex() != null) {
 			tEmployee.setSex(form.getSex() == 0 ? true : false);
+		}
+		if (StringUtils.isNotEmpty(form.getEmail())) {
+			tEmployee.setMailAddress(form.getEmail());
 		}
 
 		tEmployee.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);

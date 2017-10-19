@@ -127,6 +127,18 @@
 							<option th:if="${#lists.isEmpty(employeeInfoEditForm.departmentList)}" value="0">未設定</option>
 						</select>
 					</td>
+					<td class="tdbg td2 text-center">
+						<span>メールアドレス</span>
+					</td>
+					<td>
+						<div th:if="${#fields.hasErrors('email')}" class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{email}"></th:block>
+							</p>
+						</div>
+						<input type="text" th:field="*{email}" maxlength="15" />
+					</td>
 				</tr>
 			</table>
 			<table class="table table-striped table-bordered">

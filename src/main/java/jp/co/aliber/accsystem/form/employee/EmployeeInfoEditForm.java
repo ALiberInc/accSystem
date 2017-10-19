@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import jp.co.aliber.accsystem.entity.auto.TCompanyDepartment;
@@ -70,6 +71,13 @@ public class EmployeeInfoEditForm {
 	 * 部署リスト
 	 */
 	private List<TCompanyDepartment> departmentList;
+
+	/**
+	 * メルアドレース
+	 */
+	@Email
+	@Size(max = 100)
+	private String email;
 
 	/**
 	 * 口座名義人
@@ -273,7 +281,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param creationflag セットする creationflag
+	 * @param creationflag
+	 *            セットする creationflag
 	 */
 	public void setCreationflag(boolean creationflag) {
 		this.creationflag = creationflag;
@@ -287,7 +296,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param employeeNo セットする employeeNo
+	 * @param employeeNo
+	 *            セットする employeeNo
 	 */
 	public void setEmployeeNo(Integer employeeNo) {
 		this.employeeNo = employeeNo;
@@ -301,7 +311,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param employeeId セットする employeeId
+	 * @param employeeId
+	 *            セットする employeeId
 	 */
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
@@ -315,7 +326,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param firstNameKana セットする firstNameKana
+	 * @param firstNameKana
+	 *            セットする firstNameKana
 	 */
 	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
@@ -329,7 +341,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param lastNameKana セットする lastNameKana
+	 * @param lastNameKana
+	 *            セットする lastNameKana
 	 */
 	public void setLastNameKana(String lastNameKana) {
 		this.lastNameKana = lastNameKana;
@@ -343,7 +356,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param firstName セットする firstName
+	 * @param firstName
+	 *            セットする firstName
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -357,7 +371,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param lastName セットする lastName
+	 * @param lastName
+	 *            セットする lastName
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -371,7 +386,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param sex セットする sex
+	 * @param sex
+	 *            セットする sex
 	 */
 	public void setSex(Integer sex) {
 		this.sex = sex;
@@ -385,7 +401,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param department セットする department
+	 * @param department
+	 *            セットする department
 	 */
 	public void setDepartment(Integer department) {
 		this.department = department;
@@ -399,10 +416,26 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param departmentList セットする departmentList
+	 * @param departmentList
+	 *            セットする departmentList
 	 */
 	public void setDepartmentList(List<TCompanyDepartment> departmentList) {
 		this.departmentList = departmentList;
+	}
+
+	/**
+	 * @return email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email
+	 *            セットする email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	/**
@@ -413,7 +446,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param accountHolder セットする accountHolder
+	 * @param accountHolder
+	 *            セットする accountHolder
 	 */
 	public void setAccountHolder(String accountHolder) {
 		this.accountHolder = accountHolder;
@@ -427,7 +461,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param bankCode セットする bankCode
+	 * @param bankCode
+	 *            セットする bankCode
 	 */
 	public void setBankCode(Integer bankCode) {
 		this.bankCode = bankCode;
@@ -441,7 +476,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param bankName セットする bankName
+	 * @param bankName
+	 *            セットする bankName
 	 */
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
@@ -455,7 +491,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param accountType セットする accountType
+	 * @param accountType
+	 *            セットする accountType
 	 */
 	public void setAccountType(Integer accountType) {
 		this.accountType = accountType;
@@ -469,7 +506,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param branchCode セットする branchCode
+	 * @param branchCode
+	 *            セットする branchCode
 	 */
 	public void setBranchCode(Integer branchCode) {
 		this.branchCode = branchCode;
@@ -483,7 +521,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param branchName セットする branchName
+	 * @param branchName
+	 *            セットする branchName
 	 */
 	public void setBranchName(String branchName) {
 		this.branchName = branchName;
@@ -497,7 +536,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param accountNumber セットする accountNumber
+	 * @param accountNumber
+	 *            セットする accountNumber
 	 */
 	public void setAccountNumber(Integer accountNumber) {
 		this.accountNumber = accountNumber;
@@ -511,7 +551,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param incomeTaxDistinction セットする incomeTaxDistinction
+	 * @param incomeTaxDistinction
+	 *            セットする incomeTaxDistinction
 	 */
 	public void setIncomeTaxDistinction(Integer incomeTaxDistinction) {
 		this.incomeTaxDistinction = incomeTaxDistinction;
@@ -525,7 +566,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param consort セットする consort
+	 * @param consort
+	 *            セットする consort
 	 */
 	public void setConsort(Integer consort) {
 		this.consort = consort;
@@ -539,7 +581,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param dependents セットする dependents
+	 * @param dependents
+	 *            セットする dependents
 	 */
 	public void setDependents(Integer dependents) {
 		this.dependents = dependents;
@@ -553,7 +596,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param dependentsNumber セットする dependentsNumber
+	 * @param dependentsNumber
+	 *            セットする dependentsNumber
 	 */
 	public void setDependentsNumber(Integer dependentsNumber) {
 		this.dependentsNumber = dependentsNumber;
@@ -567,7 +611,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param householdName セットする householdName
+	 * @param householdName
+	 *            セットする householdName
 	 */
 	public void setHouseholdName(String householdName) {
 		this.householdName = householdName;
@@ -581,7 +626,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param relationship セットする relationship
+	 * @param relationship
+	 *            セットする relationship
 	 */
 	public void setRelationship(String relationship) {
 		this.relationship = relationship;
@@ -595,7 +641,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param treatyExemption セットする treatyExemption
+	 * @param treatyExemption
+	 *            セットする treatyExemption
 	 */
 	public void setTreatyExemption(Boolean treatyExemption) {
 		this.treatyExemption = treatyExemption;
@@ -609,7 +656,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param blueOfficer セットする blueOfficer
+	 * @param blueOfficer
+	 *            セットする blueOfficer
 	 */
 	public void setBlueOfficer(Boolean blueOfficer) {
 		this.blueOfficer = blueOfficer;
@@ -623,7 +671,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param insuranceFlag セットする insuranceFlag
+	 * @param insuranceFlag
+	 *            セットする insuranceFlag
 	 */
 	public void setInsuranceFlag(Short insuranceFlag) {
 		this.insuranceFlag = insuranceFlag;
@@ -637,7 +686,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param healthInsuranceFlag セットする healthInsuranceFlag
+	 * @param healthInsuranceFlag
+	 *            セットする healthInsuranceFlag
 	 */
 	public void setHealthInsuranceFlag(Short healthInsuranceFlag) {
 		this.healthInsuranceFlag = healthInsuranceFlag;
@@ -651,7 +701,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param healthInsuranceType セットする healthInsuranceType
+	 * @param healthInsuranceType
+	 *            セットする healthInsuranceType
 	 */
 	public void setHealthInsuranceType(Short healthInsuranceType) {
 		this.healthInsuranceType = healthInsuranceType;
@@ -665,7 +716,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param healthCompensation セットする healthCompensation
+	 * @param healthCompensation
+	 *            セットする healthCompensation
 	 */
 	public void setHealthCompensation(Short healthCompensation) {
 		this.healthCompensation = healthCompensation;
@@ -679,7 +731,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param insurerNumber セットする insurerNumber
+	 * @param insurerNumber
+	 *            セットする insurerNumber
 	 */
 	public void setInsurerNumber(Long insurerNumber) {
 		this.insurerNumber = insurerNumber;
@@ -693,7 +746,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param insuredPersonnelNumber セットする insuredPersonnelNumber
+	 * @param insuredPersonnelNumber
+	 *            セットする insuredPersonnelNumber
 	 */
 	public void setInsuredPersonnelNumber(Long insuredPersonnelNumber) {
 		this.insuredPersonnelNumber = insuredPersonnelNumber;
@@ -707,7 +761,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param welfarePensionFlag セットする welfarePensionFlag
+	 * @param welfarePensionFlag
+	 *            セットする welfarePensionFlag
 	 */
 	public void setWelfarePensionFlag(Integer welfarePensionFlag) {
 		this.welfarePensionFlag = welfarePensionFlag;
@@ -721,7 +776,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param welfareCompensation セットする welfareCompensation
+	 * @param welfareCompensation
+	 *            セットする welfareCompensation
 	 */
 	public void setWelfareCompensation(Short welfareCompensation) {
 		this.welfareCompensation = welfareCompensation;
@@ -735,7 +791,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param welfareNumber セットする welfareNumber
+	 * @param welfareNumber
+	 *            セットする welfareNumber
 	 */
 	public void setWelfareNumber(Long welfareNumber) {
 		this.welfareNumber = welfareNumber;
@@ -749,7 +806,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param welfareFund セットする welfareFund
+	 * @param welfareFund
+	 *            セットする welfareFund
 	 */
 	public void setWelfareFund(Integer welfareFund) {
 		this.welfareFund = welfareFund;
@@ -763,7 +821,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param basicSalary セットする basicSalary
+	 * @param basicSalary
+	 *            セットする basicSalary
 	 */
 	public void setBasicSalary(Integer basicSalary) {
 		this.basicSalary = basicSalary;
@@ -777,7 +836,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param jobAllowance セットする jobAllowance
+	 * @param jobAllowance
+	 *            セットする jobAllowance
 	 */
 	public void setJobAllowance(Integer jobAllowance) {
 		this.jobAllowance = jobAllowance;
@@ -791,7 +851,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param requirementsAllowance セットする requirementsAllowance
+	 * @param requirementsAllowance
+	 *            セットする requirementsAllowance
 	 */
 	public void setRequirementsAllowance(Integer requirementsAllowance) {
 		this.requirementsAllowance = requirementsAllowance;
@@ -805,7 +866,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param housingAllowance セットする housingAllowance
+	 * @param housingAllowance
+	 *            セットする housingAllowance
 	 */
 	public void setHousingAllowance(Integer housingAllowance) {
 		this.housingAllowance = housingAllowance;
@@ -819,7 +881,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param familyAllowance セットする familyAllowance
+	 * @param familyAllowance
+	 *            セットする familyAllowance
 	 */
 	public void setFamilyAllowance(Integer familyAllowance) {
 		this.familyAllowance = familyAllowance;
@@ -833,7 +896,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param otherAllowance セットする otherAllowance
+	 * @param otherAllowance
+	 *            セットする otherAllowance
 	 */
 	public void setOtherAllowance(Integer otherAllowance) {
 		this.otherAllowance = otherAllowance;
@@ -847,7 +911,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param taxExpense セットする taxExpense
+	 * @param taxExpense
+	 *            セットする taxExpense
 	 */
 	public void setTaxExpense(Integer taxExpense) {
 		this.taxExpense = taxExpense;
@@ -861,7 +926,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param travelFund セットする travelFund
+	 * @param travelFund
+	 *            セットする travelFund
 	 */
 	public void setTravelFund(Integer travelFund) {
 		this.travelFund = travelFund;
@@ -875,7 +941,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param repaymentBorrowings セットする repaymentBorrowings
+	 * @param repaymentBorrowings
+	 *            セットする repaymentBorrowings
 	 */
 	public void setRepaymentBorrowings(Integer repaymentBorrowings) {
 		this.repaymentBorrowings = repaymentBorrowings;
@@ -889,7 +956,8 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @param otherDeductions セットする otherDeductions
+	 * @param otherDeductions
+	 *            セットする otherDeductions
 	 */
 	public void setOtherDeductions(Integer otherDeductions) {
 		this.otherDeductions = otherDeductions;
