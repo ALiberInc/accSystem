@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.configurers
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * Spring Security設定クラス.
@@ -34,7 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// passwordのパラメタ名
 				.passwordParameter("password").permitAll().and()
 				// ログアウト処理の設定
-				.logout().permitAll();
+				.logout()
+				// ログアウト処理のパス
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))
+				// ログアウト成功時の遷移先
+				.logoutSuccessUrl("/login")
+				// 認証を解除
+				.clearAuthentication(true).permitAll();
 	}
 
 	@Configuration
