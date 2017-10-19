@@ -160,7 +160,7 @@ public class EmployeeInfoEditController {
 
 		// 口座情報
 		TEmployeeBankAccount tEmployeeBankAccount = tEmployeeBankAccountService.getTEmployeeBankAccount(emplyeeIdEdit,
-				1);
+				loginUser.getUser().getCompId());
 		if (tEmployeeBankAccount != null) {
 			if (StringUtils.isNotEmpty(tEmployeeBankAccount.getAccountKana())) {
 				form.setAccountHolder(tEmployeeBankAccount.getAccountKana());

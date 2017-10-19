@@ -42,3 +42,23 @@ $('#salaryPrint').click(
 				alert("誰も選択されていません。")
 			}
 		});
+
+$('#salaryDetailChange').click(
+		function() {
+			var chk_value = [];
+			$('input[name="salaryCheckBox"]:checked').each(function() {
+				chk_value.push($(this).val());
+			});
+			if (chk_value.length == 1) {
+				var url = getContextPath() + "detail?employeeId="
+				 +chk_value;
+				window.open(url);
+			} 
+			if (chk_value.length == 0) {
+				alert("誰も選択されていません。")
+			}
+			
+			if (chk_value.length > 1){
+				alert("1つを選択してください。")
+			}
+		});

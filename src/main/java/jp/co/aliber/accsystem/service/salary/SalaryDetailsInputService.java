@@ -3,6 +3,7 @@ package jp.co.aliber.accsystem.service.salary;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -126,9 +127,11 @@ public class SalaryDetailsInputService {
 			// 総支給
 			Integer sum = new Integer(0);
 			for (Integer a : paymentList) {
-				sum += a.intValue();
+				if (a != null) {
+					sum += a.intValue();
+				}
 			}
-			tSalaryDetail.setTotalPay(sum + transportFee);
+			tSalaryDetail.setTotalPay(sum + (transportFee != null ? transportFee : 0));
 			// 色んな控除額をここで置く
 			List<Integer> listDeduction = new ArrayList<Integer>();
 			// 総支給によって、保険について各項目を取得する
@@ -176,26 +179,35 @@ public class SalaryDetailsInputService {
 			// 控除額合計
 			Integer deductionSum = new Integer(0);
 			for (Integer a : listDeduction) {
-				deductionSum += a.intValue();
+				if (a != null) {
+					deductionSum += a.intValue();
+				}
 			}
 			tSalaryDetail.setTotalDeductibleAmount(deductionSum);
 			// 差引支給額
 			Integer subscriptionAmount = sum - deductionSum;
 			tSalaryDetail.setSubscriptionAmount(subscriptionAmount);
+
+			// 給与明細入力テーブルにインサートする
+			tSalaryDetail.setCompId(compId);
+			tSalaryDetail.setEmployeeId(employeeId);
+			tSalaryDetail.setSalaryYearMonth(yearMonth);
+			tSalaryDetail.setPayDate(new Date());
+			tSalaryDetailMapper.insertSelective(tSalaryDetail);
 		}
 
 		return tSalaryDetail;
 	}
 
 	/**
-	 * 従業員給与明細テーブルにインサートする
+	 * 従業員給与明細テーブルに更新する
 	 *
 	 * @param tSalaryDetail
 	 *            従業員給与明細テーブルエンティティ
 	 * @throws Exception
 	 *
 	 */
-	public void regist(TSalaryDetail tSalaryDetail) {
+	public void update(TSalaryDetail tSalaryDetail) {
 		// それぞれ返却する
 		if (tSalaryDetail.getEmployeeId() == null) {
 			return;
@@ -203,13 +215,10 @@ public class SalaryDetailsInputService {
 		if (tSalaryDetail.getCompId() == null) {
 			return;
 		}
-		if (tSalaryDetail.getSalaryYearMonth() == null && StringUtils.isEmpty(tSalaryDetail.getSalaryYearMonth())) {
+		if (!StringUtils.isNotEmpty(tSalaryDetail.getSalaryYearMonth())) {
 			return;
 		}
-		// 先に削除を行って、データをインサートする
-		tSalaryDetailMapper.deleteByPrimaryKey(tSalaryDetail.getEmployeeId(), tSalaryDetail.getCompId(),
-				tSalaryDetail.getSalaryYearMonth());
-		tSalaryDetailMapper.insertSelective(tSalaryDetail);
+		tSalaryDetailMapper.updateByPrimaryKeySelective(tSalaryDetail);
 
 	}
 

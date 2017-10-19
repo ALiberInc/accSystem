@@ -66,23 +66,20 @@ public class SalaryDetailsInputController {
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(Model model, @ModelAttribute SalaryDetailsInputForm form,
 			@RequestParam(value = "yearMonth", required = false) String yearMonth,
-			@RequestParam(value = "employeeId", required = false) Integer employeeId,
+			@RequestParam(value = "employeeId", required = true) Integer employeeId,
 			@AuthenticationPrincipal LoginUser loginUser) {
-
+		//TODO 今、年月の選択は実装されていなかった、それでしばらく今月をセットする
 		// 年月がnullの場合、デフォルトが今の年月を設定する
 		if (StringUtils.isEmpty(yearMonth)) {
 			// システム日付を取得する
 			DateFormat df = new SimpleDateFormat("yyyyMM");
 			yearMonth = df.format(new Date());
 		}
-		if (employeeId == null) {
-			employeeId = 1;
-		}
 		// 先画面から取得する
 		form.setEmployeeId(employeeId);
 		form.setSalaryYearMonth(yearMonth);
 		// ログイン情報から取得
-		Integer compId = 1;
+		Integer compId = loginUser.getUser().getCompId();
 		// 扶養親族等の数を従業員所得税情報テーブルから取得する
 		TEmployeeIncomeTax tEmployeeIncomeTax = tEmployeeIncomeTaxMapper.selectByPrimaryKey(employeeId, compId);
 
@@ -212,8 +209,8 @@ public class SalaryDetailsInputController {
 		tSalaryDetail.setSubscriptionAmount(form.getSubscriptionAmount());
 
 		// 登録処理
-		salaryDetailsInputService.regist(tSalaryDetail);
+		salaryDetailsInputService.update(tSalaryDetail);
 
-		return "salary/salaryDetailsInput";
+		return "redirect:/finish?forwardURL=salary_statement";
 	}
 }
