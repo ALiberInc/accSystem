@@ -116,6 +116,11 @@ public class EmployeeInfoEditController {
 	public String index(EmployeeInfoEditForm form,
 			@RequestParam(value = "emplyeeId", required = false) String emplyeeId,
 			@AuthenticationPrincipal LoginUser loginUser) {
+		// 部署リスト
+		List<TCompanyDepartment> listTCompanyDepartment = tCompanyDepartmentService
+				.getListTCompanyDepartmen(loginUser.getUser().getCompId());
+		form.setDepartmentList(listTCompanyDepartment);
+
 		if (emplyeeId == null) {
 			// 登録の場合
 			form.setCreationflag(false);
@@ -126,9 +131,6 @@ public class EmployeeInfoEditController {
 		Integer emplyeeIdEdit = Integer.valueOf(emplyeeId);
 		// 從業員番号
 		form.setEmployeeId(emplyeeIdEdit);
-		// 部署リスト
-		List<TCompanyDepartment> listTCompanyDepartmen = tCompanyDepartmentService.getListTCompanyDepartmen(1);
-		form.setDepartmentList(listTCompanyDepartmen);
 
 		// 從業員情報
 		TEmployee employee = tEmployeeService.getTEmployee(emplyeeIdEdit, loginUser.getUser().getCompId());
@@ -469,7 +471,7 @@ public class EmployeeInfoEditController {
 			tEmployeeIncomeTax.setEmployeeId(form.getEmployeeId());
 			tEmployeeIncomeTaxService.update(tEmployeeIncomeTax);
 
-			return "employee/employee_info";
+			return "redirect:/employee_info";
 		}
 
 		// 新規の場合
