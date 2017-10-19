@@ -1,7 +1,7 @@
 package jp.co.aliber.accsystem.controller.salary;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +50,42 @@ public class SalaryStatementController {
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(@AuthenticationPrincipal LoginUser loginUser, SalaryStatementForm form) {
+		// 月リスト
+		List<String> listMonth = new ArrayList<>();
+		listMonth.add("01");
+		listMonth.add("02");
+		listMonth.add("03");
+		listMonth.add("04");
+		listMonth.add("05");
+		listMonth.add("06");
+		listMonth.add("07");
+		listMonth.add("08");
+		listMonth.add("09");
+		listMonth.add("10");
+		listMonth.add("11");
+		listMonth.add("12");
+		form.setMonthList(listMonth);
+
+		// 年リスト
+		List<String> listYear = new ArrayList<>();
+		// 今年を取得
+		int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+		// 5年前から来年まで
+		for (int i = thisYear - 5; i <= thisYear + 1; i++) {
+			listYear.add(i + "");
+		}
+		form.setYearList(listYear);
+		// 選択された年:デフォルト値:今年
+		form.setSalaryYear(thisYear + "");
+
+		// 今月
+		int thisMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
+		for (String a : listMonth) {
+			if (Integer.valueOf(a).intValue() == thisMonth) {
+				form.setSalaryMonth(a);
+				break;
+			}
+		}
 
 		// 從業員情報リストを取得
 		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
@@ -57,8 +93,6 @@ public class SalaryStatementController {
 
 		// 会社ID
 		form.setCompId(loginUser.getUser().getCompId());
-		// 月給年月
-		form.setSalaryYearMonth(new SimpleDateFormat("yyyyMM").format(new Date()));
 		return "salary/salary_statement";
 	}
 }

@@ -11,9 +11,25 @@
 		</span>
 		<button type="button" class="btn btn-info btn-sm" id="freeWordButton">検索</button>
 		<button type="button" class="btn btn-info btn-sm"
-			id="salaryDetailChange">変更</button>
+			id="salaryDetailChange">明細入力</button>
 		<button type="button" class="btn btn-info btn-sm" id="salaryPrint">印刷</button>
 		<button type="button" class="btn btn-info btn-sm" id="sendMail">メール送信</button>
+		<select id="salaryYear" name="salaryYear" class="form-control">
+			<option
+				th:if="${not #lists.isEmpty(salaryStatementForm.yearList)}"
+				th:each="salaryYear : ${salaryStatementForm.yearList}"
+				th:value="${salaryYear}"
+				th:selected="${salaryStatementForm.salaryYear} == ${salaryYear}"
+				th:text="${salaryYear}"></option>
+		</select>
+		<select id="salaryMonth" name="salaryMonth" class="form-control">
+			<option
+				th:if="${not #lists.isEmpty(salaryStatementForm.monthList)}"
+				th:each="salaryMonth : ${salaryStatementForm.monthList}"
+				th:value="${salaryMonth}"
+				th:selected="${salaryStatementForm.salaryMonth} == ${salaryMonth}"
+				th:text="${salaryMonth}"></option>
+		</select>
 	</div>
 	<div class="centerDiv">
 		<table class="table table-striped">
@@ -38,7 +54,6 @@
 		</table>
 	</div>
 	<input type="hidden" th:field=" ${salaryStatementForm.compId}" />
-	<input type="hidden" th:field=" ${salaryStatementForm.salaryYearMonth}" />
 </body>
 <script th:src="@{/js/salary_statement.js}" type="text/javascript"></script>
 </html>
