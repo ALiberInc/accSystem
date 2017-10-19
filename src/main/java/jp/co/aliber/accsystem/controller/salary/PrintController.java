@@ -50,18 +50,21 @@ public class PrintController {
 	 * @param request
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public void index(@RequestParam(value = "employeeId", required = true) String employeeId,
-			@RequestParam(value = "compId", required = true) String compId,
+	public void index(@RequestParam(value = "employeeId", required = true) String employeeIdCommaSeperated,
+			@RequestParam(value = "compId", required = true) Integer compId,
 			@RequestParam(value = "salaryYearMonth", required = true) String salaryYearMonth,
 			HttpServletResponse response, HttpServletRequest request) {
 
 		response.setContentType("application/pdf");
-
-		try (ByteArrayOutputStream pdfOutputStream = utilService.creationPdfOutputStream(Integer.parseInt(employeeId),
-				Integer.parseInt(compId), salaryYearMonth); ServletOutputStream sos = response.getOutputStream()) {
-			sos.write(pdfOutputStream.toByteArray());
-		} catch (NumberFormatException | JRException | IOException e) {
-			e.printStackTrace();
+		String[] employeeIdArray = employeeIdCommaSeperated.split(",");
+		for (int i = 0; i < employeeIdArray.length; i++) {
+			try (ByteArrayOutputStream pdfOutputStream = utilService
+					.creationPdfOutputStream(Integer.valueOf(employeeIdArray[i]), compId, salaryYearMonth);
+					ServletOutputStream sos = response.getOutputStream()) {
+				sos.write(pdfOutputStream.toByteArray());
+			} catch (NumberFormatException | JRException | IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

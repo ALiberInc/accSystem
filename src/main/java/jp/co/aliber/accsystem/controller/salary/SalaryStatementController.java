@@ -1,5 +1,7 @@
 package jp.co.aliber.accsystem.controller.salary;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +54,11 @@ public class SalaryStatementController {
 		// 從業員情報リストを取得
 		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
 		form.setListTEmployee(listTEmployee);
+
+		// 会社ID
+		form.setCompId(loginUser.getUser().getCompId());
+		// 月給年月
+		form.setSalaryYearMonth(new SimpleDateFormat("yyyyMM").format(new Date()));
 		return "salary/salary_statement";
 	}
 }

@@ -6,21 +6,41 @@ import jp.co.aliber.accsystem.entity.auto.TEmployee;
 
 public class SalaryStatementForm {
 
-    private List<TEmployee> listTEmployee;
+	private List<TEmployee> listTEmployee;
 
-    /**
-     * @return listTEmployee
-     */
-    public List<TEmployee> getListTEmployee() {
-        return listTEmployee;
-    }
+	private Integer compId;
 
-    /**
-     * @param listTEmployee セットする listTEmployee
-     */
-    public void setListTEmployee(List<TEmployee> listTEmployee) {
-        this.listTEmployee = listTEmployee;
-    }
+	private String salaryYearMonth;
 
+	public Integer getCompId() {
+		return compId;
+	}
+
+	public void setCompId(Integer compId) {
+		this.compId = compId;
+	}
+
+	public String getSalaryYearMonth() {
+		return salaryYearMonth;
+	}
+
+	public void setSalaryYearMonth(String salaryYearMonth) {
+		this.salaryYearMonth = salaryYearMonth;
+	}
+
+	/**
+	 * @return listTEmployee
+	 */
+	public List<TEmployee> getListTEmployee() {
+		return listTEmployee;
+	}
+
+	/**
+	 * @param listTEmployee
+	 *            セットする listTEmployee
+	 */
+	public void setListTEmployee(List<TEmployee> listTEmployee) {
+		this.listTEmployee = listTEmployee;
+	}
 
 }
