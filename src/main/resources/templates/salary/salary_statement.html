@@ -15,20 +15,15 @@
 		<button type="button" class="btn btn-info btn-sm" id="salaryPrint">印刷</button>
 		<button type="button" class="btn btn-info btn-sm" id="sendMail">メール送信</button>
 		<select id="salaryYear" name="salaryYear" class="form-control">
-			<option
-				th:if="${not #lists.isEmpty(salaryStatementForm.yearList)}"
-				th:each="salaryYear : ${salaryStatementForm.yearList}"
-				th:value="${salaryYear}"
-				th:selected="${salaryStatementForm.salaryYear} == ${salaryYear}"
-				th:text="${salaryYear}"></option>
-		</select>
-		<select id="salaryMonth" name="salaryMonth" class="form-control">
-			<option
-				th:if="${not #lists.isEmpty(salaryStatementForm.monthList)}"
-				th:each="salaryMonth : ${salaryStatementForm.monthList}"
-				th:value="${salaryMonth}"
-				th:selected="${salaryStatementForm.salaryMonth} == ${salaryMonth}"
-				th:text="${salaryMonth}"></option>
+			<option th:each="year : ${salaryStatementForm.yearList}"
+				th:value="${year}"
+				th:selected="${salaryStatementForm.salaryYear} == ${year}"
+				th:text="${year}"></option>
+		</select> <select id="salaryMonth" name="salaryMonth" class="form-control">
+			<option th:each="month : ${salaryStatementForm.monthList}"
+				th:value="${month}"
+				th:selected="${salaryStatementForm.salaryMonth} == ${month}"
+				th:text="${month}"></option>
 		</select>
 	</div>
 	<div class="centerDiv">

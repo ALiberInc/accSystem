@@ -1,7 +1,5 @@
 package jp.co.aliber.accsystem.controller.salary;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -9,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -65,16 +62,9 @@ public class SalaryDetailsInputController {
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(Model model, @ModelAttribute SalaryDetailsInputForm form,
-			@RequestParam(value = "yearMonth", required = false) String yearMonth,
+			@RequestParam(value = "yearMonth", required = true) String yearMonth,
 			@RequestParam(value = "employeeId", required = true) Integer employeeId,
 			@AuthenticationPrincipal LoginUser loginUser) {
-		//TODO 今、年月の選択は実装されていなかった、それでしばらく今月をセットする
-		// 年月がnullの場合、デフォルトが今の年月を設定する
-		if (StringUtils.isEmpty(yearMonth)) {
-			// システム日付を取得する
-			DateFormat df = new SimpleDateFormat("yyyyMM");
-			yearMonth = df.format(new Date());
-		}
 		// 先画面から取得する
 		form.setEmployeeId(employeeId);
 		form.setSalaryYearMonth(yearMonth);

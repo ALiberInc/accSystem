@@ -50,15 +50,16 @@ $('#salaryDetailChange').click(
 				chk_value.push($(this).val());
 			});
 			if (chk_value.length == 1) {
-				var url = getContextPath() + "detail?employeeId="
-				 +chk_value;
+				var url = getContextPath() + "detail?employeeId=" + chk_value
+						+ "&yearMonth=" + $('#salaryYear').val()
+						+ $('#salaryMonth').val();
 				window.open(url);
-			} 
+			}
 			if (chk_value.length == 0) {
 				alert("誰も選択されていません。")
 			}
-			
-			if (chk_value.length > 1){
+
+			if (chk_value.length > 1) {
 				alert("1つを選択してください。")
 			}
 		});

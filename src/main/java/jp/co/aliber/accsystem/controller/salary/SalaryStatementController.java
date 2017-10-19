@@ -1,9 +1,11 @@
 package jp.co.aliber.accsystem.controller.salary;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -51,19 +53,7 @@ public class SalaryStatementController {
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(@AuthenticationPrincipal LoginUser loginUser, SalaryStatementForm form) {
 		// 月リスト
-		List<String> listMonth = new ArrayList<>();
-		listMonth.add("01");
-		listMonth.add("02");
-		listMonth.add("03");
-		listMonth.add("04");
-		listMonth.add("05");
-		listMonth.add("06");
-		listMonth.add("07");
-		listMonth.add("08");
-		listMonth.add("09");
-		listMonth.add("10");
-		listMonth.add("11");
-		listMonth.add("12");
+		List<String> listMonth = Arrays.asList("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
 		form.setMonthList(listMonth);
 
 		// 年リスト
@@ -80,12 +70,8 @@ public class SalaryStatementController {
 
 		// 今月
 		int thisMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
-		for (String a : listMonth) {
-			if (Integer.valueOf(a).intValue() == thisMonth) {
-				form.setSalaryMonth(a);
-				break;
-			}
-		}
+		// 選択された年:デフォルト値:今月
+		form.setSalaryMonth(StringUtils.leftPad(thisMonth + "", 2, '0'));
 
 		// 從業員情報リストを取得
 		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
