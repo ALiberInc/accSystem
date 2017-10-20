@@ -11,7 +11,9 @@ $('#sendMailBtn').click(function() {
 				'bodyType' : 1,
 				'body1' : $("#Body").val(),
 				'body2' : $("#Body2").val(),
-				'compName' : $("#compName").val()
+				'compName' : $("#compName").val(),
+				'compAddress' : $("#compAddress").val(),
+				'compTel' : $("#compTel").val()
 			}
 		} else {
 			param = {
@@ -20,7 +22,10 @@ $('#sendMailBtn').click(function() {
 				'bodyType' : 0,
 				'body1' : $("#AutoBody1").text(),
 				'body2' : $("#AutoBody2").text(),
-				'compName' : $("#compName").val()
+				'compName' : $("#compName").val(),
+				'compAddress' : $("#compAddress").val(),
+				'compTel' : $("#compTel").val()
+				
 			}
 		}
 		var paramUrl = $("#sendMailForm").attr("action");

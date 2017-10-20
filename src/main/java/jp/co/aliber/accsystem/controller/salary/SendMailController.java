@@ -89,7 +89,7 @@ public class SendMailController {
 		// 会社アドレース
 		form.setCompAddress(tcompany.getCompAdd1() + (tcompany.getCompAdd2() != null ? tcompany.getCompAdd2() : ""));
 		// 会社電話
-		form.setCompTel(tcompany.getCompTel1() + tcompany.getCompTel2() + tcompany.getCompTel3());
+		form.setCompTel(tcompany.getCompTel1() + "-" + tcompany.getCompTel2() + "-" + tcompany.getCompTel3());
 		return "salary/send_mail";
 	}
 
@@ -118,7 +118,9 @@ public class SendMailController {
 	@ResponseBody
 	public String send(SendMailForm form, @RequestParam(value = "forName") String forName,
 			@RequestParam(value = "body1") String body1, @RequestParam(value = "body2") String body2,
-			@RequestParam(value = "sendMailStr") String sendMailStr,@RequestParam(value = "compName") String compName, @AuthenticationPrincipal LoginUser loginUser) {
+			@RequestParam(value = "sendMailStr") String sendMailStr, @RequestParam(value = "compName") String compName,
+			@RequestParam(value = "compAddress") String compAddress, @RequestParam(value = "compTel") String compTel,
+			@AuthenticationPrincipal LoginUser loginUser) {
 		// 返却結果
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		try {
@@ -138,9 +140,9 @@ public class SendMailController {
 				msg.setSubject(form.getMailName());
 				// 本文をセットする
 				StringBuilder textBuilder = new StringBuilder(tEmployee.getLastName());
-				textBuilder.append(tEmployee.getFirstName()).append("　様").append("\n\n").append(compName)
-						.append("です。").append("\n\n").append("明細書をお送りします。").append("\n\n")
-						.append("以下のURLをクリックして、内容をご確認ください。").append("\n");
+				textBuilder.append(tEmployee.getFirstName()).append("　様").append("\n\n").append(compName).append("です。")
+						.append("\n\n").append("明細書をお送りします。").append("\n\n").append("以下のURLをクリックして、内容をご確認ください。")
+						.append("\n").append("http://localhost:8080/accsystem/print?employeeId=").append("\n\n");
 				msg.setText(textBuilder.toString());
 				this.sender.send(msg);
 			}
