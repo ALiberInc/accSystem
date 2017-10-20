@@ -9,21 +9,19 @@ $('#sendMailBtn').click(function() {
 				'sendMailStr' : $("#sendMailStr").val(),
 				'forName' : $("#Name").val(),
 				'bodyType' : 1,
-				'subject' : $("#Subject").val(),
-				'body1' : $("#Body1").val(),
-				'body2' : $("#Body2").val()
+				'body1' : $("#Body").val(),
+				'body2' : $("#Body2").val(),
 			}
 		} else {
 			param = {
 				'sendMailStr' : $("#sendMailStr").val(),
 				'forName' : $("#Name").val(),
 				'bodyType' : 0,
-				'subject' : $("#AutoSubject").text(),
 				'body1' : $("#AutoBody1").text(),
-				'body2' : $("#AutoBody2").text()
+				'body2' : $("#AutoBody2").text(),
 			}
 		}
-		var paramUrl = $("#fm").attr("action");
+		var paramUrl = $("#sendMailForm").attr("action");
 		var result = callAjax(paramUrl, param);
 		result = JSON.parse(result);
 		if (result.result_cd == 0) {

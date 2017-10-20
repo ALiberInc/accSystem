@@ -6,7 +6,8 @@ $('#sendMail').click(
 			});
 			if (chk_value.length > 0) {
 				window.open(getContextPath() + "send_mail?sendMailStr="
-						+ chk_value.join(","), "", "location=no,top="
+						+ chk_value.join(",")+ "&yearMonth=" + $('#salaryYear').val()
+						+ $('#salaryMonth').val(), "", "location=no,top="
 						+ (screen.width - 1600) / 2 + ",left="
 						+ (screen.width - 600) / 2 + ",width=700,height=600");
 			} else {
