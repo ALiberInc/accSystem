@@ -9,10 +9,7 @@
 			method="post">
 			<input type="hidden" name="sendMailStr" id="sendMailStr"
 				th:value="${sendMailForm.sendMailStr}" /> <input type="hidden"
-				name="sendMailStr" id="sendMailStr"
-				th:value="${sendMailForm.sendMailStr}" /> <input type="hidden"
-				name="sendMailStr" id="sendMailStr"
-				th:value="${sendMailForm.sendMailStr}" />
+				th:field="${sendMailForm.compName}" />
 			<table border="0" cellpadding="0" cellspacing="0" width="600">
 				<tr>
 					<td width="" height="25"><span>メール内容編集</span></td>
