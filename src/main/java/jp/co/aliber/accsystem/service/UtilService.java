@@ -221,6 +221,7 @@ public class UtilService {
 		// 所得税
 		salaryBean.setCumulativeIncomeTax(
 				tSalaryDetail.getIncomeTax() != null ? tSalaryDetail.getIncomeTax().toString() : "0");
+		// 課税支給額 = 支給合計 - 交通費 - 積立金 - 借入等返済 - 家賃控除
 		Integer cumulativeTaxableAmount = Integer.parseInt(salaryBean.getTotalSupply())
 				- Integer.parseInt(salaryBean.getTransportationCosts())
 				- (tSalaryDetail.getTravelFund() != null ? tSalaryDetail.getTravelFund() : 0)
