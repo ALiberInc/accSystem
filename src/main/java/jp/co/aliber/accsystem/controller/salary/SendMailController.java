@@ -94,32 +94,27 @@ public class SendMailController {
 	}
 
 	/**
-	 * 送信ボタン
-	 *
-	 * @param locale
-	 * @param model
 	 * @param form
 	 *            メール送信画面FORM
 	 * @param forName
 	 *            送信者名
 	 * @param bodyType
-	 *            作成方法
-	 * @param subject
-	 *            件名
+	 *            手動/自動入力フラグ
 	 * @param body1
 	 *            本文1
 	 * @param body2
 	 *            本文2
 	 * @param sendMailStr
-	 *            メールアドレス
+	 *            送信先 メールアドレス
+	 * @param loginUser
+	 *            ログインユーザ
 	 * @return
 	 */
 	@RequestMapping(value = { "/send" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String send(SendMailForm form, @RequestParam(value = "forName") String forName,
-			@RequestParam(value = "body1") String body1, @RequestParam(value = "body2") String body2,
-			@RequestParam(value = "sendMailStr") String sendMailStr, @RequestParam(value = "compName") String compName,
-			@RequestParam(value = "compAddress") String compAddress, @RequestParam(value = "compTel") String compTel,
+			@RequestParam(value = "bodyType") String bodyType, @RequestParam(value = "body1") String body1,
+			@RequestParam(value = "body2") String body2, @RequestParam(value = "sendMailStr") String sendMailStr,
 			@AuthenticationPrincipal LoginUser loginUser) {
 		// 返却結果
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -133,16 +128,26 @@ public class SendMailController {
 
 				SimpleMailMessage msg = new SimpleMailMessage();
 				// 送信者名をセットする
-				msg.setFrom("accsystem@aliber.co.jp");
+				msg.setFrom(forName + "<accsystem@aliber.co.jp>");
 				// メールアドレスをセットする
 				msg.setTo(tEmployee.getMailAddress());
 				// 件名をセットする
 				msg.setSubject(form.getMailName());
-				// 本文をセットする
+				// 本文
 				StringBuilder textBuilder = new StringBuilder(tEmployee.getLastName());
-				textBuilder.append(tEmployee.getFirstName()).append("　様").append("\n\n").append(compName).append("です。")
-						.append("\n\n").append("明細書をお送りします。").append("\n\n").append("以下のURLをクリックして、内容をご確認ください。")
-						.append("\n").append("http://localhost:8080/accsystem/print?employeeId=").append("\n\n");
+				// 自動入力の場合
+				// 手動入力の場合の実装はまだです
+				if (bodyType.equals("0")) {
+					// 本文をセットする
+					textBuilder.append(tEmployee.getFirstName()).append("　様").append("\n\n").append(form.getCompName())
+							.append("です。").append("\n\n").append("明細書をお送りします。").append("\n\n")
+							.append("以下のURLをクリックして、内容をご確認ください。").append("\n")
+							.append("http://localhost:8080/accsystem/print?employeeId=").append("\n\n")
+							.append("※有効期限：本日より7日間").append("\n\n").append("以上の内容について覚えがない場合は").append("\n")
+							.append("下記の連絡先まで、お問い合わせください。\nよろしくお願いいたします。\n------------------------------------------------------------\n")
+							.append(form.getCompAddress()).append("\n").append(form.getCompName()).append("\n")
+							.append(form.getCompTel());
+				}
 				msg.setText(textBuilder.toString());
 				this.sender.send(msg);
 			}
