@@ -9,14 +9,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.aliber.accsystem.bean.SalaryBean;
 import jp.co.aliber.accsystem.entity.SelectNameDeptNameParameter;
+import jp.co.aliber.accsystem.entity.auto.TEmployeeIncomeTax;
 import jp.co.aliber.accsystem.entity.auto.TSalaryDetail;
 import jp.co.aliber.accsystem.mapper.SelectNameDeptNameMapper;
 import jp.co.aliber.accsystem.mapper.SelectSeqLastValueMapper;
+import jp.co.aliber.accsystem.mapper.auto.TEmployeeIncomeTaxMapper;
 import jp.co.aliber.accsystem.mapper.auto.TSalaryDetailMapper;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
@@ -33,11 +36,14 @@ public class UtilService {
 
 	/** シーケンス生成 */
 	@Autowired
-	private SelectSeqLastValueMapper selectSeqLastValueMapper;
+	SelectSeqLastValueMapper selectSeqLastValueMapper;
 
 	/** 従業員給与明細 */
 	@Autowired
-	private TSalaryDetailMapper tSalaryDetailMapper;
+	TSalaryDetailMapper tSalaryDetailMapper;
+
+	@Autowired
+	TEmployeeIncomeTaxMapper tEmployeeIncomeTaxMapper;
 
 	@Autowired
 	SelectNameDeptNameMapper selectNameDeptNameMapper;
@@ -80,6 +86,9 @@ public class UtilService {
 		}
 
 		// データを取得
+		// 社員情報
+		TEmployeeIncomeTax tEmployeeIncomeTax = tEmployeeIncomeTaxMapper.selectByPrimaryKey(employeeId, compId);
+		// 給与詳細
 		TSalaryDetail tSalaryDetail = tSalaryDetailMapper.selectByPrimaryKey(employeeId, compId, salaryYearMonth);
 
 		if (tSalaryDetail == null) {
@@ -104,7 +113,8 @@ public class UtilService {
 		// 氏名
 		salaryBean.setName(selectNameDeptNameParameter.getLastName() + selectNameDeptNameParameter.getFirstName());
 		// 所属
-		salaryBean.setDepartment(selectNameDeptNameParameter.getDeptName());
+		salaryBean.setDepartment(StringUtils.isNotEmpty(selectNameDeptNameParameter.getDeptName())
+				? selectNameDeptNameParameter.getDeptName() : "");
 		// コード
 		salaryBean.setCode(selectNameDeptNameParameter.getEmployeeNo() != null
 				? selectNameDeptNameParameter.getEmployeeNo().toString() : "");
@@ -131,7 +141,7 @@ public class UtilService {
 		// 税額表
 		salaryBean.setTaxSchedule("甲欄");
 		// 扶養人数
-		salaryBean.setNumberOfDependents("");
+		salaryBean.setNumberOfDependents(tEmployeeIncomeTax.getDependencyCount() + "");
 		// 基本給
 		salaryBean.setBasicSalary(
 				tSalaryDetail.getBasicSalary() != null ? tSalaryDetail.getBasicSalary().toString() : "0");
@@ -182,8 +192,9 @@ public class UtilService {
 		salaryBean.setRentDeduction(
 				tSalaryDetail.getRentDeduction() != null ? tSalaryDetail.getRentDeduction().toString() : "0");
 		// 控除合計
-		salaryBean.setTotalDeduction(tSalaryDetail.getTotalDeductibleAmount() != null
-				? tSalaryDetail.getTotalDeductibleAmount().toString() : "0");
+		Integer amount = tSalaryDetail.getTotalDeductibleAmount()
+				- (tSalaryDetail.getOtherDeduction() != null ? tSalaryDetail.getOtherDeduction() : 0);
+		salaryBean.setTotalDeduction(tSalaryDetail.getTotalDeductibleAmount() != null ? amount.toString() : "0");
 
 		// その他の控除
 		salaryBean.setOtherDeductions(
@@ -209,9 +220,12 @@ public class UtilService {
 				tSalaryDetail.getTotalInsurance() != null ? tSalaryDetail.getTotalInsurance().toString() : "0");
 		// 所得税
 		salaryBean.setCumulativeIncomeTax(
-				tSalaryDetail.getOtherDeduction() != null ? tSalaryDetail.getOtherDeduction().toString() : "0");
+				tSalaryDetail.getIncomeTax() != null ? tSalaryDetail.getIncomeTax().toString() : "0");
 		Integer cumulativeTaxableAmount = Integer.parseInt(salaryBean.getTotalSupply())
-				- Integer.parseInt(salaryBean.getTransportationCosts());
+				- Integer.parseInt(salaryBean.getTransportationCosts())
+				- (tSalaryDetail.getTravelFund() != null ? tSalaryDetail.getTravelFund() : 0)
+				- (tSalaryDetail.getRepaymentBorrowings() != null ? tSalaryDetail.getRepaymentBorrowings() : 0)
+				- (tSalaryDetail.getRentDeduction() != null ? tSalaryDetail.getRentDeduction() : 0);
 		// 課税支給額
 		salaryBean.setCumulativeTaxableAmount(cumulativeTaxableAmount.toString());
 
