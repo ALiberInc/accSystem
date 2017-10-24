@@ -139,7 +139,7 @@ public class SendMailController {
 						loginUser.getUser().getCompId());
 
 				// メールを生成する
-				MimeMessage message = produceMail(form, forName, bodyType, tEmployee);
+				MimeMessage message = produceMail(form, forName, bodyType, tEmployee, body1, body2);
 
 				this.sender.send(message);
 			}
@@ -165,8 +165,8 @@ public class SendMailController {
 	 * @return
 	 * @throws MessagingException
 	 */
-	private MimeMessage produceMail(SendMailForm form, String forName, String bodyType, TEmployee tEmployee)
-			throws MessagingException {
+	private MimeMessage produceMail(SendMailForm form, String forName, String bodyType, TEmployee tEmployee,
+			String body1, String body2) throws MessagingException {
 		MimeMessage message = sender.createMimeMessage();
 		// 添付ファイルを用いる場合は、tureを設定します
 		MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
@@ -178,8 +178,8 @@ public class SendMailController {
 		helper.setSubject(form.getMailName());
 		// 本文
 		StringBuilder textBuilder = new StringBuilder(tEmployee.getLastName());
+
 		// 自動入力の場合
-		// 手動入力の場合の実装はまだです
 		if (bodyType.equals("0")) {
 			// 本文をセットする
 			textBuilder.append(tEmployee.getFirstName()).append("　様").append("\n\n").append(form.getCompName())
@@ -188,7 +188,13 @@ public class SendMailController {
 					.append("下記の連絡先まで、お問い合わせください。\nよろしくお願いいたします。\n------------------------------------------------------------\n")
 					.append(form.getCompAddress()).append("\n").append(form.getCompName()).append("\n")
 					.append(form.getCompTel());
+		} else {
+			// 手動入力の場合
+			textBuilder.append(tEmployee.getFirstName()).append("　様").append("\n\n").append(body1).append("\n\n")
+					.append(form.getCompName()).append("です。").append("\n\n").append("明細書をお送りします。").append("\n\n")
+					.append("添付ファイルをクリックして、内容をご確認ください。").append("\n\n").append(body2);
 		}
+
 		helper.setText(textBuilder.toString());
 
 		// 件名

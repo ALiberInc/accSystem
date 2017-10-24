@@ -9,7 +9,7 @@ $('#sendMailBtn').click(function() {
 				'sendMailStr' : $("#sendMailStr").val(),
 				'forName' : $("#Name").val(),
 				'bodyType' : 1,
-				'body1' : $("#Body").val(),
+				'body1' : $("#Body1").val(),
 				'body2' : $("#Body2").val(),
 				'compName' : $("#compName").val(),
 				'compAddress' : $("#compAddress").val(),
