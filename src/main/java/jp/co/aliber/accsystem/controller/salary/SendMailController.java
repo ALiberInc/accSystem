@@ -160,9 +160,16 @@ public class SendMailController {
 	/**
 	 * @param form
 	 * @param forName
+	 *            送信者名
 	 * @param bodyType
+	 *            自動・手動入力
 	 * @param tEmployee
-	 * @return
+	 *            社員エンティティ
+	 * @param body1
+	 *            本文1
+	 * @param body2
+	 *            本文2
+	 * @return 作成したメール
 	 * @throws MessagingException
 	 */
 	private MimeMessage produceMail(SendMailForm form, String forName, String bodyType, TEmployee tEmployee,
@@ -181,7 +188,6 @@ public class SendMailController {
 
 		// 自動入力の場合
 		if (bodyType.equals("0")) {
-			// 本文をセットする
 			textBuilder.append(tEmployee.getFirstName()).append("　様").append("\n\n").append(form.getCompName())
 					.append("です。").append("\n\n").append("明細書をお送りします。").append("\n\n")
 					.append("添付ファイルをクリックして、内容をご確認ください。").append("\n\n").append("以上の内容について覚えがない場合は").append("\n")
@@ -194,18 +200,16 @@ public class SendMailController {
 					.append(form.getCompName()).append("です。").append("\n\n").append("明細書をお送りします。").append("\n\n")
 					.append("添付ファイルをクリックして、内容をご確認ください。").append("\n\n").append(body2);
 		}
-
+		// 本文をセットする
 		helper.setText(textBuilder.toString());
 
 		// 件名
 		String attachmentName = "給与明細書" + form.getMailName().substring(0, 8) + ".pdf";
-		// 内容
-
+		// 添付ファイル
 		try (ByteArrayOutputStream pdfOutputStream = utilService.creationPdfOutputStream(tEmployee.getEmployeeId(),
 				tEmployee.getCompId(), form.getSalaryYear() + form.getSalaryMonth())) {
 			helper.addAttachment(attachmentName, new ByteArrayResource(pdfOutputStream.toByteArray()));
 		} catch (JRException | IOException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 

@@ -65,3 +65,14 @@ $('#salaryDetailChange').click(
 				alert("1つを選択してください。")
 			}
 		});
+
+$('#freeWordButton').click(function() {
+	var freeWord = $("#freeWord").val().replace(/\s+/g, "");	
+	$('input[name="employeeName"]').each(function() {
+		if ($(this).val().indexOf(freeWord) < 0) {
+			$(this).parents("tr").hide();
+		} else {
+			$(this).parents("tr").show();
+		}
+	});
+});

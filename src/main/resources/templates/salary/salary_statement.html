@@ -45,6 +45,8 @@
 					th:text="${TEmployee.lastName} + ' ' +${TEmployee.firstName}"></td>
 				<td class="td3 text-center" th:text="${TEmployee.deptId}"></td>
 				<td class="td4 text-center" th:text="${TEmployee.mailAddress}"></td>
+				<td><input type="hidden" name="employeeName"
+					th:value="${TEmployee.lastName}+${TEmployee.firstName}" /></td>
 			</tr>
 		</table>
 	</div>
