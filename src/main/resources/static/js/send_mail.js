@@ -14,7 +14,9 @@ $('#sendMailBtn').click(function() {
 				'compName' : $("#compName").val(),
 				'compAddress' : $("#compAddress").val(),
 				'compTel' : $("#compTel").val(),
-				'mailName' : $("#mailName").val()
+				'mailName' : $("#mailName").val(),
+				'salaryYear' : $("#salaryYear").val(),
+				'salaryMonth' : $("#salaryMonth").val()
 			}
 		} else {
 			param = {
@@ -26,7 +28,9 @@ $('#sendMailBtn').click(function() {
 				'compName' : $("#compName").val(),
 				'compAddress' : $("#compAddress").val(),
 				'compTel' : $("#compTel").val(),
-				'mailName' : $("#mailName").val()
+				'mailName' : $("#mailName").val(),
+				'salaryYear' : $("#salaryYear").val(),
+				'salaryMonth' : $("#salaryMonth").val()
 			}
 		}
 		var paramUrl = $("#sendMailForm").attr("action");

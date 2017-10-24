@@ -1,17 +1,21 @@
 package jp.co.aliber.accsystem.controller.salary;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +28,10 @@ import jp.co.aliber.accsystem.entity.auto.TCompany;
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
 import jp.co.aliber.accsystem.form.salary.SendMailForm;
 import jp.co.aliber.accsystem.security.LoginUser;
+import jp.co.aliber.accsystem.service.UtilService;
 import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
 import jp.co.aliber.accsystem.service.employee.TEmployeeService;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  * メール送信画面
@@ -38,16 +44,19 @@ import jp.co.aliber.accsystem.service.employee.TEmployeeService;
 public class SendMailController {
 
 	@Autowired
-	private MailSender sender;
+	JavaMailSender sender;
 
 	/**
 	 * 從業員情報サービス
 	 */
 	@Autowired
-	private TEmployeeService tEmployeeService;
+	TEmployeeService tEmployeeService;
 
 	@Autowired
-	private CompanyBasicInfoService companyBasicInfoService;
+	CompanyBasicInfoService companyBasicInfoService;
+
+	@Autowired
+	UtilService utilService;
 
 	/**
 	 * データのバンディング
@@ -70,14 +79,17 @@ public class SendMailController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(Locale locale, Model model, SendMailForm form,
-			@RequestParam(value = "sendMailStr", required = true) String sendMailStr,
+	public String index(SendMailForm form, @RequestParam(value = "sendMailStr", required = true) String sendMailStr,
 			@RequestParam(value = "yearMonth", required = true) String yearMonth,
 			@AuthenticationPrincipal LoginUser loginUser) {
 		form.setSendMailStr(sendMailStr);
-		// 件名
+		// 年数
+		form.setSalaryYear(yearMonth.substring(0, 4));
 		// 平成年数
 		int thisYear = Integer.valueOf(yearMonth.substring(0, 4)) - 1988;
+		// 月
+		form.setSalaryMonth(yearMonth.substring(4, 6));
+		// 件名
 		String mailName = "平成" + thisYear + "年" + yearMonth.substring(4, 6) + "月" + "支給の給与明細書につきまして";
 		form.setMailName(mailName);
 
@@ -126,30 +138,10 @@ public class SendMailController {
 				TEmployee tEmployee = tEmployeeService.getTEmployee(Integer.valueOf(sendMail),
 						loginUser.getUser().getCompId());
 
-				SimpleMailMessage msg = new SimpleMailMessage();
-				// 送信者名をセットする
-				msg.setFrom(forName + "<accsystem@aliber.co.jp>");
-				// メールアドレスをセットする
-				msg.setTo(tEmployee.getMailAddress());
-				// 件名をセットする
-				msg.setSubject(form.getMailName());
-				// 本文
-				StringBuilder textBuilder = new StringBuilder(tEmployee.getLastName());
-				// 自動入力の場合
-				// 手動入力の場合の実装はまだです
-				if (bodyType.equals("0")) {
-					// 本文をセットする
-					textBuilder.append(tEmployee.getFirstName()).append("　様").append("\n\n").append(form.getCompName())
-							.append("です。").append("\n\n").append("明細書をお送りします。").append("\n\n")
-							.append("以下のURLをクリックして、内容をご確認ください。").append("\n")
-							.append("http://localhost:8080/accsystem/print?employeeId=").append("\n\n")
-							.append("※有効期限：本日より7日間").append("\n\n").append("以上の内容について覚えがない場合は").append("\n")
-							.append("下記の連絡先まで、お問い合わせください。\nよろしくお願いいたします。\n------------------------------------------------------------\n")
-							.append(form.getCompAddress()).append("\n").append(form.getCompName()).append("\n")
-							.append(form.getCompTel());
-				}
-				msg.setText(textBuilder.toString());
-				this.sender.send(msg);
+				// メールを生成する
+				MimeMessage message = produceMail(form, forName, bodyType, tEmployee);
+
+				this.sender.send(message);
 			}
 			// 成功の場合
 			resultMap.put("result_cd", ImmutableValues.FLG_OFF);
@@ -163,5 +155,54 @@ public class SendMailController {
 
 		return result;
 
+	}
+
+	/**
+	 * @param form
+	 * @param forName
+	 * @param bodyType
+	 * @param tEmployee
+	 * @return
+	 * @throws MessagingException
+	 */
+	private MimeMessage produceMail(SendMailForm form, String forName, String bodyType, TEmployee tEmployee)
+			throws MessagingException {
+		MimeMessage message = sender.createMimeMessage();
+		// 添付ファイルを用いる場合は、tureを設定します
+		MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+		// 送信者名をセットする
+		helper.setFrom(forName + "<accsystem@aliber.co.jp>");
+		// メールアドレスをセットする
+		helper.setTo(tEmployee.getMailAddress());
+		// 件名をセットする
+		helper.setSubject(form.getMailName());
+		// 本文
+		StringBuilder textBuilder = new StringBuilder(tEmployee.getLastName());
+		// 自動入力の場合
+		// 手動入力の場合の実装はまだです
+		if (bodyType.equals("0")) {
+			// 本文をセットする
+			textBuilder.append(tEmployee.getFirstName()).append("　様").append("\n\n").append(form.getCompName())
+					.append("です。").append("\n\n").append("明細書をお送りします。").append("\n\n")
+					.append("添付ファイルをクリックして、内容をご確認ください。").append("\n\n").append("以上の内容について覚えがない場合は").append("\n")
+					.append("下記の連絡先まで、お問い合わせください。\nよろしくお願いいたします。\n------------------------------------------------------------\n")
+					.append(form.getCompAddress()).append("\n").append(form.getCompName()).append("\n")
+					.append(form.getCompTel());
+		}
+		helper.setText(textBuilder.toString());
+
+		// 件名
+		String attachmentName = "給与明細書" + form.getMailName().substring(0, 8) + ".pdf";
+		// 内容
+
+		try (ByteArrayOutputStream pdfOutputStream = utilService.creationPdfOutputStream(tEmployee.getEmployeeId(),
+				tEmployee.getCompId(), form.getSalaryYear() + form.getSalaryMonth())) {
+			helper.addAttachment(attachmentName, new ByteArrayResource(pdfOutputStream.toByteArray()));
+		} catch (JRException | IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+		return message;
 	}
 }

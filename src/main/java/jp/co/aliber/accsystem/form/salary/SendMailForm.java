@@ -48,6 +48,16 @@ public class SendMailForm {
 	private String compTel;
 
 	/**
+	 * 年
+	 */
+	private String salaryYear;
+
+	/**
+	 * 月
+	 */
+	private String salaryMonth;
+
+	/**
 	 * @return sendMailStr
 	 */
 	public String getSendMailStr() {
@@ -150,6 +160,36 @@ public class SendMailForm {
 	 */
 	public void setCompTel(String compTel) {
 		this.compTel = compTel;
+	}
+
+	/**
+	 * @return salaryYear
+	 */
+	public String getSalaryYear() {
+		return salaryYear;
+	}
+
+	/**
+	 * @param salaryYear
+	 *            セットする salaryYear
+	 */
+	public void setSalaryYear(String salaryYear) {
+		this.salaryYear = salaryYear;
+	}
+
+	/**
+	 * @return salaryMonth
+	 */
+	public String getSalaryMonth() {
+		return salaryMonth;
+	}
+
+	/**
+	 * @param salaryMonth
+	 *            セットする salaryMonth
+	 */
+	public void setSalaryMonth(String salaryMonth) {
+		this.salaryMonth = salaryMonth;
 	}
 
 }
