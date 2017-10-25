@@ -19,9 +19,6 @@ spring:
     port: 587
     username: accsystem@aliber.co.jp
     password: SE$OCbf4
-    properties.mail.smtp:
-      auth: true
-      starttls.enable: true
 
 server:
   contextPath: /accsystem
