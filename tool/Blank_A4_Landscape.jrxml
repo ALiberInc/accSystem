@@ -171,14 +171,14 @@
 			<staticText>
 				<reportElement key="staticText" x="320" y="21" width="84" height="46" uuid="2e572843-84ed-4cf0-9e9f-4bd936bd553d"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[明細書]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="230" y="20" width="80" height="46" uuid="ce1a6bc0-a662-473d-be16-291e47d1f300"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[給与支払]]></text>
 			</staticText>
@@ -192,7 +192,7 @@
 				<staticText>
 					<reportElement key="staticText" mode="Opaque" x="36" y="40" width="76" height="21" uuid="b69a4711-9301-41cc-b9fb-85e7bafadaab"/>
 					<textElement>
-						<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+						<font fontName="ipaexm" isBold="true"/>
 					</textElement>
 					<text><![CDATA[氏　名]]></text>
 				</staticText>
@@ -200,35 +200,35 @@
 			<staticText>
 				<reportElement key="staticText" x="36" y="64" width="76" height="21" uuid="cdcbf12d-59fb-400f-a2b8-a54132bef759"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[所　属]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="36" y="90" width="76" height="21" uuid="134a606f-f89f-4127-b0de-19c05932d209"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[コード]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="735" y="85" width="60" height="21" uuid="f2896f0b-7ceb-4c83-be65-9a7f54c1258b"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[          受領印]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="509" y="88" width="50" height="15" uuid="25a27e68-e6cf-46f0-a3d5-7515c4313971"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ 支給日]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="603" y="88" width="20" height="14" uuid="27cbe002-4f88-4ef0-8413-8040e45cf567"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[年
 ]]></text>
@@ -236,14 +236,14 @@
 			<staticText>
 				<reportElement key="staticText" x="649" y="89" width="20" height="14" uuid="dd19e041-aee6-4325-a06e-4a8780fc1a56"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[月]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="693" y="89" width="20" height="14" uuid="70d6e031-4000-4edf-94d4-71a0233fcfde"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[日]]></text>
 			</staticText>
@@ -439,105 +439,105 @@
 			<staticText>
 				<reportElement key="staticText" x="46" y="130" width="100" height="17" uuid="bbcb18e8-a69e-4656-a1b9-cff60c919ced"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[勤　　怠]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="29" y="494" width="48" height="18" uuid="139b76d4-ab00-4e0c-ab60-458e524a15b8"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[税額表]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="29" y="514" width="48" height="18" uuid="cecceb4d-6ac2-4aa8-86c1-e1670f19d478"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[扶養人数]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="260" y="129" width="100" height="17" uuid="7b6a2d0b-8b01-4c74-a5cb-2b29bb8def6e"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" size="12" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[支　　給]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="242" y="514" width="48" height="18" uuid="2c910428-f64f-4534-bae7-42b0edcd5984"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[合　計]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="476" y="129" width="100" height="17" uuid="48f6d29a-16ca-4e83-803c-abdb854b66f5"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" size="12" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[控　　除]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="456" y="514" width="48" height="18" uuid="f4e464b9-6d4a-4d14-8181-999395d973cc"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[合　計]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="669" y="122" width="100" height="17" uuid="db2a3b26-97d6-4dc2-8d19-a533e6d472c4"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" size="12" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[そ　の　他]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="652" y="224" width="48" height="18" uuid="63014127-ae21-47e4-b114-610a8559e72b"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[合　計]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="644" y="261" width="65" height="18" uuid="a963de9a-57e0-47d8-9477-fc18e11b89f0"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[差引支給額]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="671" y="296" width="100" height="17" uuid="059aa01c-ab17-428f-bc53-378000549b76"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" size="12" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[振込支給額]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="652" y="360" width="48" height="18" uuid="d642f081-8b5b-425a-9b02-ca33bf726efc"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[合　計]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="644" y="396" width="65" height="18" uuid="081eb422-a95c-4399-b580-9ad2f36beec6"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[現金支給額]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="645" y="428" width="65" height="18" uuid="0ee8953f-b5a0-4782-a220-93ed66beaea4"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[現物支給額]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="634" y="481" width="14" height="34" uuid="3546e7e2-1e38-4469-969b-0e9263690e01"/>
 				<textElement textAlignment="Center" rotation="None">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[累
 計]]></text>
@@ -545,532 +545,532 @@
 			<staticText>
 				<reportElement key="staticText" x="653" y="464" width="65" height="18" uuid="d0b36750-3339-4dc7-8de1-3769a56664d7"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[課税支給額]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="653" y="483" width="65" height="18" uuid="ec432577-27b7-4fde-9237-28f3cbcbd46b"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[社会保険料]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="653" y="508" width="65" height="18" uuid="cc4f13c1-d5cf-4549-99c1-77474f74cdf5"/>
 				<textElement textAlignment="Center">
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[所得税]]></text>
 			</staticText>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="40" width="89" height="22" uuid="3ceaa991-7697-4551-a7b8-547bac5a13e5"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="64" width="89" height="22" uuid="879813f5-44d3-497c-9d30-0a649739fec0"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{department}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="90" width="89" height="22" uuid="30ff60a0-ae9b-41b3-8d10-7c5313442508"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement key="staticText" x="17" y="157" width="77" height="17" uuid="9717219d-8737-4e1b-8fd9-7620cbd6c08f"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[出勤日数]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="17" y="179" width="77" height="17" uuid="ad3d3e44-1a9a-4018-bbf9-a7abe11c980e"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[勤務時間]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="17" y="201" width="77" height="17" uuid="528d7526-3698-4608-b855-020beb08fa39"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[時間外手当]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="17" y="223" width="77" height="17" uuid="e556e7dc-017c-4739-8b48-a7a4ca2aaded"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[深夜労働]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="17" y="244" width="77" height="17" uuid="6b8ffad6-36ca-4e5e-8315-e986fcb1397c"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[深夜残業]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="17" y="266" width="77" height="17" uuid="70868fe1-6f93-40c9-9029-ca7dc630cf78"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[休日出勤]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="17" y="287" width="77" height="17" uuid="6e85a71f-0eed-4d5e-9e63-25a721bd7849"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[休日残業]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="17" y="308" width="77" height="17" uuid="82b6874b-d503-4e4a-a094-7947260e045d"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[欠勤]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="17" y="329" width="77" height="17" uuid="d6b9b003-6fde-4cec-a4a9-b4303b65ff73"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[遅刻]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="17" y="349" width="77" height="17" uuid="d7d2526e-fd7f-4832-b8bf-833aceeecb3a"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[早退]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="229" y="157" width="77" height="17" uuid="8af82fee-636b-45ec-a95b-7e764abdeec4"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[基本給]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="229" y="180" width="77" height="17" uuid="5782dfef-d239-4bab-89ab-b5c2f3fc0e3a"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[役職手当]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="229" y="202" width="77" height="17" uuid="d1d856a3-a131-42d2-bcd1-3b26654d61e3"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[資格手当]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="229" y="224" width="77" height="17" uuid="584bfb4b-eee2-4558-a78f-1752b1a5e82a"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[住宅手当]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="229" y="245" width="77" height="17" uuid="cbd9c188-268e-4a9a-baa6-12e66bbe141c"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[家族手当]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="229" y="268" width="77" height="17" uuid="b9d22ae4-c2d4-4a29-b66c-252a3aefaf81"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[交通費]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="443" y="222" width="77" height="17" uuid="ca2e322f-b9cd-4d2e-a17d-8ecdc33127c8"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[所得税]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="443" y="265" width="77" height="17" uuid="a393e152-74a8-43b0-8a3d-a36c643d8bf4"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[積立金]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="443" y="287" width="77" height="17" uuid="b101df8d-f781-4e52-b25c-74a0787644a5"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[借入等返済]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="635" y="147" width="77" height="17" uuid="696e41e1-76a8-4bf5-bfb1-3f3f7b154a5c"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[その他の控除]]></text>
 			</staticText>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="157" width="75" height="18" uuid="6fc43e79-7209-43ef-b745-2496994b81b3"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{daysAttendance}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="179" width="75" height="18" uuid="68291e2d-d33f-4ba4-ac0f-4e651c13d632"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{workingHours}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="201" width="75" height="18" uuid="41745751-4431-4e31-952c-2f428d762417"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{overtimeAllowance}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="564" y="88" width="44" height="13" uuid="f53b79ba-5f1a-40e5-bf13-9b17ed513ed2"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="671" y="88" width="42" height="13" uuid="d81e8b10-501f-455f-8a63-cc26c6a79625"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{day}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="630" y="88" width="40" height="13" uuid="b7f57057-b481-40cb-83c0-c3a467ba72e8"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="224" width="75" height="17" uuid="df7b055e-87c1-4312-940c-329140cfe8c1"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lateNightLabor}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="245" width="75" height="16" uuid="1f3d14be-eb13-42f5-a265-875dbc7aa404"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lateNightOvertime}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="267" width="75" height="16" uuid="623cb318-5370-4c6f-81d0-aa25644fee4d"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{holidayWork}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="287" width="75" height="17" uuid="5ed84b75-f30f-4788-a04e-88c3ee81eaa5"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{restDay}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="309" width="75" height="16" uuid="ff89900b-1232-4984-9058-f8c8bde39d31"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{absence}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="329" width="75" height="17" uuid="e861b627-41e1-47d6-9b3f-43401076d10d"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{late}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="349" width="75" height="17" uuid="6388ec9b-5658-4bf9-95f5-3a24e20c2f63"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{leaveEarly}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="494" width="75" height="16" uuid="7cd6b5ea-dba0-4eb1-ba0d-423e867cbda6"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{taxSchedule}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="103" y="512" width="75" height="18" uuid="a355ade2-ad6d-4f3d-9e1c-1565f6bddb32"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{numberOfDependents}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="316" y="157" width="82" height="17" uuid="1cffa8ce-6dac-486b-9185-aeaa0a0696c6"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{basicSalary}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="316" y="179" width="82" height="17" uuid="89a89e55-3bbb-4eb9-8a51-e73d732aa957"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jobAllowance}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="315" y="201" width="82" height="17" uuid="67e659bd-0022-42e6-b2a9-5f1e5d7d52e5"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{qualificationAllowance}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="315" y="224" width="82" height="18" uuid="e396ef7f-98e3-4b9d-96ae-37037e7ce5c6"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{housingAllowance}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="315" y="245" width="83" height="16" uuid="85788947-c90a-4480-bebb-7195e02470bd"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{familyAllowance}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="315" y="268" width="83" height="17" uuid="b1979f47-2384-4cc4-8a7a-8c429675597b"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{transportationCosts}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="317" y="514" width="81" height="16" uuid="4ce344d7-1692-4d41-a7f8-e1680b6989ab"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{totalSupply}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="532" y="222" width="81" height="17" uuid="92a31b2a-3aae-4388-bcfe-28a097a1d902"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{incomeTax}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="532" y="264" width="80" height="17" uuid="4a463eda-954c-41a2-941c-f739bee4e942"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{accumulateGold}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="532" y="286" width="78" height="19" uuid="0854e64b-b768-48a5-9d76-d580107eb020"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{repaymentOfBorrowings}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="723" y="147" width="77" height="17" uuid="8e1ca7bf-6a01-4740-b019-b3a513739ca9"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{otherDeductions}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="532" y="514" width="81" height="16" uuid="7cd705b6-7a85-4e74-adcd-286f6bc392ac"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{totalDeduction}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="730" y="261" width="70" height="18" uuid="cdf501b8-0d8b-492e-88bd-3fbd3ab00231"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{subscriptionAmount}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="727" y="327" width="68" height="18" uuid="ddc576e3-584e-4b85-9f29-d6fe141b62c1"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{transferPaymentAmount}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="727" y="362" width="64" height="15" uuid="2b082135-17db-4ab3-8ff3-5cf89d06e037"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{totaltransferPaymentAmount}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="727" y="395" width="72" height="16" uuid="4964c1a9-a649-49cf-8cd9-22990d2a3270"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cashPaymentAmount}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="727" y="426" width="70" height="16" uuid="90077be4-03f8-45d6-b67f-5d760a6abf34"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{inkindPaymentAmount}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="727" y="464" width="71" height="15" uuid="a7a9ba1b-907c-4a6b-aa63-21acc8fc0655"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cumulativeTaxableAmount}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="727" y="483" width="71" height="17" uuid="e008b079-aead-4ea4-a71d-3d3d9590e26d"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cumulativeSocialInsurancePremium}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="727" y="508" width="70" height="18" uuid="04773dbf-e517-4992-a786-577167436527"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cumulativeIncomeTax}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement key="staticText" x="229" y="289" width="77" height="17" uuid="75e3089e-20af-4666-ab07-1db1e9922bc8"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[その他の手当]]></text>
 			</staticText>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="315" y="289" width="83" height="17" uuid="e5dc0d56-0ac0-433f-9016-5ca0db15a97e"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{otherAllowance}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement key="staticText" x="442" y="200" width="77" height="17" uuid="700b710c-a89f-41c2-84e1-de0e90a68b0e"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[雇用保険]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="442" y="178" width="77" height="17" uuid="f9ab64a3-c5a3-43d9-a29e-f05805c22219"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[厚生年金]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="442" y="155" width="77" height="17" uuid="03fad363-32ec-449a-9f7a-a35371a221ad"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[健康保険]]></text>
 			</staticText>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="531" y="155" width="81" height="17" uuid="76572651-e70e-4857-a57a-8d795099fec7"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{healthInsurance}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="531" y="177" width="80" height="17" uuid="e7b74a48-1138-47d5-b83a-d07e84c2cbed"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{welfareInsurance}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="531" y="199" width="78" height="19" uuid="c65ba75d-d573-4d8d-b599-b3faf48d5532"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{employInsurance}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="532" y="308" width="80" height="17" uuid="ab3c3dc7-6c7f-4a1d-937c-0194955ce888"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{yearendDeduction}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement key="staticText" x="443" y="309" width="77" height="17" uuid="3222c385-c98a-4d9c-b6ef-0761b3ab4bd5"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[年末控除]]></text>
 			</staticText>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="532" y="330" width="78" height="19" uuid="e9db15eb-3ee6-4ff7-b932-343e6624d14d"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{rentDeduction}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement key="staticText" x="443" y="331" width="77" height="17" uuid="59858bc0-9cbb-46fa-b0da-67f72d037b37"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[家賃控除]]></text>
 			</staticText>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="533" y="243" width="81" height="17" uuid="a31aba00-d4f0-4ba1-be12-71c350ad4cc2"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{livingTax}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement key="staticText" x="444" y="243" width="77" height="17" uuid="402c92b7-79d3-4d92-bb31-35dee79f57f3"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<text><![CDATA[住民税]]></text>
 			</staticText>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="726" y="222" width="77" height="17" uuid="c3c771ec-a7a0-4aca-a557-45bcb0e86e61"/>
 				<textElement>
-					<font fontName="ipaexm" isBold="true" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="true"/>
+					<font fontName="ipaexm" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{allOtherDeductions}]]></textFieldExpression>
 			</textField>
