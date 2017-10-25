@@ -36,7 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			user.setLoginId(loginUser.getLoginId());
 			user.setPassword(loginUser.getPassword());
 			user.setCompId(loginUser.getCompId());
-			// 処理内容は省略
+			user.setUserId(loginUser.getUserId());
 		} catch (Exception e) {
 			// 取得時にExceptionが発生した場合
 			throw new UsernameNotFoundException("It can not be acquired User");
