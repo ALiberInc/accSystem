@@ -113,6 +113,19 @@
 						</div> <input type="password" th:field="*{password}" />
 					</td>
 				</tr>
+				<tr>
+					<td class="text-center td3"><span>暗証番号(確認)<font
+							color="#FF0000">※</font></span></td>
+					<td>
+						<div th:if="${#fields.hasErrors('passwordConfirm')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{passwordConfirm}"></th:block>
+							</p>
+						</div> <input type="password" th:field="*{passwordConfirm}" />
+					</td>
+				</tr>
 			</table>
 			<table class="table table-striped">
 				<tr>

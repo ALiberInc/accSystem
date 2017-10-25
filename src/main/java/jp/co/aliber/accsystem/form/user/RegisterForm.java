@@ -58,6 +58,7 @@ public class RegisterForm {
 	private String password;
 
 	// 暗証番号(確認)
+	@NotBlank
 	private String passwordConfirm;
 
 	public String getPasswordConfirm() {

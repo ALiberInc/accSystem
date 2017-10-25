@@ -137,6 +137,14 @@ public class RegisterController {
 			}
 		}
 
+		// 暗証番号（確認）の追加と一致チェック
+		if (StringUtils.isNotEmpty(form.getPassword()) && StringUtils.isNotEmpty(form.getPasswordConfirm())) {
+			if (!form.getPassword().equals(form.getPasswordConfirm())) {
+				result.rejectValue("password", "error.passwordNotSame",
+						new Object[] { messages.getMessage("registerForm.password", null, null) }, "");
+				validateResult = false;
+			}
+		}
 		// 入力チェック結果
 		return validateResult;
 	}
