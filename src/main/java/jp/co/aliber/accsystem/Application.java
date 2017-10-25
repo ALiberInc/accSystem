@@ -7,12 +7,12 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 //MyBatis
 @MapperScan("jp.co.aliber.accsystem.mapper")
-//filter
-@ServletComponentScan(basePackages="jp.co.aliber.accsystem.filter")
+// filter
+@ServletComponentScan(basePackages = "jp.co.aliber.accsystem.filter")
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TCompanyDepartment;
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeBankAccount;
@@ -352,7 +351,7 @@ public class EmployeeInfoEditController {
 			tEmployee.setMailAddress(form.getEmail());
 		}
 
-		tEmployee.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployee.setUpdateId(loginUser.getUser().getUserId());
 
 		tEmployee.setUpdateDate(date);
 
@@ -369,7 +368,7 @@ public class EmployeeInfoEditController {
 				.setAccountCategory(form.getAccountType() != null ? String.valueOf(form.getAccountType()) : null);
 		tEmployeeBankAccount.setBranchCode(form.getBranchCode() != null ? form.getBranchCode().toString() : null);
 		tEmployeeBankAccount.setBranchName(StringUtils.isNotEmpty(form.getBranchName()) ? form.getBranchName() : null);
-		tEmployeeBankAccount.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeBankAccount.setUpdateId(loginUser.getUser().getUserId());
 		tEmployeeBankAccount.setUpdateDate(date);
 		// 固定控除金額情報
 		TEmployeeFixedDeduction tEmployeeFixedDeduction = new TEmployeeFixedDeduction();
@@ -381,7 +380,7 @@ public class EmployeeInfoEditController {
 				.setRepaymentBorrowings(form.getRepaymentBorrowings() != null ? form.getRepaymentBorrowings() : null);
 		// その他控除
 		tEmployeeFixedDeduction.setOtherDeduction(form.getOtherDeductions() != null ? form.getOtherDeductions() : null);
-		tEmployeeFixedDeduction.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeFixedDeduction.setUpdateId(loginUser.getUser().getUserId());
 		tEmployeeFixedDeduction.setUpdateDate(date);
 		// 固定支給金額情報
 		TEmployeeFixedPayment tEmployeeFixedPayment = new TEmployeeFixedPayment();
@@ -401,7 +400,7 @@ public class EmployeeInfoEditController {
 		tEmployeeFixedPayment.setOtherAllowance(form.getOtherAllowance() != null ? form.getOtherAllowance() : null);
 		// 交通費(実費)
 		tEmployeeFixedPayment.setTransportFee(form.getTaxExpense() != null ? form.getTaxExpense() : null);
-		tEmployeeFixedPayment.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeFixedPayment.setUpdateId(loginUser.getUser().getUserId());
 		tEmployeeFixedPayment.setUpdateDate(date);
 		// 所得税情報
 		TEmployeeIncomeTax tEmployeeIncomeTax = new TEmployeeIncomeTax();
@@ -427,7 +426,7 @@ public class EmployeeInfoEditController {
 		// 青色専従者
 		tEmployeeIncomeTax.setBlueOfficer(form.getBlueOfficer() != null ? form.getBlueOfficer() : null);
 
-		tEmployeeIncomeTax.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeIncomeTax.setUpdateId(loginUser.getUser().getUserId());
 		tEmployeeIncomeTax.setUpdateDate(date);
 
 		// 社会保険
@@ -457,7 +456,7 @@ public class EmployeeInfoEditController {
 		tEmployeeSocialInsurance.setBasicWelfareNo(form.getWelfareNumber() != null ? form.getWelfareNumber() : null);
 		// 厚生年金基金
 		tEmployeeSocialInsurance.setWelfareFundJoinFlg(form.getWelfareFund() == 0 ? true : false);
-		tEmployeeSocialInsurance.setUpdateId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeSocialInsurance.setUpdateId(loginUser.getUser().getUserId());
 
 		if (form.isCreationflag()) {
 			// 更新の場合
@@ -482,7 +481,7 @@ public class EmployeeInfoEditController {
 
 		// 新規の場合
 		// 從業員情報
-		tEmployee.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployee.setRegistId(loginUser.getUser().getUserId());
 		tEmployee.setRegistDate(date);
 		tEmployeeService.regist(tEmployee);
 
@@ -491,31 +490,31 @@ public class EmployeeInfoEditController {
 
 		// 口座情報
 		tEmployeeBankAccount.setEmployeeId(employeeId.intValue());
-		tEmployeeBankAccount.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeBankAccount.setRegistId(loginUser.getUser().getUserId());
 		tEmployeeBankAccount.setRegistDate(date);
 		tEmployeeBankAccountService.regist(tEmployeeBankAccount);
 
 		// 固定控除金額情報
 		tEmployeeFixedDeduction.setEmployeeId(employeeId.intValue());
-		tEmployeeFixedDeduction.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeFixedDeduction.setRegistId(loginUser.getUser().getUserId());
 		tEmployeeFixedDeduction.setRegistDate(date);
 		tEmployeeFixedDeductionService.regist(tEmployeeFixedDeduction);
 
 		// 固定支給金額情報
 		tEmployeeFixedPayment.setEmployeeId(employeeId.intValue());
-		tEmployeeFixedPayment.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeFixedPayment.setRegistId(loginUser.getUser().getUserId());
 		tEmployeeFixedPayment.setRegistDate(date);
 		tEmployeeFixedPaymentService.regist(tEmployeeFixedPayment);
 
 		// 所得税情報
 		tEmployeeIncomeTax.setEmployeeId(employeeId.intValue());
-		tEmployeeIncomeTax.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeIncomeTax.setRegistId(loginUser.getUser().getUserId());
 		tEmployeeIncomeTax.setRegistDate(date);
 		tEmployeeIncomeTaxService.regist(tEmployeeIncomeTax);
 
 		// 社会保険
 		tEmployeeSocialInsurance.setEmployeeId(employeeId.intValue());
-		tEmployeeSocialInsurance.setRegistId(ImmutableValues.ADMINISTRATOR_UID);
+		tEmployeeSocialInsurance.setRegistId(loginUser.getUser().getUserId());
 		tEmployeeSocialInsurance.setRegistDate(date);
 		tEmployeeSocialInsuranceService.regist(tEmployeeSocialInsurance);
 
