@@ -2,6 +2,7 @@ package jp.co.aliber.accsystem.controller.salary;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +44,7 @@ public class PrintController {
 	}
 
 	/**
-	 * @param employeeId
+	 * @param employeeIdCommaSeperated
 	 * @param compId
 	 * @param salaryYearMonth
 	 * @param response
@@ -56,11 +57,12 @@ public class PrintController {
 			HttpServletResponse response, HttpServletRequest request) {
 
 		response.setContentType("application/pdf");
-		String[] employeeIdArray = employeeIdCommaSeperated.split(",");
-		// 複数の従業員の場合は、まだ対応していない  下のソースは一番目の従業員のPDFを出力
-		try (ByteArrayOutputStream pdfOutputStream = utilService
-				.creationPdfOutputStream(Integer.parseInt(employeeIdArray[0]), compId, salaryYearMonth);
-				ServletOutputStream sos = response.getOutputStream()) {
+		response.setHeader("Content-Disposition", "filename=kyuyomeisaisyo.pdf");
+		
+		Integer[] employeeIdArray = Arrays.stream(employeeIdCommaSeperated.split(",")).map(Integer::valueOf)
+				.toArray(Integer[]::new);
+		try (ByteArrayOutputStream pdfOutputStream = utilService.creationPdfOutputStream(compId, salaryYearMonth,
+				employeeIdArray); ServletOutputStream sos = response.getOutputStream()) {
 			sos.write(pdfOutputStream.toByteArray());
 		} catch (NumberFormatException | JRException | IOException e) {
 			e.printStackTrace();

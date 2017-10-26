@@ -206,8 +206,8 @@ public class SendMailController {
 		// 件名
 		String attachmentName = "給与明細書" + form.getMailName().substring(0, 8) + ".pdf";
 		// 添付ファイル
-		try (ByteArrayOutputStream pdfOutputStream = utilService.creationPdfOutputStream(tEmployee.getEmployeeId(),
-				tEmployee.getCompId(), form.getSalaryYear() + form.getSalaryMonth())) {
+		try (ByteArrayOutputStream pdfOutputStream = utilService.creationPdfOutputStream(tEmployee.getCompId(),
+				form.getSalaryYear() + form.getSalaryMonth(), tEmployee.getEmployeeId())) {
 			helper.addAttachment(attachmentName, new ByteArrayResource(pdfOutputStream.toByteArray()));
 		} catch (JRException | IOException e) {
 			e.printStackTrace();
