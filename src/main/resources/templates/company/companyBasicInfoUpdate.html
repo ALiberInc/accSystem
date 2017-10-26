@@ -51,10 +51,16 @@
 						<span>〒<font color="#FF0000">※</font></span>
 					</td>
 					<td>
-						<div th:if="${#fields.hasErrors('compZip1') or #fields.hasErrors('compZip2')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('compZip1')}" class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{compZip1}"></th:block>
+							</p>
+						</div>
+						<div th:if="${!(#fields.hasErrors('compZip1')) and #fields.hasErrors('compZip2')}" class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{compZip2}"></th:block>
 							</p>
 						</div>
 						<input type="text" th:field="*{compZip1}" maxlength="3" class="td0" /> - <input type="text" th:field="*{compZip2}"

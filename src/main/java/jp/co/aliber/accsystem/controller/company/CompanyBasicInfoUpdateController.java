@@ -107,8 +107,8 @@ public class CompanyBasicInfoUpdateController {
 			// 法人名フリガナ
 			form.setCompKana(a.getCompKana());
 			// 郵便番号
-			form.setCompZip1(Integer.valueOf(a.getCompZip1()));
-			form.setCompZip2(Integer.valueOf(a.getCompZip2()));
+			form.setCompZip1(a.getCompZip1());
+			form.setCompZip2(a.getCompZip2());
 			// 住所1
 			form.setCompAdd1(a.getCompAdd1());
 			if (StringUtils.isNotEmpty(a.getCompAdd2())) {
@@ -210,7 +210,7 @@ public class CompanyBasicInfoUpdateController {
 			BindingResult result, Model model) {
 		// 入力チェック
 		if (!validate(form, result)) {
-			return "company/companyBasicInfo";
+			return "company/companyBasicInfoUpdate";
 		}
 		// エンティティに会社情報を設定する
 		TCompany company = new TCompany();

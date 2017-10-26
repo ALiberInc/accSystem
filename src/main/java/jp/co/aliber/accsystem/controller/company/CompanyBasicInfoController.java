@@ -102,8 +102,8 @@ public class CompanyBasicInfoController {
 			// 法人名フリガナ
 			form.setCompKana(a.getCompKana());
 			// 郵便番号
-			form.setCompZip1(Integer.valueOf(a.getCompZip1()));
-			form.setCompZip2(Integer.valueOf(a.getCompZip2()));
+			form.setCompZip1(a.getCompZip1());
+			form.setCompZip2(a.getCompZip2());
 			// 住所1
 			form.setCompAdd1(a.getCompAdd1());
 			if (StringUtils.isNotEmpty(a.getCompAdd2())) {
@@ -197,7 +197,7 @@ public class CompanyBasicInfoController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/update" }, method = RequestMethod.POST)
-	public String save(@AuthenticationPrincipal LoginUser loginUser,CompanyBasicInfoForm form) {
+	public String save(@AuthenticationPrincipal LoginUser loginUser, CompanyBasicInfoForm form) {
 		return "redirect:/companyUpdate";
 
 	}

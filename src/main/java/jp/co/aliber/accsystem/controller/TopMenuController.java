@@ -32,7 +32,7 @@ public class TopMenuController {
 	public String index(@AuthenticationPrincipal LoginUser loginUser) {
 
 		if (loginUser.getUser().getCompId() == null) {
-			return "redirect:/company";
+			return "redirect:/companyUpdate";
 		}
 
 		return "top_menu";

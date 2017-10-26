@@ -5,7 +5,6 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
 
 /**
  * 会社基本情報画面form
@@ -24,12 +23,12 @@ public class CompanyBasicInfoForm {
 	private String compKana;
 	// 郵便番号
 	@NotNull
-	@Range(max = 999)
-	private Integer compZip1;
+	@Pattern(regexp = "[0-9]{3}")
+	private String compZip1;
 	// 郵便番号
 	@NotNull
-	@Range(max = 9999)
-	private Integer compZip2;
+	@Pattern(regexp = "[0-9]{4}")
+	private String compZip2;
 	// 住所1
 	@NotBlank
 	@Size(max = 256)
@@ -163,14 +162,12 @@ public class CompanyBasicInfoForm {
 	@Pattern(regexp = "[0-9]*")
 	private String welfareAdditionRation;
 
-
 	/**
 	 * @return compName
 	 */
 	public String getCompName() {
 		return compName;
 	}
-
 
 	/**
 	 * @param compName
@@ -180,14 +177,12 @@ public class CompanyBasicInfoForm {
 		this.compName = compName;
 	}
 
-
 	/**
 	 * @return compKana
 	 */
 	public String getCompKana() {
 		return compKana;
 	}
-
 
 	/**
 	 * @param compKana
@@ -197,40 +192,35 @@ public class CompanyBasicInfoForm {
 		this.compKana = compKana;
 	}
 
-
 	/**
 	 * @return compZip1
 	 */
-	public Integer getCompZip1() {
+	public String getCompZip1() {
 		return compZip1;
 	}
-
 
 	/**
 	 * @param compZip1
 	 *            セットする compZip1
 	 */
-	public void setCompZip1(Integer compZip1) {
+	public void setCompZip1(String compZip1) {
 		this.compZip1 = compZip1;
 	}
-
 
 	/**
 	 * @return compZip2
 	 */
-	public Integer getCompZip2() {
+	public String getCompZip2() {
 		return compZip2;
 	}
-
 
 	/**
 	 * @param compZip2
 	 *            セットする compZip2
 	 */
-	public void setCompZip2(Integer compZip2) {
+	public void setCompZip2(String compZip2) {
 		this.compZip2 = compZip2;
 	}
-
 
 	/**
 	 * @return compAdd1
@@ -238,7 +228,6 @@ public class CompanyBasicInfoForm {
 	public String getCompAdd1() {
 		return compAdd1;
 	}
-
 
 	/**
 	 * @param compAdd1
@@ -248,14 +237,12 @@ public class CompanyBasicInfoForm {
 		this.compAdd1 = compAdd1;
 	}
 
-
 	/**
 	 * @return compAdd2
 	 */
 	public String getCompAdd2() {
 		return compAdd2;
 	}
-
 
 	/**
 	 * @param compAdd2
@@ -265,14 +252,12 @@ public class CompanyBasicInfoForm {
 		this.compAdd2 = compAdd2;
 	}
 
-
 	/**
 	 * @return compAdd1Kana
 	 */
 	public String getCompAdd1Kana() {
 		return compAdd1Kana;
 	}
-
 
 	/**
 	 * @param compAdd1Kana
@@ -282,14 +267,12 @@ public class CompanyBasicInfoForm {
 		this.compAdd1Kana = compAdd1Kana;
 	}
 
-
 	/**
 	 * @return compAdd2Kana
 	 */
 	public String getCompAdd2Kana() {
 		return compAdd2Kana;
 	}
-
 
 	/**
 	 * @param compAdd2Kana
@@ -299,14 +282,12 @@ public class CompanyBasicInfoForm {
 		this.compAdd2Kana = compAdd2Kana;
 	}
 
-
 	/**
 	 * @return compTel1
 	 */
 	public String getCompTel1() {
 		return compTel1;
 	}
-
 
 	/**
 	 * @param compTel1
@@ -316,14 +297,12 @@ public class CompanyBasicInfoForm {
 		this.compTel1 = compTel1;
 	}
 
-
 	/**
 	 * @return compTel2
 	 */
 	public String getCompTel2() {
 		return compTel2;
 	}
-
 
 	/**
 	 * @param compTel2
@@ -333,14 +312,12 @@ public class CompanyBasicInfoForm {
 		this.compTel2 = compTel2;
 	}
 
-
 	/**
 	 * @return compTel3
 	 */
 	public String getCompTel3() {
 		return compTel3;
 	}
-
 
 	/**
 	 * @param compTel3
@@ -350,14 +327,12 @@ public class CompanyBasicInfoForm {
 		this.compTel3 = compTel3;
 	}
 
-
 	/**
 	 * @return classification
 	 */
 	public String getClassification() {
 		return classification;
 	}
-
 
 	/**
 	 * @param classification
@@ -367,14 +342,12 @@ public class CompanyBasicInfoForm {
 		this.classification = classification;
 	}
 
-
 	/**
 	 * @return corporationId
 	 */
 	public String getCorporationId() {
 		return corporationId;
 	}
-
 
 	/**
 	 * @param corporationId
@@ -384,14 +357,12 @@ public class CompanyBasicInfoForm {
 		this.corporationId = corporationId;
 	}
 
-
 	/**
 	 * @return corpOwnerName
 	 */
 	public String getCorpOwnerName() {
 		return corpOwnerName;
 	}
-
 
 	/**
 	 * @param corpOwnerName
@@ -401,14 +372,12 @@ public class CompanyBasicInfoForm {
 		this.corpOwnerName = corpOwnerName;
 	}
 
-
 	/**
 	 * @return corpOwnerNameKana
 	 */
 	public String getCorpOwnerNameKana() {
 		return corpOwnerNameKana;
 	}
-
 
 	/**
 	 * @param corpOwnerNameKana
@@ -418,14 +387,12 @@ public class CompanyBasicInfoForm {
 		this.corpOwnerNameKana = corpOwnerNameKana;
 	}
 
-
 	/**
 	 * @return corpSortNo1
 	 */
 	public String getCorpSortNo1() {
 		return corpSortNo1;
 	}
-
 
 	/**
 	 * @param corpSortNo1
@@ -435,14 +402,12 @@ public class CompanyBasicInfoForm {
 		this.corpSortNo1 = corpSortNo1;
 	}
 
-
 	/**
 	 * @return corpSortNo2
 	 */
 	public String getCorpSortNo2() {
 		return corpSortNo2;
 	}
-
 
 	/**
 	 * @param corpSortNo2
@@ -452,14 +417,12 @@ public class CompanyBasicInfoForm {
 		this.corpSortNo2 = corpSortNo2;
 	}
 
-
 	/**
 	 * @return corpNo
 	 */
 	public String getCorpNo() {
 		return corpNo;
 	}
-
 
 	/**
 	 * @param corpNo
@@ -469,14 +432,12 @@ public class CompanyBasicInfoForm {
 		this.corpNo = corpNo;
 	}
 
-
 	/**
 	 * @return corpKind
 	 */
 	public String getCorpKind() {
 		return corpKind;
 	}
-
 
 	/**
 	 * @param corpKind
@@ -486,14 +447,12 @@ public class CompanyBasicInfoForm {
 		this.corpKind = corpKind;
 	}
 
-
 	/**
 	 * @return deadlineDay
 	 */
 	public String getDeadlineDay() {
 		return deadlineDay;
 	}
-
 
 	/**
 	 * @param deadlineDay
@@ -503,14 +462,12 @@ public class CompanyBasicInfoForm {
 		this.deadlineDay = deadlineDay;
 	}
 
-
 	/**
 	 * @return deadlineAdjustDays
 	 */
 	public String getDeadlineAdjustDays() {
 		return deadlineAdjustDays;
 	}
-
 
 	/**
 	 * @param deadlineAdjustDays
@@ -520,14 +477,12 @@ public class CompanyBasicInfoForm {
 		this.deadlineAdjustDays = deadlineAdjustDays;
 	}
 
-
 	/**
 	 * @return paymentDay
 	 */
 	public String getPaymentDay() {
 		return paymentDay;
 	}
-
 
 	/**
 	 * @param paymentDay
@@ -537,14 +492,12 @@ public class CompanyBasicInfoForm {
 		this.paymentDay = paymentDay;
 	}
 
-
 	/**
 	 * @return paymentAdjustDays
 	 */
 	public String getPaymentAdjustDays() {
 		return paymentAdjustDays;
 	}
-
 
 	/**
 	 * @param paymentAdjustDays
@@ -554,14 +507,12 @@ public class CompanyBasicInfoForm {
 		this.paymentAdjustDays = paymentAdjustDays;
 	}
 
-
 	/**
 	 * @return accountingManager
 	 */
 	public String getAccountingManager() {
 		return accountingManager;
 	}
-
 
 	/**
 	 * @param accountingManager
@@ -571,14 +522,12 @@ public class CompanyBasicInfoForm {
 		this.accountingManager = accountingManager;
 	}
 
-
 	/**
 	 * @return userRecongId
 	 */
 	public String getUserRecongId() {
 		return userRecongId;
 	}
-
 
 	/**
 	 * @param userRecongId
@@ -588,14 +537,12 @@ public class CompanyBasicInfoForm {
 		this.userRecongId = userRecongId;
 	}
 
-
 	/**
 	 * @return userId
 	 */
 	public String getUserId() {
 		return userId;
 	}
-
 
 	/**
 	 * @param userId
@@ -605,14 +552,12 @@ public class CompanyBasicInfoForm {
 		this.userId = userId;
 	}
 
-
 	/**
 	 * @return taxAccountant
 	 */
 	public String getTaxAccountant() {
 		return taxAccountant;
 	}
-
 
 	/**
 	 * @param taxAccountant
@@ -622,14 +567,12 @@ public class CompanyBasicInfoForm {
 		this.taxAccountant = taxAccountant;
 	}
 
-
 	/**
 	 * @return taxOffice
 	 */
 	public String getTaxOffice() {
 		return taxOffice;
 	}
-
 
 	/**
 	 * @param taxOffice
@@ -639,14 +582,12 @@ public class CompanyBasicInfoForm {
 		this.taxOffice = taxOffice;
 	}
 
-
 	/**
 	 * @return dataShareId
 	 */
 	public String getDataShareId() {
 		return dataShareId;
 	}
-
 
 	/**
 	 * @param dataShareId
@@ -656,14 +597,12 @@ public class CompanyBasicInfoForm {
 		this.dataShareId = dataShareId;
 	}
 
-
 	/**
 	 * @return myNumber
 	 */
 	public Boolean getMyNumber() {
 		return myNumber;
 	}
-
 
 	/**
 	 * @param myNumber
@@ -673,14 +612,12 @@ public class CompanyBasicInfoForm {
 		this.myNumber = myNumber;
 	}
 
-
 	/**
 	 * @return compCode
 	 */
 	public String getCompCode() {
 		return compCode;
 	}
-
 
 	/**
 	 * @param compCode
@@ -690,14 +627,12 @@ public class CompanyBasicInfoForm {
 		this.compCode = compCode;
 	}
 
-
 	/**
 	 * @return employInsurRate
 	 */
 	public String getEmployInsurRate() {
 		return employInsurRate;
 	}
-
 
 	/**
 	 * @param employInsurRate
@@ -707,14 +642,12 @@ public class CompanyBasicInfoForm {
 		this.employInsurRate = employInsurRate;
 	}
 
-
 	/**
 	 * @return employRounding
 	 */
 	public String getEmployRounding() {
 		return employRounding;
 	}
-
 
 	/**
 	 * @param employRounding
@@ -724,14 +657,12 @@ public class CompanyBasicInfoForm {
 		this.employRounding = employRounding;
 	}
 
-
 	/**
 	 * @return healthInsurRate
 	 */
 	public String getHealthInsurRate() {
 		return healthInsurRate;
 	}
-
 
 	/**
 	 * @param healthInsurRate
@@ -741,14 +672,12 @@ public class CompanyBasicInfoForm {
 		this.healthInsurRate = healthInsurRate;
 	}
 
-
 	/**
 	 * @return healthInsurRate2
 	 */
 	public String getHealthInsurRate2() {
 		return healthInsurRate2;
 	}
-
 
 	/**
 	 * @param healthInsurRate2
@@ -758,14 +687,12 @@ public class CompanyBasicInfoForm {
 		this.healthInsurRate2 = healthInsurRate2;
 	}
 
-
 	/**
 	 * @return healthRounding
 	 */
 	public String getHealthRounding() {
 		return healthRounding;
 	}
-
 
 	/**
 	 * @param healthRounding
@@ -775,14 +702,12 @@ public class CompanyBasicInfoForm {
 		this.healthRounding = healthRounding;
 	}
 
-
 	/**
 	 * @return welfareInsurance
 	 */
 	public String getWelfareInsurance() {
 		return welfareInsurance;
 	}
-
 
 	/**
 	 * @param welfareInsurance
@@ -792,14 +717,12 @@ public class CompanyBasicInfoForm {
 		this.welfareInsurance = welfareInsurance;
 	}
 
-
 	/**
 	 * @return welfareRounding
 	 */
 	public String getWelfareRounding() {
 		return welfareRounding;
 	}
-
 
 	/**
 	 * @param welfareRounding
@@ -809,14 +732,12 @@ public class CompanyBasicInfoForm {
 		this.welfareRounding = welfareRounding;
 	}
 
-
 	/**
 	 * @return welfareExemptionRate
 	 */
 	public String getWelfareExemptionRate() {
 		return welfareExemptionRate;
 	}
-
 
 	/**
 	 * @param welfareExemptionRate
@@ -826,14 +747,12 @@ public class CompanyBasicInfoForm {
 		this.welfareExemptionRate = welfareExemptionRate;
 	}
 
-
 	/**
 	 * @return welfareAdditionRate
 	 */
 	public String getWelfareAdditionRate() {
 		return welfareAdditionRate;
 	}
-
 
 	/**
 	 * @param welfareAdditionRate
@@ -843,14 +762,12 @@ public class CompanyBasicInfoForm {
 		this.welfareAdditionRate = welfareAdditionRate;
 	}
 
-
 	/**
 	 * @return welfareAdditionRation
 	 */
 	public String getWelfareAdditionRation() {
 		return welfareAdditionRation;
 	}
-
 
 	/**
 	 * @param welfareAdditionRation
