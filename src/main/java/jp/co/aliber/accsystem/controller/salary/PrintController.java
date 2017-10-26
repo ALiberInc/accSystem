@@ -2,6 +2,8 @@ package jp.co.aliber.accsystem.controller.salary;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Arrays;
 
 import javax.servlet.ServletOutputStream;
@@ -57,8 +59,14 @@ public class PrintController {
 			HttpServletResponse response, HttpServletRequest request) {
 
 		response.setContentType("application/pdf");
-		response.setHeader("Content-Disposition", "filename=kyuyomeisaisyo.pdf");
-		
+
+		try {
+			response.setHeader("Content-Disposition",
+					"filename=" + URLEncoder.encode("給与明細書" + salaryYearMonth + ".pdf", "UTF-8"));
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
+
 		Integer[] employeeIdArray = Arrays.stream(employeeIdCommaSeperated.split(",")).map(Integer::valueOf)
 				.toArray(Integer[]::new);
 		try (ByteArrayOutputStream pdfOutputStream = utilService.creationPdfOutputStream(compId, salaryYearMonth,
