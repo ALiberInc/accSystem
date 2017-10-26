@@ -21,19 +21,10 @@
 hs_err_pid*
 /target/
 
-.settings/org.eclipse.core.resources.prefs
-
-.settings/org.eclipse.jdt.core.prefs
-
-.settings/org.eclipse.m2e.core.prefs
+.settings/
 
 .project
 
 .classpath
 
-.settings/org.eclipse.wst.common.project.facet.core.xml
-src/test/resources/Blank_A4_Landscape.pdf
-src/test/java/CreatePdfReportServlet2.java
-src/test/java/CreatePdfReportServlet.java
-src/main/resources/static/js/11201709.pdf
-src/main/java/jp/co/aliber/accsystem/security/userdetails/UserInfo.java
+src/test/
