@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import jp.co.aliber.accsystem.entity.auto.TCompany;
 import jp.co.aliber.accsystem.entity.auto.TCompanyExample;
-import jp.co.aliber.accsystem.mapper.SelectSeqLastValueMapper;
 import jp.co.aliber.accsystem.mapper.auto.TCompanyMapper;
 import jp.co.aliber.accsystem.mapper.auto.TInsuranceMapper;
 
@@ -24,8 +23,6 @@ public class CompanyBasicInfoService {
 	TCompanyMapper tCompanyMapper;
 	@Autowired
 	TInsuranceMapper tInsuranceMapper;
-	@Autowired
-	SelectSeqLastValueMapper selectSeqLastValueMapper;
 
 	/**
 	 * 登録処理

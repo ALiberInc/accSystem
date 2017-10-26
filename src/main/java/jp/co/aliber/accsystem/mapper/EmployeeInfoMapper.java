@@ -5,14 +5,14 @@ import org.apache.ibatis.annotations.Param;
 import jp.co.aliber.accsystem.entity.EmployeeInfo;
 
 /**
- * 各シーケンスに対して、直前に採番された最新値を取得クラス
+ * 従業員情報を取得クラス
  */
 public interface EmployeeInfoMapper {
 
     /**
-     * シーケンスから、直前に採番された最新値を取得する
+     * 従業員情報を取得
      *
-     * @return シーケンスの最新値
+     * @return 従業員情報
      */
     public EmployeeInfo selectNameDeptName(@Param("compId")Integer compId, @Param("employeeId")Integer employeeId);
 

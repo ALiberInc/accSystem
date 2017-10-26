@@ -19,7 +19,7 @@ import jp.co.aliber.accsystem.entity.EmployeeInfo;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeIncomeTax;
 import jp.co.aliber.accsystem.entity.auto.TSalaryDetail;
 import jp.co.aliber.accsystem.mapper.EmployeeInfoMapper;
-import jp.co.aliber.accsystem.mapper.SelectSeqLastValueMapper;
+import jp.co.aliber.accsystem.mapper.SeqLastValueMapper;
 import jp.co.aliber.accsystem.mapper.auto.TEmployeeIncomeTaxMapper;
 import jp.co.aliber.accsystem.mapper.auto.TSalaryDetailMapper;
 import net.sf.jasperreports.engine.JRException;
@@ -37,7 +37,7 @@ public class UtilService {
 
 	/** シーケンス生成 */
 	@Autowired
-	SelectSeqLastValueMapper selectSeqLastValueMapper;
+	SeqLastValueMapper seqLastValueMapper;
 
 	/** 従業員給与明細 */
 	@Autowired
@@ -55,7 +55,7 @@ public class UtilService {
 	 * @return シーケンス
 	 */
 	public Integer getSeqLastValue() {
-		return selectSeqLastValueMapper.selectLastValue();
+		return seqLastValueMapper.selectLastValue();
 	}
 
 	/**
