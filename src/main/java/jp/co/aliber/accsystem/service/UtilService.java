@@ -13,11 +13,12 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.bean.SalaryBean;
-import jp.co.aliber.accsystem.entity.SelectNameDeptNameParameter;
+import jp.co.aliber.accsystem.entity.EmployeeInfo;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeIncomeTax;
 import jp.co.aliber.accsystem.entity.auto.TSalaryDetail;
-import jp.co.aliber.accsystem.mapper.SelectNameDeptNameMapper;
+import jp.co.aliber.accsystem.mapper.EmployeeInfoMapper;
 import jp.co.aliber.accsystem.mapper.SelectSeqLastValueMapper;
 import jp.co.aliber.accsystem.mapper.auto.TEmployeeIncomeTaxMapper;
 import jp.co.aliber.accsystem.mapper.auto.TSalaryDetailMapper;
@@ -46,7 +47,7 @@ public class UtilService {
 	TEmployeeIncomeTaxMapper tEmployeeIncomeTaxMapper;
 
 	@Autowired
-	SelectNameDeptNameMapper selectNameDeptNameMapper;
+	EmployeeInfoMapper employeeInfoMapper;
 
 	/**
 	 * シーケンスを取得
@@ -78,13 +79,12 @@ public class UtilService {
 			return null;
 		}
 
-		//各従業員の給与明細を格納
+		// 各従業員の給与明細を格納
 		List<SalaryBean> salaryBeanList = new ArrayList<>();
 		for (Integer employeeId : oneOrMoreEmployeeId) {
-			SelectNameDeptNameParameter selectNameDeptNameParameter = selectNameDeptNameMapper
-					.selectNameDeptName(compId, employeeId);
+			EmployeeInfo employeeInfo = employeeInfoMapper.selectNameDeptName(compId, employeeId);
 
-			if (selectNameDeptNameParameter == null) {
+			if (employeeInfo == null) {
 				return null;
 			}
 
@@ -102,24 +102,19 @@ public class UtilService {
 			SalaryBean salaryBean = new SalaryBean();
 
 			Date date = new Date();
-			SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy");
-			SimpleDateFormat formatter2 = new SimpleDateFormat("MM");
-			SimpleDateFormat formatter3 = new SimpleDateFormat("dd");
-
 			// 年
-			salaryBean.setYear(formatter1.format(date));
+			salaryBean.setYear(new SimpleDateFormat("yyyy").format(date));
 			// 月
-			salaryBean.setMonth(formatter2.format(date));
+			salaryBean.setMonth(new SimpleDateFormat("MM").format(date));
 			// 日
-			salaryBean.setDay(formatter3.format(date));
+			salaryBean.setDay(new SimpleDateFormat("dd").format(date));
 			// 氏名
-			salaryBean.setName(selectNameDeptNameParameter.getLastName() + selectNameDeptNameParameter.getFirstName());
+			salaryBean.setName(employeeInfo.getLastName() + employeeInfo.getFirstName());
 			// 所属
-			salaryBean.setDepartment(StringUtils.isNotEmpty(selectNameDeptNameParameter.getDeptName())
-					? selectNameDeptNameParameter.getDeptName() : "");
+			salaryBean.setDepartment(
+					StringUtils.isNotEmpty(employeeInfo.getDeptName()) ? employeeInfo.getDeptName() : "");
 			// コード
-			salaryBean.setCode(selectNameDeptNameParameter.getEmployeeNo() != null
-					? selectNameDeptNameParameter.getEmployeeNo().toString() : "");
+			salaryBean.setCode(employeeInfo.getEmployeeNo() != null ? employeeInfo.getEmployeeNo().toString() : "");
 			// 出勤日数
 			salaryBean.setDaysAttendance("");
 			// 勤務時間
@@ -237,10 +232,10 @@ public class UtilService {
 
 			salaryBeanList.add(salaryBean);
 		}
-		String jasperPath = "Blank_A4_Landscape.jasper";
+
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		JasperRunManager.runReportToPdfStream(Files.newInputStream(Paths.get(jasperPath)), outputStream, null,
-				new JRBeanCollectionDataSource(salaryBeanList));
+		JasperRunManager.runReportToPdfStream(Files.newInputStream(Paths.get(ImmutableValues.jasperPath)), outputStream,
+				null, new JRBeanCollectionDataSource(salaryBeanList));
 
 		return outputStream;
 	}
