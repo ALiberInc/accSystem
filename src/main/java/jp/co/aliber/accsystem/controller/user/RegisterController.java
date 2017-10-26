@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.MessageSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -95,7 +96,7 @@ public class RegisterController {
 		// ユーザ名
 		loginUser.setLoginId(form.getLoginId());
 		// 暗証番号
-		loginUser.setPassword(form.getPassword());
+		loginUser.setPassword(new BCryptPasswordEncoder().encode(form.getPassword()));
 
 		registerService.regist(loginUser);
 

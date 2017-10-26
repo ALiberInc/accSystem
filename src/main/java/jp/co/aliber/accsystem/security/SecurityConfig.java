@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.configurers
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
@@ -52,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		@Override
 		public void init(AuthenticationManagerBuilder auth) throws Exception {
 			// 認証するユーザーを設定する
-			auth.userDetailsService(userDetailsService);
+			auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 		}
 	}
 }
