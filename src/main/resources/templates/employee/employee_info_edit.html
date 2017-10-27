@@ -4,683 +4,639 @@
 </head>
 <body>
 	<div th:replace="accTemp :: accBackButton"></div>
-	<form th:action="@{/employee_info_edit/save}" th:object="${employeeInfoEditForm}" method="post">
-		<input type="hidden" name="creationflag" id="creationflag" th:value="${employeeInfoEditForm.creationflag}" /> <input
-			type="hidden" name="employeeId" id="employeeId" th:value="${employeeInfoEditForm.employeeId}"
-		/>
+	<form th:action="@{/employee_info_edit/save}"
+		th:object="${employeeInfoEditForm}" method="post">
+		<input type="hidden" name="creationflag" id="creationflag"
+			th:value="${employeeInfoEditForm.creationflag}" /> <input
+			type="hidden" name="employeeId" id="employeeId"
+			th:value="${employeeInfoEditForm.employeeId}" />
 		<div class="centerDiv">
 			<table class="table table-striped table-bordered">
 				<tr>
-					<td class="text-center" colspan="4">
-						<span>従業員データ設定</span>
-					</td>
+					<th class="text-center" colspan="4"><span>従業員データ設定</span></th>
 				</tr>
 			</table>
 			<table class="table table-striped table-bordered">
 				<tr>
-					<td rowspan="4" class="text-center td0" style="vertical-align: middle;">
-						<span>基本情報</span>
-					</td>
-					<td class="tdbg td2 text-center ">
-						<span>
-							従業員番号<font color="#FF0000">※</font>
-						</span>
-					</td>
+					<th rowspan="4" class="text-center td0"
+						style="vertical-align: middle;"><span>基本情報</span></th>
+					<th class="tdbg td2 text-center "><span> 従業員番号<font
+							color="#FF0000">※</font>
+					</span></th>
 					<td colspan="6">
-						<div th:if="${#fields.hasErrors('employeeNo')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('employeeNo')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{employeeNo}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{employeeNo}" maxlength="8" />
-						<span>※登録後は変更できません</span>
+						</div> <input type="text" th:field="*{employeeNo}" maxlength="8" /> <span>※登録後は変更できません</span>
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>ﾌﾌﾘｶﾞﾅ姓</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>ﾌﾌﾘｶﾞﾅ姓</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('firstNameKana')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('firstNameKana')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{firstNameKana}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{firstNameKana}" maxlength="15" />
+						</div> <input type="text" th:field="*{firstNameKana}" maxlength="15" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>ﾌﾌﾘｶﾞﾅ名</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>ﾌﾌﾘｶﾞﾅ名</span></th>
 					<td colspan="3">
-						<div th:if="${#fields.hasErrors('lastNameKana')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('lastNameKana')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{lastNameKana}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{lastNameKana}" maxlength="15" />
+						</div> <input type="text" th:field="*{lastNameKana}" maxlength="15" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>
-							姓<font color="#FF0000">※</font>
-						</span>
-					</td>
+					<th class="tdbg td2 text-center"><span> 姓<font
+							color="#FF0000">※</font>
+					</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('lastName')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('lastName')}" class="error-after"
+							style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{lastName}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{lastName}" maxlength="15" />
+						</div> <input type="text" th:field="*{lastName}" maxlength="15" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>
-							名<font color="#FF0000">※</font>
-						</span>
-					</td>
+					<th class="tdbg td2 text-center"><span> 名<font
+							color="#FF0000">※</font>
+					</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('firstName')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('firstName')}" class="error-after"
+							style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{firstName}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{firstName}" maxlength="15" />
+						</div> <input type="text" th:field="*{firstName}" maxlength="15" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>性別</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>性別</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('sex')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('sex')}" class="error-after"
+							style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{sex}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="sex" class="form-control ">
+						</div> <select id="jobId" name="sex" class="form-control ">
 							<option value="0" th:selected="${employeeInfoEditForm.sex} == 0">男</option>
 							<option value="1" th:selected="${employeeInfoEditForm.sex} == 1">女</option>
-						</select>
+					</select>
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>部署</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>部署</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('department')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('department')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{department}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="department" class="form-control">
-							<option th:if="${not #lists.isEmpty(employeeInfoEditForm.departmentList)}"
-								th:each="department : ${employeeInfoEditForm.departmentList}" th:value="${department.deptId}"
-								th:selected="${employeeInfoEditForm.department} == ${department.deptId}" th:text="${department.deptName}"
-							></option>
-							<option th:if="${#lists.isEmpty(employeeInfoEditForm.departmentList)}" value="0">未設定</option>
-						</select>
+						</div> <select id="jobId" name="department" class="form-control">
+							<option
+								th:if="${not #lists.isEmpty(employeeInfoEditForm.departmentList)}"
+								th:each="department : ${employeeInfoEditForm.departmentList}"
+								th:value="${department.deptId}"
+								th:selected="${employeeInfoEditForm.department} == ${department.deptId}"
+								th:text="${department.deptName}"></option>
+							<option
+								th:if="${#lists.isEmpty(employeeInfoEditForm.departmentList)}"
+								value="0">未設定</option>
+					</select>
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>メールアドレス</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>メールアドレス</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('email')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('email')}" class="error-after"
+							style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{email}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{email}" maxlength="50" />
+						</div> <input type="text" th:field="*{email}" maxlength="50" />
 					</td>
 				</tr>
 			</table>
 			<table class="table table-striped table-bordered">
 				<tr>
-					<td rowspan="4" class="text-center td0" style="vertical-align: middle;">
-						<span>口座情報</span>
-					</td>
-					<td class="tdbg td2 text-center">
-						<span>口座名義人(ｶﾅ)<font color="#FF0000">※</font></span>
-					</td>
+					<th rowspan="4" class="text-center td0"
+						style="vertical-align: middle;"><span>口座情報</span></th>
+					<th class="tdbg td2 text-center"><span>口座名義人(ｶﾅ)<font
+							color="#FF0000">※</font></span></th>
 					<td colspan="5">
-						<div th:if="${#fields.hasErrors('accountHolder')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('accountHolder')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{accountHolder}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{accountHolder}" maxlength="30" />
+						</div> <input type="text" th:field="*{accountHolder}" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>銀行コード<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>銀行コード<font
+							color="#FF0000">※</font></span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('bankCode')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('bankCode')}" class="error-after"
+							style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{bankCode}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{bankCode}" maxlength="4" />
+						</div> <input type="text" th:field="*{bankCode}" maxlength="4" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>銀行名<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>銀行名<font
+							color="#FF0000">※</font></span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('bankName')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('bankName')}" class="error-after"
+							style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{bankName}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{bankName}" maxlength="30" />
+						</div> <input type="text" th:field="*{bankName}" maxlength="30" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>口座種別</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>口座種別</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('accountType')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('accountType')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{accountType}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="accountType" class="form-control">
-							<option value="0" th:selected="${employeeInfoEditForm.accountType} == 0">普通</option>
-							<option value="1" th:selected="${employeeInfoEditForm.accountType} == 1">当座</option>
-						</select>
+						</div> <select id="jobId" name="accountType" class="form-control">
+							<option value="0"
+								th:selected="${employeeInfoEditForm.accountType} == 0">普通</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.accountType} == 1">当座</option>
+					</select>
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>本支店コード</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>本支店コード</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('branchCode')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('branchCode')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{branchCode}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{branchCode}" maxlength="3" />
+						</div> <input type="text" th:field="*{branchCode}" maxlength="3" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>本支店名</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>本支店名</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('branchName')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('branchName')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{branchName}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{branchName}" maxlength="30" />
+						</div> <input type="text" th:field="*{branchName}" maxlength="30" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>口座番号</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>口座番号</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('accountNumber')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('accountNumber')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{accountNumber}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{accountNumber}" maxlength="8" />
+						</div> <input type="text" th:field="*{accountNumber}" maxlength="8" />
 					</td>
 				</tr>
 			</table>
 			<table class="table table-striped table-bordered">
 				<tr>
-					<td rowspan="5" class="text-center td0" style="vertical-align: middle;">
-						<span>所得税</span>
-					</td>
-					<td class="tdbg td2 text-center">
-						<span>所得税区分<font color="#FF0000">※</font></span>
-					</td>
+					<th rowspan="5" class="text-center td0"
+						style="vertical-align: middle;"><span>所得税</span></th>
+					<th class="tdbg td2 text-center"><span>所得税区分<font
+							color="#FF0000">※</font></span></th>
 					<td colspan="1">
-						<div th:if="${#fields.hasErrors('incomeTaxDistinction')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('incomeTaxDistinction')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{incomeTaxDistinction}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="incomeTaxDistinction" class="form-control">
-							<option value="0" th:selected="${employeeInfoEditForm.incomeTaxDistinction} == 0">甲欄</option>
-							<option value="1" th:selected="${employeeInfoEditForm.incomeTaxDistinction} == 1">乙欄</option>
-							<option value="1" th:selected="${employeeInfoEditForm.incomeTaxDistinction} == 2">対象外</option>
-						</select>
+						</div> <select id="jobId" name="incomeTaxDistinction"
+						class="form-control">
+							<option value="0"
+								th:selected="${employeeInfoEditForm.incomeTaxDistinction} == 0">甲欄</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.incomeTaxDistinction} == 1">乙欄</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.incomeTaxDistinction} == 2">対象外</option>
+					</select>
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>控除対象配偶者<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>控除対象配偶者<font
+							color="#FF0000">※</font></span></th>
 					<td colspan="1">
-						<div th:if="${#fields.hasErrors('consort')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('consort')}" class="error-after"
+							style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{consort}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="consort" class="form-control">
-							<option value="0" th:selected="${employeeInfoEditForm.consort} == 0">無し</option>
-							<option value="1" th:selected="${employeeInfoEditForm.consort} == 1">有り</option>
-						</select>
+						</div> <select id="jobId" name="consort" class="form-control">
+							<option value="0"
+								th:selected="${employeeInfoEditForm.consort} == 0">無し</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.consort} == 1">有り</option>
+					</select>
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>扶養控除等の申告<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>扶養控除等の申告<font
+							color="#FF0000">※</font></span></th>
 					<td colspan="1">
-						<div th:if="${#fields.hasErrors('dependents')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('dependents')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{dependents}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="dependents" class="form-control">
-							<option value="0" th:selected="${employeeInfoEditForm.dependents} == 0">無</option>
-							<option value="1" th:selected="${employeeInfoEditForm.dependents} == 1">有</option>
-						</select>
+						</div> <select id="jobId" name="dependents" class="form-control">
+							<option value="0"
+								th:selected="${employeeInfoEditForm.dependents} == 0">無</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.dependents} == 1">有</option>
+					</select>
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>扶養人数<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>扶養人数<font
+							color="#FF0000">※</font></span></th>
 					<td width="13%" colspan="1">
-						<div th:if="${#fields.hasErrors('dependentsNumber')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('dependentsNumber')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{dependentsNumber}"></th:block>
 							</p>
-						</div>
-						<input type="text" maxlength="8" th:field="*{dependentsNumber}" />
+						</div> <input type="text" maxlength="8" th:field="*{dependentsNumber}" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>世帯主名<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>世帯主名<font
+							color="#FF0000">※</font></span></th>
 					<td width="208">
-						<div th:if="${#fields.hasErrors('householdName')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('householdName')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{householdName}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{householdName}" maxlength="20" />
+						</div> <input type="text" th:field="*{householdName}" maxlength="20" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<div th:if="${#fields.hasErrors('relationship')}" class="error-after" style="display: block;">
+					<th class="tdbg td2 text-center">
+						<div th:if="${#fields.hasErrors('relationship')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{relationship}"></th:block>
 							</p>
-						</div>
-						<span>続柄</span>
-					</td>
-					<td colspan="1">
-						<input type="text" th:field="*{relationship}" maxlength="4" />
-					</td>
+						</div> <span>続柄</span>
+					</th>
+					<td colspan="1"><input type="text" th:field="*{relationship}"
+						maxlength="4" /></td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>条約免除</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>条約免除</span></th>
 					<td width="208">
-						<div th:if="${#fields.hasErrors('treatyExemption')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('treatyExemption')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{treatyExemption}"></th:block>
 							</p>
-						</div>
-						<label> <input type="checkbox" name="treatyExemption" th:checked="${employeeInfoEditForm.treatyExemption}" />
-						</label>
-						<span>該当する</span>
+						</div> <label> <input type="checkbox" name="treatyExemption"
+							th:checked="${employeeInfoEditForm.treatyExemption}" />
+					</label> <span>該当する</span>
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>青色専従者</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>青色専従者</span></th>
 					<td colspan="1">
-						<div th:if="${#fields.hasErrors('blueOfficer')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('blueOfficer')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{blueOfficer}"></th:block>
 							</p>
-						</div>
-						<label><input type="checkbox" name="blueOfficer" th:checked="${employeeInfoEditForm.blueOfficer}" /></label>
-						<span>該当する</span>
+						</div> <label><input type="checkbox" name="blueOfficer"
+							th:checked="${employeeInfoEditForm.blueOfficer}" /></label> <span>該当する</span>
 					</td>
 				</tr>
 			</table>
 			<table class="table table-striped table-bordered">
 				<tr>
-					<td rowspan="10" class="text-center td0" style="vertical-align: middle;">
-						<span>社会保険</span>
-					</td>
-					<td class="tdbg td2 text-center">
-						<span>雇用保険<font color="#FF0000">※</font></span>
-					</td>
+					<th rowspan="10" class="text-center td0"
+						style="vertical-align: middle;"><span>社会保険</span></th>
+					<th class="tdbg td2 text-center"><span>雇用保険<font
+							color="#FF0000">※</font></span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('insuranceFlag')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('insuranceFlag')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{insuranceFlag}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="insuranceFlag" class="form-control">
-							<option value="0" th:selected="${employeeInfoEditForm.insuranceFlag} == 0">加入</option>
-							<option value="1" th:selected="${employeeInfoEditForm.insuranceFlag} == 1">加入（徴収なし）</option>
-							<option value="1" th:selected="${employeeInfoEditForm.insuranceFlag} == 2">非加入</option>
-						</select>
+						</div> <select id="jobId" name="insuranceFlag" class="form-control">
+							<option value="0"
+								th:selected="${employeeInfoEditForm.insuranceFlag} == 0">加入</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.insuranceFlag} == 1">加入（徴収なし）</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.insuranceFlag} == 2">非加入</option>
+					</select>
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>健康保険<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>健康保険<font
+							color="#FF0000">※</font></span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('healthInsuranceFlag')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('healthInsuranceFlag')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{healthInsuranceFlag}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="healthInsuranceFlag" class="form-control">
-							<option value="0" th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 0">加入:介護非該当</option>
-							<option value="1" th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 1">加入:介護該当者</option>
-							<option value="1" th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 2">非加入</option>
-						</select>
+						</div> <select id="jobId" name="healthInsuranceFlag"
+						class="form-control">
+							<option value="0"
+								th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 0">加入:介護非該当</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 1">加入:介護該当者</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 2">非加入</option>
+					</select>
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>健康保険種別</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>健康保険種別</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('healthInsuranceType')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('healthInsuranceType')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{healthInsuranceType}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="healthInsuranceType" class="form-control">
-							<option value="0" th:selected="${employeeInfoEditForm.healthInsuranceType} == 0">1.一般男</option>
-							<option value="1" th:selected="${employeeInfoEditForm.healthInsuranceType} == 1">2.一般女</option>
-							<option value="2" th:selected="${employeeInfoEditForm.healthInsuranceType} == 2">3.坑内夫</option>
-							<option value="3" th:selected="${employeeInfoEditForm.healthInsuranceType} == 3">4.第四種</option>
-							<option value="4" th:selected="${employeeInfoEditForm.healthInsuranceType} == 4">5.基金男</option>
-							<option value="5" th:selected="${employeeInfoEditForm.healthInsuranceType} == 5">6.基金女</option>
-						</select>
+						</div> <select id="jobId" name="healthInsuranceType"
+						class="form-control">
+							<option value="0"
+								th:selected="${employeeInfoEditForm.healthInsuranceType} == 0">1.一般男</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.healthInsuranceType} == 1">2.一般女</option>
+							<option value="2"
+								th:selected="${employeeInfoEditForm.healthInsuranceType} == 2">3.坑内夫</option>
+							<option value="3"
+								th:selected="${employeeInfoEditForm.healthInsuranceType} == 3">4.第四種</option>
+							<option value="4"
+								th:selected="${employeeInfoEditForm.healthInsuranceType} == 4">5.基金男</option>
+							<option value="5"
+								th:selected="${employeeInfoEditForm.healthInsuranceType} == 5">6.基金女</option>
+					</select>
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>健康保険標準報酬</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>健康保険標準報酬</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('healthCompensation')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('healthCompensation')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{healthCompensation}"></th:block>
 							</p>
-						</div>
-						<input type="text" maxlength="30" th:field="*{healthCompensation}" />
+						</div> <input type="text" maxlength="30"
+						th:field="*{healthCompensation}" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>保険者番号</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>保険者番号</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('insurerNumber')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('insurerNumber')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{insurerNumber}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{insurerNumber}" maxlength="30" />
+						</div> <input type="text" th:field="*{insurerNumber}" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>被保険者整理番号</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>被保険者整理番号</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('insuredPersonnelNumber')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('insuredPersonnelNumber')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{insuredPersonnelNumber}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{insuredPersonnelNumber}" maxlength="30" />
+						</div> <input type="text" th:field="*{insuredPersonnelNumber}"
+						maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>厚生年金<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>厚生年金<font
+							color="#FF0000">※</font></span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('welfarePensionFlag')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('welfarePensionFlag')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{welfarePensionFlag}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="welfarePensionFlag" class="form-control">
-							<option value="0" th:selected="${employeeInfoEditForm.welfarePensionFlag} == 0">加入</option>
-							<option value="1" th:selected="${employeeInfoEditForm.welfarePensionFlag} == 1">非加入</option>
-						</select>
+						</div> <select id="jobId" name="welfarePensionFlag" class="form-control">
+							<option value="0"
+								th:selected="${employeeInfoEditForm.welfarePensionFlag} == 0">加入</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.welfarePensionFlag} == 1">非加入</option>
+					</select>
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>厚生年金標準報酬</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>厚生年金標準報酬</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('welfareCompensation')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('welfareCompensation')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{welfareCompensation}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{welfareCompensation}" maxlength="30" />
+						</div> <input type="text" th:field="*{welfareCompensation}"
+						maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>基礎年金番号</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>基礎年金番号</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('welfareNumber')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('welfareNumber')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{welfareNumber}"></th:block>
 							</p>
-						</div>
-						<input type="text" maxlength="30" th:field="*{welfareNumber}" />
+						</div> <input type="text" maxlength="30" th:field="*{welfareNumber}" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>厚生年金基金<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>厚生年金基金<font
+							color="#FF0000">※</font></span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('welfareFund')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('welfareFund')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{welfareFund}"></th:block>
 							</p>
-						</div>
-						<select id="jobId" name="welfareFund" class="form-control">
-							<option value="0" th:selected="${employeeInfoEditForm.welfareFund} == 0">加入</option>
-							<option value="1" th:selected="${employeeInfoEditForm.welfareFund} == 1">非加入</option>
-						</select>
+						</div> <select id="jobId" name="welfareFund" class="form-control">
+							<option value="0"
+								th:selected="${employeeInfoEditForm.welfareFund} == 0">加入</option>
+							<option value="1"
+								th:selected="${employeeInfoEditForm.welfareFund} == 1">非加入</option>
+					</select>
 					</td>
 				</tr>
 			</table>
 			<table class="table table-striped table-bordered">
 				<tr>
-					<td rowspan="10" class="text-center td0" style="vertical-align: middle;">
-						<span>固定項目</span>
-					</td>
-					<td colspan="2" class="tdbg td2 text-center">
-						<span>固定支給金額</span>
-					</td>
-					<td colspan="2" class="tdbg td2 text-center">
-						<span>固定控除金額</span>
-					</td>
+					<th rowspan="10" class="text-center td0"
+						style="vertical-align: middle;"><span>固定項目</span></th>
+					<th colspan="2" class="tdbg td2 text-center"><span>固定支給金額</span>
+					</th>
+					<th colspan="2" class="tdbg td2 text-center"><span>固定控除金額</span>
+					</th>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>基本給<font color="#FF0000">※</font></span>
-					</td>
+					<th class="tdbg td2 text-center"><span>基本給<font
+							color="#FF0000">※</font></span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('basicSalary')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('basicSalary')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{basicSalary}"></th:block>
 							</p>
-						</div>
-						<input type="text" maxlength="30" th:field="*{basicSalary}" />
+						</div> <input type="text" maxlength="30" th:field="*{basicSalary}" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>積立金</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>積立金</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('travelFund')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('travelFund')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{travelFund}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{travelFund}" maxlength="30" />
+						</div> <input type="text" th:field="*{travelFund}" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>役職手当</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>役職手当</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('jobAllowance')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('jobAllowance')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{jobAllowance}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{jobAllowance}" maxlength="30" />
+						</div> <input type="text" th:field="*{jobAllowance}" maxlength="30" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>借入等返済</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>借入等返済</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('repaymentBorrowings')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('repaymentBorrowings')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{repaymentBorrowings}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{repaymentBorrowings}" maxlength="30" />
+						</div> <input type="text" th:field="*{repaymentBorrowings}"
+						maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>資格手当</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>資格手当</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('requirementsAllowance')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('requirementsAllowance')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{requirementsAllowance}"></th:block>
 							</p>
-						</div>
-						<input type="text" maxlength="30" th:field="*{requirementsAllowance}" />
+						</div> <input type="text" maxlength="30"
+						th:field="*{requirementsAllowance}" />
 					</td>
-					<td class="tdbg td2 text-center">
-						<span>その他の控除</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>その他の控除</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('otherDeductions')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('otherDeductions')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{otherDeductions}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{otherDeductions}" maxlength="30" />
+						</div> <input type="text" th:field="*{otherDeductions}" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>住宅手当</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>住宅手当</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('housingAllowance')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('housingAllowance')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{housingAllowance}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{housingAllowance}" maxlength="30" />
+						</div> <input type="text" th:field="*{housingAllowance}" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>家族手当</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>家族手当</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('familyAllowance')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('familyAllowance')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{familyAllowance}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{familyAllowance}" maxlength="30" />
+						</div> <input type="text" th:field="*{familyAllowance}" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>その他の手当</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>その他の手当</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('otherAllowance')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('otherAllowance')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{otherAllowance}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{otherAllowance}" maxlength="30" />
+						</div> <input type="text" th:field="*{otherAllowance}" maxlength="30" />
 					</td>
 				</tr>
 				<tr>
-					<td class="tdbg td2 text-center">
-						<span>非課税交通費</span>
-					</td>
+					<th class="tdbg td2 text-center"><span>非課税交通費</span></th>
 					<td>
-						<div th:if="${#fields.hasErrors('taxExpense')}" class="error-after" style="display: block;">
+						<div th:if="${#fields.hasErrors('taxExpense')}"
+							class="error-after" style="display: block;">
 							<p>
 								<i></i>
 								<th:block th:errors="*{taxExpense}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{taxExpense}" maxlength="30" />
+						</div> <input type="text" th:field="*{taxExpense}" maxlength="30" />
 					</td>
 				</tr>
 			</table>
 			<table class="table table-striped">
 				<tr>
-					<td class="text-center">
-						<input class="btn btn-info btn-sm" type="submit" name="submit" value="設定保存" />
-					</td>
+					<td class="text-center"><input class="btn btn-info btn-sm"
+						type="submit" name="submit" value="設定保存" /></td>
 				</tr>
 			</table>
 		</div>
