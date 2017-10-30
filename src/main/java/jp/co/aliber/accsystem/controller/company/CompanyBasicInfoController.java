@@ -184,7 +184,7 @@ public class CompanyBasicInfoController {
 			// 基金独自給付加算定額
 			form.setWelfareAdditionRation(String.valueOf(a.getWelfareAdditionRation()));
 		}
-		return "company/companyBasicInfo";
+		return "company/company_basic_info";
 	}
 
 	/**

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="accTemp :: headerImp ('__新規ユーザー登録__')"></head>
+<head th:replace="acc_temp :: headerImp ('__新規ユーザー登録__')"></head>
 <body>
-	<div th:replace="accTemp :: accBackButton"></div>
+	<div th:replace="acc_temp :: accBackButton"></div>
 	<form name="registerForm" id="registerForm" method="POST"
 		th:action="@{/register/save}" th:object="${registerForm}">
 		<div class="centerDiv">

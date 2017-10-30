@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// ログイン処理のURL
 				.loginPage("/login")
 				// 認証成功時の遷移先
-				.defaultSuccessUrl("/top_menu")
+				.defaultSuccessUrl("/salary_statement")
 				// usernameのパラメタ名
 				.usernameParameter("loginId")
 				// passwordのパラメタ名

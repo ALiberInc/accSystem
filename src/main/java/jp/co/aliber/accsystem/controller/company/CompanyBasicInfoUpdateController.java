@@ -189,7 +189,7 @@ public class CompanyBasicInfoUpdateController {
 			// 基金独自給付加算定額
 			form.setWelfareAdditionRation(String.valueOf(a.getWelfareAdditionRation()));
 		}
-		return "company/companyBasicInfoUpdate";
+		return "company/company_basic_info_update";
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class CompanyBasicInfoUpdateController {
 			BindingResult result, Model model) {
 		// 入力チェック
 		if (!validate(form, result)) {
-			return "company/companyBasicInfoUpdate";
+			return "company/company_basic_info_update";
 		}
 		// エンティティに会社情報を設定する
 		TCompany company = new TCompany();
@@ -336,7 +336,7 @@ public class CompanyBasicInfoUpdateController {
 			companyBasicInfoService.update(company, Integer.valueOf(loginUser.getUser().getUserId()));
 		}
 
-		return "redirect:/finish?forwardURL=top_menu";
+		return "redirect:/finish?forwardURL=company_basic_info";
 
 	}
 

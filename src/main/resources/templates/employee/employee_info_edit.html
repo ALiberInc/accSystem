@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="accTemp :: headerImp ('__従業員データ入力__')">
+<head th:replace="acc_temp :: headerImp ('__従業員データ設定__')">
 </head>
 <body>
-	<div th:replace="accTemp :: accBackButton"></div>
+	<div th:replace="acc_temp :: accTopMenuArea"></div>
 	<form th:action="@{/employee_info_edit/save}"
 		th:object="${employeeInfoEditForm}" method="post">
 		<input type="hidden" name="creationflag" id="creationflag"

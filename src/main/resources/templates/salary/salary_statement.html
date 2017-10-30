@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="accTemp :: headerImp ('__給与明細一覧__')">
+<head th:replace="acc_temp :: headerImp ('__給与明細一覧__')">
 </head>
 <body>
-	<div th:replace="accTemp :: accBackButton"></div>
+	<div th:replace="acc_temp :: accTopMenuArea"></div>
 	<div class="centerDiv">
-		<label for="exampleInputName2">給与明細一覧</label> <span
+		<table class="table table-striped">
+			<tr>
+				<th class="text-center" colspan="4"><span>給与明細一覧</span></th>
+			</tr>
+		</table>
+		<label for="exampleInputName2">氏名:</label> <span
 			class="monthly_statement_search_dataList_text"> <input
 			type="text" id="freeWord" name="freeWord" value="" />
 		</span>

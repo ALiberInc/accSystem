@@ -17,14 +17,18 @@
 </head>
 <body>
 	<div th:fragment="accTopMenuArea">
-		<a th:href="@{/logout}">ログアウト</a>
+		<div>
+			<button type="button" class="btn btn-info btn-sm"
+				onclick="javascript:history.go(-1)">戻る</button>
+			<a class="pull-right" th:href="@{/logout}">ログアウト</a>
+		</div>
 		<div class="centerDiv">
 			<ul class="nav nav-tabs">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">会社情報管理<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="company">会社基本情報詳細</a></li>
+						<li><a href="company">会社基本情報</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -39,12 +43,6 @@
 						<li><a href="salary_statement">給与明細一覧</a></li>
 					</ul></li>
 			</ul>
-		</div>
-	</div>
-	<div th:fragment="accBackButton">
-		<div>
-			<button type="button" class="btn btn-primary btn-sm"
-				onclick="javascript:history.go(-1)">戻る</button>
 		</div>
 	</div>
 </body>

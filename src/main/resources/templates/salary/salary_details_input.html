@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="acc_temp :: headerImp ('__給与明細入力__')">
+</head>
+<body>
+	<div th:replace="acc_temp :: accTopMenuArea"></div>
+	<form name="salaryDetailsInputForm" id="salaryDetailsInputForm"
+		method="POST" th:action="@{detail/save}"
+		th:object="${salaryDetailsInputForm}">
+		<input type="hidden" th:field="*{employeeId}" /> <input type="hidden"
+			th:field="*{salaryYearMonth}" />
+		<div class="centerDiv">
+			<table class="table table-striped">
+				<tr>
+					<th class="text-center" colspan="4"><span>給与明細入力</span></th>
+				</tr>
+			</table>
+			<table class="table table-striped">
+				<tr>
+					<th class="tdbg text-center tdwd"><span>基本給</span></th>
+					<th class="tdbg text-center tdwd"><span>役職手当</span></th>
+					<th class="tdbg text-center tdwd"><span>資格手当</span></th>
+					<th class="tdbg text-center tdwd"><span>住宅手当</span></th>
+					<th class="tdbg text-center tdwd"><span>家族手当</span></th>
+				</tr>
+				<tr>
+					<td class="tdwd text-center">
+						<div th:if="${#fields.hasErrors('basicSalary')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{basicSalary}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{basicSalary}" maxlength="9"
+						class="td3" onchange="autoCalculate()" /> <span>円</span>
+					</td>
+					<td class="tdwd text-center"><input type="text"
+						th:field="*{positionAllowance}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="tdwd text-center"><input type="text"
+						th:field="*{qualificationAllowance}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="tdwd text-center"><input type="text"
+						th:field="*{houseAllowance}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="tdwd text-center"><input type="text"
+						th:field="*{familyAllowance}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+				</tr>
+				<tr>
+					<th class="tdbg text-center tdwd"><span>その他の手当</span></th>
+					<th class="tdbg text-center tdwd"><span> 非課税交通費</span></th>
+					<th class="tdbg text-center tdwd"><b><span>支給額合計</span></b></th>
+				</tr>
+				<tr>
+					<td class="text-center tdwd"><input type="text" class="td3"
+						th:field="*{otherAllowance}" maxlength="9"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="text-center tdwd"><input type="text" class="td3"
+						th:field="*{transportFee}" maxlength="9"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="text-center tdwd">
+						<div th:if="${#fields.hasErrors('sum')}" class="error-after"
+							style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{sum}"></th:block>
+							</p>
+						</div> <input type="text" class="td3" th:field="*{sum}" maxlength="9"
+						readOnly="readOnly" /> <span>円</span>
+					</td>
+				</tr>
+			</table>
+			<table class="table table-striped">
+				<tr>
+					<th class="tdbg tdwd text-center"><span>健康保険</span> <label><input
+							type="checkbox" id="healthInsuranceFlag"
+							name="healthInsuranceFlag"
+							th:checked="${salaryDetailsInputForm.healthInsuranceFlag}" />
+							<span>手入力</span></label></th>
+					<th class="tdbg tdwd text-center"><span>厚生年金</span> <label><input
+							type="checkbox" id="welfareInsuranceFlag"
+							name="welfareInsuranceFlag"
+							th:checked="${salaryDetailsInputForm.welfareInsuranceFlag}" />
+							<span>手入力</span></label></th>
+					<th class="tdbg tdwd text-center"><span>雇用保険</span> <label><input
+							type="checkbox" id="employInsuranceFlag"
+							name="employInsuranceFlag"
+							th:checked="${salaryDetailsInputForm.employInsuranceFlag}" />
+							<span>手入力</span></label></th>
+					<th class="tdbg tdwd text-center"><span>社会保険合計</span></th>
+					<th class="tdbg tdwd text-center"><span>所得税</span></th>
+				</tr>
+				<tr>
+					<td class="text-center tdwd">
+						<div th:if="${#fields.hasErrors('healthInsurance')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{healthInsurance}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{healthInsurance}"
+						id="healthInsurance" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span>
+					</td>
+					<td class="text-center tdwd">
+						<div th:if="${#fields.hasErrors('welfarePension')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{welfarePension}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{welfarePension}" maxlength="9"
+						class="td3" onchange="autoCalculate()" /> <span>円</span>
+					</td>
+					<td class="text-center tdwd">
+						<div th:if="${#fields.hasErrors('employmentInsurance')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{employmentInsurance}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{employmentInsurance}"
+						maxlength="9" class="td3" onchange="autoCalculate()" /> <span>円</span>
+					</td>
+					<td class="text-center tdwd">
+						<div th:if="${#fields.hasErrors('socialInsuranceSum')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{socialInsuranceSum}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{socialInsuranceSum}" maxlength="9"
+						class="td3" readOnly="readOnly" /> <span>円</span>
+					</td>
+					<td class="text-center tdwd">
+						<div th:if="${#fields.hasErrors('incomeTax')}" class="error-after"
+							style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{incomeTax}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{incomeTax}" maxlength="9"
+						class="td3" onchange="autoCalculate()" /> <span>円</span>
+					</td>
+				</tr>
+				<tr>
+					<th class="tdbg tdwd text-center"><span>住民税</span></th>
+					<th class="tdbg tdwd text-center"><span>旅行積立金</span></th>
+					<th class="tdbg tdwd text-center"><span>借入等返済</span></th>
+					<th class="tdbg tdwd text-center"><span>年末控除</span></th>
+					<th class="tdbg tdwd text-center"><span>家賃控除</span></th>
+				</tr>
+				<tr>
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{inhabitantTax}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{travelFund}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{repaymentBorrowings}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{yearendDeduction}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{rentDeduction}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+				</tr>
+				<tr>
+					<th class="tdbg tdwd text-center"><span> その他の控除</span></th>
+					<th class="tdbg tdwd text-center"><b> <span>控除額合計</span></b></th>
+				</tr>
+				<tr>
+					<td class="text-center tdwd"><input type="text"
+						th:field="*{otherDeduction}" maxlength="9" class="td3"
+						onchange="autoCalculate()" /> <span>円</span></td>
+					<td class="text-center tdwd">
+						<div th:if="${#fields.hasErrors('totalDeductibleSum')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{totalDeductibleSum}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{totalDeductibleSum}" maxlength="9"
+						class="td3" readOnly="readOnly" onchange="autoCalculate()" /> <span>円</span>
+					</td>
+				</tr>
+				<tr>
+					<th class="tdbg tdwd text-center"><b>控除額合計 </b></th>
+				</tr>
+				<tr>
+					<td class="text-center tdwd">
+						<div th:if="${#fields.hasErrors('subscriptionAmount')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{subscriptionAmount}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{subscriptionAmount}" maxlength="9"
+						readOnly="readOnly" class="td3" /> <span>円</span>
+					</td>
+				</tr>
+			</table>
+			<table class="table table-striped">
+				<tr>
+					<td class="text-center"><input class="btn btn-info btn-sm"
+						type="submit" name="delete" value="削除" /></td>
+					<td class="text-center"><input class="btn btn-info btn-sm"
+						type="submit" name="submit" value="登録" /></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</body>
+<script th:src="@{/js/salary_details_input.js}" type="text/javascript"></script>
+</html>

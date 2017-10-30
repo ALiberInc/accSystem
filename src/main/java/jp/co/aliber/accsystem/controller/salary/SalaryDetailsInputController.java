@@ -123,7 +123,7 @@ public class SalaryDetailsInputController {
 		// 差引支給額
 		form.setSubscriptionAmount(tSalaryDetail.getSubscriptionAmount());
 
-		return "salary/salaryDetailsInput";
+		return "salary/salary_details_input";
 	}
 
 	/**

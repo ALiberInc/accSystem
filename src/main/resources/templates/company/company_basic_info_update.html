@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="accTemp :: headerImp ('__会社基本情報__')"></head>
+<head th:replace="acc_temp :: headerImp ('__会社基本情報設定__')"></head>
 <body>
-	<div th:replace="accTemp :: accBackButton"></div>
+	<div th:replace="acc_temp :: accTopMenuArea"></div>
 	<form name="companyBasicInfoForm" id="companyBasicInfoForm"
 		method="POST" th:action="@{/companyUpdate/save}"
 		th:object="${companyBasicInfoForm}">
