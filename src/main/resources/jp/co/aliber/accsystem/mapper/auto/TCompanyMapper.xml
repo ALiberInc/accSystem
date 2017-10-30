@@ -36,7 +36,6 @@
     <result column="tax_accountant" jdbcType="VARCHAR" property="taxAccountant" />
     <result column="tax_office" jdbcType="VARCHAR" property="taxOffice" />
     <result column="data_share_id" jdbcType="BIGINT" property="dataShareId" />
-    <result column="get_my_number" jdbcType="BIT" property="getMyNumber" />
     <result column="comp_code" jdbcType="BIGINT" property="compCode" />
     <result column="employ_insur_rate" jdbcType="NUMERIC" property="employInsurRate" />
     <result column="employ_rounding" jdbcType="INTEGER" property="employRounding" />
@@ -129,8 +128,8 @@
     comp_add2_kana, comp_tel1, comp_tel2, comp_tel3, classification, corporation_id, 
     corp_owner_name, corp_owner_name_kana, corp_sort_no1, corp_sort_no2, corp_no, corp_kind, 
     deadline_day, deadline_adjust_days, payment_day, payment_adjust_days, accounting_manager, 
-    user_recognize_id, user_id, tax_accountant, tax_office, data_share_id, get_my_number, 
-    comp_code, employ_insur_rate, employ_rounding, health_insur_rate_no_nursing, health_insur_rate_with_nursing, 
+    user_recognize_id, user_id, tax_accountant, tax_office, data_share_id, comp_code, 
+    employ_insur_rate, employ_rounding, health_insur_rate_no_nursing, health_insur_rate_with_nursing, 
     health_rounding, welfare_insurance_rate, welfare_rounding, welfare_exception_rate, 
     welfare_addition_rate, welfare_addition_ration, delete_flg, regist_date, regist_id, 
     update_date, update_id
@@ -197,10 +196,9 @@
       deadline_adjust_days, payment_day, payment_adjust_days, 
       accounting_manager, user_recognize_id, user_id, 
       tax_accountant, tax_office, data_share_id, 
-      get_my_number, comp_code, employ_insur_rate, 
-      employ_rounding, health_insur_rate_no_nursing, 
-      health_insur_rate_with_nursing, health_rounding, 
-      welfare_insurance_rate, welfare_rounding, 
+      comp_code, employ_insur_rate, employ_rounding, 
+      health_insur_rate_no_nursing, health_insur_rate_with_nursing, 
+      health_rounding, welfare_insurance_rate, welfare_rounding, 
       welfare_exception_rate, welfare_addition_rate, 
       welfare_addition_ration, delete_flg, regist_date, 
       regist_id, update_date, update_id
@@ -215,10 +213,9 @@
       #{deadlineAdjustDays,jdbcType=INTEGER}, #{paymentDay,jdbcType=BIT}, #{paymentAdjustDays,jdbcType=INTEGER}, 
       #{accountingManager,jdbcType=VARCHAR}, #{userRecognizeId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
       #{taxAccountant,jdbcType=VARCHAR}, #{taxOffice,jdbcType=VARCHAR}, #{dataShareId,jdbcType=BIGINT}, 
-      #{getMyNumber,jdbcType=BIT}, #{compCode,jdbcType=BIGINT}, #{employInsurRate,jdbcType=NUMERIC}, 
-      #{employRounding,jdbcType=INTEGER}, #{healthInsurRateNoNursing,jdbcType=NUMERIC}, 
-      #{healthInsurRateWithNursing,jdbcType=NUMERIC}, #{healthRounding,jdbcType=INTEGER}, 
-      #{welfareInsuranceRate,jdbcType=NUMERIC}, #{welfareRounding,jdbcType=INTEGER}, 
+      #{compCode,jdbcType=BIGINT}, #{employInsurRate,jdbcType=NUMERIC}, #{employRounding,jdbcType=INTEGER}, 
+      #{healthInsurRateNoNursing,jdbcType=NUMERIC}, #{healthInsurRateWithNursing,jdbcType=NUMERIC}, 
+      #{healthRounding,jdbcType=INTEGER}, #{welfareInsuranceRate,jdbcType=NUMERIC}, #{welfareRounding,jdbcType=INTEGER}, 
       #{welfareExceptionRate,jdbcType=NUMERIC}, #{welfareAdditionRate,jdbcType=NUMERIC}, 
       #{welfareAdditionRation,jdbcType=INTEGER}, #{deleteFlg,jdbcType=BIT}, #{registDate,jdbcType=TIMESTAMP}, 
       #{registId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP}, #{updateId,jdbcType=INTEGER}
@@ -320,9 +317,6 @@
       </if>
       <if test="dataShareId != null">
         data_share_id,
-      </if>
-      <if test="getMyNumber != null">
-        get_my_number,
       </if>
       <if test="compCode != null">
         comp_code,
@@ -463,9 +457,6 @@
       </if>
       <if test="dataShareId != null">
         #{dataShareId,jdbcType=BIGINT},
-      </if>
-      <if test="getMyNumber != null">
-        #{getMyNumber,jdbcType=BIT},
       </if>
       <if test="compCode != null">
         #{compCode,jdbcType=BIGINT},
@@ -624,9 +615,6 @@
       <if test="record.dataShareId != null">
         data_share_id = #{record.dataShareId,jdbcType=BIGINT},
       </if>
-      <if test="record.getMyNumber != null">
-        get_my_number = #{record.getMyNumber,jdbcType=BIT},
-      </if>
       <if test="record.compCode != null">
         comp_code = #{record.compCode,jdbcType=BIGINT},
       </if>
@@ -716,7 +704,6 @@
       tax_accountant = #{record.taxAccountant,jdbcType=VARCHAR},
       tax_office = #{record.taxOffice,jdbcType=VARCHAR},
       data_share_id = #{record.dataShareId,jdbcType=BIGINT},
-      get_my_number = #{record.getMyNumber,jdbcType=BIT},
       comp_code = #{record.compCode,jdbcType=BIGINT},
       employ_insur_rate = #{record.employInsurRate,jdbcType=NUMERIC},
       employ_rounding = #{record.employRounding,jdbcType=INTEGER},
@@ -831,9 +818,6 @@
       <if test="dataShareId != null">
         data_share_id = #{dataShareId,jdbcType=BIGINT},
       </if>
-      <if test="getMyNumber != null">
-        get_my_number = #{getMyNumber,jdbcType=BIT},
-      </if>
       <if test="compCode != null">
         comp_code = #{compCode,jdbcType=BIGINT},
       </if>
@@ -920,7 +904,6 @@
       tax_accountant = #{taxAccountant,jdbcType=VARCHAR},
       tax_office = #{taxOffice,jdbcType=VARCHAR},
       data_share_id = #{dataShareId,jdbcType=BIGINT},
-      get_my_number = #{getMyNumber,jdbcType=BIT},
       comp_code = #{compCode,jdbcType=BIGINT},
       employ_insur_rate = #{employInsurRate,jdbcType=NUMERIC},
       employ_rounding = #{employRounding,jdbcType=INTEGER},

@@ -29,7 +29,6 @@ create table "public".t_company (
   , tax_accountant character varying(100) not null
   , tax_office character varying(256) not null
   , data_share_id bigint not null
-  , get_my_number boolean not null
   , comp_code bigint not null
   , employ_insur_rate numeric(5, 2) not null
   , employ_rounding integer not null
@@ -80,7 +79,6 @@ comment on column t_company.user_id is '利用者ID';
 comment on column t_company.tax_accountant is '税理者';
 comment on column t_company.tax_office is '税理署';
 comment on column t_company.data_share_id is 'データ共有ID';
-comment on column t_company.get_my_number is 'マイナンバーマスタから個人番号を取得する';
 comment on column t_company.comp_code is '会社コード';
 comment on column t_company.employ_insur_rate is '雇用保険被保険者負担率';
 comment on column t_company.employ_rounding is '雇用保険端数処理';

@@ -2186,66 +2186,6 @@ public class TCompanyExample {
             return (Criteria) this;
         }
 
-        public Criteria andGetMyNumberIsNull() {
-            addCriterion("get_my_number is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberIsNotNull() {
-            addCriterion("get_my_number is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberEqualTo(Boolean value) {
-            addCriterion("get_my_number =", value, "getMyNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberNotEqualTo(Boolean value) {
-            addCriterion("get_my_number <>", value, "getMyNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberGreaterThan(Boolean value) {
-            addCriterion("get_my_number >", value, "getMyNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("get_my_number >=", value, "getMyNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberLessThan(Boolean value) {
-            addCriterion("get_my_number <", value, "getMyNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberLessThanOrEqualTo(Boolean value) {
-            addCriterion("get_my_number <=", value, "getMyNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberIn(List<Boolean> values) {
-            addCriterion("get_my_number in", values, "getMyNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberNotIn(List<Boolean> values) {
-            addCriterion("get_my_number not in", values, "getMyNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberBetween(Boolean value1, Boolean value2) {
-            addCriterion("get_my_number between", value1, value2, "getMyNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andGetMyNumberNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("get_my_number not between", value1, value2, "getMyNumber");
-            return (Criteria) this;
-        }
-
         public Criteria andCompCodeIsNull() {
             addCriterion("comp_code is null");
             return (Criteria) this;
