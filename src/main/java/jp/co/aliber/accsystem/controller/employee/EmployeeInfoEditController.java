@@ -358,7 +358,6 @@ public class EmployeeInfoEditController {
 		// 口座情報
 		TEmployeeBankAccount tEmployeeBankAccount = new TEmployeeBankAccount();
 		tEmployeeBankAccount.setCompId(loginUser.getUser().getCompId());
-		// TODO
 		tEmployeeBankAccount.setAccountNo(form.getAccountNumber() != null ? form.getAccountNumber().toString() : null);
 		tEmployeeBankAccount
 				.setAccountKana(StringUtils.isNotEmpty(form.getAccountHolder()) ? form.getAccountHolder() : null);

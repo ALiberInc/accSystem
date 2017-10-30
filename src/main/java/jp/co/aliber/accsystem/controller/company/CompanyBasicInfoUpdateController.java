@@ -164,8 +164,6 @@ public class CompanyBasicInfoUpdateController {
 			form.setTaxOffice(a.getTaxOffice());
 			// データ共有ID
 			form.setDataShareId(String.valueOf(a.getDataShareId()));
-			// マイナンバーマスタから個人番号を取得する
-			form.setMyNumber(a.getGetMyNumber());
 			// 会社コード
 			form.setCompCode(String.valueOf(a.getCompCode()));
 			// 雇用保険被保険者負担率
@@ -286,8 +284,6 @@ public class CompanyBasicInfoUpdateController {
 		company.setTaxOffice(form.getTaxOffice());
 		// データ共有ID
 		company.setDataShareId(Long.valueOf(form.getDataShareId()));
-		// TODO マイナンバーマスタから個人番号を取得して、今実装していない
-		company.setGetMyNumber(false);
 		// 会社コード
 		company.setCompCode(Long.valueOf(form.getCompCode()));
 		// 雇用保険被保険者負担率

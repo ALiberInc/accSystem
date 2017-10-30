@@ -159,8 +159,6 @@ public class CompanyBasicInfoController {
 			form.setTaxOffice(a.getTaxOffice());
 			// データ共有ID
 			form.setDataShareId(String.valueOf(a.getDataShareId()));
-			// マイナンバーマスタから個人番号を取得する
-			form.setMyNumber(a.getGetMyNumber());
 			// 会社コード
 			form.setCompCode(String.valueOf(a.getCompCode()));
 			// 雇用保険被保険者負担率
