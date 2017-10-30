@@ -52,6 +52,12 @@ public class SalaryStatementController {
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(@AuthenticationPrincipal LoginUser loginUser, SalaryStatementForm form) {
+
+		// ユーザー新規登録の場合、会社IDがないので、会社基本情報設定画面に遷移
+		if (loginUser.getUser().getCompId() == null) {
+			return "redirect:/companyUpdate";
+		}
+
 		// 月リスト
 		List<String> listMonth = Arrays.asList("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
 		form.setMonthList(listMonth);
