@@ -279,16 +279,14 @@
 					<td>
 						<table>
 							<tr>
-								<td class="td4">
+								<td>
 									<div th:if="${#fields.hasErrors('paymentDay')}"
 										class="error-after" style="display: block;">
 										<p>
 											<i></i>
 											<th:block th:errors="*{paymentDay}"></th:block>
 										</p>
-									</div> <label> <input th:field="*{paymentDay}"
-										id="paymentDay" name="paymentDay" type="radio" value="0" /> <span>末日</span>
-								</label>
+									</div>
 								</td>
 								<td>
 									<div th:if="${#fields.hasErrors('paymentAdjustDays')}"
@@ -297,12 +295,19 @@
 											<i></i>
 											<th:block th:errors="*{paymentAdjustDays}"></th:block>
 										</p>
-									</div> <label> <input th:field="*{paymentDay}"
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="td4"><label> <input
+										th:field="*{paymentDay}" id="paymentDay" name="paymentDay"
+										type="radio" value="0" /> <span>末日</span>
+								</label></td>
+								<td><label> <input th:field="*{paymentDay}"
 										id="paymentDay" name="paymentDay" type="radio" value="1" /> <span>末日以外</span>
 								</label> <span> ( <input th:field="*{paymentAdjustDays}"
 										type="text" class="td2" />日)
-								</span>
-								</td>
+								</span></td>
 							</tr>
 						</table>
 					</td>
@@ -392,35 +397,17 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="tdbg td2 text-center"><span>マイナンバー<font
+					<th class="tdbg td2 text-center"><span>会社コード<font
 							color="#FF0000">※</font></span></th>
 					<td>
-						<table>
-							<tr>
-								<td width="50%">
-									<div th:if="${#fields.hasErrors('myNumber')}"
-										class="error-after" style="display: block;">
-										<p>
-											<i></i>
-											<th:block th:errors="*{myNumber}"></th:block>
-										</p>
-									</div> <label><input type="checkbox" name="myNumber"
-										th:checked="*{myNumber}" /> <span>FWマイナンバー から個人番号を取得する</span>
-								</label>
-								</td>
-								<td width="">
-									<div th:if="${#fields.hasErrors('compCode')}"
-										class="error-after" style="display: block;">
-										<p>
-											<i></i>
-											<th:block th:errors="*{compCode}"></th:block>
-										</p>
-									</div> <span> 会社コード： <input type="text" th:field="*{compCode}"
-										maxlength="10" class="td3" />
-								</span>
-								</td>
-							</tr>
-						</table>
+						<div th:if="${#fields.hasErrors('compCode')}" class="error-after"
+							style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{compCode}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{compCode}" maxlength="10"
+						class="td3" />
 					</td>
 				</tr>
 			</table>
