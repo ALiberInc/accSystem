@@ -19,12 +19,14 @@
 			id="salaryDetailChange">明細入力</button>
 		<button type="button" class="btn btn-info btn-sm" id="salaryPrint">印刷</button>
 		<button type="button" class="btn btn-info btn-sm" id="sendMail">メール送信</button>
-		<select id="salaryYear" name="salaryYear" class="form-control">
+
+		<select id="salaryYear" name="salaryYear" class="inline-form-control">
 			<option th:each="year : ${salaryStatementForm.yearList}"
 				th:value="${year}"
 				th:selected="${salaryStatementForm.salaryYear} == ${year}"
 				th:text="${year}"></option>
-		</select> <select id="salaryMonth" name="salaryMonth" class="form-control">
+		</select> <select id="salaryMonth" name="salaryMonth"
+			class="inline-form-control">
 			<option th:each="month : ${salaryStatementForm.monthList}"
 				th:value="${month}"
 				th:selected="${salaryStatementForm.salaryMonth} == ${month}"
