@@ -140,12 +140,11 @@
 											<i></i>
 											<th:block th:errors="*{classification}"></th:block>
 										</p>
-									</div> <label> <input th:field="*{classification}"
-										type="radio" value="0" /> <span>法人</span>
-								</label>
+									</div> <input th:field="*{classification}" type="radio" value="0" />
+									<label for="classification1"> 法人 </label>
 								</td>
-								<td class="td4"><label> <input
-										th:field="*{classification}" type="radio" value="1" /> <span>個人</span>
+								<td class="td4"><input th:field="*{classification}"
+									type="radio" value="1" /> <label for="classification2">個人
 								</label></td>
 							</tr>
 						</table>
@@ -243,17 +242,14 @@
 					<td>
 						<table>
 							<tr>
-								<td class="td4">
+								<td>
 									<div th:if="${#fields.hasErrors('deadlineDay')}"
 										class="error-after" style="display: block;">
 										<p>
 											<i></i>
 											<th:block th:errors="*{deadlineDay}"></th:block>
 										</p>
-									</div> <label> <input th:field="*{deadlineDay}"
-										id="deadlineDay" name="deadlineDay" type="radio" value="0" />
-										<span>末日</span>
-								</label>
+									</div>
 								</td>
 								<td>
 									<div th:if="${#fields.hasErrors('deadlineAdjustDays')}"
@@ -262,12 +258,15 @@
 											<i></i>
 											<th:block th:errors="*{deadlineAdjustDays}"></th:block>
 										</p>
-									</div> <label> <input th:field="*{deadlineDay}"
-										id="deadlineDay" name="deadlineDay" type="radio" value="1" />
-										<span>末日以外</span>
-								</label> <span> ( <input th:field="*{deadlineAdjustDays}"
-										type="text" class="td2" />日)
-								</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="td3"><input th:field="*{deadlineDay}"
+									type="radio" value="0" /> <label for="deadlineDay1">末日</label></td>
+								<td><input th:field="*{deadlineDay}" type="radio" value="1" />
+									<label for="deadlineDay2">末日以外 </label> ( <input
+									th:field="*{deadlineAdjustDays}" type="text" class="td2" />日)
 								</td>
 							</tr>
 						</table>
@@ -299,15 +298,12 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="td4"><label> <input
-										th:field="*{paymentDay}" id="paymentDay" name="paymentDay"
-										type="radio" value="0" /> <span>末日</span>
+								<td class="td3"><input th:field="*{paymentDay}"
+									type="radio" value="0" /> <label for="paymentDay1"> 末日
 								</label></td>
-								<td><label> <input th:field="*{paymentDay}"
-										id="paymentDay" name="paymentDay" type="radio" value="1" /> <span>末日以外</span>
-								</label> <span> ( <input th:field="*{paymentAdjustDays}"
-										type="text" class="td2" />日)
-								</span></td>
+								<td><input th:field="*{paymentDay}" type="radio" value="1" />
+									<label for="paymentDay2">末日以外 </label>( <input
+									th:field="*{paymentAdjustDays}" type="text" class="td2" />日)</td>
 							</tr>
 						</table>
 					</td>
@@ -441,24 +437,23 @@
 					<td width="50%">
 						<table>
 							<tr>
-								<!--端数処理の値はjava.math.roundingModeによって設定する-->
-								<td class="td1">
+								<td>
 									<div th:if="${#fields.hasErrors('employRounding')}"
 										class="error-after" style="display: block;">
 										<p>
 											<i></i>
 											<th:block th:errors="*{employRounding}"></th:block>
 										</p>
-									</div> <input th:field="*{employRounding}" type="radio" value="4"
-									checked="checked" />
+									</div>
 								</td>
-								<td><span>50捨51入</span></td>
+							</tr>
+							<tr>
 								<td class="td1"><input th:field="*{employRounding}"
-									type="radio" value="1" /></td>
-								<td><span>切り捨て</span></td>
+									type="radio" value="4" /><label for="employRounding1">50捨51入</label></td>
 								<td class="td1"><input th:field="*{employRounding}"
-									type="radio" value="0" /></td>
-								<td width="23%"><span>切り上げ</span></td>
+									type="radio" value="1" /><label for="employRounding2">切り捨て</label></td>
+								<td class="td1"><input th:field="*{employRounding}"
+									type="radio" value="0" /><label for="employRounding3">切り上げ</label></td>
 							</tr>
 						</table>
 					</td>
@@ -509,24 +504,21 @@
 					<td>
 						<table>
 							<tr>
-								<!--端数処理の値はjava.math.roundingModeによって設定する-->
-								<td class="td1">
-									<div th:if="${#fields.hasErrors('healthRounding')}"
+								<td><div th:if="${#fields.hasErrors('healthRounding')}"
 										class="error-after" style="display: block;">
 										<p>
 											<i></i>
 											<th:block th:errors="*{healthRounding}"></th:block>
 										</p>
-									</div> <input th:field="*{healthRounding}" type="radio" value="4"
-									tabindex="14" />
-								</td>
-								<td><span>50捨51入</span></td>
+									</div></td>
+							</tr>
+							<tr>
 								<td class="td1"><input th:field="*{healthRounding}"
-									type="radio" value="1" tabindex="14" /></td>
-								<td><span>切り捨て</span></td>
+									type="radio" value="4" /><label for="healthRounding1">50捨51入</label></td>
 								<td class="td1"><input th:field="*{healthRounding}"
-									type="radio" value="0" tabindex="14" /></td>
-								<td><span>切り上げ</span></td>
+									type="radio" value="1" /><label for="healthRounding2">切り捨て</label></td>
+								<td class="td1"><input th:field="*{healthRounding}"
+									type="radio" value="0" /><label for="healthRounding3">切り上げ</label></td>
 							</tr>
 						</table>
 					</td>
@@ -558,25 +550,21 @@
 					<td>
 						<table>
 							<tr>
-								<td width="10%" align="center" height="16">
-									<div th:if="${#fields.hasErrors('welfareRounding')}"
+								<td><div th:if="${#fields.hasErrors('welfareRounding')}"
 										class="error-after" style="display: block;">
 										<p>
 											<i></i>
 											<th:block th:errors="*{welfareRounding}"></th:block>
 										</p>
-									</div> <input th:field="*{welfareRounding}" type="radio" value="4"
-									checked="checked" tabindex="16" />
-								</td>
-								<td width="23%" height="16"><span>50捨51入</span></td>
-								<td width="10%" align="center" height="16"><input
-									th:field="*{welfareRounding}" type="radio" value="1"
-									tabindex="16" /></td>
-								<td width="23%" height="16"><span>切り捨て</span></td>
-								<td width="10%" align="center" height="16"><input
-									th:field="*{welfareRounding}" type="radio" value="0"
-									tabindex="16" /></td>
-								<td width="23%" height="16"><span>切り上げ</span></td>
+									</div></td>
+							</tr>
+							<tr>
+								<td class="td1"><input th:field="*{welfareRounding}"
+									type="radio" value="4" /><label for="welfareRounding1">50捨51入</label></td>
+								<td class="td1"><input th:field="*{welfareRounding}"
+									type="radio" value="1" /><label for="welfareRounding2">切り捨て</label></td>
+								<td class="td1"><input th:field="*{welfareRounding}"
+									type="radio" value="0" /><label for="welfareRounding3">切り上げ</label></td>
 							</tr>
 						</table>
 					</td>
