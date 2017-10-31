@@ -65,6 +65,12 @@ public class CompanyBasicInfoController {
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(@AuthenticationPrincipal LoginUser loginUser, Model model, CompanyBasicInfoForm form) {
+
+		// ユーザー新規登録の場合、会社IDがないので、会社基本情報設定画面に遷移
+		if (loginUser.getUser().getCompId() == null) {
+			return "redirect:/companyUpdate";
+		}
+
 		// 事業区分のディフォルト値:法人
 		form.setClassification("0");
 		// 締め日、支給日のディフォルト値:未日

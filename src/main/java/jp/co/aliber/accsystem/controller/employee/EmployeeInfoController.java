@@ -49,6 +49,11 @@ public class EmployeeInfoController {
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(@AuthenticationPrincipal LoginUser loginUser, EmployeeInfoForm form) {
 
+		// ユーザー新規登録の場合、会社IDがないので、会社基本情報設定画面に遷移
+		if (loginUser.getUser().getCompId() == null) {
+			return "redirect:/companyUpdate";
+		}
+
 		// 從業員情報リストを取得
 		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
 		form.setListTEmployee(listTEmployee);
