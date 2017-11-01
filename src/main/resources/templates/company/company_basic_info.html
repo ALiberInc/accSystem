@@ -12,9 +12,9 @@
 					<th class="text-center" colspan="4"><span>会社基本情報</span></th>
 				</tr>
 			</table>
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered vertical-middle">
 				<tr>
-					<th rowspan="23" class="text-center vertical-middle">会社情報</th>
+					<th rowspan="23" class="text-center">会社情報</th>
 					<th class="tdbg td2 text-center">法人名又は氏名</th>
 					<td th:text="*{compName}" class="td8"></td>
 				</tr>
@@ -27,14 +27,14 @@
 					<td th:text="*{compZip1}+'-'+*{compZip2}"></td>
 				</tr>
 				<tr>
-					<th rowspan="2" class="tdbg text-center vertical-middle">住所</th>
+					<th rowspan="2" class="tdbg text-center">住所</th>
 					<td th:text="*{compAdd1}" />
 				</tr>
 				<tr>
 					<td th:text="*{compAdd2}" />
 				</tr>
 				<tr>
-					<th rowspan="2" class="tdbg text-center vertical-middle">住所(ﾌﾘｶﾞﾅ)</th>
+					<th rowspan="2" class="tdbg text-center">住所(ﾌﾘｶﾞﾅ)</th>
 					<td th:text="*{compAdd1Kana}" />
 				</tr>
 				<tr>
@@ -122,15 +122,15 @@
 				</tr>
 			</table>
 			<br />
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered vertical-middle">
 				<tr>
-					<th rowspan="11" class="text-center vertical-middle">社会保険</th>
+					<th rowspan="11" class="text-center">社会保険</th>
 					<th class="tdbg td2 text-center">種別</th>
 					<th class="tdbg td3 text-center">項目</th>
 					<th class="tdbg td5 text-center">料率・端数処理</th>
 				</tr>
 				<tr>
-					<th rowspan="2" class="tdbg text-center vertical-middle">雇用保険</th>
+					<th rowspan="2" class="tdbg text-center">雇用保険</th>
 					<td class="text-center">被保険者負担率</td>
 					<td th:text="*{employInsurRate}+'/1000'" />
 				</tr>
@@ -146,7 +146,7 @@
 
 				</tr>
 				<tr>
-					<th rowspan="3" class="tdbg text-center vertical-middle">健康保険</th>
+					<th rowspan="3" class="tdbg text-center">健康保険</th>
 					<td class="text-center">保険料率（介護保険該当なし）</td>
 					<td><span th:text="*{healthInsurRate}+'％'"></span></td>
 				</tr>
@@ -164,7 +164,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th rowspan="2" class="tdbg text-center vertical-middle">厚生年金</th>
+					<th rowspan="2" class="tdbg text-center">厚生年金</th>
 					<td class="text-center">保険料率</td>
 					<td><span th:text="*{welfareInsurance}+'％'"></span></td>
 				</tr>
@@ -178,7 +178,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th rowspan="3" class="tdbg text-center vertical-middle">厚生年金基金</th>
+					<th rowspan="3" class="tdbg text-center">厚生年金基金</th>
 					<td class="text-center">基金免除保険料率</td>
 					<td><span th:text="*{welfareExemptionRate}+'％'"></span></td>
 				</tr>

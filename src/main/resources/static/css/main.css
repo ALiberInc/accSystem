@@ -44,8 +44,12 @@
 }
 
 ul {
-  list-style-type: none;
-  padding-left: 0px;
+	list-style-type: none;
+	padding-left: 0px;
+}
+
+table.vertical-middle th {
+	vertical-align: middle !important;
 }
 
 .inline-form-control {
