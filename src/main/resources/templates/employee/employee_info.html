@@ -7,7 +7,7 @@
 	<div class="centerDiv">
 		<table class="table table-striped">
 			<tr>
-				<th class="text-center" colspan="4"><span>従業員一覧</span></th>
+				<th class="text-center">従業員一覧</th>
 			</tr>
 		</table>
 		<table class="table table-striped">
@@ -19,13 +19,11 @@
 				<th class="td4"><span>部署</span></th>
 			</tr>
 			<tr th:each="TEmployee,iterStat : ${employeeInfoForm.listTEmployee}">
-				<td class="td1"><button type="button"
-						class="btn btn-info btn-sm" name="show_btn"
-						th:id="${TEmployee.employeeId}">選択</button></td>
-				<td class="td2" th:text="${TEmployee.employeeNo}"></td>
-				<td class="td3"
-					th:text="${TEmployee.lastName}+' '+${TEmployee.firstName}"></td>
-				<td class="td4" th:text="${TEmployee.deptId}"></td>
+				<td><button type="button" class="btn btn-info btn-sm"
+						name="show_btn" th:id="${TEmployee.employeeId}">選択</button></td>
+				<td th:text="${TEmployee.employeeNo}"></td>
+				<td th:text="${TEmployee.lastName}+' '+${TEmployee.firstName}"></td>
+				<td th:text="${TEmployee.deptId}"></td>
 			</tr>
 		</table>
 	</div>
