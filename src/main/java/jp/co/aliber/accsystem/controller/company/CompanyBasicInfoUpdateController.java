@@ -332,7 +332,7 @@ public class CompanyBasicInfoUpdateController {
 			companyBasicInfoService.update(company, Integer.valueOf(loginUser.getUser().getUserId()));
 		}
 
-		return "redirect:/finish?forwardURL=company_basic_info";
+		return "redirect:/finish?forwardURL=company";
 
 	}
 
