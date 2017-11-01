@@ -35,12 +35,17 @@
 	background: #CFDDFF
 }
 
-.ipwd {
-	width: 75px
+.vertical-middle {
+	vertical-align: middle !important;
 }
 
-.vertical-middle {
-	vertical-align: middle;
+.block-inline {
+	display: inline-block;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
 }
 
 .inline-form-control {
@@ -83,7 +88,7 @@
 
 div.error-after {
 	clear: both;
-	display: none;
+	display: block;
 	padding-top: 6px;
 }
 
