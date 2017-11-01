@@ -7,13 +7,11 @@
 	<div class="centerDiv">
 		<table class="table table-striped">
 			<tr>
-				<th class="text-center" colspan="4"><span>給与明細一覧</span></th>
+				<th class="text-center">給与明細一覧</th>
 			</tr>
 		</table>
-		<label for="exampleInputName2">氏名:</label> <span
-			class="monthly_statement_search_dataList_text"> <input
-			type="text" id="freeWord" name="freeWord" value="" />
-		</span>
+		<label>氏名:</label><input type="text" id="freeWord" name="freeWord"
+			value="" />
 		<button type="button" class="btn btn-info btn-sm" id="freeWordButton">検索</button>
 		<button type="button" class="btn btn-info btn-sm"
 			id="salaryDetailChange">明細入力</button>
@@ -34,24 +32,24 @@
 		</select>
 	</div>
 	<div class="centerDiv">
-		<table class="table table-striped">
+		<table class="table table-striped vertical-middle">
 			<tr>
 				<th class="td0 text-center"><button type="button"
 						class="btn btn-info btn-sm" id="checkAll">全選択/解除</button></th>
 				<th class="td1 text-center">No.</th>
 				<th class="td2 text-center">氏名</th>
 				<th class="td3 text-center">部署</th>
-				<th class="td4 text-center">メールアドレス</th>
+				<th class="td4 text-center" colspan="2">メールアドレス</th>
 			</tr>
 			<tr
 				th:each="TEmployee,iterStat : ${salaryStatementForm.listTEmployee}">
-				<td class="td0 text-center"><input name="salaryCheckBox"
+				<td class=" text-center"><input name="salaryCheckBox"
 					type='checkbox' th:value="${TEmployee.employeeId}" /></td>
-				<td class="td1 text-center" th:text="${TEmployee.employeeNo}"></td>
-				<td class="td2 text-center"
+				<td class="text-center" th:text="${TEmployee.employeeNo}"></td>
+				<td class="text-center"
 					th:text="${TEmployee.lastName} + ' ' +${TEmployee.firstName}"></td>
-				<td class="td3 text-center" th:text="${TEmployee.deptId}"></td>
-				<td class="td4 text-center" th:text="${TEmployee.mailAddress}"></td>
+				<td class="text-center" th:text="${TEmployee.deptId}"></td>
+				<td class="text-center" th:text="${TEmployee.mailAddress}"></td>
 				<td><input type="hidden" name="employeeName"
 					th:value="${TEmployee.lastName}+${TEmployee.firstName}" /></td>
 			</tr>
