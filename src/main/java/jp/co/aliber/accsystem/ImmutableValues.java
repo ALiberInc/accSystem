@@ -6,16 +6,14 @@ public class ImmutableValues {
 
 	public static final Integer FLG_OFF = 0;
 
-	/** 7人を超える１人ごとに1,610円を控除した金額 **/
+	// 7人を超える１人ごとに1,610円を控除した金額
 	public static final int EXTRA_DEC_PER_PERSON = 1610;
-
-	public static final String underline = "_";
 
 	// デフォルトユーザID
 	public static final Integer DEFAULT_USER_ID = 9999;
 
 	// jasperファイルのパス
-	public static final String jasperPath = "Blank_A4_Landscape.jasper";
+	public static final String JASPER_PATH = "Blank_A4_Landscape.jasper";
 
 	// 会社基本情報画面
 	// 被保険者負担率
@@ -39,4 +37,9 @@ public class ImmutableValues {
 	// 締め日/支給日が末日の場合
 	public static final String LAST_DAY = "0";
 
+	// メッセージ画面
+	//処理完了
+	public static final String MESSAGE_FINISH = "処理が完了しました。";
+	//会社情報未登録
+	public static final String MESSAGE_INSERT_COMPANY = "会社情報がまだ登録していませんので、利用できません。先に会社情報を登録してください。";
 }

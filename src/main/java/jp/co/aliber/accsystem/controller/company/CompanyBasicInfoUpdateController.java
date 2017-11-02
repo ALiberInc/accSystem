@@ -1,6 +1,8 @@
 package jp.co.aliber.accsystem.controller.company;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.URLEncoder;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -202,10 +204,11 @@ public class CompanyBasicInfoUpdateController {
 	 * @param result
 	 *            bindingresult
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
 	public String save(@AuthenticationPrincipal LoginUser loginUser, @Validated CompanyBasicInfoForm form,
-			BindingResult result, Model model) {
+			BindingResult result, Model model) throws UnsupportedEncodingException {
 		// 入力チェック
 		if (!validate(form, result)) {
 			return "company/company_basic_info_update";
@@ -332,8 +335,8 @@ public class CompanyBasicInfoUpdateController {
 			companyBasicInfoService.update(company, Integer.valueOf(loginUser.getUser().getUserId()));
 		}
 
-		return "redirect:/finish?forwardURL=company";
-
+		return "redirect:/message?forwardURL=company&message="
+		+ URLEncoder.encode(ImmutableValues.MESSAGE_FINISH, "UTF-8");
 	}
 
 	/**

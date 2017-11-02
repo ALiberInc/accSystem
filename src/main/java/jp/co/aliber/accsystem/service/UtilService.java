@@ -234,7 +234,7 @@ public class UtilService {
 		}
 
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		JasperRunManager.runReportToPdfStream(Files.newInputStream(Paths.get(ImmutableValues.jasperPath)), outputStream,
+		JasperRunManager.runReportToPdfStream(Files.newInputStream(Paths.get(ImmutableValues.JASPER_PATH)), outputStream,
 				null, new JRBeanCollectionDataSource(salaryBeanList));
 
 		return outputStream;

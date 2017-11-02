@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/finish")
-public class FinishController {
+@RequestMapping("/message")
+public class MessageController {
 
 	/**
 	 * データのバンディング
@@ -28,9 +28,10 @@ public class FinishController {
 	 *
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(Model model, @RequestParam(value = "forwardURL", required = true) String forwardURL) {
-
+	public String index(Model model, @RequestParam(value = "message", required = true) String message,
+			@RequestParam(value = "forwardURL", required = true) String forwardURL) {
+		model.addAttribute("message", message);
 		model.addAttribute("forwardURL", forwardURL);
-		return "finish";
+		return "message";
 	}
 }
