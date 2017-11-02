@@ -15,11 +15,11 @@ import org.hibernate.validator.constraints.NotBlank;
 public class CompanyBasicInfoForm {
 	// 法人名
 	@NotBlank
-	@Size(max = 256)
+	@Size(max = 80)
 	private String compName;
 	// 法人名フリガナ
 	@NotBlank
-	@Size(max = 256)
+	@Size(max = 80)
 	private String compKana;
 	// 郵便番号
 	@NotNull
@@ -31,17 +31,17 @@ public class CompanyBasicInfoForm {
 	private String compZip2;
 	// 住所1
 	@NotBlank
-	@Size(max = 256)
+	@Size(max = 80)
 	private String compAdd1;
 	// 住所2
-	@Size(max = 256)
+	@Size(max = 80)
 	private String compAdd2;
 	// 住所1フリガナ
 	@NotBlank
-	@Size(max = 256)
+	@Size(max = 80)
 	private String compAdd1Kana;
 	// 住所2フリガナ
-	@Size(max = 256)
+	@Size(max = 80)
 	private String compAdd2Kana;
 	// 電話番号
 	@NotBlank
@@ -65,11 +65,11 @@ public class CompanyBasicInfoForm {
 	private String corporationId;
 	// 事業主氏名
 	@NotBlank
-	@Size(max = 100)
+	@Size(max = 80)
 	private String corpOwnerName;
 	// 事業主氏名フリガナ
 	@NotBlank
-	@Size(max = 100)
+	@Size(max = 80)
 	@Pattern(regexp = "[ァ-ヶー]*")
 	private String corpOwnerNameKana;
 	// 事業所整理記号
@@ -108,11 +108,11 @@ public class CompanyBasicInfoForm {
 	private String userId;
 	// 税理者
 	@NotBlank
-	@Size(max = 100)
+	@Size(max = 80)
 	private String taxAccountant;
 	// 税理署
 	@NotBlank
-	@Size(max = 256)
+	@Size(max = 80)
 	private String taxOffice;
 	// データ共有ID
 	@NotBlank
