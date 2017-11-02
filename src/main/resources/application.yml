@@ -26,3 +26,14 @@ server:
 mybatis:
   typeAliasesPackage: jp.co.aliber.accsystem.entity
   mapperLocations: classpath:jp.co.aliber.accsystem.mapper/*.xml
+
+logging:
+  file: logs/accSystem.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    root: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.controllers: DEBUG
+    org.hibernate: DEBUG
