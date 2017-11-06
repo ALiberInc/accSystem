@@ -242,7 +242,7 @@ public class CompanyBasicInfoUpdateController {
 		// 事業区分
 		company.setClassification(Integer.valueOf(form.getClassification()));
 		// 法人番号
-		company.setCorporationId(Long.valueOf(form.getCorporationId()));
+		company.setCorporationId(form.getCorporationId());
 		// 事業主氏名
 		company.setCorpOwnerName(form.getCorpOwnerName());
 		// 事業主氏名フリガナ
@@ -252,7 +252,7 @@ public class CompanyBasicInfoUpdateController {
 		// 事業所整理記号2
 		company.setCorpSortNo2(form.getCorpSortNo2());
 		// 事業所番号
-		company.setCorpNo(Long.valueOf(form.getCorpNo()));
+		company.setCorpNo(form.getCorpNo());
 		// 事業種目
 		company.setCorpKind(form.getCorpKind());
 		// 締め日が末日
@@ -270,21 +270,21 @@ public class CompanyBasicInfoUpdateController {
 		// 経理責任者
 		company.setAccountingManager(form.getAccountingManager());
 		// 利用者識別番号
-		if (form.getUserRecongId() != null) {
-			company.setUserRecognizeId(Long.valueOf(form.getUserRecongId()));
+		if (StringUtils.isNotEmpty(form.getUserRecongId())) {
+			company.setUserRecognizeId(form.getUserRecongId());
 		}
 		// 利用者ID
-		if (form.getUserId() != null) {
-			company.setUserId(Long.valueOf(form.getUserId()));
+		if (StringUtils.isNotEmpty(form.getUserId())) {
+			company.setUserId(form.getUserId());
 		}
 		// 税理者
 		company.setTaxAccountant(form.getTaxAccountant());
 		// 税理署
 		company.setTaxOffice(form.getTaxOffice());
 		// データ共有ID
-		company.setDataShareId(Long.valueOf(form.getDataShareId()));
+		company.setDataShareId(form.getDataShareId());
 		// 会社コード
-		company.setCompCode(Long.valueOf(form.getCompCode()));
+		company.setCompCode(form.getCompCode());
 		// 雇用保険被保険者負担率
 		company.setEmployInsurRate(
 				new BigDecimal(form.getEmployInsurRate()).setScale(0, Integer.valueOf(form.getEmployRounding())));
@@ -331,7 +331,7 @@ public class CompanyBasicInfoUpdateController {
 			companyBasicInfoService.update(company, Integer.valueOf(loginUser.getUser().getUserId()));
 		}
 		// メッセージ情報を設定
-		messageForm.setMessage(ImmutableValues.MESSAGE_INSERT_COMPANY);
+		messageForm.setMessage(ImmutableValues.MESSAGE_FINISH);
 		messageForm.setForwardURL(ImmutableValues.FORWARD_COMPANY);
 		return "message";
 	}

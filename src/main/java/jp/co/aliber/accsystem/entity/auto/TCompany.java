@@ -128,7 +128,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    private Long corporationId;
+    private String corporationId;
 
     /**
      *
@@ -173,7 +173,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    private Long corpNo;
+    private String corpNo;
 
     /**
      *
@@ -236,7 +236,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    private Long userRecognizeId;
+    private String userRecognizeId;
 
     /**
      *
@@ -245,7 +245,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    private Long userId;
+    private String userId;
 
     /**
      *
@@ -272,7 +272,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    private Long dataShareId;
+    private String dataShareId;
 
     /**
      *
@@ -281,7 +281,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    private Long compCode;
+    private String compCode;
 
     /**
      *
@@ -738,7 +738,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public Long getCorporationId() {
+    public String getCorporationId() {
         return corporationId;
     }
 
@@ -750,7 +750,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public void setCorporationId(Long corporationId) {
+    public void setCorporationId(String corporationId) {
         this.corporationId = corporationId;
     }
 
@@ -858,7 +858,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public Long getCorpNo() {
+    public String getCorpNo() {
         return corpNo;
     }
 
@@ -870,7 +870,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public void setCorpNo(Long corpNo) {
+    public void setCorpNo(String corpNo) {
         this.corpNo = corpNo;
     }
 
@@ -1026,7 +1026,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public Long getUserRecognizeId() {
+    public String getUserRecognizeId() {
         return userRecognizeId;
     }
 
@@ -1038,7 +1038,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public void setUserRecognizeId(Long userRecognizeId) {
+    public void setUserRecognizeId(String userRecognizeId) {
         this.userRecognizeId = userRecognizeId;
     }
 
@@ -1050,7 +1050,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
@@ -1062,7 +1062,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -1122,7 +1122,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public Long getDataShareId() {
+    public String getDataShareId() {
         return dataShareId;
     }
 
@@ -1134,7 +1134,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public void setDataShareId(Long dataShareId) {
+    public void setDataShareId(String dataShareId) {
         this.dataShareId = dataShareId;
     }
 
@@ -1146,7 +1146,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public Long getCompCode() {
+    public String getCompCode() {
         return compCode;
     }
 
@@ -1158,7 +1158,7 @@ public class TCompany {
      *
      * @mbg.generated
      */
-    public void setCompCode(Long compCode) {
+    public void setCompCode(String compCode) {
         this.compCode = compCode;
     }
 

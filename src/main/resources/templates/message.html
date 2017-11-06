@@ -9,12 +9,17 @@
 			<h3>
 				<span th:text="*{message}"></span>
 			</h3>
+			<input type="hidden" th:field="*{forwardURL}" />
 			<button type="button" class="btn
-			btn-info btn-lg"
-				th:onclick="'javascript:window.location.href=\'' + *{forwardURL} + '\''">
+			btn-info btn-lg" id="ok_btn">
 				<span class="glyphicon glyphicon-ok-circle"></span>
 			</button>
 		</div>
 	</form>
+	<script>
+		$('#ok_btn').click(function() {
+			window.location.href = getContextPath() + $("#forwardURL").val();
+		});
+	</script>
 </body>
 </html>

@@ -20,6 +20,7 @@ public class CompanyBasicInfoForm {
 	// 法人名フリガナ
 	@NotBlank
 	@Size(max = 80)
+	@Pattern(regexp = "[ぁ-んァ-ン　 ]*")
 	private String compKana;
 	// 郵便番号
 	@NotNull
@@ -39,9 +40,11 @@ public class CompanyBasicInfoForm {
 	// 住所1フリガナ
 	@NotBlank
 	@Size(max = 80)
+	@Pattern(regexp = "[ぁ-んァ-ン]*")
 	private String compAdd1Kana;
 	// 住所2フリガナ
 	@Size(max = 80)
+	@Pattern(regexp = "[ぁ-んァ-ン]*")
 	private String compAdd2Kana;
 	// 電話番号
 	@NotBlank
@@ -61,7 +64,7 @@ public class CompanyBasicInfoForm {
 	private String classification;
 	// 法人番号
 	@NotBlank
-	@Pattern(regexp = "[0-9]*")
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String corporationId;
 	// 事業主氏名
 	@NotBlank
@@ -70,7 +73,7 @@ public class CompanyBasicInfoForm {
 	// 事業主氏名フリガナ
 	@NotBlank
 	@Size(max = 80)
-	@Pattern(regexp = "[ァ-ヶー]*")
+	@Pattern(regexp = "[ぁ-んァ-ン　 ]*")
 	private String corpOwnerNameKana;
 	// 事業所整理記号
 	@NotBlank
@@ -101,10 +104,10 @@ public class CompanyBasicInfoForm {
 	// @Size(max = 100)
 	private String accountingManager;
 	// 利用者識別番号
-	@Pattern(regexp = "[0-9]*")
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String userRecongId;
 	// 利用者ID
-	@Pattern(regexp = "[0-9]*")
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String userId;
 	// 税理者
 	@NotBlank
@@ -116,13 +119,13 @@ public class CompanyBasicInfoForm {
 	private String taxOffice;
 	// データ共有ID
 	@NotBlank
-	@Pattern(regexp = "[0-9]*")
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String dataShareId;
 	// マイナンバーマスタから個人番号を取得する
 	private Boolean myNumber;
 	// 会社コード
 	@NotBlank
-	@Pattern(regexp = "[0-9]*")
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String compCode;
 	// 雇用保険被保険者負担率
 	@NotBlank

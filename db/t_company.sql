@@ -8,28 +8,28 @@ create table "public".t_company (
   , comp_add2 character varying(256)
   , comp_add1_kana character varying(256) not null
   , comp_add2_kana character varying(256)
-  , comp_tel1 character varying(33) not null
-  , comp_tel2 character varying(33) not null
-  , comp_tel3 character varying(33) not null
+  , comp_tel1 character varying(3) not null
+  , comp_tel2 character varying(4) not null
+  , comp_tel3 character varying(4) not null
   , classification integer not null
-  , corporation_id bigint not null
+  , corporation_id character varying(20) not null
   , corp_owner_name character varying(100) not null
   , corp_owner_name_kana character varying(100) not null
-  , corp_sort_no1 character varying(25) not null
-  , corp_sort_no2 character varying(25) not null
-  , corp_no bigint not null
+  , corp_sort_no1 character varying(20) not null
+  , corp_sort_no2 character varying(20) not null
+  , corp_no character varying(20) not null
   , corp_kind character varying(100) not null
   , deadline_day boolean not null
   , deadline_adjust_days integer
   , payment_day boolean not null
   , payment_adjust_days integer
   , accounting_manager character varying(100) not null
-  , user_recognize_id bigint
-  , user_id bigint
+  , user_recognize_id character varying(50)
+  , user_id character varying(50)
   , tax_accountant character varying(100) not null
   , tax_office character varying(256) not null
-  , data_share_id bigint not null
-  , comp_code bigint not null
+  , data_share_id character varying(50) not null
+  , comp_code character varying(50) not null
   , employ_insur_rate numeric(5, 2) not null
   , employ_rounding integer not null
   , health_insur_rate_no_nursing numeric(5, 2) not null

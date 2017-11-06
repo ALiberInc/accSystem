@@ -16,7 +16,7 @@
 				<tr>
 					<th rowspan="23" class="text-center">会社情報</th>
 					<th class="tdbg td2 text-center">法人名又は氏名<font color="#FF0000">※</font></th>
-					<td  class="td8">
+					<td class="td8">
 						<div th:if="${#fields.hasErrors('compName')}" class="error-after">
 							<p>
 								<i></i>
@@ -105,7 +105,7 @@
 							</p>
 						</div>
 						<div
-							th:if="${!(#fields.hasErrors('compTel1')) and !(#fields.hasErrors('compTel2'))and #fields.hasErrors('compTel3')}"
+							th:if="${!(#fields.hasErrors('compTel1')) and !(#fields.hasErrors('compTel2')) and #fields.hasErrors('compTel3')}"
 							class="error-after">
 							<p>
 								<i></i>
@@ -141,7 +141,7 @@
 				</tr>
 				<tr>
 					<th class="tdbg text-center">法人番号<font color="#FF0000">※</font></th>
-					<td >
+					<td>
 						<div th:if="${#fields.hasErrors('corporationId')}"
 							class="error-after">
 							<p>
@@ -154,7 +154,7 @@
 				</tr>
 				<tr>
 					<th class="tdbg text-center">事業主氏名<font color="#FF0000">※</font></th>
-					<td >
+					<td>
 						<div th:if="${#fields.hasErrors('corpOwnerName')}"
 							class="error-after">
 							<p>
@@ -167,7 +167,7 @@
 				</tr>
 				<tr>
 					<th class="tdbg text-center">事業主氏名(ﾌﾘｶﾞﾅ)<font color="#FF0000">※</font></th>
-					<td >
+					<td>
 						<div th:if="${#fields.hasErrors('corpOwnerNameKana')}"
 							class="error-after">
 							<p>
@@ -181,12 +181,19 @@
 				<tr>
 					<th class="tdbg text-center">事業所整理記号<font color="#FF0000">※</font></th>
 					<td>
-						<div
-							th:if="${#fields.hasErrors('corpSortNo1') or #fields.hasErrors('corpSortNo2')}"
+						<div th:if="${#fields.hasErrors('corpSortNo1')}"
 							class="error-after">
 							<p>
 								<i></i>
 								<th:block th:errors="*{corpSortNo1}"></th:block>
+							</p>
+						</div>
+						<div
+							th:if="${!(#fields.hasErrors('corpSortNo1')) and #fields.hasErrors('corpSortNo2')}"
+							class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{corpSortNo2}"></th:block>
 							</p>
 						</div> <input type="text" maxlength="4" th:field="*{corpSortNo1}"
 						class="td0" />-<input type="text" maxlength="5"
@@ -327,7 +334,7 @@
 				</tr>
 				<tr>
 					<th class="tdbg text-center">税理士・税務署<font color="#FF0000">※</font></th>
-					<td >
+					<td>
 						<table>
 							<tr>
 								<td>税理士：</td>
@@ -434,39 +441,27 @@
 						color="#FF0000">※</font></th>
 					<td class="text-center vertical-middle">保険料率（介護保険該当なし）</td>
 					<td>
-						<table>
-							<tr>
-								<td class="td4">
-									<div th:if="${#fields.hasErrors('healthInsurRate')}"
-										class="error-after">
-										<p>
-											<i></i>
-											<th:block th:errors="*{healthInsurRate}"></th:block>
-										</p>
-									</div> <input type="text" th:field="*{healthInsurRate}" maxlength="6"
-									class="td1" /> ％
-								</td>
-							</tr>
-						</table>
+						<div th:if="${#fields.hasErrors('healthInsurRate')}"
+							class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{healthInsurRate}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{healthInsurRate}" maxlength="6"
+						class="td1" /> ％
 					</td>
 				</tr>
 				<tr>
 					<td class="text-center vertical-middle">保険料率（介護保険該当者）</td>
 					<td>
-						<table>
-							<tr>
-								<td class="td4">
-									<div th:if="${#fields.hasErrors('healthInsurRate2')}"
-										class="error-after">
-										<p>
-											<i></i>
-											<th:block th:errors="*{healthInsurRate2}"></th:block>
-										</p>
-									</div> <input type="text" th:field="*{healthInsurRate2}"
-									maxlength="6" class="td1" /> ％
-								</td>
-							</tr>
-						</table>
+						<div th:if="${#fields.hasErrors('healthInsurRate2')}"
+							class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{healthInsurRate2}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{healthInsurRate2}" maxlength="6"
+						class="td1" /> ％
 					</td>
 				</tr>
 				<tr>
@@ -500,20 +495,14 @@
 						color="#FF0000">※</font></th>
 					<td class="text-center vertical-middle">保険料率</td>
 					<td>
-						<table>
-							<tr>
-								<td class="td4">
-									<div th:if="${#fields.hasErrors('welfareInsurance')}"
-										class="error-after">
-										<p>
-											<i></i>
-											<th:block th:errors="*{welfareInsurance}"></th:block>
-										</p>
-									</div> <input type="text" th:field="*{welfareInsurance}"
-									maxlength="6" class="td1" /> ％
-								</td>
-							</tr>
-						</table>
+						<div th:if="${#fields.hasErrors('welfareInsurance')}"
+							class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{welfareInsurance}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{welfareInsurance}" maxlength="6"
+						class="td1" /> ％
 					</td>
 				</tr>
 				<tr>
@@ -544,61 +533,43 @@
 				</tr>
 				<tr>
 					<th rowspan="3" class="tdbg text-center">厚生年金基金<font
-							color="#FF0000">※</font></th>
+						color="#FF0000">※</font></th>
 					<td class="text-center vertical-middle">基金免除保険料率</td>
 					<td>
-						<table>
-							<tr>
-								<td class="td4">
-									<div th:if="${#fields.hasErrors('welfareExemptionRate')}"
-										class="error-after">
-										<p>
-											<i></i>
-											<th:block th:errors="*{welfareExemptionRate}"></th:block>
-										</p>
-									</div> <input type="text" th:field="*{welfareExemptionRate}"
-									maxlength="6" class="td1" /> ％
-								</td>
-							</tr>
-						</table>
+						<div th:if="${#fields.hasErrors('welfareExemptionRate')}"
+							class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{welfareExemptionRate}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{welfareExemptionRate}"
+						maxlength="6" class="td1" /> ％
 					</td>
 				</tr>
 				<tr>
 					<td class="text-center vertical-middle">基金独自給付加算率(従業員負担分)</td>
 					<td>
-						<table>
-							<tr>
-								<td class="td4">
-									<div th:if="${#fields.hasErrors('welfareAdditionRate')}"
-										class="error-after">
-										<p>
-											<i></i>
-											<th:block th:errors="*{welfareAdditionRate}"></th:block>
-										</p>
-									</div> <input type="text" th:field="*{welfareAdditionRate}"
-									maxlength="6" class="td1" />％ ※事務費掛金含む
-								</td>
-							</tr>
-						</table>
+						<div th:if="${#fields.hasErrors('welfareAdditionRate')}"
+							class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{welfareAdditionRate}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{welfareAdditionRate}"
+						maxlength="6" class="td1" />％ ※事務費掛金含む
 					</td>
 				</tr>
 				<tr>
 					<td class="text-center vertical-middle">基金独自給付加算定額(従業員負担分)</td>
 					<td>
-						<table>
-							<tr>
-								<td class="td4">
-									<div th:if="${#fields.hasErrors('welfareAdditionRation')}"
-										class="error-after">
-										<p>
-											<i></i>
-											<th:block th:errors="*{welfareAdditionRation}"></th:block>
-										</p>
-									</div> <input type="text" th:field="*{welfareAdditionRation}"
-									maxlength="9" class="td1" /> 円
-								</td>
-							</tr>
-						</table>
+						<div th:if="${#fields.hasErrors('welfareAdditionRation')}"
+							class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{welfareAdditionRation}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{welfareAdditionRation}"
+						maxlength="9" class="td1" /> 円
 					</td>
 				</tr>
 			</table>

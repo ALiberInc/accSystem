@@ -19,24 +19,24 @@
     <result column="comp_tel2" jdbcType="VARCHAR" property="compTel2" />
     <result column="comp_tel3" jdbcType="VARCHAR" property="compTel3" />
     <result column="classification" jdbcType="INTEGER" property="classification" />
-    <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
+    <result column="corporation_id" jdbcType="VARCHAR" property="corporationId" />
     <result column="corp_owner_name" jdbcType="VARCHAR" property="corpOwnerName" />
     <result column="corp_owner_name_kana" jdbcType="VARCHAR" property="corpOwnerNameKana" />
     <result column="corp_sort_no1" jdbcType="VARCHAR" property="corpSortNo1" />
     <result column="corp_sort_no2" jdbcType="VARCHAR" property="corpSortNo2" />
-    <result column="corp_no" jdbcType="BIGINT" property="corpNo" />
+    <result column="corp_no" jdbcType="VARCHAR" property="corpNo" />
     <result column="corp_kind" jdbcType="VARCHAR" property="corpKind" />
     <result column="deadline_day" jdbcType="BIT" property="deadlineDay" />
     <result column="deadline_adjust_days" jdbcType="INTEGER" property="deadlineAdjustDays" />
     <result column="payment_day" jdbcType="BIT" property="paymentDay" />
     <result column="payment_adjust_days" jdbcType="INTEGER" property="paymentAdjustDays" />
     <result column="accounting_manager" jdbcType="VARCHAR" property="accountingManager" />
-    <result column="user_recognize_id" jdbcType="BIGINT" property="userRecognizeId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_recognize_id" jdbcType="VARCHAR" property="userRecognizeId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="tax_accountant" jdbcType="VARCHAR" property="taxAccountant" />
     <result column="tax_office" jdbcType="VARCHAR" property="taxOffice" />
-    <result column="data_share_id" jdbcType="BIGINT" property="dataShareId" />
-    <result column="comp_code" jdbcType="BIGINT" property="compCode" />
+    <result column="data_share_id" jdbcType="VARCHAR" property="dataShareId" />
+    <result column="comp_code" jdbcType="VARCHAR" property="compCode" />
     <result column="employ_insur_rate" jdbcType="NUMERIC" property="employInsurRate" />
     <result column="employ_rounding" jdbcType="INTEGER" property="employRounding" />
     <result column="health_insur_rate_no_nursing" jdbcType="NUMERIC" property="healthInsurRateNoNursing" />
@@ -207,13 +207,13 @@
       #{compZip1,jdbcType=VARCHAR}, #{compZip2,jdbcType=VARCHAR}, #{compAdd1,jdbcType=VARCHAR}, 
       #{compAdd2,jdbcType=VARCHAR}, #{compAdd1Kana,jdbcType=VARCHAR}, #{compAdd2Kana,jdbcType=VARCHAR}, 
       #{compTel1,jdbcType=VARCHAR}, #{compTel2,jdbcType=VARCHAR}, #{compTel3,jdbcType=VARCHAR}, 
-      #{classification,jdbcType=INTEGER}, #{corporationId,jdbcType=BIGINT}, #{corpOwnerName,jdbcType=VARCHAR}, 
+      #{classification,jdbcType=INTEGER}, #{corporationId,jdbcType=VARCHAR}, #{corpOwnerName,jdbcType=VARCHAR}, 
       #{corpOwnerNameKana,jdbcType=VARCHAR}, #{corpSortNo1,jdbcType=VARCHAR}, #{corpSortNo2,jdbcType=VARCHAR}, 
-      #{corpNo,jdbcType=BIGINT}, #{corpKind,jdbcType=VARCHAR}, #{deadlineDay,jdbcType=BIT}, 
+      #{corpNo,jdbcType=VARCHAR}, #{corpKind,jdbcType=VARCHAR}, #{deadlineDay,jdbcType=BIT}, 
       #{deadlineAdjustDays,jdbcType=INTEGER}, #{paymentDay,jdbcType=BIT}, #{paymentAdjustDays,jdbcType=INTEGER}, 
-      #{accountingManager,jdbcType=VARCHAR}, #{userRecognizeId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
-      #{taxAccountant,jdbcType=VARCHAR}, #{taxOffice,jdbcType=VARCHAR}, #{dataShareId,jdbcType=BIGINT}, 
-      #{compCode,jdbcType=BIGINT}, #{employInsurRate,jdbcType=NUMERIC}, #{employRounding,jdbcType=INTEGER}, 
+      #{accountingManager,jdbcType=VARCHAR}, #{userRecognizeId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{taxAccountant,jdbcType=VARCHAR}, #{taxOffice,jdbcType=VARCHAR}, #{dataShareId,jdbcType=VARCHAR}, 
+      #{compCode,jdbcType=VARCHAR}, #{employInsurRate,jdbcType=NUMERIC}, #{employRounding,jdbcType=INTEGER}, 
       #{healthInsurRateNoNursing,jdbcType=NUMERIC}, #{healthInsurRateWithNursing,jdbcType=NUMERIC}, 
       #{healthRounding,jdbcType=INTEGER}, #{welfareInsuranceRate,jdbcType=NUMERIC}, #{welfareRounding,jdbcType=INTEGER}, 
       #{welfareExceptionRate,jdbcType=NUMERIC}, #{welfareAdditionRate,jdbcType=NUMERIC}, 
@@ -408,7 +408,7 @@
         #{classification,jdbcType=INTEGER},
       </if>
       <if test="corporationId != null">
-        #{corporationId,jdbcType=BIGINT},
+        #{corporationId,jdbcType=VARCHAR},
       </if>
       <if test="corpOwnerName != null">
         #{corpOwnerName,jdbcType=VARCHAR},
@@ -423,7 +423,7 @@
         #{corpSortNo2,jdbcType=VARCHAR},
       </if>
       <if test="corpNo != null">
-        #{corpNo,jdbcType=BIGINT},
+        #{corpNo,jdbcType=VARCHAR},
       </if>
       <if test="corpKind != null">
         #{corpKind,jdbcType=VARCHAR},
@@ -444,10 +444,10 @@
         #{accountingManager,jdbcType=VARCHAR},
       </if>
       <if test="userRecognizeId != null">
-        #{userRecognizeId,jdbcType=BIGINT},
+        #{userRecognizeId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="taxAccountant != null">
         #{taxAccountant,jdbcType=VARCHAR},
@@ -456,10 +456,10 @@
         #{taxOffice,jdbcType=VARCHAR},
       </if>
       <if test="dataShareId != null">
-        #{dataShareId,jdbcType=BIGINT},
+        #{dataShareId,jdbcType=VARCHAR},
       </if>
       <if test="compCode != null">
-        #{compCode,jdbcType=BIGINT},
+        #{compCode,jdbcType=VARCHAR},
       </if>
       <if test="employInsurRate != null">
         #{employInsurRate,jdbcType=NUMERIC},
@@ -565,7 +565,7 @@
         classification = #{record.classification,jdbcType=INTEGER},
       </if>
       <if test="record.corporationId != null">
-        corporation_id = #{record.corporationId,jdbcType=BIGINT},
+        corporation_id = #{record.corporationId,jdbcType=VARCHAR},
       </if>
       <if test="record.corpOwnerName != null">
         corp_owner_name = #{record.corpOwnerName,jdbcType=VARCHAR},
@@ -580,7 +580,7 @@
         corp_sort_no2 = #{record.corpSortNo2,jdbcType=VARCHAR},
       </if>
       <if test="record.corpNo != null">
-        corp_no = #{record.corpNo,jdbcType=BIGINT},
+        corp_no = #{record.corpNo,jdbcType=VARCHAR},
       </if>
       <if test="record.corpKind != null">
         corp_kind = #{record.corpKind,jdbcType=VARCHAR},
@@ -601,10 +601,10 @@
         accounting_manager = #{record.accountingManager,jdbcType=VARCHAR},
       </if>
       <if test="record.userRecognizeId != null">
-        user_recognize_id = #{record.userRecognizeId,jdbcType=BIGINT},
+        user_recognize_id = #{record.userRecognizeId,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.taxAccountant != null">
         tax_accountant = #{record.taxAccountant,jdbcType=VARCHAR},
@@ -613,10 +613,10 @@
         tax_office = #{record.taxOffice,jdbcType=VARCHAR},
       </if>
       <if test="record.dataShareId != null">
-        data_share_id = #{record.dataShareId,jdbcType=BIGINT},
+        data_share_id = #{record.dataShareId,jdbcType=VARCHAR},
       </if>
       <if test="record.compCode != null">
-        comp_code = #{record.compCode,jdbcType=BIGINT},
+        comp_code = #{record.compCode,jdbcType=VARCHAR},
       </if>
       <if test="record.employInsurRate != null">
         employ_insur_rate = #{record.employInsurRate,jdbcType=NUMERIC},
@@ -687,24 +687,24 @@
       comp_tel2 = #{record.compTel2,jdbcType=VARCHAR},
       comp_tel3 = #{record.compTel3,jdbcType=VARCHAR},
       classification = #{record.classification,jdbcType=INTEGER},
-      corporation_id = #{record.corporationId,jdbcType=BIGINT},
+      corporation_id = #{record.corporationId,jdbcType=VARCHAR},
       corp_owner_name = #{record.corpOwnerName,jdbcType=VARCHAR},
       corp_owner_name_kana = #{record.corpOwnerNameKana,jdbcType=VARCHAR},
       corp_sort_no1 = #{record.corpSortNo1,jdbcType=VARCHAR},
       corp_sort_no2 = #{record.corpSortNo2,jdbcType=VARCHAR},
-      corp_no = #{record.corpNo,jdbcType=BIGINT},
+      corp_no = #{record.corpNo,jdbcType=VARCHAR},
       corp_kind = #{record.corpKind,jdbcType=VARCHAR},
       deadline_day = #{record.deadlineDay,jdbcType=BIT},
       deadline_adjust_days = #{record.deadlineAdjustDays,jdbcType=INTEGER},
       payment_day = #{record.paymentDay,jdbcType=BIT},
       payment_adjust_days = #{record.paymentAdjustDays,jdbcType=INTEGER},
       accounting_manager = #{record.accountingManager,jdbcType=VARCHAR},
-      user_recognize_id = #{record.userRecognizeId,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
+      user_recognize_id = #{record.userRecognizeId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
       tax_accountant = #{record.taxAccountant,jdbcType=VARCHAR},
       tax_office = #{record.taxOffice,jdbcType=VARCHAR},
-      data_share_id = #{record.dataShareId,jdbcType=BIGINT},
-      comp_code = #{record.compCode,jdbcType=BIGINT},
+      data_share_id = #{record.dataShareId,jdbcType=VARCHAR},
+      comp_code = #{record.compCode,jdbcType=VARCHAR},
       employ_insur_rate = #{record.employInsurRate,jdbcType=NUMERIC},
       employ_rounding = #{record.employRounding,jdbcType=INTEGER},
       health_insur_rate_no_nursing = #{record.healthInsurRateNoNursing,jdbcType=NUMERIC},
@@ -768,7 +768,7 @@
         classification = #{classification,jdbcType=INTEGER},
       </if>
       <if test="corporationId != null">
-        corporation_id = #{corporationId,jdbcType=BIGINT},
+        corporation_id = #{corporationId,jdbcType=VARCHAR},
       </if>
       <if test="corpOwnerName != null">
         corp_owner_name = #{corpOwnerName,jdbcType=VARCHAR},
@@ -783,7 +783,7 @@
         corp_sort_no2 = #{corpSortNo2,jdbcType=VARCHAR},
       </if>
       <if test="corpNo != null">
-        corp_no = #{corpNo,jdbcType=BIGINT},
+        corp_no = #{corpNo,jdbcType=VARCHAR},
       </if>
       <if test="corpKind != null">
         corp_kind = #{corpKind,jdbcType=VARCHAR},
@@ -804,10 +804,10 @@
         accounting_manager = #{accountingManager,jdbcType=VARCHAR},
       </if>
       <if test="userRecognizeId != null">
-        user_recognize_id = #{userRecognizeId,jdbcType=BIGINT},
+        user_recognize_id = #{userRecognizeId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="taxAccountant != null">
         tax_accountant = #{taxAccountant,jdbcType=VARCHAR},
@@ -816,10 +816,10 @@
         tax_office = #{taxOffice,jdbcType=VARCHAR},
       </if>
       <if test="dataShareId != null">
-        data_share_id = #{dataShareId,jdbcType=BIGINT},
+        data_share_id = #{dataShareId,jdbcType=VARCHAR},
       </if>
       <if test="compCode != null">
-        comp_code = #{compCode,jdbcType=BIGINT},
+        comp_code = #{compCode,jdbcType=VARCHAR},
       </if>
       <if test="employInsurRate != null">
         employ_insur_rate = #{employInsurRate,jdbcType=NUMERIC},
@@ -887,24 +887,24 @@
       comp_tel2 = #{compTel2,jdbcType=VARCHAR},
       comp_tel3 = #{compTel3,jdbcType=VARCHAR},
       classification = #{classification,jdbcType=INTEGER},
-      corporation_id = #{corporationId,jdbcType=BIGINT},
+      corporation_id = #{corporationId,jdbcType=VARCHAR},
       corp_owner_name = #{corpOwnerName,jdbcType=VARCHAR},
       corp_owner_name_kana = #{corpOwnerNameKana,jdbcType=VARCHAR},
       corp_sort_no1 = #{corpSortNo1,jdbcType=VARCHAR},
       corp_sort_no2 = #{corpSortNo2,jdbcType=VARCHAR},
-      corp_no = #{corpNo,jdbcType=BIGINT},
+      corp_no = #{corpNo,jdbcType=VARCHAR},
       corp_kind = #{corpKind,jdbcType=VARCHAR},
       deadline_day = #{deadlineDay,jdbcType=BIT},
       deadline_adjust_days = #{deadlineAdjustDays,jdbcType=INTEGER},
       payment_day = #{paymentDay,jdbcType=BIT},
       payment_adjust_days = #{paymentAdjustDays,jdbcType=INTEGER},
       accounting_manager = #{accountingManager,jdbcType=VARCHAR},
-      user_recognize_id = #{userRecognizeId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT},
+      user_recognize_id = #{userRecognizeId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
       tax_accountant = #{taxAccountant,jdbcType=VARCHAR},
       tax_office = #{taxOffice,jdbcType=VARCHAR},
-      data_share_id = #{dataShareId,jdbcType=BIGINT},
-      comp_code = #{compCode,jdbcType=BIGINT},
+      data_share_id = #{dataShareId,jdbcType=VARCHAR},
+      comp_code = #{compCode,jdbcType=VARCHAR},
       employ_insur_rate = #{employInsurRate,jdbcType=NUMERIC},
       employ_rounding = #{employRounding,jdbcType=INTEGER},
       health_insur_rate_no_nursing = #{healthInsurRateNoNursing,jdbcType=NUMERIC},
