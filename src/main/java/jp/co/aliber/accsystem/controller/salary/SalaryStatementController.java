@@ -1,7 +1,6 @@
 package jp.co.aliber.accsystem.controller.salary;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
+import jp.co.aliber.accsystem.form.common.MessageForm;
 import jp.co.aliber.accsystem.form.salary.SalaryStatementForm;
 import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.employee.TEmployeeService;
@@ -56,13 +56,15 @@ public class SalaryStatementController {
 	 * @throws UnsupportedEncodingException
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(@AuthenticationPrincipal LoginUser loginUser, Model model, SalaryStatementForm form)
-			throws UnsupportedEncodingException {
+	public String index(@AuthenticationPrincipal LoginUser loginUser, Model model, SalaryStatementForm form,
+			MessageForm messageForm) {
 
 		// ユーザー新規登録の場合、会社IDがないので、会社基本情報設定画面に遷移
 		if (loginUser.getUser().getCompId() == null) {
-			return "redirect:/message?forwardURL=company&message="
-					+ URLEncoder.encode(ImmutableValues.MESSAGE_INSERT_COMPANY, "UTF-8");
+			// メッセージ情報を設定
+			messageForm.setMessage(ImmutableValues.MESSAGE_INSERT_COMPANY);
+			messageForm.setForwardURL(ImmutableValues.FORWARD_COMPANY);
+			return "message";
 		}
 
 		// 月リスト

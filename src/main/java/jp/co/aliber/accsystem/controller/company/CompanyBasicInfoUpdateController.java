@@ -2,7 +2,6 @@ package jp.co.aliber.accsystem.controller.company;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
-import java.net.URLEncoder;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
@@ -21,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TCompany;
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
+import jp.co.aliber.accsystem.form.common.MessageForm;
 import jp.co.aliber.accsystem.form.company.CompanyBasicInfoForm;
 import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.UtilService;
@@ -71,7 +70,7 @@ public class CompanyBasicInfoUpdateController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(@AuthenticationPrincipal LoginUser loginUser, Model model, CompanyBasicInfoForm form) {
+	public String index(@AuthenticationPrincipal LoginUser loginUser, CompanyBasicInfoForm form) {
 		// 事業区分のディフォルト値:法人
 		form.setClassification("0");
 		// 締め日、支給日のディフォルト値:未日
@@ -103,91 +102,92 @@ public class CompanyBasicInfoUpdateController {
 			// 会社番号
 			Integer compId = loginUser.getUser().getCompId();
 			// 会社情報を取得
-			TCompany a = companyBasicInfoService.searchComp(compId);
+			TCompany tCompany = companyBasicInfoService.searchComp(compId);
 			// 法人名
-			form.setCompName(a.getCompName());
+			form.setCompName(tCompany.getCompName());
 			// 法人名フリガナ
-			form.setCompKana(a.getCompKana());
+			form.setCompKana(tCompany.getCompKana());
 			// 郵便番号
-			form.setCompZip1(a.getCompZip1());
-			form.setCompZip2(a.getCompZip2());
+			form.setCompZip1(tCompany.getCompZip1());
+			form.setCompZip2(tCompany.getCompZip2());
 			// 住所1
-			form.setCompAdd1(a.getCompAdd1());
-			if (StringUtils.isNotEmpty(a.getCompAdd2())) {
-				form.setCompAdd2(a.getCompAdd2());
+			form.setCompAdd1(tCompany.getCompAdd1());
+			if (StringUtils.isNotEmpty(tCompany.getCompAdd2())) {
+				form.setCompAdd2(tCompany.getCompAdd2());
 			} else {
 				form.setCompAdd2(null);
 			}
 			// 住所1フリガナ
-			form.setCompAdd1Kana(a.getCompAdd1Kana());
-			if (StringUtils.isNotEmpty(a.getCompAdd2Kana())) {
-				form.setCompAdd2Kana(a.getCompAdd2Kana());
+			form.setCompAdd1Kana(tCompany.getCompAdd1Kana());
+			if (StringUtils.isNotEmpty(tCompany.getCompAdd2Kana())) {
+				form.setCompAdd2Kana(tCompany.getCompAdd2Kana());
 			} else {
 				form.setCompAdd2Kana(null);
 			}
 			// 電話番号
-			form.setCompTel1(a.getCompTel1());
-			form.setCompTel2(a.getCompTel2());
-			form.setCompTel3(a.getCompTel3());
+			form.setCompTel1(tCompany.getCompTel1());
+			form.setCompTel2(tCompany.getCompTel2());
+			form.setCompTel3(tCompany.getCompTel3());
 			// 事業区分
-			form.setClassification(String.valueOf(a.getClassification()));
+			form.setClassification(String.valueOf(tCompany.getClassification()));
 			// 法人番号
-			form.setCorporationId(String.valueOf(a.getCorporationId()));
+			form.setCorporationId(String.valueOf(tCompany.getCorporationId()));
 			// 事業主氏名
-			form.setCorpOwnerName(a.getCorpOwnerName());
+			form.setCorpOwnerName(tCompany.getCorpOwnerName());
 			// 事業主氏名フリガナ
-			form.setCorpOwnerNameKana(a.getCorpOwnerNameKana());
+			form.setCorpOwnerNameKana(tCompany.getCorpOwnerNameKana());
 			// 事業所整理記号
-			form.setCorpSortNo1(a.getCorpSortNo1());
-			form.setCorpSortNo2(a.getCorpSortNo2());
+			form.setCorpSortNo1(tCompany.getCorpSortNo1());
+			form.setCorpSortNo2(tCompany.getCorpSortNo2());
 			// 事業所番号
-			form.setCorpNo(String.valueOf(a.getCorpNo()));
+			form.setCorpNo(String.valueOf(tCompany.getCorpNo()));
 			// 事業種目
-			form.setCorpKind(a.getCorpKind());
+			form.setCorpKind(tCompany.getCorpKind());
 			// 締め日が末日
-			form.setDeadlineDay(a.getDeadlineDay() ? "0" : "1");
+			form.setDeadlineDay(tCompany.getDeadlineDay() ? "0" : "1");
 			// 締め日の末日以外日数
 			form.setDeadlineAdjustDays(
-					a.getDeadlineAdjustDays() != null ? String.valueOf(a.getDeadlineAdjustDays()) : null);
+					tCompany.getDeadlineAdjustDays() != null ? String.valueOf(tCompany.getDeadlineAdjustDays()) : null);
 			// 支給日が末日
-			form.setPaymentDay(a.getPaymentDay() ? "0" : "1");
+			form.setPaymentDay(tCompany.getPaymentDay() ? "0" : "1");
 			// 支給日の末日以外日数
 			form.setPaymentAdjustDays(
-					a.getPaymentAdjustDays() != null ? String.valueOf(a.getPaymentAdjustDays()) : null);
+					tCompany.getPaymentAdjustDays() != null ? String.valueOf(tCompany.getPaymentAdjustDays()) : null);
 			// 経理責任者
-			form.setAccountingManager(a.getAccountingManager());
+			form.setAccountingManager(tCompany.getAccountingManager());
 			// 利用者識別番号
-			form.setUserRecongId(a.getUserRecognizeId() != null ? String.valueOf(a.getUserRecognizeId()) : null);
+			form.setUserRecongId(
+					tCompany.getUserRecognizeId() != null ? String.valueOf(tCompany.getUserRecognizeId()) : null);
 			// 利用者ID
-			form.setUserId(a.getUserId() != null ? String.valueOf(a.getUserId()) : null);
+			form.setUserId(tCompany.getUserId() != null ? String.valueOf(tCompany.getUserId()) : null);
 			// 税理者
-			form.setTaxAccountant(a.getTaxAccountant());
+			form.setTaxAccountant(tCompany.getTaxAccountant());
 			// 税理署
-			form.setTaxOffice(a.getTaxOffice());
+			form.setTaxOffice(tCompany.getTaxOffice());
 			// データ共有ID
-			form.setDataShareId(String.valueOf(a.getDataShareId()));
+			form.setDataShareId(String.valueOf(tCompany.getDataShareId()));
 			// 会社コード
-			form.setCompCode(String.valueOf(a.getCompCode()));
+			form.setCompCode(String.valueOf(tCompany.getCompCode()));
 			// 雇用保険被保険者負担率
-			form.setEmployInsurRate(String.valueOf(a.getEmployInsurRate()));
+			form.setEmployInsurRate(String.valueOf(tCompany.getEmployInsurRate()));
 			// 雇用保険被保険者負担率
-			form.setEmployRounding(String.valueOf(a.getEmployRounding()));
+			form.setEmployRounding(String.valueOf(tCompany.getEmployRounding()));
 			// 健康保険料率(介護保険該当なし)
-			form.setHealthInsurRate(String.valueOf(a.getHealthInsurRateNoNursing()));
+			form.setHealthInsurRate(String.valueOf(tCompany.getHealthInsurRateNoNursing()));
 			// 健康保険料率（介護保険該当者）
-			form.setHealthInsurRate2(String.valueOf(a.getHealthInsurRateWithNursing()));
+			form.setHealthInsurRate2(String.valueOf(tCompany.getHealthInsurRateWithNursing()));
 			// 健康保険端数処理
-			form.setHealthRounding(String.valueOf(a.getHealthRounding()));
+			form.setHealthRounding(String.valueOf(tCompany.getHealthRounding()));
 			// 厚生年金保険料率
-			form.setWelfareInsurance(String.valueOf(a.getWelfareInsuranceRate()));
+			form.setWelfareInsurance(String.valueOf(tCompany.getWelfareInsuranceRate()));
 			// 厚生年金端数処理
-			form.setWelfareRounding(String.valueOf(a.getWelfareRounding()));
+			form.setWelfareRounding(String.valueOf(tCompany.getWelfareRounding()));
 			// 基金免除保険料率
-			form.setWelfareExemptionRate(String.valueOf(a.getWelfareExceptionRate()));
+			form.setWelfareExemptionRate(String.valueOf(tCompany.getWelfareExceptionRate()));
 			// 基金独自給付加算率
-			form.setWelfareAdditionRate(String.valueOf(a.getWelfareAdditionRate()));
+			form.setWelfareAdditionRate(String.valueOf(tCompany.getWelfareAdditionRate()));
 			// 基金独自給付加算定額
-			form.setWelfareAdditionRation(String.valueOf(a.getWelfareAdditionRation()));
+			form.setWelfareAdditionRation(String.valueOf(tCompany.getWelfareAdditionRation()));
 		}
 		return "company/company_basic_info_update";
 	}
@@ -195,20 +195,16 @@ public class CompanyBasicInfoUpdateController {
 	/**
 	 * 登録ボタンを押下する
 	 * 
-	 * @param model
-	 *            モデル
-	 * @param form
-	 *            会社基本情報入力画面用form
 	 * @param loginUser
-	 *            登録ユーザ情報
+	 * @param form
 	 * @param result
-	 *            bindingresult
+	 * @param messageForm
 	 * @return
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
 	public String save(@AuthenticationPrincipal LoginUser loginUser, @Validated CompanyBasicInfoForm form,
-			BindingResult result, Model model) throws UnsupportedEncodingException {
+			BindingResult result, MessageForm messageForm) {
 		// 入力チェック
 		if (!validate(form, result)) {
 			return "company/company_basic_info_update";
@@ -334,9 +330,10 @@ public class CompanyBasicInfoUpdateController {
 			// 更新処理を呼び出す
 			companyBasicInfoService.update(company, Integer.valueOf(loginUser.getUser().getUserId()));
 		}
-
-		return "redirect:/message?forwardURL=company&message="
-		+ URLEncoder.encode(ImmutableValues.MESSAGE_FINISH, "UTF-8");
+		// メッセージ情報を設定
+		messageForm.setMessage(ImmutableValues.MESSAGE_INSERT_COMPANY);
+		messageForm.setForwardURL(ImmutableValues.FORWARD_COMPANY);
+		return "message";
 	}
 
 	/**

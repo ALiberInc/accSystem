@@ -38,8 +38,10 @@ public class ImmutableValues {
 	public static final String LAST_DAY = "0";
 
 	// メッセージ画面
-	//処理完了
+	// 処理完了
 	public static final String MESSAGE_FINISH = "処理が完了しました。";
-	//会社情報未登録
+	// 会社情報未登録
 	public static final String MESSAGE_INSERT_COMPANY = "会社情報がまだ登録していませんので、利用できません。先に会社情報を登録してください。";
+	// 遷移先：会社情報画面
+	public static final String FORWARD_COMPANY = "company";
 }
