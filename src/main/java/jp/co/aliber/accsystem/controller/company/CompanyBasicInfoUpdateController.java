@@ -1,6 +1,5 @@
 package jp.co.aliber.accsystem.controller.company;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 
 import org.apache.commons.lang.StringUtils;
@@ -71,33 +70,36 @@ public class CompanyBasicInfoUpdateController {
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String index(@AuthenticationPrincipal LoginUser loginUser, CompanyBasicInfoForm form) {
-		// 事業区分のディフォルト値:法人
-		form.setClassification("0");
-		// 締め日、支給日のディフォルト値:未日
-		form.setPaymentDay("0");
-		form.setDeadlineDay("0");
-		// 社会保険について項目がデフォルト値を設定する
-		// 被保険者負担率
-		form.setEmployInsurRate(ImmutableValues.EMPLOY_INSURANCE_RATE);
-		// 端数処理:50捨51入
-		form.setEmployRounding(ImmutableValues.ROUNDING_HALF_UP);
-		// 保険料率（介護保険該当なし）
-		form.setHealthInsurRate(ImmutableValues.HEALTH_INSUTANCE_RATE);
-		// 保険料率（介護保険該当者）
-		form.setHealthInsurRate2(ImmutableValues.HEALTH_INSURANCE_RATE_2);
-		// 端数処理:50捨51入
-		form.setHealthRounding(ImmutableValues.ROUNDING_HALF_UP);
-		// 保険料率
-		form.setWelfareInsurance(ImmutableValues.WELFARE_INSURANCE_RATE);
-		// 端数処理:50捨51入
-		form.setWelfareRounding(ImmutableValues.ROUNDING_HALF_UP);
-		// 基金免除保険料率
-		form.setWelfareExemptionRate(ImmutableValues.WELFARE_EXEMPTION_RATE);
-		// 基金独自給付加算率(従業員負担分)
-		form.setWelfareAdditionRate(ImmutableValues.WELFARE_ADDITION_RATE);
-		// 会社情報を編集の場合
-		if (loginUser.getUser().getCompId() != null) {
-			// 更新の場合フラグtrueにする
+		if (loginUser.getUser().getCompId() == null) {
+			// 会社情報を新規登録
+			// 事業区分のディフォルト値:法人
+			form.setClassification(ImmutableValues.CLASSIFICATION_CORP);
+			// 支給日のディフォルト値:末日
+			form.setPaymentDay(ImmutableValues.LAST_DAY_FLG);
+			// 締め日のディフォルト値:末日
+			form.setDeadlineDay(ImmutableValues.LAST_DAY_FLG);
+			// 社会保険について項目がデフォルト値を設定する
+			// 被保険者負担率
+			form.setEmployInsurRate(ImmutableValues.EMPLOY_INSURANCE_RATE);
+			// 端数処理:50捨51入
+			form.setEmployRounding(ImmutableValues.ROUNDING_HALF_UP);
+			// 保険料率（介護保険該当なし）
+			form.setHealthInsurRate(ImmutableValues.HEALTH_INSUTANCE_RATE);
+			// 保険料率（介護保険該当者）
+			form.setHealthInsurRate2(ImmutableValues.HEALTH_INSURANCE_RATE_2);
+			// 端数処理:50捨51入
+			form.setHealthRounding(ImmutableValues.ROUNDING_HALF_UP);
+			// 保険料率
+			form.setWelfareInsurance(ImmutableValues.WELFARE_INSURANCE_RATE);
+			// 端数処理:50捨51入
+			form.setWelfareRounding(ImmutableValues.ROUNDING_HALF_UP);
+			// 基金免除保険料率
+			form.setWelfareExemptionRate(ImmutableValues.WELFARE_EXEMPTION_RATE);
+			// 基金独自給付加算率(従業員負担分)
+			form.setWelfareAdditionRate(ImmutableValues.WELFARE_ADDITION_RATE);
+		} else {
+			// 会社情報を編集
+			// 編集フラグを立つ
 			updateFlg = true;
 			// 会社番号
 			Integer compId = loginUser.getUser().getCompId();
@@ -143,23 +145,28 @@ public class CompanyBasicInfoUpdateController {
 			form.setCorpNo(String.valueOf(tCompany.getCorpNo()));
 			// 事業種目
 			form.setCorpKind(tCompany.getCorpKind());
-			// 締め日が末日
-			form.setDeadlineDay(tCompany.getDeadlineDay() ? "0" : "1");
+			// 締め日
+			form.setDeadlineDay(tCompany.getDeadlineDay());
 			// 締め日の末日以外日数
-			form.setDeadlineAdjustDays(
-					tCompany.getDeadlineAdjustDays() != null ? String.valueOf(tCompany.getDeadlineAdjustDays()) : null);
-			// 支給日が末日
-			form.setPaymentDay(tCompany.getPaymentDay() ? "0" : "1");
+			if (tCompany.getDeadlineDay().equals(true)) {
+				form.setDeadlineAdjustDays(tCompany.getDeadlineAdjustDays());
+			} else {
+				form.setDeadlineAdjustDays(null);
+			}
+			// 支給日
+			form.setPaymentDay(tCompany.getPaymentDay());
 			// 支給日の末日以外日数
-			form.setPaymentAdjustDays(
-					tCompany.getPaymentAdjustDays() != null ? String.valueOf(tCompany.getPaymentAdjustDays()) : null);
+			if (tCompany.getPaymentDay().equals(true)) {
+				form.setPaymentAdjustDays(tCompany.getPaymentAdjustDays());
+			} else {
+				form.setPaymentAdjustDays(null);
+			}
 			// 経理責任者
 			form.setAccountingManager(tCompany.getAccountingManager());
 			// 利用者識別番号
-			form.setUserRecongId(
-					tCompany.getUserRecognizeId() != null ? String.valueOf(tCompany.getUserRecognizeId()) : null);
+			form.setUserRecongId(tCompany.getUserRecognizeId());
 			// 利用者ID
-			form.setUserId(tCompany.getUserId() != null ? String.valueOf(tCompany.getUserId()) : null);
+			form.setUserId(tCompany.getUserId());
 			// 税理者
 			form.setTaxAccountant(tCompany.getTaxAccountant());
 			// 税理署
@@ -193,14 +200,11 @@ public class CompanyBasicInfoUpdateController {
 	}
 
 	/**
-	 * 登録ボタンを押下する
-	 * 
 	 * @param loginUser
 	 * @param form
 	 * @param result
 	 * @param messageForm
 	 * @return
-	 * @throws UnsupportedEncodingException
 	 */
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
 	public String save(@AuthenticationPrincipal LoginUser loginUser, @Validated CompanyBasicInfoForm form,
@@ -255,27 +259,31 @@ public class CompanyBasicInfoUpdateController {
 		company.setCorpNo(form.getCorpNo());
 		// 事業種目
 		company.setCorpKind(form.getCorpKind());
-		// 締め日が末日
-		company.setDeadlineDay(form.getDeadlineDay() == ImmutableValues.LAST_DAY ? true : false);
+		// 締め日
+		company.setDeadlineDay(form.getDeadlineDay());
 		// 締め日の末日以外日数
 		if (form.getDeadlineAdjustDays() != null) {
-			company.setDeadlineAdjustDays(Integer.valueOf(form.getDeadlineAdjustDays()));
+			company.setDeadlineAdjustDays(form.getDeadlineAdjustDays());
 		}
-		// 支給日が末日
-		company.setPaymentDay(form.getPaymentDay() == ImmutableValues.LAST_DAY ? true : false);
+		// 支給日
+		company.setPaymentDay(form.getPaymentDay());
 		// 支給日の末日以外日数
 		if (form.getPaymentAdjustDays() != null) {
-			company.setPaymentAdjustDays(Integer.valueOf(form.getPaymentAdjustDays()));
+			company.setPaymentAdjustDays(form.getPaymentAdjustDays());
 		}
 		// 経理責任者
 		company.setAccountingManager(form.getAccountingManager());
 		// 利用者識別番号
-		if (StringUtils.isNotEmpty(form.getUserRecongId())) {
+		if (form.getUserRecongId() != null) {
 			company.setUserRecognizeId(form.getUserRecongId());
+		} else {
+			company.setUserRecognizeId(StringUtils.EMPTY);
 		}
 		// 利用者ID
-		if (StringUtils.isNotEmpty(form.getUserId())) {
+		if (form.getUserId() != null) {
 			company.setUserId(form.getUserId());
+		} else {
+			company.setUserId(StringUtils.EMPTY);
 		}
 		// 税理者
 		company.setTaxAccountant(form.getTaxAccountant());
@@ -364,30 +372,16 @@ public class CompanyBasicInfoUpdateController {
 		}
 
 		// 日数チェック
-		if (StringUtils.isNotEmpty(form.getDeadlineDay()) && form.getDeadlineDay().equals("0")) {
-			if (StringUtils.isNotEmpty(form.getDeadlineAdjustDays())) {
-				result.rejectValue("deadlineAdjustDays", "error.adjustDays");
-				validateResult = false;
-			}
+		// 締め日が末日以外、且つ日数が入力されていない場合、エラー
+		if (form.getDeadlineDay().equals(true) && form.getDeadlineAdjustDays() == null) {
+			result.rejectValue("deadlineAdjustDays", "error.adjustDays");
+			validateResult = false;
 		}
-		if (StringUtils.isNotEmpty(form.getDeadlineDay()) && form.getDeadlineDay().equals("1")) {
-			if (StringUtils.isEmpty(form.getDeadlineAdjustDays())) {
-				result.rejectValue("deadlineAdjustDays", "error.noAdjustDays");
-				validateResult = false;
-			}
+		if (form.getPaymentDay().equals(true) && form.getPaymentAdjustDays() == null) {
+			result.rejectValue("paymentAdjustDays", "error.adjustDays");
+			validateResult = false;
 		}
-		if (StringUtils.isNotEmpty(form.getPaymentDay()) && form.getPaymentDay().equals("0")) {
-			if (StringUtils.isNotEmpty(form.getPaymentAdjustDays())) {
-				result.rejectValue("paymentAdjustDays", "error.adjustDays");
-				validateResult = false;
-			}
-		}
-		if (StringUtils.isNotEmpty(form.getPaymentDay()) && form.getPaymentDay().equals("1")) {
-			if (StringUtils.isEmpty(form.getPaymentAdjustDays())) {
-				result.rejectValue("paymentAdjustDays", "error.noAdjustDays");
-				validateResult = false;
-			}
-		}
+
 		// 入力チェック結果
 		return validateResult;
 	}

@@ -80,7 +80,7 @@
 					<th class="tdbg text-center">締め日</th>
 					<td>
 						<div th:switch="*{deadlineDay}">
-							<span th:case="'0'">末日</span> <span th:case="'1'"
+							<span th:case="false">末日</span> <span th:case="true"
 								th:text="'末日以外('+*{deadlineAdjustDays}+'日)'"></span>
 						</div>
 					</td>
@@ -89,7 +89,7 @@
 					<th class="tdbg text-center">支給日</th>
 					<td>
 						<div th:switch="*{paymentDay}">
-							<span th:case="'0'">末日</span> <span th:case="'1'"
+							<span th:case="false">末日</span> <span th:case="true"
 								th:text="'末日以外('+*{paymentAdjustDays}+'日)'"></span>
 						</div>
 					</td>

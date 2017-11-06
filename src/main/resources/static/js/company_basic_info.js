@@ -1,7 +1,3 @@
-$(document).ready(function() {
-	$('#deadlineAdjustDays').attr("readonly", "readonly");
-	$('#paymentAdjustDays').attr("readonly", "readonly");
-})
 $('input[type=radio][name=deadlineDay]').change(function() {
 	if (this.value == '0') {
 		$('#deadlineAdjustDays').attr("readonly", "readonly");

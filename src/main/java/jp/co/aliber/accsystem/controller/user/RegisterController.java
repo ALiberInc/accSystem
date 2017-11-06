@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
+import jp.co.aliber.accsystem.form.common.MessageForm;
 import jp.co.aliber.accsystem.form.user.RegisterForm;
 import jp.co.aliber.accsystem.service.user.RegisterService;
 
@@ -69,7 +71,7 @@ public class RegisterController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
-	public String save(@Validated RegisterForm form, BindingResult result) {
+	public String save(@Validated RegisterForm form, BindingResult result, MessageForm messageForm) {
 		// 入力チェック
 		if (!validate(form, result)) {
 			return "register";
@@ -100,7 +102,10 @@ public class RegisterController {
 
 		registerService.regist(loginUser);
 
-		return "redirect:/finish?forwardURL=login";
+		// メッセージ情報を設定
+		messageForm.setMessage(ImmutableValues.MESSAGE_FINISH_REGISTER);
+		messageForm.setForwardURL(ImmutableValues.FORWARD_LOGIN);
+		return "message";
 	}
 
 	/**

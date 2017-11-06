@@ -1,5 +1,7 @@
 package jp.co.aliber.accsystem.form.company;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -88,20 +90,21 @@ public class CompanyBasicInfoForm {
 	@NotBlank
 	private String corpKind;
 	// 締め日が末日
-	@NotBlank
-	private String deadlineDay;
+	@NotNull
+	private Boolean deadlineDay;
 	// 締め日の末日以外日数
-	@Pattern(regexp = "[0-9]*")
-	private String deadlineAdjustDays;
+	@Max(value = 31)
+	@Min(value = 1)
+	private Integer deadlineAdjustDays;
 	// 支給日が末日
-	@NotBlank
-	private String paymentDay;
+	@NotNull
+	private Boolean paymentDay;
 	// 支給日の末日以外日数
-	@Pattern(regexp = "[0-9]*")
-	private String paymentAdjustDays;
+	@Max(value = 31)
+	@Min(value = 1)
+	private Integer paymentAdjustDays;
 	// 経理責任者
 	@NotBlank
-	// @Size(max = 100)
 	private String accountingManager;
 	// 利用者識別番号
 	@Pattern(regexp = "[a-zA-Z0-9]*")
@@ -453,7 +456,7 @@ public class CompanyBasicInfoForm {
 	/**
 	 * @return deadlineDay
 	 */
-	public String getDeadlineDay() {
+	public Boolean getDeadlineDay() {
 		return deadlineDay;
 	}
 
@@ -461,14 +464,14 @@ public class CompanyBasicInfoForm {
 	 * @param deadlineDay
 	 *            セットする deadlineDay
 	 */
-	public void setDeadlineDay(String deadlineDay) {
+	public void setDeadlineDay(Boolean deadlineDay) {
 		this.deadlineDay = deadlineDay;
 	}
 
 	/**
 	 * @return deadlineAdjustDays
 	 */
-	public String getDeadlineAdjustDays() {
+	public Integer getDeadlineAdjustDays() {
 		return deadlineAdjustDays;
 	}
 
@@ -476,14 +479,14 @@ public class CompanyBasicInfoForm {
 	 * @param deadlineAdjustDays
 	 *            セットする deadlineAdjustDays
 	 */
-	public void setDeadlineAdjustDays(String deadlineAdjustDays) {
+	public void setDeadlineAdjustDays(Integer deadlineAdjustDays) {
 		this.deadlineAdjustDays = deadlineAdjustDays;
 	}
 
 	/**
 	 * @return paymentDay
 	 */
-	public String getPaymentDay() {
+	public Boolean getPaymentDay() {
 		return paymentDay;
 	}
 
@@ -491,14 +494,14 @@ public class CompanyBasicInfoForm {
 	 * @param paymentDay
 	 *            セットする paymentDay
 	 */
-	public void setPaymentDay(String paymentDay) {
+	public void setPaymentDay(Boolean paymentDay) {
 		this.paymentDay = paymentDay;
 	}
 
 	/**
 	 * @return paymentAdjustDays
 	 */
-	public String getPaymentAdjustDays() {
+	public Integer getPaymentAdjustDays() {
 		return paymentAdjustDays;
 	}
 
@@ -506,7 +509,7 @@ public class CompanyBasicInfoForm {
 	 * @param paymentAdjustDays
 	 *            セットする paymentAdjustDays
 	 */
-	public void setPaymentAdjustDays(String paymentAdjustDays) {
+	public void setPaymentAdjustDays(Integer paymentAdjustDays) {
 		this.paymentAdjustDays = paymentAdjustDays;
 	}
 

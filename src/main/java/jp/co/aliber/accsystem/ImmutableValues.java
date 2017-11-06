@@ -34,8 +34,10 @@ public class ImmutableValues {
 	public static final String WELFARE_EXEMPTION_RATE = "0.00";
 	// 基金独自給付加算率(従業員負担分)
 	public static final String WELFARE_ADDITION_RATE = "0.00";
-	// 締め日/支給日が末日の場合
-	public static final String LAST_DAY = "0";
+	// 締め日/支給日:末日
+	public static final Boolean LAST_DAY_FLG = false;
+	// 事業区分:法人
+	public static final String CLASSIFICATION_CORP = "0";
 
 	// メッセージ画面
 	// 処理完了
@@ -44,4 +46,10 @@ public class ImmutableValues {
 	public static final String MESSAGE_INSERT_COMPANY = "会社情報がまだ登録していませんので、利用できません。先に会社情報を登録してください。";
 	// 遷移先：会社情報画面
 	public static final String FORWARD_COMPANY = "company";
+
+	// ユーザー新規登録画面
+	// 新規登録完了
+	public static final String MESSAGE_FINISH_REGISTER = "新規登録が完了しました。";
+	// 遷移先：会社情報画面
+	public static final String FORWARD_LOGIN = "login";
 }

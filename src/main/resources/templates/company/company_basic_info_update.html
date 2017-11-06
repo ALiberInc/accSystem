@@ -334,32 +334,30 @@
 				</tr>
 				<tr>
 					<th class="tdbg text-center">税理士・税務署<font color="#FF0000">※</font></th>
-					<td>
-						<table>
-							<tr>
-								<td>税理士：</td>
-								<td>
-									<div th:if="${#fields.hasErrors('taxAccountant')}"
-										class="error-after">
-										<p>
-											<i></i>
-											<th:block th:errors="*{taxAccountant}"></th:block>
-										</p>
-									</div> <input type="text" th:field="*{taxAccountant}" maxlength="80" />
-								</td>
-								<td>税務署：</td>
-								<td>
-									<div th:if="${#fields.hasErrors('taxOffice')}"
-										class="error-after">
-										<p>
-											<i></i>
-											<th:block th:errors="*{taxOffice}"></th:block>
-										</p>
-									</div> <input type="text" th:field="*{taxOffice}" maxlength="80" />
-								</td>
-							</tr>
-						</table>
-					</td>
+					<td><ul>
+							<li><div th:if="${#fields.hasErrors('taxAccountant')}"
+									class="error-after">
+									<p>
+										<i></i>
+										<th:block th:errors="*{taxAccountant}"></th:block>
+									</p>
+								</div></li>
+							<li>税理士：<input type="text" th:field="*{taxAccountant}"
+								maxlength="80" /></li>
+						</ul>
+						<ul>
+							<li>
+								<div th:if="${#fields.hasErrors('taxOffice')}"
+									class="error-after">
+									<p>
+										<i></i>
+										<th:block th:errors="*{taxOffice}"></th:block>
+									</p>
+								</div>
+							</li>
+							<li>税務署：<input type="text" th:field="*{taxOffice}"
+								maxlength="80" /></li>
+						</ul></td>
 				</tr>
 				<tr>
 					<th class="tdbg text-center">データ共有ID<font color="#FF0000">※</font></th>
