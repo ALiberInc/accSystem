@@ -26,18 +26,26 @@
 					<th class="tdbg text-center">〒</th>
 					<td th:text="*{compZip1}+'-'+*{compZip2}"></td>
 				</tr>
-				<tr>
-					<th rowspan="2" class="tdbg text-center">住所</th>
-					<td th:text="*{compAdd1}" />
+				<tr th:if="*{compAdd2} == null">
+					<th class="tdbg text-center">住所</th>
+					<td th:text="*{compAdd1}"></td>
 				</tr>
-				<tr>
+				<tr th:if="*{compAdd2} != null">
+					<th rowspan="2" class="tdbg text-center">住所</th>
+					<td th:text="*{compAdd1}"></td>
+				</tr>
+				<tr th:if="*{compAdd2} != null">
 					<td th:text="*{compAdd2}" />
 				</tr>
-				<tr>
+				<tr th:if="*{compAdd2Kana} == null">
+					<th class="tdbg text-center">住所(ﾌﾘｶﾞﾅ)</th>
+					<td th:text="*{compAdd1Kana}" />
+				</tr>
+				<tr th:if="*{compAdd2Kana} != null">
 					<th rowspan="2" class="tdbg text-center">住所(ﾌﾘｶﾞﾅ)</th>
 					<td th:text="*{compAdd1Kana}" />
 				</tr>
-				<tr>
+				<tr th:if="*{compAdd2Kana} != null">
 					<td th:text="*{compAdd2Kana}" />
 				</tr>
 				<tr>

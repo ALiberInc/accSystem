@@ -222,14 +222,18 @@ public class CompanyBasicInfoUpdateController {
 		// 住所1
 		company.setCompAdd1(form.getCompAdd1());
 		// 住所2
-		if (StringUtils.isNotEmpty(form.getCompAdd2())) {
+		if (form.getCompAdd2() != null) {
 			company.setCompAdd2(form.getCompAdd2());
+		} else {
+			company.setCompAdd2(StringUtils.EMPTY);
 		}
 		// 住所1フリガナ
 		company.setCompAdd1Kana(form.getCompAdd1Kana());
 		// 住所2フリガナ
-		if (StringUtils.isNotEmpty(form.getCompAdd2Kana())) {
+		if (form.getCompAdd2Kana() != null) {
 			company.setCompAdd2Kana(form.getCompAdd2Kana());
+		} else {
+			company.setCompAdd2Kana(StringUtils.EMPTY);
 		}
 		// 電話番号1
 		company.setCompTel1(form.getCompTel1());
