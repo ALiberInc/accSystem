@@ -114,18 +114,12 @@ public class CompanyBasicInfoUpdateController {
 			form.setCompZip2(tCompany.getCompZip2());
 			// 住所1
 			form.setCompAdd1(tCompany.getCompAdd1());
-			if (StringUtils.isNotEmpty(tCompany.getCompAdd2())) {
-				form.setCompAdd2(tCompany.getCompAdd2());
-			} else {
-				form.setCompAdd2(null);
-			}
+			// 住所2
+			form.setCompAdd2(tCompany.getCompAdd2());
 			// 住所1フリガナ
 			form.setCompAdd1Kana(tCompany.getCompAdd1Kana());
-			if (StringUtils.isNotEmpty(tCompany.getCompAdd2Kana())) {
-				form.setCompAdd2Kana(tCompany.getCompAdd2Kana());
-			} else {
-				form.setCompAdd2Kana(null);
-			}
+			// 住所2フリガナ
+			form.setCompAdd2Kana(tCompany.getCompAdd2Kana());
 			// 電話番号
 			form.setCompTel1(tCompany.getCompTel1());
 			form.setCompTel2(tCompany.getCompTel2());
@@ -148,7 +142,7 @@ public class CompanyBasicInfoUpdateController {
 			// 締め日
 			form.setDeadlineDay(tCompany.getDeadlineDay());
 			// 締め日の末日以外日数
-			if (tCompany.getDeadlineDay().equals(true)) {
+			if (tCompany.getDeadlineDay().equals(false)) {
 				form.setDeadlineAdjustDays(tCompany.getDeadlineAdjustDays());
 			} else {
 				form.setDeadlineAdjustDays(null);
@@ -156,7 +150,7 @@ public class CompanyBasicInfoUpdateController {
 			// 支給日
 			form.setPaymentDay(tCompany.getPaymentDay());
 			// 支給日の末日以外日数
-			if (tCompany.getPaymentDay().equals(true)) {
+			if (tCompany.getPaymentDay().equals(false)) {
 				form.setPaymentAdjustDays(tCompany.getPaymentAdjustDays());
 			} else {
 				form.setPaymentAdjustDays(null);
@@ -373,11 +367,11 @@ public class CompanyBasicInfoUpdateController {
 
 		// 日数チェック
 		// 締め日が末日以外、且つ日数が入力されていない場合、エラー
-		if (form.getDeadlineDay().equals(true) && form.getDeadlineAdjustDays() == null) {
+		if (form.getDeadlineDay().equals(false) && form.getDeadlineAdjustDays() == null) {
 			result.rejectValue("deadlineAdjustDays", "error.adjustDays");
 			validateResult = false;
 		}
-		if (form.getPaymentDay().equals(true) && form.getPaymentAdjustDays() == null) {
+		if (form.getPaymentDay().equals(false) && form.getPaymentAdjustDays() == null) {
 			result.rejectValue("paymentAdjustDays", "error.adjustDays");
 			validateResult = false;
 		}

@@ -69,8 +69,14 @@
 								<th:block th:errors="*{compAdd1}"></th:block>
 							</p>
 						</div> <input type="text" th:field="*{compAdd1}" maxlength="80"
-						class="td4" /> <br></br> <input type="text"
-						th:field="*{compAdd2}" maxlength="80" class="td4" />
+						class="td4" /> <br />
+						<div th:if="${#fields.hasErrors('compAdd2')}" class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{compAdd2}"></th:block>
+							</p>
+						</div> <input type="text" th:field="*{compAdd2}" maxlength="80"
+						class="td4" />
 					</td>
 				</tr>
 				<tr>
@@ -83,8 +89,16 @@
 								<th:block th:errors="*{compAdd1Kana}"></th:block>
 							</p>
 						</div> <input type="text" th:field="*{compAdd1Kana}" maxlength="80"
-						class="td4" /> <br></br> <input type="text"
-						th:field="*{compAdd2Kana}" maxlength="80" class="td4" />
+						class="td4" /> <br />
+						<div th:if="${#fields.hasErrors('compAdd2Kana')}"
+							class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{compAdd2Kana}"></th:block>
+							</p>
+						</div>
+						<input type="text" th:field="*{compAdd2Kana}" maxlength="80"
+						class="td4" />
 					</td>
 				</tr>
 				<tr>
@@ -250,8 +264,8 @@
 							</tr>
 							<tr>
 								<td class="td3"><input th:field="*{deadlineDay}"
-									type="radio" value="0" /> <label for="deadlineDay1">末日</label></td>
-								<td><input th:field="*{deadlineDay}" type="radio" value="1" />
+									type="radio" value="true" /> <label for="deadlineDay1">末日</label></td>
+								<td><input th:field="*{deadlineDay}" type="radio" value="false" />
 									<label for="deadlineDay2">末日以外 </label> ( <input
 									th:field="*{deadlineAdjustDays}" type="text" class="td2" />日)
 								</td>
@@ -285,9 +299,9 @@
 							</tr>
 							<tr>
 								<td class="td3"><input th:field="*{paymentDay}"
-									type="radio" value="0" /> <label for="paymentDay1"> 末日
+									type="radio" value="true" /> <label for="paymentDay1"> 末日
 								</label></td>
-								<td><input th:field="*{paymentDay}" type="radio" value="1" />
+								<td><input th:field="*{paymentDay}" type="radio" value="false" />
 									<label for="paymentDay2">末日以外 </label>( <input
 									th:field="*{paymentAdjustDays}" type="text" class="td2" />日)</td>
 							</tr>

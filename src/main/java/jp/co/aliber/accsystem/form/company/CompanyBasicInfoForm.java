@@ -42,11 +42,11 @@ public class CompanyBasicInfoForm {
 	// 住所1フリガナ
 	@NotBlank
 	@Size(max = 80)
-	@Pattern(regexp = "[ぁ-んァ-ン]*")
+	@Pattern(regexp = "[ぁ-んァ-ン　 ]*")
 	private String compAdd1Kana;
 	// 住所2フリガナ
 	@Size(max = 80)
-	@Pattern(regexp = "[ぁ-んァ-ン]*")
+	@Pattern(regexp = "[ぁ-んァ-ン　 ]*")
 	private String compAdd2Kana;
 	// 電話番号
 	@NotBlank
