@@ -33,14 +33,6 @@ public class CompanyBasicInfoService {
 	 *            ユーザＩＤ
 	 */
 	public void regist(TCompany company, Integer userId) {
-		// 登録時削除フラグをfalseにする
-		company.setDeleteFlg(false);
-
-		// システム日付を取得する
-		Date systemDate = new Date();
-		company.setRegistDate(systemDate);
-		company.setUpdateDate(systemDate);
-
 		// ユーザID
 		company.setRegistId(userId);
 		company.setUpdateId(userId);
