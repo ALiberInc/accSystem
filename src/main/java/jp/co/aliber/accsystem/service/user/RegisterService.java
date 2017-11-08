@@ -11,7 +11,7 @@ import jp.co.aliber.accsystem.entity.auto.TLoginUserExample;
 import jp.co.aliber.accsystem.mapper.auto.TLoginUserMapper;
 
 /**
- * アカウントの作成サービス
+ * 新規ユーザー登録サービス
  * 
  * @author yu_k
  *

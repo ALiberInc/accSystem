@@ -31,7 +31,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeFixedPaymentMapper;
 import jp.co.aliber.accsystem.mapper.auto.TSalaryDetailMapper;
 
 /**
- * 給与明細入力処理
+ * 給与明細入力サービス
  *
  * @author yu_k
  *
@@ -69,7 +69,7 @@ public class SalaryDetailsInputService {
 	 *            年月
 	 * @return 従業員給与明細エンティティ
 	 */
-	public TSalaryDetail initiation(Integer employeeId, Integer compId, Integer person, String yearMonth) {
+	public TSalaryDetail init(Integer employeeId, Integer compId, Integer person, String yearMonth) {
 		// それぞれ返却する
 		if (employeeId == null) {
 			return new TSalaryDetail();

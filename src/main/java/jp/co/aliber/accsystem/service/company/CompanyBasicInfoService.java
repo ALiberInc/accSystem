@@ -11,7 +11,7 @@ import jp.co.aliber.accsystem.mapper.auto.TCompanyMapper;
 import jp.co.aliber.accsystem.mapper.auto.TInsuranceMapper;
 
 /**
- * 基本情報処理
+ * 会社基本情報サービス
  *
  * @author yu_k
  *

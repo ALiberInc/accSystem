@@ -79,7 +79,7 @@ public class SalaryDetailsInputController {
 			person = tEmployeeIncomeTax.getDependencyCount();
 		}
 
-		TSalaryDetail tSalaryDetail = salaryDetailsInputService.initiation(employeeId, compId, person, yearMonth);
+		TSalaryDetail tSalaryDetail = salaryDetailsInputService.init(employeeId, compId, person, yearMonth);
 		// 基本給
 		form.setBasicSalary(tSalaryDetail.getBasicSalary());
 		// 役職手当

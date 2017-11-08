@@ -11,7 +11,7 @@ import jp.co.aliber.accsystem.entity.auto.TLoginUserExample;
 import jp.co.aliber.accsystem.mapper.auto.TLoginUserMapper;
 
 /**
- * ログインユーザー情報
+ * ログインサービス
  * 
  * @author zhong_zengqiang
  *
