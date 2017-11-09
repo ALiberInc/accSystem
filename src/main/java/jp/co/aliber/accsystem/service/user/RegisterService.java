@@ -1,7 +1,5 @@
 package jp.co.aliber.accsystem.service.user;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,8 +28,6 @@ public class RegisterService {
 	 */
 	public void regist(TLoginUser loginUser) {
 
-		// パスワード変更日時
-		loginUser.setPasswordModifyDatetime(new Date());
 		// 登録者ID
 		loginUser.setRegistId(ImmutableValues.DEFAULT_USER_ID);
 		// 更新者ID

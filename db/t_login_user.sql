@@ -10,7 +10,7 @@ create table "public".t_login_user (
   , last_login_datetime timestamp without time zone
   , login_id character varying(50) UNIQUE not null
   , password character varying(60) not null
-  , password_modify_datetime timestamp without time zone not null
+  , password_modify_datetime timestamp without time zone
   , fail_datetime timestamp without time zone
   , fail_count smallint default 0 not null
   , lockuser boolean default false not null
