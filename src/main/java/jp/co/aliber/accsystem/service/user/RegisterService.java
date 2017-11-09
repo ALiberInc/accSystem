@@ -30,24 +30,11 @@ public class RegisterService {
 	 */
 	public void regist(TLoginUser loginUser) {
 
-		// 登録時削除フラグをfalseにする
-		loginUser.setDeleteFlg(false);
-		// システム日付を取得する
-		Date systemDate = new Date();
 		// パスワード変更日時
-		loginUser.setPasswordModifyDatetime(systemDate);
-		// 登録日
-		loginUser.setRegistDate(systemDate);
-		// 最終更新日
-		loginUser.setUpdateDate(systemDate);
-		// パスワード失敗回数
-		loginUser.setFailCount((short) 0);
-		// ユーザーロック
-		loginUser.setLockuser(false);
-		// 削除フラグ
-		loginUser.setDeleteFlg(false);
-		// ユーザID
+		loginUser.setPasswordModifyDatetime(new Date());
+		// 登録者ID
 		loginUser.setRegistId(ImmutableValues.DEFAULT_USER_ID);
+		// 更新者ID
 		loginUser.setUpdateId(ImmutableValues.DEFAULT_USER_ID);
 
 		tLoginUserMapper.insertSelective(loginUser);
