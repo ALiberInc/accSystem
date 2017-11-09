@@ -117,7 +117,7 @@ public class EmployeeInfoEditController {
 			@AuthenticationPrincipal LoginUser loginUser) {
 		// 部署リスト
 		List<TCompanyDepartment> listTCompanyDepartment = tCompanyDepartmentService
-				.getListTCompanyDepartmen(loginUser.getUser().getCompId());
+				.getListTCompanyDepartment(loginUser.getUser().getCompId());
 		form.setDepartmentList(listTCompanyDepartment);
 
 		if (emplyeeId == null) {

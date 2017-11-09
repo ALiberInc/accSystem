@@ -18,21 +18,21 @@ import jp.co.aliber.accsystem.mapper.auto.TCompanyDepartmentMapper;
 @Service
 public class TCompanyDepartmentService {
 
-    @Autowired
-    private TCompanyDepartmentMapper tCompanyDepartmentMapper;
+	@Autowired
+	private TCompanyDepartmentMapper tCompanyDepartmentMapper;
 
-    /**
-     * 会社部署情報を取得
-     *
-     * @param compId
-     *            会社番号
-     * @return 会社部署情報エンティティのリスト
-     */
-    public List<TCompanyDepartment> getListTCompanyDepartmen(Integer compId) {
-        TCompanyDepartmentExample tCompanyDepartmentExample = new TCompanyDepartmentExample();
-        tCompanyDepartmentExample.createCriteria().andCompIdEqualTo(compId);
-        List<TCompanyDepartment> listTCompanyDepartmen = tCompanyDepartmentMapper
-                .selectByExample(tCompanyDepartmentExample);
-        return listTCompanyDepartmen;
-    }
+	/**
+	 * 会社部署情報を取得
+	 *
+	 * @param compId
+	 *            会社番号
+	 * @return 会社部署情報エンティティのリスト
+	 */
+	public List<TCompanyDepartment> getListTCompanyDepartment(Integer compId) {
+		TCompanyDepartmentExample tCompanyDepartmentExample = new TCompanyDepartmentExample();
+		tCompanyDepartmentExample.createCriteria().andCompIdEqualTo(compId);
+		List<TCompanyDepartment> listTCompanyDepartmen = tCompanyDepartmentMapper
+				.selectByExample(tCompanyDepartmentExample);
+		return listTCompanyDepartmen;
+	}
 }
