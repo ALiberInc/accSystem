@@ -11,7 +11,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeFixedDeductionMapper;
  *
  */
 @Service
-public class TEmployeeFixedDeductionService {
+public class EmployeeFixedDeductionService {
 
     @Autowired
     TEmployeeFixedDeductionMapper tEmployeeFixedDeductionMapper;

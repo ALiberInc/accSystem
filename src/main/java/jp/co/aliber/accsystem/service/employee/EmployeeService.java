@@ -16,7 +16,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeMapper;
  *
  */
 @Service
-public class TEmployeeService {
+public class EmployeeService {
 
     @Autowired
     TEmployeeMapper tEmployeeMapper;

@@ -22,7 +22,7 @@ import jp.co.aliber.accsystem.entity.auto.TEmployee;
 import jp.co.aliber.accsystem.form.common.MessageForm;
 import jp.co.aliber.accsystem.form.salary.SalaryStatementForm;
 import jp.co.aliber.accsystem.security.LoginUser;
-import jp.co.aliber.accsystem.service.employee.TEmployeeService;
+import jp.co.aliber.accsystem.service.employee.EmployeeService;
 
 /**
  * 給与明細一覧画面
@@ -36,7 +36,7 @@ public class SalaryStatementController {
 
 	// 從業員情報サービス
 	@Autowired
-	TEmployeeService tEmployeeService;
+	EmployeeService tEmployeeService;
 
 	/**
 	 * データのバンディング

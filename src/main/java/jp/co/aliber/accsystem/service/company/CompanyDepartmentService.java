@@ -16,7 +16,7 @@ import jp.co.aliber.accsystem.mapper.auto.TCompanyDepartmentMapper;
  *
  */
 @Service
-public class TCompanyDepartmentService {
+public class CompanyDepartmentService {
 
 	@Autowired
 	private TCompanyDepartmentMapper tCompanyDepartmentMapper;

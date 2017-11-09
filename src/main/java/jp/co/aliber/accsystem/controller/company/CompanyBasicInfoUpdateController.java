@@ -23,7 +23,7 @@ import jp.co.aliber.accsystem.form.company.CompanyBasicInfoForm;
 import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.UtilService;
 import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
-import jp.co.aliber.accsystem.service.user.TLoginUserService;
+import jp.co.aliber.accsystem.service.user.LoginService;
 
 /**
  * 会社基本情報入力
@@ -36,7 +36,7 @@ import jp.co.aliber.accsystem.service.user.TLoginUserService;
 public class CompanyBasicInfoUpdateController {
 
 	@Autowired
-	TLoginUserService loginUserService;
+	LoginService loginUserService;
 	@Autowired
 	CompanyBasicInfoService companyBasicInfoService;
 	@Autowired

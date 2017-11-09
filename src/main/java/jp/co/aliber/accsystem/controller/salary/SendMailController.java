@@ -30,7 +30,7 @@ import jp.co.aliber.accsystem.form.salary.SendMailForm;
 import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.UtilService;
 import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
-import jp.co.aliber.accsystem.service.employee.TEmployeeService;
+import jp.co.aliber.accsystem.service.employee.EmployeeService;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -50,7 +50,7 @@ public class SendMailController {
 	 * 從業員情報サービス
 	 */
 	@Autowired
-	TEmployeeService tEmployeeService;
+	EmployeeService tEmployeeService;
 
 	@Autowired
 	CompanyBasicInfoService companyBasicInfoService;

@@ -13,7 +13,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeSocialInsuranceMapper;
  *
  */
 @Service
-public class TEmployeeSocialInsuranceService {
+public class EmployeeSocialInsuranceService {
 
 	@Autowired
 	TEmployeeSocialInsuranceMapper tEmployeeSocialInsuranceMapper;

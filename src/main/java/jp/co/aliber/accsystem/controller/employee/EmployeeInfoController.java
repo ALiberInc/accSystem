@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
 import jp.co.aliber.accsystem.form.employee.EmployeeInfoForm;
 import jp.co.aliber.accsystem.security.LoginUser;
-import jp.co.aliber.accsystem.service.employee.TEmployeeService;
+import jp.co.aliber.accsystem.service.employee.EmployeeService;
 
 /**
  * 從業員情報一覧画面
@@ -28,7 +28,7 @@ public class EmployeeInfoController {
 
 	// 從業員情報サービス
 	@Autowired
-	TEmployeeService tEmployeeService;
+	EmployeeService tEmployeeService;
 
 	/**
 	 * データのバンディング

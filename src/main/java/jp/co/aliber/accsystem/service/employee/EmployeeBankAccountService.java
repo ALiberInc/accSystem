@@ -11,7 +11,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeBankAccountMapper;
  *
  */
 @Service
-public class TEmployeeBankAccountService {
+public class EmployeeBankAccountService {
 
     @Autowired
     TEmployeeBankAccountMapper tEmployeeBankAccountMapper;

@@ -13,7 +13,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeFixedPaymentMapper;
  *
  */
 @Service
-public class TEmployeeFixedPaymentService {
+public class EmployeeFixedPaymentService {
 
     @Autowired
     TEmployeeFixedPaymentMapper tEmployeeFixedPaymentMapper;

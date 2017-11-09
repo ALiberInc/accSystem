@@ -13,7 +13,7 @@ import jp.co.aliber.accsystem.mapper.auto.TEmployeeIncomeTaxMapper;
  *
  */
 @Service
-public class TEmployeeIncomeTaxService {
+public class EmployeeIncomeTaxService {
 
     @Autowired
     TEmployeeIncomeTaxMapper tEmployeeIncomeTaxMapper;

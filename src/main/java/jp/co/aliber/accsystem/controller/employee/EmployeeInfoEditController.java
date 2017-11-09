@@ -26,13 +26,13 @@ import jp.co.aliber.accsystem.entity.auto.TEmployeeSocialInsurance;
 import jp.co.aliber.accsystem.form.employee.EmployeeInfoEditForm;
 import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.UtilService;
-import jp.co.aliber.accsystem.service.company.TCompanyDepartmentService;
-import jp.co.aliber.accsystem.service.employee.TEmployeeBankAccountService;
-import jp.co.aliber.accsystem.service.employee.TEmployeeFixedDeductionService;
-import jp.co.aliber.accsystem.service.employee.TEmployeeFixedPaymentService;
-import jp.co.aliber.accsystem.service.employee.TEmployeeIncomeTaxService;
-import jp.co.aliber.accsystem.service.employee.TEmployeeService;
-import jp.co.aliber.accsystem.service.employee.TEmployeeSocialInsuranceService;
+import jp.co.aliber.accsystem.service.company.CompanyDepartmentService;
+import jp.co.aliber.accsystem.service.employee.EmployeeBankAccountService;
+import jp.co.aliber.accsystem.service.employee.EmployeeFixedDeductionService;
+import jp.co.aliber.accsystem.service.employee.EmployeeFixedPaymentService;
+import jp.co.aliber.accsystem.service.employee.EmployeeIncomeTaxService;
+import jp.co.aliber.accsystem.service.employee.EmployeeService;
+import jp.co.aliber.accsystem.service.employee.EmployeeSocialInsuranceService;
 
 /**
  * 従業員データ入力画面
@@ -48,43 +48,43 @@ public class EmployeeInfoEditController {
 	 * 從業員情報サービス
 	 */
 	@Autowired
-	private TEmployeeService tEmployeeService;
+	private EmployeeService tEmployeeService;
 
 	/**
 	 * 從業員口座情報サービス
 	 */
 	@Autowired
-	private TEmployeeBankAccountService tEmployeeBankAccountService;
+	private EmployeeBankAccountService tEmployeeBankAccountService;
 
 	/**
 	 * 固定控除金額情報サービス
 	 */
 	@Autowired
-	private TEmployeeFixedDeductionService tEmployeeFixedDeductionService;
+	private EmployeeFixedDeductionService tEmployeeFixedDeductionService;
 
 	/**
 	 * 固定支給金額情報サービス
 	 */
 	@Autowired
-	private TEmployeeFixedPaymentService tEmployeeFixedPaymentService;
+	private EmployeeFixedPaymentService tEmployeeFixedPaymentService;
 
 	/**
 	 * 所得税情報サービス
 	 */
 	@Autowired
-	private TEmployeeIncomeTaxService tEmployeeIncomeTaxService;
+	private EmployeeIncomeTaxService tEmployeeIncomeTaxService;
 
 	/**
 	 * 社会保険サービス
 	 */
 	@Autowired
-	private TEmployeeSocialInsuranceService tEmployeeSocialInsuranceService;
+	private EmployeeSocialInsuranceService tEmployeeSocialInsuranceService;
 
 	/**
 	 * 会社部署情報サービス
 	 */
 	@Autowired
-	private TCompanyDepartmentService tCompanyDepartmentService;
+	private CompanyDepartmentService tCompanyDepartmentService;
 
 	/**
 	 * utilサービス

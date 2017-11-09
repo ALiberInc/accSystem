@@ -21,10 +21,10 @@ import jp.co.aliber.accsystem.mapper.auto.TCompanyDepartmentMapper;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TCompanyDepartmentServiceTest {
+public class CompanyDepartmentServiceTest {
 
 	@Autowired
-	private TCompanyDepartmentService tCompanyDepartmentService;
+	private CompanyDepartmentService tCompanyDepartmentService;
 	@Autowired
 	private TCompanyDepartmentMapper tCompanyDepartmentMapper;
 

@@ -17,7 +17,7 @@ import jp.co.aliber.accsystem.mapper.auto.TLoginUserMapper;
  *
  */
 @Service
-public class TLoginUserService {
+public class LoginService {
 
 	@Autowired
 	TLoginUserMapper tLoginUserMapper;

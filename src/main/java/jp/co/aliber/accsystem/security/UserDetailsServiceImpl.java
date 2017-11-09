@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
-import jp.co.aliber.accsystem.service.user.TLoginUserService;
+import jp.co.aliber.accsystem.service.user.LoginService;
 
 /**
  * UserDetailsServiceの実装クラス Spring Securityでのユーザー認証に使用する
@@ -16,7 +16,7 @@ import jp.co.aliber.accsystem.service.user.TLoginUserService;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
-	TLoginUserService loginUserService;
+	LoginService loginUserService;
 
 	/*
 	 * (非 Javadoc)
