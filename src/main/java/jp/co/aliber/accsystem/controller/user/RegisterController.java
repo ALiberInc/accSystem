@@ -143,7 +143,7 @@ public class RegisterController {
 			}
 		}
 
-		// 暗証番号（確認）の追加と一致チェック
+		// 暗証番号の一致チェック
 		if (StringUtils.isNotEmpty(form.getPassword()) && StringUtils.isNotEmpty(form.getPasswordConfirm())) {
 			if (!form.getPassword().equals(form.getPasswordConfirm())) {
 				result.rejectValue("password", "error.passwordNotSame",

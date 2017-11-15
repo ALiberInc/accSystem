@@ -36,12 +36,12 @@ public class RegisterForm {
 
 	// アルファベット名
 	@Size(max = 50)
-	@Pattern(regexp = "^[\\p{L} .'-]+$")
+	@Pattern(regexp = "[A-Za-z ]*")
 	private String alphabetName;
 
 	// メールアドレス
 	@NotBlank
-	@Size(max = 100)
+	@Size(max = 50)
 	@Email
 	private String email;
 
