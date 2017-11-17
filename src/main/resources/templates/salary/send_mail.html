@@ -3,7 +3,7 @@
 <head th:replace="acc_temp :: headerImp ('__メール送信__')">
 </head>
 <body>
-	<div class="centerDiv">
+	<div class="container">
 		<form name="sendMailForm" id="sendMailForm"
 			th:action="@{/send_mail/send}" th:object="${sendMailForm}"
 			method="post">
@@ -16,7 +16,7 @@
 				th:field="${sendMailForm.salaryYear}" /> <input type="hidden"
 				th:field="${sendMailForm.salaryMonth}" />
 
-			<table>
+			<table class="table">
 				<tr>
 					<th>送信者名</th>
 					<td><input type="text" id="Name" maxlength="30" />
