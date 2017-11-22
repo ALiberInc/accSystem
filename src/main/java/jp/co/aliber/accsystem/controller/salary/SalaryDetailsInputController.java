@@ -1,26 +1,30 @@
 package jp.co.aliber.accsystem.controller.salary;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jp.co.aliber.accsystem.ImmutableValues;
+import jp.co.aliber.accsystem.entity.auto.TEmployeeFixedDeduction;
+import jp.co.aliber.accsystem.entity.auto.TEmployeeFixedPayment;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeIncomeTax;
 import jp.co.aliber.accsystem.entity.auto.TSalaryDetail;
+import jp.co.aliber.accsystem.form.common.MessageForm;
 import jp.co.aliber.accsystem.form.salary.SalaryDetailsInputForm;
-import jp.co.aliber.accsystem.mapper.auto.MIncomeTaxMapper;
-import jp.co.aliber.accsystem.mapper.auto.TEmployeeFixedDeductionMapper;
-import jp.co.aliber.accsystem.mapper.auto.TEmployeeFixedPaymentMapper;
-import jp.co.aliber.accsystem.mapper.auto.TEmployeeIncomeTaxMapper;
-import jp.co.aliber.accsystem.mapper.auto.TSalaryDetailMapper;
 import jp.co.aliber.accsystem.security.LoginUser;
+import jp.co.aliber.accsystem.service.employee.EmployeeFixedDeductionService;
+import jp.co.aliber.accsystem.service.employee.EmployeeFixedPaymentService;
+import jp.co.aliber.accsystem.service.employee.EmployeeIncomeTaxService;
 import jp.co.aliber.accsystem.service.salary.SalaryDetailsInputService;
 
 /**
@@ -35,93 +39,165 @@ public class SalaryDetailsInputController {
 	@Autowired
 	SalaryDetailsInputService salaryDetailsInputService;
 	@Autowired
-	TSalaryDetailMapper tSalaryDetailMapper;
+	EmployeeIncomeTaxService employeeIncomeTaxService;
 	@Autowired
-	TEmployeeFixedPaymentMapper tEmployeeFixedPaymentMapper;
+	EmployeeFixedPaymentService employeeFixedPaymentService;
 	@Autowired
-	TEmployeeFixedDeductionMapper tEmployeeFixedDeductionMapper;
-	@Autowired
-	TEmployeeIncomeTaxMapper tEmployeeIncomeTaxMapper;
-	@Autowired
-	MIncomeTaxMapper mIncomeTaxMapper;
+	EmployeeFixedDeductionService employeeFixedDeductionService;
 
 	/**
-	 * 初期値設定
-	 *
-	 * @param model
-	 *            モデル
 	 * @param form
-	 *            給与明細入力画面Form
 	 * @param yearMonth
-	 *            年月
 	 * @param employeeId
-	 *            従業員ID
 	 * @param loginUser
-	 *            ログインユーザ
-	 * @return 給与明細入力画面
+	 * @return
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(Model model, @ModelAttribute SalaryDetailsInputForm form,
+	public String index(@ModelAttribute SalaryDetailsInputForm form,
 			@RequestParam(value = "yearMonth", required = true) String yearMonth,
 			@RequestParam(value = "employeeId", required = true) Integer employeeId,
 			@AuthenticationPrincipal LoginUser loginUser) {
-		// 先画面から取得する
+
+		// 前画面から取得する
 		form.setEmployeeId(employeeId);
 		form.setSalaryYearMonth(yearMonth);
 		// ログイン情報から取得
 		Integer compId = loginUser.getUser().getCompId();
-		// 扶養親族等の数を従業員所得税情報テーブルから取得する
-		TEmployeeIncomeTax tEmployeeIncomeTax = tEmployeeIncomeTaxMapper.selectByPrimaryKey(employeeId, compId);
+		TSalaryDetail salaryDetail = salaryDetailsInputService.getSalaryDetail(employeeId, compId, yearMonth);
 
-		// 扶養親族等の数
-		Integer person = 0;
-		if (tEmployeeIncomeTax != null) {
-			person = tEmployeeIncomeTax.getDependencyCount();
+		if (salaryDetail == null) {
+			// 各給与を格納
+			List<Integer> paymentList = new ArrayList<>();
+			// 基本給
+			TEmployeeFixedPayment employeeFixedPayment = employeeFixedPaymentService
+					.getTEmployeeFixedPayment(employeeId, compId);
+			paymentList.add(employeeFixedPayment.getBasicSalary());
+			form.setBasicSalary(employeeFixedPayment.getBasicSalary());
+			// 役職手当
+			paymentList.add(employeeFixedPayment.getPositionAllowance());
+			form.setPositionAllowance(employeeFixedPayment.getPositionAllowance());
+			// 資格手当
+			paymentList.add(employeeFixedPayment.getQualificationAllowance());
+			form.setQualificationAllowance(employeeFixedPayment.getQualificationAllowance());
+			// 住宅手当
+			paymentList.add(employeeFixedPayment.getHouseAllowance());
+			form.setHouseAllowance(employeeFixedPayment.getHouseAllowance());
+			// 家族手当
+			paymentList.add(employeeFixedPayment.getFamilyAllowance());
+			form.setFamilyAllowance(employeeFixedPayment.getFamilyAllowance());
+			// その他手当
+			paymentList.add(employeeFixedPayment.getOtherAllowance());
+			form.setOtherAllowance(employeeFixedPayment.getOtherAllowance());
+			// 交通費(実費)
+			form.setTransportFee(employeeFixedPayment.getTransportFee());
+			// 総支給
+			int sum = paymentList.stream().filter(payment -> payment != null).mapToInt(Integer::intValue).sum();
+
+			form.setSum(sum
+					+ (employeeFixedPayment.getTransportFee() == null ? 0 : employeeFixedPayment.getTransportFee()));
+			// 各控除額を格納をここで置く
+			List<Integer> listDeduction = new ArrayList<>();
+			// 総支給によって、保険について各項目を取得する
+			Map<String, Integer> map = new HashMap<>();
+			map = salaryDetailsInputService.insuranceCalculator(sum, compId);
+			// 健康保険
+			form.setHealthInsurance(map.get("healthInsurance"));
+			// 厚生年金
+			form.setWelfarePension(map.get("welfarePension"));
+			// 雇用保険
+			form.setEmploymentInsurance(map.get("employmentInsurance"));
+			// 社会保険合計
+			form.setSocialInsuranceSum(map.get("socialInsuranceSum"));
+			listDeduction.add(map.get("socialInsuranceSum"));
+
+			// 扶養親族等の数を従業員所得税情報テーブルから取得する
+			TEmployeeIncomeTax tEmployeeIncomeTax = employeeIncomeTaxService.getTEmployeeIncomeTax(employeeId, compId);
+
+			// 扶養親族等の数
+			Integer person = 0;
+			if (tEmployeeIncomeTax != null) {
+				person = tEmployeeIncomeTax.getDependencyCount();
+			}
+			// 所得税
+			Integer incomeTax = salaryDetailsInputService.incomeTaxCalculator(sum, map.get("socialInsuranceSum"),
+					person);
+			listDeduction.add(incomeTax);
+			form.setIncomeTax(incomeTax);
+			// 住民税
+			form.setInhabitantTax(null);
+			// 従業員固定控除金額情報テーブルから固定控除金額情報を取得
+			TEmployeeFixedDeduction tEmployeeFixedDeduction = employeeFixedDeductionService
+					.getTEmployeeFixedDeduction(employeeId, compId);
+			// 旅行積立金
+			Integer travelFund = tEmployeeFixedDeduction.getTravelFund();
+			listDeduction.add(travelFund);
+			form.setTravelFund(travelFund);
+			// 借入等返済
+			Integer repaymentBorrowings = tEmployeeFixedDeduction.getRepaymentBorrowings();
+			listDeduction.add(repaymentBorrowings);
+			form.setRepaymentBorrowings(repaymentBorrowings);
+			// 年末控除
+			Integer yearendDeduction = tEmployeeFixedDeduction.getYearendDeduction();
+			listDeduction.add(yearendDeduction);
+			form.setYearendDeduction(yearendDeduction);
+			// 家賃控除
+			Integer rentDeduction = tEmployeeFixedDeduction.getRentDeduction();
+			listDeduction.add(rentDeduction);
+			form.setRentDeduction(rentDeduction);
+			// その他の控除
+			Integer otherDeduction = tEmployeeFixedDeduction.getOtherDeduction();
+			listDeduction.add(otherDeduction);
+			form.setOtherDeduction(otherDeduction);
+			// 控除額合計
+			int deductionSum = listDeduction.stream().filter(deduction -> deduction != null).mapToInt(Integer::intValue)
+					.sum();
+			form.setTotalDeductibleSum(deductionSum);
+			// 差引支給額
+			form.setSubscriptionAmount(sum - deductionSum);
+		} else {
+			// 基本給
+			form.setBasicSalary(salaryDetail.getBasicSalary());
+			// 役職手当
+			form.setPositionAllowance(salaryDetail.getPositionAllowance());
+			// 資格手当
+			form.setQualificationAllowance(salaryDetail.getQualificationAllowance());
+			// 住宅手当
+			form.setHouseAllowance(salaryDetail.getHouseAllowance());
+			// 交通費(実費)
+			form.setFamilyAllowance(salaryDetail.getFamilyAllowance());
+			// その他手当
+			form.setOtherAllowance(salaryDetail.getOtherAllowance());
+			// 交通費(実費)
+			form.setTransportFee(salaryDetail.getTransportFee());
+			// 総支給
+			form.setSum(salaryDetail.getTotalPay());
+			// 健康保険
+			form.setHealthInsurance(salaryDetail.getHealthInsurance());
+			// 厚生年金
+			form.setWelfarePension(salaryDetail.getWelfareInsurance());
+			// 雇用保険
+			form.setEmploymentInsurance(salaryDetail.getEmployInsurance());
+			// 社会保険合計
+			form.setSocialInsuranceSum(salaryDetail.getTotalInsurance());
+			// 所得税
+			form.setIncomeTax(salaryDetail.getIncomeTax());
+			// 住民税
+			form.setInhabitantTax(salaryDetail.getLivingTax());
+			// 旅行積立金
+			form.setTravelFund(salaryDetail.getTravelFund());
+			// 借入等返済
+			form.setRepaymentBorrowings(salaryDetail.getRepaymentBorrowings());
+			// 年末控除
+			form.setYearendDeduction(salaryDetail.getYearendDeduction());
+			// 家賃控除
+			form.setRentDeduction(salaryDetail.getRentDeduction());
+			// その他の控除
+			form.setOtherDeduction(salaryDetail.getOtherDeduction());
+			// 控除額合計
+			form.setTotalDeductibleSum(salaryDetail.getTotalDeductibleAmount());
+			// 差引支給額
+			form.setSubscriptionAmount(salaryDetail.getSubscriptionAmount());
 		}
-
-		TSalaryDetail tSalaryDetail = salaryDetailsInputService.init(employeeId, compId, person, yearMonth);
-		// 基本給
-		form.setBasicSalary(tSalaryDetail.getBasicSalary());
-		// 役職手当
-		form.setPositionAllowance(tSalaryDetail.getPositionAllowance());
-		// 資格手当
-		form.setQualificationAllowance(tSalaryDetail.getQualificationAllowance());
-		// 住宅手当
-		form.setHouseAllowance(tSalaryDetail.getHouseAllowance());
-		// 交通費(実費)
-		form.setFamilyAllowance(tSalaryDetail.getFamilyAllowance());
-		// その他手当
-		form.setOtherAllowance(tSalaryDetail.getOtherAllowance());
-		// 交通費(実費)
-		form.setTransportFee(tSalaryDetail.getTransportFee());
-		// 総支給
-		form.setSum(tSalaryDetail.getTotalPay());
-		// 健康保険
-		form.setHealthInsurance(tSalaryDetail.getHealthInsurance());
-		// 厚生年金
-		form.setWelfarePension(tSalaryDetail.getWelfareInsurance());
-		// 雇用保険
-		form.setEmploymentInsurance(tSalaryDetail.getEmployInsurance());
-		// 社会保険合計
-		form.setSocialInsuranceSum(tSalaryDetail.getTotalInsurance());
-		// 所得税
-		form.setIncomeTax(tSalaryDetail.getIncomeTax());
-		// 住民税
-		form.setInhabitantTax(tSalaryDetail.getLivingTax());
-		// 旅行積立金
-		form.setTravelFund(tSalaryDetail.getTravelFund());
-		// 借入等返済
-		form.setRepaymentBorrowings(tSalaryDetail.getRepaymentBorrowings());
-		// 年末控除
-		form.setYearendDeduction(tSalaryDetail.getYearendDeduction());
-		// 家賃控除
-		form.setRentDeduction(tSalaryDetail.getRentDeduction());
-		// その他の控除
-		form.setOtherDeduction(tSalaryDetail.getOtherDeduction());
-		// 控除額合計
-		form.setTotalDeductibleSum(tSalaryDetail.getTotalDeductibleAmount());
-		// 差引支給額
-		form.setSubscriptionAmount(tSalaryDetail.getSubscriptionAmount());
 
 		return "salary/salary_details_input";
 	}
@@ -140,19 +216,16 @@ public class SalaryDetailsInputController {
 	 * @return 給与明細入力画面
 	 */
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
-	public String save(Locale locale, Model model, @ModelAttribute SalaryDetailsInputForm form,
-			@AuthenticationPrincipal LoginUser loginUser) {
-		// formから必要情報を取得する
-		Integer employeeID = form.getEmployeeId();
-		Integer compId = loginUser.getUser().getCompId();
-		String yearMonth = form.getSalaryYearMonth();
+	public String save(@ModelAttribute SalaryDetailsInputForm form, @AuthenticationPrincipal LoginUser loginUser,
+			MessageForm messageForm) {
+
 		TSalaryDetail tSalaryDetail = new TSalaryDetail();
 		// 従業員ID
-		tSalaryDetail.setEmployeeId(employeeID);
+		tSalaryDetail.setEmployeeId(form.getEmployeeId());
 		// 会社ID
-		tSalaryDetail.setCompId(compId);
+		tSalaryDetail.setCompId(loginUser.getUser().getCompId());
 		// 年月
-		tSalaryDetail.setSalaryYearMonth(yearMonth);
+		tSalaryDetail.setSalaryYearMonth(form.getSalaryYearMonth());
 		// 年月
 		tSalaryDetail.setPayDate(new Date());
 		// 基本給
@@ -198,9 +271,18 @@ public class SalaryDetailsInputController {
 		// 差引支給額
 		tSalaryDetail.setSubscriptionAmount(form.getSubscriptionAmount());
 
-		// 登録処理
-		salaryDetailsInputService.update(tSalaryDetail);
+		TSalaryDetail existSalaryDetail = salaryDetailsInputService.getSalaryDetail(tSalaryDetail.getEmployeeId(),
+				tSalaryDetail.getCompId(), tSalaryDetail.getSalaryYearMonth());
+		if (existSalaryDetail == null) {
+			// 登録処理
+			salaryDetailsInputService.insert(tSalaryDetail);
+		} else {
+			salaryDetailsInputService.update(tSalaryDetail);
+		}
 
-		return "redirect:/finish?forwardURL=salary_statement";
+		// メッセージ情報を設定
+		messageForm.setMessage(ImmutableValues.MESSAGE_FINISH_SALARY_DETAIL_INPUT);
+		messageForm.setForwardURL(ImmutableValues.FORWARD_SALARY_STATEMENT);
+		return "message";
 	}
 }

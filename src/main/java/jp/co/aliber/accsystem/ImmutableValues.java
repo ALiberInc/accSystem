@@ -52,4 +52,10 @@ public class ImmutableValues {
 	public static final String MESSAGE_FINISH_REGISTER = "新規登録が完了しました。";
 	// 遷移先：会社情報画面
 	public static final String FORWARD_LOGIN = "login";
+
+	// 給与明細入力画面
+	// 給与明細登録完了
+	public static final String MESSAGE_FINISH_SALARY_DETAIL_INPUT = "給与明細登録が完了しました。";
+	// 遷移先：給与明細一覧画面
+	public static final String FORWARD_SALARY_STATEMENT = "salary_statement";
 }
