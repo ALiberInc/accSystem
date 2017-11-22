@@ -1,7 +1,5 @@
 package jp.co.aliber.accsystem.form.salary;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -11,8 +9,8 @@ import javax.validation.constraints.Pattern;
  * @author yu_k
  *
  */
-public class SalaryDetailsInputForm implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class SalaryDetailsInputForm {
+
     // 従業員ID
     @NotNull
     @Pattern(regexp = "[0-9]*")
