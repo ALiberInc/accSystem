@@ -194,12 +194,12 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 保険者番号
 	 */
-	private Long insurerNumber;
+	private String insurerNumber;
 
 	/**
 	 * 被保険者整理番号
 	 */
-	private Long insuredPersonnelNumber;
+	private String insuredPersonnelNumber;
 
 	/**
 	 * 厚生年金
@@ -215,7 +215,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 基礎年金番号
 	 */
-	private Long welfareNumber;
+	private String welfareNumber;
 
 	/**
 	 * 厚生年金基金
@@ -726,36 +726,6 @@ public class EmployeeInfoEditForm {
 	}
 
 	/**
-	 * @return insurerNumber
-	 */
-	public Long getInsurerNumber() {
-		return insurerNumber;
-	}
-
-	/**
-	 * @param insurerNumber
-	 *            セットする insurerNumber
-	 */
-	public void setInsurerNumber(Long insurerNumber) {
-		this.insurerNumber = insurerNumber;
-	}
-
-	/**
-	 * @return insuredPersonnelNumber
-	 */
-	public Long getInsuredPersonnelNumber() {
-		return insuredPersonnelNumber;
-	}
-
-	/**
-	 * @param insuredPersonnelNumber
-	 *            セットする insuredPersonnelNumber
-	 */
-	public void setInsuredPersonnelNumber(Long insuredPersonnelNumber) {
-		this.insuredPersonnelNumber = insuredPersonnelNumber;
-	}
-
-	/**
 	 * @return welfarePensionFlag
 	 */
 	public Integer getWelfarePensionFlag() {
@@ -783,21 +753,6 @@ public class EmployeeInfoEditForm {
 	 */
 	public void setWelfareCompensation(Short welfareCompensation) {
 		this.welfareCompensation = welfareCompensation;
-	}
-
-	/**
-	 * @return welfareNumber
-	 */
-	public Long getWelfareNumber() {
-		return welfareNumber;
-	}
-
-	/**
-	 * @param welfareNumber
-	 *            セットする welfareNumber
-	 */
-	public void setWelfareNumber(Long welfareNumber) {
-		this.welfareNumber = welfareNumber;
 	}
 
 	/**
@@ -963,6 +918,51 @@ public class EmployeeInfoEditForm {
 	 */
 	public void setOtherDeductions(Integer otherDeductions) {
 		this.otherDeductions = otherDeductions;
+	}
+
+	/**
+	 * @return insurerNumber
+	 */
+	public String getInsurerNumber() {
+		return insurerNumber;
+	}
+
+	/**
+	 * @param insurerNumber
+	 *            セットする insurerNumber
+	 */
+	public void setInsurerNumber(String insurerNumber) {
+		this.insurerNumber = insurerNumber;
+	}
+
+	/**
+	 * @return insuredPersonnelNumber
+	 */
+	public String getInsuredPersonnelNumber() {
+		return insuredPersonnelNumber;
+	}
+
+	/**
+	 * @param insuredPersonnelNumber
+	 *            セットする insuredPersonnelNumber
+	 */
+	public void setInsuredPersonnelNumber(String insuredPersonnelNumber) {
+		this.insuredPersonnelNumber = insuredPersonnelNumber;
+	}
+
+	/**
+	 * @return welfareNumber
+	 */
+	public String getWelfareNumber() {
+		return welfareNumber;
+	}
+
+	/**
+	 * @param welfareNumber
+	 *            セットする welfareNumber
+	 */
+	public void setWelfareNumber(String welfareNumber) {
+		this.welfareNumber = welfareNumber;
 	}
 
 }
