@@ -5,11 +5,11 @@ create table "public".t_employee_social_insurance (
   , health_insur_join_flg smallint not null
   , health_insur_join_catagory smallint
   , health_insur_standard_reward_level smallint
-  , insurers_no bigint
-  , insured_sort_no bigint
+  , insurers_no character varying(20)
+  , insured_sort_no character varying(20)
   , welfare_join_flg boolean not null
   , welfare_standard_reward_level smallint
-  , basic_welfare_no bigint
+  , basic_welfare_no character varying(20)
   , welfare_fund_join_flg boolean not null
   , delete_flg boolean default false not null
   , regist_date timestamp without time zone default CURRENT_TIMESTAMP not null
