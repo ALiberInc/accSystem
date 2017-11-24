@@ -325,52 +325,62 @@ public class TEmployeeExample {
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoEqualTo(Integer value) {
+        public Criteria andEmployeeNoEqualTo(String value) {
             addCriterion("employee_no =", value, "employeeNo");
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoNotEqualTo(Integer value) {
+        public Criteria andEmployeeNoNotEqualTo(String value) {
             addCriterion("employee_no <>", value, "employeeNo");
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoGreaterThan(Integer value) {
+        public Criteria andEmployeeNoGreaterThan(String value) {
             addCriterion("employee_no >", value, "employeeNo");
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoGreaterThanOrEqualTo(Integer value) {
+        public Criteria andEmployeeNoGreaterThanOrEqualTo(String value) {
             addCriterion("employee_no >=", value, "employeeNo");
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoLessThan(Integer value) {
+        public Criteria andEmployeeNoLessThan(String value) {
             addCriterion("employee_no <", value, "employeeNo");
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoLessThanOrEqualTo(Integer value) {
+        public Criteria andEmployeeNoLessThanOrEqualTo(String value) {
             addCriterion("employee_no <=", value, "employeeNo");
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoIn(List<Integer> values) {
+        public Criteria andEmployeeNoLike(String value) {
+            addCriterion("employee_no like", value, "employeeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmployeeNoNotLike(String value) {
+            addCriterion("employee_no not like", value, "employeeNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmployeeNoIn(List<String> values) {
             addCriterion("employee_no in", values, "employeeNo");
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoNotIn(List<Integer> values) {
+        public Criteria andEmployeeNoNotIn(List<String> values) {
             addCriterion("employee_no not in", values, "employeeNo");
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoBetween(Integer value1, Integer value2) {
+        public Criteria andEmployeeNoBetween(String value1, String value2) {
             addCriterion("employee_no between", value1, value2, "employeeNo");
             return (Criteria) this;
         }
 
-        public Criteria andEmployeeNoNotBetween(Integer value1, Integer value2) {
+        public Criteria andEmployeeNoNotBetween(String value1, String value2) {
             addCriterion("employee_no not between", value1, value2, "employeeNo");
             return (Criteria) this;
         }

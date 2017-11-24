@@ -168,7 +168,7 @@ public class EmployeeInfoEditController {
 				form.setAccountHolder(tEmployeeBankAccount.getAccountKana());
 			}
 			if (tEmployeeBankAccount.getBankCode() != null) {
-				form.setBankCode(Integer.valueOf(tEmployeeBankAccount.getBankCode()).intValue());
+				form.setBankCode(tEmployeeBankAccount.getBankCode());
 			}
 			if (tEmployeeBankAccount.getBankName() != null) {
 				form.setBankName(tEmployeeBankAccount.getBankName());
@@ -178,13 +178,13 @@ public class EmployeeInfoEditController {
 
 			}
 			if (tEmployeeBankAccount.getBranchCode() != null) {
-				form.setBranchCode(Integer.valueOf(tEmployeeBankAccount.getBranchCode()).intValue());
+				form.setBranchCode(tEmployeeBankAccount.getBranchCode());
 			}
 			if (tEmployeeBankAccount.getBranchName() != null) {
 				form.setBranchName(tEmployeeBankAccount.getBranchName());
 			}
 			if (tEmployeeBankAccount.getAccountNo() != null) {
-				form.setAccountNumber(Integer.valueOf(tEmployeeBankAccount.getAccountNo()));
+				form.setAccountNumber(tEmployeeBankAccount.getAccountNo());
 			}
 		}
 		// 固定控除金額情報
