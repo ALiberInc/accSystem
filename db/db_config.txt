@@ -1,5 +1,5 @@
 PostgreSQL
-Version:9.6.5
+Version:9.6.6
 Host:172.16.4.97
 Port:5432
 DB:postgres
