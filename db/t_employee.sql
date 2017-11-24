@@ -1,7 +1,7 @@
 create table "public".t_employee (
   employee_id serial
   , comp_id integer not null
-  , employee_no integer not null
+  , employee_no character varying(50) not null
   , last_name character varying(50) not null
   , first_name character varying(50) not null
   , last_name_kana character varying(50)

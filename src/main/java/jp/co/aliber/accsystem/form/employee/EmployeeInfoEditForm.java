@@ -23,7 +23,7 @@ public class EmployeeInfoEditForm {
 	 * 従業員番号
 	 */
 	@NotNull
-	private Integer employeeNo;
+	private String employeeNo;
 
 	/**
 	 * 従業員番号
@@ -92,7 +92,7 @@ public class EmployeeInfoEditForm {
 	 * 銀行コード
 	 */
 	@NotNull
-	private Integer bankCode;
+	private String bankCode;
 
 	/**
 	 * 銀行名
@@ -109,7 +109,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 本支店コード
 	 */
-	private Integer branchCode;
+	private String branchCode;
 
 	/**
 	 * 本支店名
@@ -120,7 +120,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 口座番号
 	 */
-	private Integer accountNumber;
+	private String accountNumber;
 
 	/**
 	 * 所得税区分
@@ -293,7 +293,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * @return employeeNo
 	 */
-	public Integer getEmployeeNo() {
+	public String getEmployeeNo() {
 		return employeeNo;
 	}
 
@@ -301,7 +301,7 @@ public class EmployeeInfoEditForm {
 	 * @param employeeNo
 	 *            セットする employeeNo
 	 */
-	public void setEmployeeNo(Integer employeeNo) {
+	public void setEmployeeNo(String employeeNo) {
 		this.employeeNo = employeeNo;
 	}
 
@@ -458,7 +458,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * @return bankCode
 	 */
-	public Integer getBankCode() {
+	public String getBankCode() {
 		return bankCode;
 	}
 
@@ -466,7 +466,7 @@ public class EmployeeInfoEditForm {
 	 * @param bankCode
 	 *            セットする bankCode
 	 */
-	public void setBankCode(Integer bankCode) {
+	public void setBankCode(String bankCode) {
 		this.bankCode = bankCode;
 	}
 
@@ -503,7 +503,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * @return branchCode
 	 */
-	public Integer getBranchCode() {
+	public String getBranchCode() {
 		return branchCode;
 	}
 
@@ -511,7 +511,7 @@ public class EmployeeInfoEditForm {
 	 * @param branchCode
 	 *            セットする branchCode
 	 */
-	public void setBranchCode(Integer branchCode) {
+	public void setBranchCode(String branchCode) {
 		this.branchCode = branchCode;
 	}
 
@@ -533,7 +533,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * @return accountNumber
 	 */
-	public Integer getAccountNumber() {
+	public String getAccountNumber() {
 		return accountNumber;
 	}
 
@@ -541,7 +541,7 @@ public class EmployeeInfoEditForm {
 	 * @param accountNumber
 	 *            セットする accountNumber
 	 */
-	public void setAccountNumber(Integer accountNumber) {
+	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 
