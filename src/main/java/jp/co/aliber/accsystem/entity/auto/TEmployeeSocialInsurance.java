@@ -64,7 +64,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    private Long insurersNo;
+    private String insurersNo;
 
     /**
      *
@@ -73,7 +73,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    private Long insuredSortNo;
+    private String insuredSortNo;
 
     /**
      *
@@ -100,7 +100,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    private Long basicWelfareNo;
+    private String basicWelfareNo;
 
     /**
      *
@@ -308,7 +308,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public Long getInsurersNo() {
+    public String getInsurersNo() {
         return insurersNo;
     }
 
@@ -320,7 +320,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public void setInsurersNo(Long insurersNo) {
+    public void setInsurersNo(String insurersNo) {
         this.insurersNo = insurersNo;
     }
 
@@ -332,7 +332,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public Long getInsuredSortNo() {
+    public String getInsuredSortNo() {
         return insuredSortNo;
     }
 
@@ -344,7 +344,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public void setInsuredSortNo(Long insuredSortNo) {
+    public void setInsuredSortNo(String insuredSortNo) {
         this.insuredSortNo = insuredSortNo;
     }
 
@@ -404,7 +404,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public Long getBasicWelfareNo() {
+    public String getBasicWelfareNo() {
         return basicWelfareNo;
     }
 
@@ -416,7 +416,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public void setBasicWelfareNo(Long basicWelfareNo) {
+    public void setBasicWelfareNo(String basicWelfareNo) {
         this.basicWelfareNo = basicWelfareNo;
     }
 

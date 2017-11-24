@@ -12,11 +12,11 @@
     <result column="health_insur_join_flg" jdbcType="SMALLINT" property="healthInsurJoinFlg" />
     <result column="health_insur_join_catagory" jdbcType="SMALLINT" property="healthInsurJoinCatagory" />
     <result column="health_insur_standard_reward_level" jdbcType="SMALLINT" property="healthInsurStandardRewardLevel" />
-    <result column="insurers_no" jdbcType="BIGINT" property="insurersNo" />
-    <result column="insured_sort_no" jdbcType="BIGINT" property="insuredSortNo" />
+    <result column="insurers_no" jdbcType="VARCHAR" property="insurersNo" />
+    <result column="insured_sort_no" jdbcType="VARCHAR" property="insuredSortNo" />
     <result column="welfare_join_flg" jdbcType="BIT" property="welfareJoinFlg" />
     <result column="welfare_standard_reward_level" jdbcType="SMALLINT" property="welfareStandardRewardLevel" />
-    <result column="basic_welfare_no" jdbcType="BIGINT" property="basicWelfareNo" />
+    <result column="basic_welfare_no" jdbcType="VARCHAR" property="basicWelfareNo" />
     <result column="welfare_fund_join_flg" jdbcType="BIT" property="welfareFundJoinFlg" />
     <result column="delete_flg" jdbcType="BIT" property="deleteFlg" />
     <result column="regist_date" jdbcType="TIMESTAMP" property="registDate" />
@@ -163,9 +163,9 @@
       update_id)
     values (#{employeeId,jdbcType=INTEGER}, #{compId,jdbcType=INTEGER}, #{employInsurJoinFlg,jdbcType=SMALLINT}, 
       #{healthInsurJoinFlg,jdbcType=SMALLINT}, #{healthInsurJoinCatagory,jdbcType=SMALLINT}, 
-      #{healthInsurStandardRewardLevel,jdbcType=SMALLINT}, #{insurersNo,jdbcType=BIGINT}, 
-      #{insuredSortNo,jdbcType=BIGINT}, #{welfareJoinFlg,jdbcType=BIT}, #{welfareStandardRewardLevel,jdbcType=SMALLINT}, 
-      #{basicWelfareNo,jdbcType=BIGINT}, #{welfareFundJoinFlg,jdbcType=BIT}, #{deleteFlg,jdbcType=BIT}, 
+      #{healthInsurStandardRewardLevel,jdbcType=SMALLINT}, #{insurersNo,jdbcType=VARCHAR}, 
+      #{insuredSortNo,jdbcType=VARCHAR}, #{welfareJoinFlg,jdbcType=BIT}, #{welfareStandardRewardLevel,jdbcType=SMALLINT}, 
+      #{basicWelfareNo,jdbcType=VARCHAR}, #{welfareFundJoinFlg,jdbcType=BIT}, #{deleteFlg,jdbcType=BIT}, 
       #{registDate,jdbcType=TIMESTAMP}, #{registId,jdbcType=INTEGER}, #{updateDate,jdbcType=TIMESTAMP}, 
       #{updateId,jdbcType=INTEGER})
   </insert>
@@ -248,10 +248,10 @@
         #{healthInsurStandardRewardLevel,jdbcType=SMALLINT},
       </if>
       <if test="insurersNo != null">
-        #{insurersNo,jdbcType=BIGINT},
+        #{insurersNo,jdbcType=VARCHAR},
       </if>
       <if test="insuredSortNo != null">
-        #{insuredSortNo,jdbcType=BIGINT},
+        #{insuredSortNo,jdbcType=VARCHAR},
       </if>
       <if test="welfareJoinFlg != null">
         #{welfareJoinFlg,jdbcType=BIT},
@@ -260,7 +260,7 @@
         #{welfareStandardRewardLevel,jdbcType=SMALLINT},
       </if>
       <if test="basicWelfareNo != null">
-        #{basicWelfareNo,jdbcType=BIGINT},
+        #{basicWelfareNo,jdbcType=VARCHAR},
       </if>
       <if test="welfareFundJoinFlg != null">
         #{welfareFundJoinFlg,jdbcType=BIT},
@@ -318,10 +318,10 @@
         health_insur_standard_reward_level = #{record.healthInsurStandardRewardLevel,jdbcType=SMALLINT},
       </if>
       <if test="record.insurersNo != null">
-        insurers_no = #{record.insurersNo,jdbcType=BIGINT},
+        insurers_no = #{record.insurersNo,jdbcType=VARCHAR},
       </if>
       <if test="record.insuredSortNo != null">
-        insured_sort_no = #{record.insuredSortNo,jdbcType=BIGINT},
+        insured_sort_no = #{record.insuredSortNo,jdbcType=VARCHAR},
       </if>
       <if test="record.welfareJoinFlg != null">
         welfare_join_flg = #{record.welfareJoinFlg,jdbcType=BIT},
@@ -330,7 +330,7 @@
         welfare_standard_reward_level = #{record.welfareStandardRewardLevel,jdbcType=SMALLINT},
       </if>
       <if test="record.basicWelfareNo != null">
-        basic_welfare_no = #{record.basicWelfareNo,jdbcType=BIGINT},
+        basic_welfare_no = #{record.basicWelfareNo,jdbcType=VARCHAR},
       </if>
       <if test="record.welfareFundJoinFlg != null">
         welfare_fund_join_flg = #{record.welfareFundJoinFlg,jdbcType=BIT},
@@ -367,11 +367,11 @@
       health_insur_join_flg = #{record.healthInsurJoinFlg,jdbcType=SMALLINT},
       health_insur_join_catagory = #{record.healthInsurJoinCatagory,jdbcType=SMALLINT},
       health_insur_standard_reward_level = #{record.healthInsurStandardRewardLevel,jdbcType=SMALLINT},
-      insurers_no = #{record.insurersNo,jdbcType=BIGINT},
-      insured_sort_no = #{record.insuredSortNo,jdbcType=BIGINT},
+      insurers_no = #{record.insurersNo,jdbcType=VARCHAR},
+      insured_sort_no = #{record.insuredSortNo,jdbcType=VARCHAR},
       welfare_join_flg = #{record.welfareJoinFlg,jdbcType=BIT},
       welfare_standard_reward_level = #{record.welfareStandardRewardLevel,jdbcType=SMALLINT},
-      basic_welfare_no = #{record.basicWelfareNo,jdbcType=BIGINT},
+      basic_welfare_no = #{record.basicWelfareNo,jdbcType=VARCHAR},
       welfare_fund_join_flg = #{record.welfareFundJoinFlg,jdbcType=BIT},
       delete_flg = #{record.deleteFlg,jdbcType=BIT},
       regist_date = #{record.registDate,jdbcType=TIMESTAMP},
@@ -402,10 +402,10 @@
         health_insur_standard_reward_level = #{healthInsurStandardRewardLevel,jdbcType=SMALLINT},
       </if>
       <if test="insurersNo != null">
-        insurers_no = #{insurersNo,jdbcType=BIGINT},
+        insurers_no = #{insurersNo,jdbcType=VARCHAR},
       </if>
       <if test="insuredSortNo != null">
-        insured_sort_no = #{insuredSortNo,jdbcType=BIGINT},
+        insured_sort_no = #{insuredSortNo,jdbcType=VARCHAR},
       </if>
       <if test="welfareJoinFlg != null">
         welfare_join_flg = #{welfareJoinFlg,jdbcType=BIT},
@@ -414,7 +414,7 @@
         welfare_standard_reward_level = #{welfareStandardRewardLevel,jdbcType=SMALLINT},
       </if>
       <if test="basicWelfareNo != null">
-        basic_welfare_no = #{basicWelfareNo,jdbcType=BIGINT},
+        basic_welfare_no = #{basicWelfareNo,jdbcType=VARCHAR},
       </if>
       <if test="welfareFundJoinFlg != null">
         welfare_fund_join_flg = #{welfareFundJoinFlg,jdbcType=BIT},
@@ -448,11 +448,11 @@
       health_insur_join_flg = #{healthInsurJoinFlg,jdbcType=SMALLINT},
       health_insur_join_catagory = #{healthInsurJoinCatagory,jdbcType=SMALLINT},
       health_insur_standard_reward_level = #{healthInsurStandardRewardLevel,jdbcType=SMALLINT},
-      insurers_no = #{insurersNo,jdbcType=BIGINT},
-      insured_sort_no = #{insuredSortNo,jdbcType=BIGINT},
+      insurers_no = #{insurersNo,jdbcType=VARCHAR},
+      insured_sort_no = #{insuredSortNo,jdbcType=VARCHAR},
       welfare_join_flg = #{welfareJoinFlg,jdbcType=BIT},
       welfare_standard_reward_level = #{welfareStandardRewardLevel,jdbcType=SMALLINT},
-      basic_welfare_no = #{basicWelfareNo,jdbcType=BIGINT},
+      basic_welfare_no = #{basicWelfareNo,jdbcType=VARCHAR},
       welfare_fund_join_flg = #{welfareFundJoinFlg,jdbcType=BIT},
       delete_flg = #{deleteFlg,jdbcType=BIT},
       regist_date = #{registDate,jdbcType=TIMESTAMP},

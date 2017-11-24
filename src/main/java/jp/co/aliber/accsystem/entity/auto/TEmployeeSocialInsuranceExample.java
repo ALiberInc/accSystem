@@ -565,52 +565,62 @@ public class TEmployeeSocialInsuranceExample {
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoEqualTo(Long value) {
+        public Criteria andInsurersNoEqualTo(String value) {
             addCriterion("insurers_no =", value, "insurersNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoNotEqualTo(Long value) {
+        public Criteria andInsurersNoNotEqualTo(String value) {
             addCriterion("insurers_no <>", value, "insurersNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoGreaterThan(Long value) {
+        public Criteria andInsurersNoGreaterThan(String value) {
             addCriterion("insurers_no >", value, "insurersNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoGreaterThanOrEqualTo(Long value) {
+        public Criteria andInsurersNoGreaterThanOrEqualTo(String value) {
             addCriterion("insurers_no >=", value, "insurersNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoLessThan(Long value) {
+        public Criteria andInsurersNoLessThan(String value) {
             addCriterion("insurers_no <", value, "insurersNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoLessThanOrEqualTo(Long value) {
+        public Criteria andInsurersNoLessThanOrEqualTo(String value) {
             addCriterion("insurers_no <=", value, "insurersNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoIn(List<Long> values) {
+        public Criteria andInsurersNoLike(String value) {
+            addCriterion("insurers_no like", value, "insurersNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsurersNoNotLike(String value) {
+            addCriterion("insurers_no not like", value, "insurersNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsurersNoIn(List<String> values) {
             addCriterion("insurers_no in", values, "insurersNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoNotIn(List<Long> values) {
+        public Criteria andInsurersNoNotIn(List<String> values) {
             addCriterion("insurers_no not in", values, "insurersNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoBetween(Long value1, Long value2) {
+        public Criteria andInsurersNoBetween(String value1, String value2) {
             addCriterion("insurers_no between", value1, value2, "insurersNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsurersNoNotBetween(Long value1, Long value2) {
+        public Criteria andInsurersNoNotBetween(String value1, String value2) {
             addCriterion("insurers_no not between", value1, value2, "insurersNo");
             return (Criteria) this;
         }
@@ -625,52 +635,62 @@ public class TEmployeeSocialInsuranceExample {
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoEqualTo(Long value) {
+        public Criteria andInsuredSortNoEqualTo(String value) {
             addCriterion("insured_sort_no =", value, "insuredSortNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoNotEqualTo(Long value) {
+        public Criteria andInsuredSortNoNotEqualTo(String value) {
             addCriterion("insured_sort_no <>", value, "insuredSortNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoGreaterThan(Long value) {
+        public Criteria andInsuredSortNoGreaterThan(String value) {
             addCriterion("insured_sort_no >", value, "insuredSortNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoGreaterThanOrEqualTo(Long value) {
+        public Criteria andInsuredSortNoGreaterThanOrEqualTo(String value) {
             addCriterion("insured_sort_no >=", value, "insuredSortNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoLessThan(Long value) {
+        public Criteria andInsuredSortNoLessThan(String value) {
             addCriterion("insured_sort_no <", value, "insuredSortNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoLessThanOrEqualTo(Long value) {
+        public Criteria andInsuredSortNoLessThanOrEqualTo(String value) {
             addCriterion("insured_sort_no <=", value, "insuredSortNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoIn(List<Long> values) {
+        public Criteria andInsuredSortNoLike(String value) {
+            addCriterion("insured_sort_no like", value, "insuredSortNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuredSortNoNotLike(String value) {
+            addCriterion("insured_sort_no not like", value, "insuredSortNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuredSortNoIn(List<String> values) {
             addCriterion("insured_sort_no in", values, "insuredSortNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoNotIn(List<Long> values) {
+        public Criteria andInsuredSortNoNotIn(List<String> values) {
             addCriterion("insured_sort_no not in", values, "insuredSortNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoBetween(Long value1, Long value2) {
+        public Criteria andInsuredSortNoBetween(String value1, String value2) {
             addCriterion("insured_sort_no between", value1, value2, "insuredSortNo");
             return (Criteria) this;
         }
 
-        public Criteria andInsuredSortNoNotBetween(Long value1, Long value2) {
+        public Criteria andInsuredSortNoNotBetween(String value1, String value2) {
             addCriterion("insured_sort_no not between", value1, value2, "insuredSortNo");
             return (Criteria) this;
         }
@@ -805,52 +825,62 @@ public class TEmployeeSocialInsuranceExample {
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoEqualTo(Long value) {
+        public Criteria andBasicWelfareNoEqualTo(String value) {
             addCriterion("basic_welfare_no =", value, "basicWelfareNo");
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoNotEqualTo(Long value) {
+        public Criteria andBasicWelfareNoNotEqualTo(String value) {
             addCriterion("basic_welfare_no <>", value, "basicWelfareNo");
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoGreaterThan(Long value) {
+        public Criteria andBasicWelfareNoGreaterThan(String value) {
             addCriterion("basic_welfare_no >", value, "basicWelfareNo");
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoGreaterThanOrEqualTo(Long value) {
+        public Criteria andBasicWelfareNoGreaterThanOrEqualTo(String value) {
             addCriterion("basic_welfare_no >=", value, "basicWelfareNo");
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoLessThan(Long value) {
+        public Criteria andBasicWelfareNoLessThan(String value) {
             addCriterion("basic_welfare_no <", value, "basicWelfareNo");
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoLessThanOrEqualTo(Long value) {
+        public Criteria andBasicWelfareNoLessThanOrEqualTo(String value) {
             addCriterion("basic_welfare_no <=", value, "basicWelfareNo");
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoIn(List<Long> values) {
+        public Criteria andBasicWelfareNoLike(String value) {
+            addCriterion("basic_welfare_no like", value, "basicWelfareNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicWelfareNoNotLike(String value) {
+            addCriterion("basic_welfare_no not like", value, "basicWelfareNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicWelfareNoIn(List<String> values) {
             addCriterion("basic_welfare_no in", values, "basicWelfareNo");
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoNotIn(List<Long> values) {
+        public Criteria andBasicWelfareNoNotIn(List<String> values) {
             addCriterion("basic_welfare_no not in", values, "basicWelfareNo");
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoBetween(Long value1, Long value2) {
+        public Criteria andBasicWelfareNoBetween(String value1, String value2) {
             addCriterion("basic_welfare_no between", value1, value2, "basicWelfareNo");
             return (Criteria) this;
         }
 
-        public Criteria andBasicWelfareNoNotBetween(Long value1, Long value2) {
+        public Criteria andBasicWelfareNoNotBetween(String value1, String value2) {
             addCriterion("basic_welfare_no not between", value1, value2, "basicWelfareNo");
             return (Criteria) this;
         }
