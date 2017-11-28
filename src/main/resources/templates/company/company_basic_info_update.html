@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="acc_temp :: headerImp ('__会社基本情報設定__')"></head>
+<head th:replace="acc_temp :: headerImp ('__会社基本情報設定__')">
+</head>
 <body>
 	<div th:replace="acc_temp :: accTopMenuArea"></div>
 	<form name="companyBasicInfoForm" id="companyBasicInfoForm"
@@ -96,8 +97,7 @@
 								<i></i>
 								<th:block th:errors="*{compAdd2Kana}"></th:block>
 							</p>
-						</div>
-						<input type="text" th:field="*{compAdd2Kana}" maxlength="80"
+						</div> <input type="text" th:field="*{compAdd2Kana}" maxlength="80"
 						class="td4" />
 					</td>
 				</tr>
@@ -265,8 +265,8 @@
 							<tr>
 								<td class="td3"><input th:field="*{deadlineDay}"
 									type="radio" value="true" /> <label for="deadlineDay1">末日</label></td>
-								<td><input th:field="*{deadlineDay}" type="radio" value="false" />
-									<label for="deadlineDay2">末日以外 </label> ( <input
+								<td><input th:field="*{deadlineDay}" type="radio"
+									value="false" /> <label for="deadlineDay2">末日以外 </label> ( <input
 									th:field="*{deadlineAdjustDays}" type="text" class="td2" />日)
 								</td>
 							</tr>
@@ -299,10 +299,10 @@
 							</tr>
 							<tr>
 								<td class="td3"><input th:field="*{paymentDay}"
-									type="radio" value="true" /> <label for="paymentDay1"> 末日
-								</label></td>
-								<td><input th:field="*{paymentDay}" type="radio" value="false" />
-									<label for="paymentDay2">末日以外 </label>( <input
+									type="radio" value="true" /> <label for="paymentDay1">
+										末日 </label></td>
+								<td><input th:field="*{paymentDay}" type="radio"
+									value="false" /> <label for="paymentDay2">末日以外 </label>( <input
 									th:field="*{paymentAdjustDays}" type="text" class="td2" />日)</td>
 							</tr>
 						</table>
@@ -396,6 +396,28 @@
 							</p>
 						</div> <input type="text" th:field="*{compCode}" maxlength="10"
 						class="td3" />
+					</td>
+				</tr>
+
+				<tr>
+					<th class="tdbg text-center">部署<font color="#FF0000">※</font></th>
+					<td>
+						<div th:if="${#fields.hasErrors('compDeptList')}"
+							class="error-after">
+							<p>
+								<i></i>
+								<th:block th:errors="*{compDeptList}"></th:block>
+							</p>
+						</div>
+						<div id="addInput">
+							<th:block
+								th:each="companyDepartment,iterStat : ${companyBasicInfoForm.compDeptList}">
+								<input type="text"
+									th:field="*{compDeptList[__${iterStat.index}__].deptName}"
+									maxlength="10" class="td1" />
+							</th:block>
+						</div>
+						<button type="button" class="btn btn-info btn-sm" id="addcompDept">追加</button>
 					</td>
 				</tr>
 			</table>

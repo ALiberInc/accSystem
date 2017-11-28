@@ -14,3 +14,13 @@ $('input[type=radio][name=paymentDay]').change(function() {
 		$('#paymentAdjustDays').removeAttr("readonly");
 	}
 });
+$('#addcompDept')
+		.click(
+				function() {
+					var addindex = $("#addInput input").length;
+					var inputStr = '<input type="text" maxlength="10" class="td1" id="compDeptList'
+							+ addindex
+							+ '.deptName" name="compDeptList['
+							+ addindex + '].deptName" value="" />'+" ";
+					$('#addInput').append(inputStr);
+				});

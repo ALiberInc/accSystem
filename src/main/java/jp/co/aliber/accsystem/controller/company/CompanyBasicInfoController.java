@@ -15,6 +15,7 @@ import jp.co.aliber.accsystem.entity.auto.TCompany;
 import jp.co.aliber.accsystem.form.company.CompanyBasicInfoForm;
 import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
+import jp.co.aliber.accsystem.service.company.CompanyDepartmentService;
 
 /**
  * 会社基本情報画面
@@ -28,7 +29,8 @@ public class CompanyBasicInfoController {
 
 	@Autowired
 	CompanyBasicInfoService companyBasicInfoService;
-
+	@Autowired
+	CompanyDepartmentService companyDepartmentService;
 	/**
 	 * データのバンディング
 	 *
@@ -124,6 +126,8 @@ public class CompanyBasicInfoController {
 		form.setDataShareId(String.valueOf(tCompany.getDataShareId()));
 		// 会社コード
 		form.setCompCode(String.valueOf(tCompany.getCompCode()));
+		// 部署
+		form.setCompDeptList(companyDepartmentService.getListTCompanyDepartment(compId));
 		// 雇用保険被保険者負担率
 		form.setEmployInsurRate(String.valueOf(tCompany.getEmployInsurRate()));
 		// 雇用保険被保険者負担率
@@ -150,7 +154,7 @@ public class CompanyBasicInfoController {
 
 	/**
 	 * 編集ボタンを押下する
-	 * 
+	 *
 	 * @param form
 	 *            会社基本情報入力画面用form
 	 * @param loginUser
