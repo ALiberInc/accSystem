@@ -1,5 +1,7 @@
 package jp.co.aliber.accsystem.form.company;
 
+import java.util.List;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -7,6 +9,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import jp.co.aliber.accsystem.entity.auto.TCompanyDepartment;
 
 /**
  * 会社基本情報画面form
@@ -130,6 +134,9 @@ public class CompanyBasicInfoForm {
 	@NotBlank
 	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String compCode;
+	// 部署
+	@NotNull
+	private List<TCompanyDepartment> compDeptList;
 	// 雇用保険被保険者負担率
 	@NotBlank
 	@Size(max = 6)
@@ -631,6 +638,21 @@ public class CompanyBasicInfoForm {
 	 */
 	public void setCompCode(String compCode) {
 		this.compCode = compCode;
+	}
+
+	/**
+	 * @return compDeptList
+	 */
+	public List<TCompanyDepartment> getCompDeptList() {
+		return compDeptList;
+	}
+
+	/**
+	 * @param compDeptList
+	 *            セットする compDeptList
+	 */
+	public void setCompDeptList(List<TCompanyDepartment> compDeptList) {
+		this.compDeptList = compDeptList;
 	}
 
 	/**
