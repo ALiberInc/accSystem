@@ -35,9 +35,8 @@ $('#salaryPrint').click(
 			});
 			if (chk_value.length > 0) {
 				window.open(getContextPath() + "print?employeeId="
-						+ chk_value.join(",") + "&compId=" + $('#compId').val()
-						+ "&salaryYearMonth=" + $('#salaryYear').val()
-						+ $('#salaryMonth').val());
+						+ chk_value.join(",") + "&salaryYearMonth="
+						+ $('#salaryYear').val() + $('#salaryMonth').val());
 			} else {
 				alert("誰も選択されていません。")
 			}
