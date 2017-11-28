@@ -41,6 +41,12 @@ public class SalaryDetailsInputService {
 	@Autowired
 	MIncomeTaxMapper mIncomeTaxMapper;
 
+	/**
+	 * 従業員給与明細情報を取得
+	 *
+	 * @return TSalaryDetail 従業員給与明細情報
+	 *
+	 */
 	public TSalaryDetail getSalaryDetail(Integer employeeId, Integer compId, String yearMonth) {
 		// 主キーによって検索する
 		return tSalaryDetailMapper.selectByPrimaryKey(employeeId, compId, yearMonth);
