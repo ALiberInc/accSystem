@@ -1,6 +1,8 @@
 package jp.co.aliber.accsystem.controller.company;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TCompany;
+import jp.co.aliber.accsystem.entity.auto.TCompanyDepartment;
 import jp.co.aliber.accsystem.entity.auto.TLoginUser;
 import jp.co.aliber.accsystem.form.common.MessageForm;
 import jp.co.aliber.accsystem.form.company.CompanyBasicInfoForm;
 import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.UtilService;
 import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
+import jp.co.aliber.accsystem.service.company.CompanyDepartmentService;
 import jp.co.aliber.accsystem.service.user.LoginService;
 
 /**
@@ -43,6 +47,8 @@ public class CompanyBasicInfoUpdateController {
 	UtilService utilService;
 	@Autowired
 	MessageSource messages;
+	@Autowired
+	CompanyDepartmentService companyDepartmentService;
 
 	// 更新・新規フラグ、デフォルトは新規の場合false
 	boolean updateFlg = false;
@@ -169,6 +175,8 @@ public class CompanyBasicInfoUpdateController {
 			form.setDataShareId(String.valueOf(tCompany.getDataShareId()));
 			// 会社コード
 			form.setCompCode(String.valueOf(tCompany.getCompCode()));
+			// 部署
+			form.setCompDeptList(companyDepartmentService.getListTCompanyDepartment(compId));
 			// 雇用保険被保険者負担率
 			form.setEmployInsurRate(String.valueOf(tCompany.getEmployInsurRate()));
 			// 雇用保険被保険者負担率
@@ -336,6 +344,25 @@ public class CompanyBasicInfoUpdateController {
 			// 更新処理を呼び出す
 			companyBasicInfoService.update(company, Integer.valueOf(loginUser.getUser().getUserId()));
 		}
+		// 会社IDを取得
+		Integer compId = loginUser.getUser().getCompId();
+		// 部署情報を削除
+		companyDepartmentService.deleteDeptInfo(compId);
+		// 画面から部署情報を取得
+		List<TCompanyDepartment> deptList = form.getCompDeptList().stream()
+				.filter(dept -> StringUtils.isNotBlank(dept.getDeptName())).collect(Collectors.toList());
+		for (int i = 0; i < deptList.size(); i++) {
+			// 会社ID
+			deptList.get(i).setCompId(compId);
+			// 部署No
+			deptList.get(i).setDeptNo(i);
+			// 登録者
+			deptList.get(i).setRegistId(loginUser.getUser().getUserId());
+			// 更新者
+			deptList.get(i).setUpdateId(loginUser.getUser().getUserId());
+		}
+		// 部署情報を登録
+		companyDepartmentService.registDept(deptList);
 		// メッセージ情報を設定
 		messageForm.setMessage(ImmutableValues.MESSAGE_FINISH);
 		messageForm.setForwardURL(ImmutableValues.FORWARD_COMPANY);

@@ -39,7 +39,7 @@ public class ImmutableValues {
 	// 事業区分:法人
 	public static final String CLASSIFICATION_CORP = "0";
 
-	// メッセージ画面
+	// 会社情報登録画面
 	// 処理完了
 	public static final String MESSAGE_FINISH = "処理が完了しました。";
 	// 会社情報未登録
@@ -56,6 +56,9 @@ public class ImmutableValues {
 	// 給与明細入力画面
 	// 給与明細登録完了
 	public static final String MESSAGE_FINISH_SALARY_DETAIL_INPUT = "給与明細登録が完了しました。";
+	// 給与明細情報未登録
+	public static final String NO_SALARY_DETAIL_INPUT = "当月の給与明細情報がまだ登録されていないです。先に給与明細情報を登録してください。";
 	// 遷移先：給与明細一覧画面
 	public static final String FORWARD_SALARY_STATEMENT = "salary_statement";
+
 }

@@ -5,12 +5,10 @@ $('#sendMail').click(
 				chk_value.push($(this).val());
 			});
 			if (chk_value.length > 0) {
-				window.open(getContextPath() + "send_mail?sendMailStr="
+				window.open(getContextPath() + "send_mail?employeeIdStr="
 						+ chk_value.join(",") + "&yearMonth="
 						+ $('#salaryYear').val() + $('#salaryMonth').val(), "",
-						"location=no,top=" + (screen.width - 1600) / 2
-								+ ",left=" + (screen.width - 600) / 2
-								+ ",width=700,height=600");
+						"");
 			} else {
 				alert("誰も選択されていません。")
 			}
@@ -37,9 +35,8 @@ $('#salaryPrint').click(
 			});
 			if (chk_value.length > 0) {
 				window.open(getContextPath() + "print?employeeId="
-						+ chk_value.join(",") + "&compId=" + $('#compId').val()
-						+ "&salaryYearMonth=" + $('#salaryYear').val()
-						+ $('#salaryMonth').val());
+						+ chk_value.join(",") + "&salaryYearMonth="
+						+ $('#salaryYear').val() + $('#salaryMonth').val());
 			} else {
 				alert("誰も選択されていません。")
 			}
@@ -67,7 +64,7 @@ $('#salaryDetailChange').click(
 		});
 
 $('#freeWordButton').click(function() {
-	var freeWord = $("#freeWord").val().replace(/\s+/g, "");	
+	var freeWord = $("#freeWord").val().replace(/\s+/g, "");
 	$('input[name="employeeName"]').each(function() {
 		if ($(this).val().indexOf(freeWord) < 0) {
 			$(this).parents("tr").hide();

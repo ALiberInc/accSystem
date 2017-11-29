@@ -14,7 +14,7 @@
 			</table>
 			<table class="table table-striped table-bordered vertical-middle">
 				<tr>
-					<th rowspan="23" class="text-center">会社情報</th>
+					<th rowspan="24" class="text-center">会社情報</th>
 					<th class="tdbg td2 text-center">法人名又は氏名</th>
 					<td th:text="*{compName}" class="td8"></td>
 				</tr>
@@ -127,6 +127,13 @@
 				<tr>
 					<th class="tdbg td2 text-center">会社コード</th>
 					<td th:text="*{compCode}" />
+				</tr>
+				<tr>
+					<th class="tdbg text-center">部署</th>
+					<td><th:block
+							th:each="companyDepartment,iterStat : ${companyBasicInfoForm.compDeptList}">
+							<th:block th:text="${companyDepartment.deptName}" />
+						</th:block></td>
 				</tr>
 			</table>
 			<br />

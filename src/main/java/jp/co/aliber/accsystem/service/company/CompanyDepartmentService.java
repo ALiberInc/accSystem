@@ -35,4 +35,27 @@ public class CompanyDepartmentService {
 				.selectByExample(tCompanyDepartmentExample);
 		return listTCompanyDepartmen;
 	}
+
+	/**
+	 * 会社部署情報を削除
+	 *
+	 * @param compId
+	 *            会社番号
+	 */
+	public void deleteDeptInfo(Integer compId) {
+		TCompanyDepartmentExample example = new TCompanyDepartmentExample();
+		example.createCriteria().andCompIdEqualTo(compId);
+		tCompanyDepartmentMapper.deleteByExample(example);
+	}
+
+	/**
+	 * 会社部署情報を登録
+	 *
+	 * @param TCompanyDepartment
+	 *            部署情報
+	 */
+	public void registDept(List<TCompanyDepartment> deptList) {
+		deptList.forEach(tCompanyDepartmentMapper::insertSelective);
+	}
+
 }

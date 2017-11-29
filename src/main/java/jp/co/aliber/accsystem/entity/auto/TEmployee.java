@@ -28,7 +28,7 @@ public class TEmployee {
      *
      * @mbg.generated
      */
-    private Integer employeeNo;
+    private String employeeNo;
 
     /**
      *
@@ -194,7 +194,7 @@ public class TEmployee {
      *
      * @mbg.generated
      */
-    public Integer getEmployeeNo() {
+    public String getEmployeeNo() {
         return employeeNo;
     }
 
@@ -206,7 +206,7 @@ public class TEmployee {
      *
      * @mbg.generated
      */
-    public void setEmployeeNo(Integer employeeNo) {
+    public void setEmployeeNo(String employeeNo) {
         this.employeeNo = employeeNo;
     }
 
