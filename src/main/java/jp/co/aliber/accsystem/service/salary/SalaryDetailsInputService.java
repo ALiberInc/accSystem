@@ -90,8 +90,8 @@ public class SalaryDetailsInputService {
 		MHealthInsuranceStandardPaymentExample example = new MHealthInsuranceStandardPaymentExample();
 		example.createCriteria().andPaymentStartLessThanOrEqualTo(new Long(sum))
 				.andPaymentEndGreaterThanOrEqualTo(new Long(sum));
-		MHealthInsuranceStandardPayment mHealthInsuranceStandardPayment = new MHealthInsuranceStandardPayment();
-		mHealthInsuranceStandardPayment = mHealthInsuranceStandardPaymentMapper.selectByExample(example).get(0);
+		MHealthInsuranceStandardPayment mHealthInsuranceStandardPayment = mHealthInsuranceStandardPaymentMapper
+				.selectByExample(example).get(0);
 		Integer standardPayment = mHealthInsuranceStandardPayment.getStandardPayment().intValue();
 
 		// 厚生年金標準報酬マスタテーブルから標準月額を取得する
@@ -132,7 +132,7 @@ public class SalaryDetailsInputService {
 	}
 
 	/**
-	 * 所得税税額を取得する（今区分を追加しなくて、必要の場合、overloadしてください）
+	 * 所得税税額を取得する
 	 *
 	 * @param sum
 	 *            総支給
@@ -143,21 +143,20 @@ public class SalaryDetailsInputService {
 	 * @return 所得税税額
 	 */
 	public Integer incomeTaxCalculator(Integer sum, Integer socialInsuranceSum, Integer person) {
-		BigDecimal sumBD = new BigDecimal(sum);
-		BigDecimal socialInsuranceSumBD = new BigDecimal(socialInsuranceSum);
+
 		// その月の社会保険料等控除後の給与等の金額を収得する
-		BigDecimal adjustSum = sumBD.subtract(socialInsuranceSumBD);
+		BigDecimal adjustSum = new BigDecimal(sum).subtract(new BigDecimal(socialInsuranceSum));
 		adjustSum.setScale(0, RoundingMode.HALF_DOWN);
 		MIncomeTaxExample MIncomeTaxExample = new MIncomeTaxExample();
 		// 上記金額によって税額を取得する
 		MIncomeTaxExample.createCriteria().andIncomeStartLessThanOrEqualTo(adjustSum.longValue())
-				.andIncomeEndGreaterThanOrEqualTo(adjustSum.longValue());
+				.andIncomeEndGreaterThan(adjustSum.longValue());
 		if (mIncomeTaxMapper.selectByExample(MIncomeTaxExample).size() != 1) {
 			// 取得できない場合
 			return new Integer(0);
 		}
 		MIncomeTax mIncomeTax = mIncomeTaxMapper.selectByExample(MIncomeTaxExample).get(0);
-		Integer incomeTax = new Integer(0);
+		int incomeTax = 0;
 		// 扶養親族等の数が0より小さい場合、0にする
 		if (person.intValue() < 0) {
 			person = new Integer(0);
@@ -191,12 +190,13 @@ public class SalaryDetailsInputService {
 				break;
 			}
 		} else {
-			incomeTax = mIncomeTax.getTax7();
-			// 7人を超える１人ごとに1,610円を控除した金額
-			Integer extraDec = (person.intValue() - 7) * ImmutableValues.EXTRA_DEC_PER_PERSON;
-			incomeTax = incomeTax - extraDec;
-		}
+			// 7人を超えた場合、１人ごとに1,610円を控除
+			int extraDec = mIncomeTax.getTax7() - (person.intValue() - 7) * ImmutableValues.EXTRA_DEC_PER_PERSON;
 
+			if (extraDec > 0) {
+				incomeTax = extraDec;
+			}
+		}
 		return incomeTax;
 	}
 
