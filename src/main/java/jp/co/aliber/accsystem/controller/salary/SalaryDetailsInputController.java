@@ -1,7 +1,7 @@
 package jp.co.aliber.accsystem.controller.salary;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,12 +9,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.co.aliber.accsystem.ImmutableValues;
+import jp.co.aliber.accsystem.entity.auto.TCompany;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeFixedDeduction;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeFixedPayment;
 import jp.co.aliber.accsystem.entity.auto.TEmployeeIncomeTax;
@@ -22,6 +25,7 @@ import jp.co.aliber.accsystem.entity.auto.TSalaryDetail;
 import jp.co.aliber.accsystem.form.common.MessageForm;
 import jp.co.aliber.accsystem.form.salary.SalaryDetailsInputForm;
 import jp.co.aliber.accsystem.security.LoginUser;
+import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
 import jp.co.aliber.accsystem.service.employee.EmployeeFixedDeductionService;
 import jp.co.aliber.accsystem.service.employee.EmployeeFixedPaymentService;
 import jp.co.aliber.accsystem.service.employee.EmployeeIncomeTaxService;
@@ -44,6 +48,8 @@ public class SalaryDetailsInputController {
 	EmployeeFixedPaymentService employeeFixedPaymentService;
 	@Autowired
 	EmployeeFixedDeductionService employeeFixedDeductionService;
+	@Autowired
+	CompanyBasicInfoService companyBasicInfoService;
 
 	/**
 	 * @param form
@@ -216,8 +222,13 @@ public class SalaryDetailsInputController {
 	 * @return 給与明細入力画面
 	 */
 	@RequestMapping(value = { "/save" }, method = RequestMethod.POST)
-	public String save(@ModelAttribute SalaryDetailsInputForm form, @AuthenticationPrincipal LoginUser loginUser,
-			MessageForm messageForm) {
+	public String save(@AuthenticationPrincipal LoginUser loginUser, @Validated SalaryDetailsInputForm form,
+			BindingResult result, MessageForm messageForm) {
+
+		// 入力チェック
+		if (!validate(form, result)) {
+			return "salary/salary_details_input";
+		}
 
 		TSalaryDetail tSalaryDetail = new TSalaryDetail();
 		// 従業員ID
@@ -226,8 +237,22 @@ public class SalaryDetailsInputController {
 		tSalaryDetail.setCompId(loginUser.getUser().getCompId());
 		// 年月
 		tSalaryDetail.setSalaryYearMonth(form.getSalaryYearMonth());
-		// 年月
-		tSalaryDetail.setPayDate(new Date());
+
+		// 会社情報を取得
+		TCompany companyInfo = companyBasicInfoService.searchComp(loginUser.getUser().getCompId());
+		Calendar cal = Calendar.getInstance();
+		if (new Boolean(true).equals(companyInfo.getPaymentDay())) {
+			// 支給日が末日の場合
+			cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));
+			// 年月
+			tSalaryDetail.setPayDate(cal.getTime());
+		} else {
+			// 支給日が末日以外の場合
+			cal.set(Calendar.DATE, companyInfo.getPaymentAdjustDays());
+			// 年月
+			tSalaryDetail.setPayDate(cal.getTime());
+		}
+
 		// 基本給
 		tSalaryDetail.setBasicSalary(form.getBasicSalary());
 		// 役職手当
@@ -284,5 +309,28 @@ public class SalaryDetailsInputController {
 		messageForm.setMessage(ImmutableValues.MESSAGE_FINISH_SALARY_DETAIL_INPUT);
 		messageForm.setForwardURL(ImmutableValues.FORWARD_SALARY_STATEMENT);
 		return "message";
+	}
+
+	/**
+	 * 入力チェック
+	 *
+	 * @param SalaryDetailsInputForm<br>
+	 *            ログイン者情報編集Form
+	 * @param BindingResult<br>
+	 *            Resultバンディング
+	 * @return validateResult<br>
+	 *         入力チェック結果
+	 */
+	private boolean validate(SalaryDetailsInputForm form, BindingResult result) {
+
+		boolean validateResult = true;
+
+		// 入力チェック
+		if (result.hasErrors()) {
+			validateResult = false;
+		}
+
+		// 入力チェック結果
+		return validateResult;
 	}
 }
