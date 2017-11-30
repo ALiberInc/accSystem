@@ -24,7 +24,7 @@
 					<th class="tdbg text-center tdwd"><span>家族手当</span></th>
 				</tr>
 				<tr>
-					<td class="tdwd text-center">
+					<td class="text-center">
 						<div th:if="${#fields.hasErrors('basicSalary')}"
 							class="error-after" style="display: block;">
 							<p>
@@ -34,16 +34,48 @@
 						</div> <input type="text" th:field="*{basicSalary}" maxlength="9"
 						class="td3" onchange="autoCalculate()" /> <span>円</span>
 					</td>
-					<td class="tdwd text-center"><input type="text"
+					<td class="text-center">
+					<div th:if="${#fields.hasErrors('*{positionAllowance}')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{positionAllowance}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{positionAllowance}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
-					<td class="tdwd text-center"><input type="text"
+					<td class="text-center">
+					<div th:if="${#fields.hasErrors('*{qualificationAllowance}')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{qualificationAllowance}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{qualificationAllowance}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
-					<td class="tdwd text-center"><input type="text"
+					<td class="text-center">
+					<div th:if="${#fields.hasErrors('*{houseAllowance}')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{houseAllowance}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{houseAllowance}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
-					<td class="tdwd text-center"><input type="text"
+					<td class="text-center">
+					<div th:if="${#fields.hasErrors('*{familyAllowance}')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{familyAllowance}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{familyAllowance}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
 				</tr>
@@ -53,10 +85,26 @@
 					<th class="tdbg text-center tdwd"><b><span>支給額合計</span></b></th>
 				</tr>
 				<tr>
-					<td class="text-center tdwd"><input type="text" class="td3"
+					<td class="text-center tdwd">
+					<div th:if="${#fields.hasErrors('*{otherAllowance}')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{otherAllowance}"></th:block>
+							</p>
+						</div>
+					<input type="text" class="td3"
 						th:field="*{otherAllowance}" maxlength="9"
 						onchange="autoCalculate()" /> <span>円</span></td>
-					<td class="text-center tdwd"><input type="text" class="td3"
+					<td class="text-center tdwd">
+					<div th:if="${#fields.hasErrors('*{transportFee}')}"
+							class="error-after" style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{transportFee}"></th:block>
+							</p>
+						</div>
+					<input type="text" class="td3"
 						th:field="*{transportFee}" maxlength="9"
 						onchange="autoCalculate()" /> <span>円</span></td>
 					<td class="text-center tdwd">
@@ -73,20 +121,20 @@
 			</table>
 			<table class="table table-striped">
 				<tr>
-					<th class="tdbg tdwd text-center"><span>健康保険</span> <label><input
+					<th class="tdbg text-center"><span>健康保険</span> <label><input
 							type="checkbox" id="healthInsuranceFlag"
 							name="healthInsuranceFlag"
 							th:checked="${salaryDetailsInputForm.healthInsuranceFlag}" /> <span>手入力</span></label></th>
-					<th class="tdbg tdwd text-center"><span>厚生年金</span> <label><input
+					<th class="tdbg text-center"><span>厚生年金</span> <label><input
 							type="checkbox" id="welfareInsuranceFlag"
 							name="welfareInsuranceFlag"
 							th:checked="${salaryDetailsInputForm.welfareInsuranceFlag}" /> <span>手入力</span></label></th>
-					<th class="tdbg tdwd text-center"><span>雇用保険</span> <label><input
+					<th class="tdbg text-center"><span>雇用保険</span> <label><input
 							type="checkbox" id="employInsuranceFlag"
 							name="employInsuranceFlag"
 							th:checked="${salaryDetailsInputForm.employInsuranceFlag}" /> <span>手入力</span></label></th>
-					<th class="tdbg tdwd text-center"><span>社会保険合計</span></th>
-					<th class="tdbg tdwd text-center"><span>所得税</span></th>
+					<th class="tdbg text-center"><span>社会保険合計</span></th>
+					<th class="tdbg text-center"><span>所得税</span></th>
 				</tr>
 				<tr>
 					<td class="text-center tdwd">
@@ -142,35 +190,83 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="tdbg tdwd text-center"><span>住民税</span></th>
-					<th class="tdbg tdwd text-center"><span>旅行積立金</span></th>
-					<th class="tdbg tdwd text-center"><span>借入等返済</span></th>
-					<th class="tdbg tdwd text-center"><span>年末控除</span></th>
-					<th class="tdbg tdwd text-center"><span>家賃控除</span></th>
+					<th class="tdbg text-center"><span>住民税</span></th>
+					<th class="tdbg text-center"><span>旅行積立金</span></th>
+					<th class="tdbg text-center"><span>借入等返済</span></th>
+					<th class="tdbg text-center"><span>年末控除</span></th>
+					<th class="tdbg text-center"><span>家賃控除</span></th>
 				</tr>
 				<tr>
-					<td class="text-center tdwd"><input type="text"
+					<td class="text-center tdwd">
+					<div th:if="${#fields.hasErrors('inhabitantTax')}" class="error-after"
+							style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{inhabitantTax}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{inhabitantTax}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
-					<td class="text-center tdwd"><input type="text"
+					<td class="text-center tdwd">
+					<div th:if="${#fields.hasErrors('travelFund')}" class="error-after"
+							style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{travelFund}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{travelFund}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
-					<td class="text-center tdwd"><input type="text"
+					<td class="text-center tdwd">
+					<div th:if="${#fields.hasErrors('repaymentBorrowings')}" class="error-after"
+							style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{repaymentBorrowings}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{repaymentBorrowings}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
-					<td class="text-center tdwd"><input type="text"
+					<td class="text-center tdwd">
+					<div th:if="${#fields.hasErrors('yearendDeduction')}" class="error-after"
+							style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{yearendDeduction}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{yearendDeduction}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
-					<td class="text-center tdwd"><input type="text"
+					<td class="text-center tdwd">
+					<div th:if="${#fields.hasErrors('rentDeduction')}" class="error-after"
+							style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{rentDeduction}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{rentDeduction}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
 				</tr>
 				<tr>
-					<th class="tdbg tdwd text-center"><span> その他の控除</span></th>
-					<th class="tdbg tdwd text-center"><b> <span>控除額合計</span></b></th>
+					<th class="tdbg text-center"><span> その他の控除</span></th>
+					<th class="tdbg text-center"><b> <span>控除額合計</span></b></th>
 				</tr>
 				<tr>
-					<td class="text-center tdwd"><input type="text"
+					<td class="text-center tdwd">
+					<div th:if="${#fields.hasErrors('otherDeduction')}" class="error-after"
+							style="display: block;">
+							<p>
+								<i></i>
+								<th:block th:errors="*{otherDeduction}"></th:block>
+							</p>
+						</div>
+					<input type="text"
 						th:field="*{otherDeduction}" maxlength="9" class="td3"
 						onchange="autoCalculate()" /> <span>円</span></td>
 					<td class="text-center tdwd">
@@ -185,7 +281,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="tdbg tdwd text-center"><b>差引支給額</b></th>
+					<th class="tdbg text-center"><b>差引支給額</b></th>
 				</tr>
 				<tr>
 					<td class="text-center tdwd">
@@ -202,8 +298,6 @@
 			</table>
 			<table class="table table-striped">
 				<tr>
-					<td class="text-center"><input class="btn btn-info btn-sm"
-						type="submit" name="delete" value="削除" /></td>
 					<td class="text-center"><input class="btn btn-info btn-sm"
 						type="submit" name="submit" value="登録" /></td>
 				</tr>

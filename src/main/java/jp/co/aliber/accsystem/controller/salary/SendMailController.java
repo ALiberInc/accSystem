@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -26,11 +27,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import jp.co.aliber.accsystem.ImmutableValues;
 import jp.co.aliber.accsystem.entity.auto.TCompany;
 import jp.co.aliber.accsystem.entity.auto.TEmployee;
+import jp.co.aliber.accsystem.entity.auto.TSalaryDetail;
+import jp.co.aliber.accsystem.form.common.MessageForm;
 import jp.co.aliber.accsystem.form.salary.SendMailForm;
 import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.UtilService;
 import jp.co.aliber.accsystem.service.company.CompanyBasicInfoService;
 import jp.co.aliber.accsystem.service.employee.EmployeeService;
+import jp.co.aliber.accsystem.service.salary.SalaryDetailsInputService;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -58,6 +62,9 @@ public class SendMailController {
 	@Autowired
 	UtilService utilService;
 
+	@Autowired
+	SalaryDetailsInputService salaryDetailsInputService;
+
 	/**
 	 * データのバンディング
 	 *
@@ -71,18 +78,30 @@ public class SendMailController {
 	/**
 	 * メール送信画面
 	 *
-	 * @param locale
-	 * @param model
-	 * @param form
+	 * @param SendMailForm
 	 *            メール送信画面FORM
-	 * @param sendMailStr
+	 * @param employeeIdStr
+	 * @param yearMonth
+	 * @param loginUser
 	 * @return
 	 */
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(SendMailForm form, @RequestParam(value = "sendMailStr", required = true) String sendMailStr,
-			@RequestParam(value = "yearMonth", required = true) String yearMonth,
-			@AuthenticationPrincipal LoginUser loginUser) {
-		form.setSendMailStr(sendMailStr);
+	public String index(@AuthenticationPrincipal LoginUser loginUser, SendMailForm form,
+			@RequestParam(value = "yearMonth", required = true) String yearMonth, MessageForm messageForm,
+			@RequestParam(value = "employeeIdStr", required = true) String employeeIdStr) {
+		String[] employeeIdStrArray = employeeIdStr.split(Pattern.quote(","));
+		for (String employeeId : employeeIdStrArray) {
+			TSalaryDetail salaryDetail = salaryDetailsInputService.getSalaryDetail(Integer.valueOf(employeeId),
+					loginUser.getUser().getCompId(), yearMonth);
+			if (salaryDetail == null) {
+				// メッセージ情報を設定
+				messageForm.setMessage(ImmutableValues.NO_SALARY_DETAIL_INPUT);
+				messageForm.setForwardURL(ImmutableValues.FORWARD_SALARY_STATEMENT);
+				return "message";
+			}
+		}
+
+		form.setSendMailStr(employeeIdStr);
 		// 年数
 		form.setSalaryYear(yearMonth.substring(0, 4));
 		// 平成年数
@@ -134,7 +153,6 @@ public class SendMailController {
 			String[] sendMails = sendMailStr.split(",");
 			// メール送信
 			for (String sendMail : sendMails) {
-
 				TEmployee tEmployee = tEmployeeService.getTEmployee(Integer.valueOf(sendMail),
 						loginUser.getUser().getCompId());
 

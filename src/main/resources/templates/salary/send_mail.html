@@ -19,7 +19,8 @@
 			<table class="table">
 				<tr>
 					<th>送信者名</th>
-					<td><input type="text" id="Name" maxlength="30" />
+					<td><th:block th:text="${sendMailForm.compName}"></th:block><input
+						type="hidden" id="Name" maxlength="30" th:value="${sendMailForm.compName}"/>
 						<button type="button" class="btn btn-info btn-sm" id="sendMailBtn">送信開始</button></td>
 				</tr>
 				<tr>
@@ -41,12 +42,12 @@
 							<span id="FixBody1">%従業員の氏名% %敬称%</span>
 						</div>
 						<div>
-							<textarea rows="7" id="Body1"
-								style="width: 485px; height: 90px; display: none;"></textarea>
 							<p>
 								<th:block th:text="${sendMailForm.compName}" />
 								です。明細書をお送りします。
 							</p>
+							<textarea rows="7" id="Body1"
+								style="width: 485px; height: 90px; display: none;"></textarea>
 						</div>
 						<div>
 							<p id="FixBody2">添付ファイルをクリックして、内容をご確認ください。</p>
