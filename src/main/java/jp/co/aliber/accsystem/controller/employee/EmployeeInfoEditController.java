@@ -325,28 +325,29 @@ public class EmployeeInfoEditController {
 
 		// 從業員情報
 		TEmployee tEmployee = new TEmployee();
-		if (form.getEmployeeNo() != null) {
-			tEmployee.setEmployeeNo(form.getEmployeeNo());
-		}
+		// 従業員番号
+		tEmployee.setEmployeeNo(form.getEmployeeNo());
+		// 会社番号
 		tEmployee.setCompId(loginUser.getUser().getCompId());
-		if (form.getDepartment() != null) {
-			tEmployee.setDeptId(form.getDepartment());
-		}
-		if (StringUtils.isNotEmpty(form.getLastName())) {
-			tEmployee.setLastName(form.getLastName());
-		}
-		if (StringUtils.isNotEmpty(form.getFirstName())) {
-			tEmployee.setFirstName(form.getFirstName());
-		}
+		// 部署id
+		tEmployee.setDeptId(form.getDepartment());
+		// 姓
+		tEmployee.setLastName(form.getLastName());
+		// 名
+		tEmployee.setFirstName(form.getFirstName());
+		// フリガナ姓
 		if (StringUtils.isNotEmpty(form.getLastNameKana())) {
 			tEmployee.setLastNameKana(form.getLastNameKana());
 		}
+		// フリガナ名
 		if (StringUtils.isNotEmpty(form.getFirstNameKana())) {
 			tEmployee.setFirstNameKana(form.getFirstNameKana());
 		}
+		// 性別
 		if (form.getSex() != null) {
 			tEmployee.setSex(form.getSex() == 0 ? true : false);
 		}
+		// メルアドレース
 		if (StringUtils.isNotEmpty(form.getEmail())) {
 			tEmployee.setMailAddress(form.getEmail());
 		}
@@ -357,17 +358,26 @@ public class EmployeeInfoEditController {
 
 		// 口座情報
 		TEmployeeBankAccount tEmployeeBankAccount = new TEmployeeBankAccount();
+		// 会社番号
 		tEmployeeBankAccount.setCompId(loginUser.getUser().getCompId());
+		// 口座番号
 		tEmployeeBankAccount.setAccountNo(form.getAccountNumber() != null ? form.getAccountNumber().toString() : null);
-		tEmployeeBankAccount
-				.setAccountKana(StringUtils.isNotEmpty(form.getAccountHolder()) ? form.getAccountHolder() : null);
-		tEmployeeBankAccount.setBankCode(form.getBankCode() != null ? form.getBankCode().toString() : null);
-		tEmployeeBankAccount.setBankName(StringUtils.isNotEmpty(form.getBankName()) ? form.getBankName() : null);
+		// 口座名義人(ｶﾅ)
+		tEmployeeBankAccount.setAccountKana(form.getAccountHolder());
+		// 銀行コード
+		tEmployeeBankAccount.setBankCode(form.getBankCode());
+		// 銀行名
+		tEmployeeBankAccount.setBankName(form.getBankName());
+		// 口座種別
 		tEmployeeBankAccount
 				.setAccountCategory(form.getAccountType() != null ? String.valueOf(form.getAccountType()) : null);
+		// 本支店コード
 		tEmployeeBankAccount.setBranchCode(form.getBranchCode() != null ? form.getBranchCode().toString() : null);
+		// 本支店名
 		tEmployeeBankAccount.setBranchName(StringUtils.isNotEmpty(form.getBranchName()) ? form.getBranchName() : null);
+		// 更新者id
 		tEmployeeBankAccount.setUpdateId(loginUser.getUser().getUserId());
+		// 更新日
 		tEmployeeBankAccount.setUpdateDate(date);
 		// 固定控除金額情報
 		TEmployeeFixedDeduction tEmployeeFixedDeduction = new TEmployeeFixedDeduction();
@@ -385,7 +395,7 @@ public class EmployeeInfoEditController {
 		TEmployeeFixedPayment tEmployeeFixedPayment = new TEmployeeFixedPayment();
 		tEmployeeFixedPayment.setCompId(loginUser.getUser().getCompId());
 		// 基本給
-		tEmployeeFixedPayment.setBasicSalary(form.getBasicSalary() != null ? form.getBasicSalary() : null);
+		tEmployeeFixedPayment.setBasicSalary(form.getBasicSalary());
 		// 役職手当
 		tEmployeeFixedPayment.setPositionAllowance(form.getJobAllowance() != null ? form.getJobAllowance() : null);
 		// 資格手当
@@ -406,24 +416,22 @@ public class EmployeeInfoEditController {
 
 		tEmployeeIncomeTax.setCompId(loginUser.getUser().getCompId());
 		// 所得税区分
-		tEmployeeIncomeTax
-				.setIncomeTaxType(form.getIncomeTaxDistinction() != null ? form.getIncomeTaxDistinction() : null);
+		tEmployeeIncomeTax.setIncomeTaxType(form.getIncomeTaxDistinction());
 		// 控除対象配偶者
 		tEmployeeIncomeTax.setDeductibleSpouse(form.getConsort() == 0 ? false : true);
 		// 扶養控除等の申告
 		tEmployeeIncomeTax.setDependencyDeductionDeclaration(form.getDependents() == 0 ? false : true);
 		// 扶養人数
-		tEmployeeIncomeTax.setDependencyCount(form.getDependentsNumber() != null ? form.getDependentsNumber() : null);
+		tEmployeeIncomeTax.setDependencyCount(form.getDependentsNumber());
 		// 世帯主名
-		tEmployeeIncomeTax
-				.setHeadHouseholdName(StringUtils.isNotEmpty(form.getHouseholdName()) ? form.getHouseholdName() : null);
+		tEmployeeIncomeTax.setHeadHouseholdName(form.getHouseholdName());
 		// 続柄
 		tEmployeeIncomeTax.setRelationship(
 				StringUtils.isNotEmpty(form.getRelationship()) ? String.valueOf(form.getRelationship()) : null);
 		// 条約免除
-		tEmployeeIncomeTax.setTreatyException(form.getTreatyExemption() != null ? form.getTreatyExemption() : null);
+		tEmployeeIncomeTax.setTreatyException(form.getTreatyExemption() != null ? form.getTreatyExemption() : false);
 		// 青色専従者
-		tEmployeeIncomeTax.setBlueOfficer(form.getBlueOfficer() != null ? form.getBlueOfficer() : null);
+		tEmployeeIncomeTax.setBlueOfficer(form.getBlueOfficer() != null ? form.getBlueOfficer() : false);
 
 		tEmployeeIncomeTax.setUpdateId(loginUser.getUser().getUserId());
 		tEmployeeIncomeTax.setUpdateDate(date);
@@ -474,6 +482,9 @@ public class EmployeeInfoEditController {
 			// 所得税情報
 			tEmployeeIncomeTax.setEmployeeId(form.getEmployeeId());
 			tEmployeeIncomeTaxService.update(tEmployeeIncomeTax);
+			// 社会保険情報
+			tEmployeeSocialInsurance.setEmployeeId(form.getEmployeeId());
+			tEmployeeSocialInsuranceService.update(tEmployeeSocialInsurance);
 
 			return "redirect:/employee_info";
 		}

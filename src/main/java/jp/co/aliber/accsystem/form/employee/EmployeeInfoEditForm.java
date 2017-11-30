@@ -3,6 +3,7 @@ package jp.co.aliber.accsystem.form.employee;
 import java.util.List;
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -22,35 +23,39 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 従業員番号
 	 */
-	@NotNull
+	@NotBlank
+	@Size(max = 20)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String employeeNo;
 
 	/**
-	 * 従業員番号
+	 * 従業員id
 	 */
 	private Integer employeeId;
 
 	/**
-	 * フリガナ
+	 * フリガナ名
 	 */
 	@Size(max = 50)
+	@Pattern(regexp = "[ぁ-んァ-ン　 ]*")
 	private String firstNameKana;
 
 	/**
-	 * フリガナ
+	 * フリガナ姓
 	 */
 	@Size(max = 50)
+	@Pattern(regexp = "[ぁ-んァ-ン　 ]*")
 	private String lastNameKana;
 
 	/**
-	 * 氏名
+	 * 名
 	 */
 	@NotBlank
 	@Size(max = 50)
 	private String firstName;
 
 	/**
-	 * 氏名
+	 * 姓
 	 */
 	@NotBlank
 	@Size(max = 50)
@@ -77,21 +82,23 @@ public class EmployeeInfoEditForm {
 	 * メルアドレース
 	 */
 	@Email
-	@Size(max = 100)
+	@Size(max = 50)
 	private String email;
 
 	/**
 	 * 口座名義人
 	 */
 	@NotBlank
-	@Size(max = 100)
+	@Size(max = 50)
 	@Pattern(regexp = "[ァ-ヶー]*")
 	private String accountHolder;
 
 	/**
 	 * 銀行コード
 	 */
-	@NotNull
+	@NotBlank
+	@Size(max = 10)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String bankCode;
 
 	/**
@@ -109,6 +116,8 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 本支店コード
 	 */
+	@Size(max = 10)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String branchCode;
 
 	/**
@@ -120,6 +129,8 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 口座番号
 	 */
+	@Size(max = 50)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String accountNumber;
 
 	/**
@@ -144,13 +155,15 @@ public class EmployeeInfoEditForm {
 	 * 扶養人数
 	 */
 	@NotNull
+	@Min(value = 0)
+	@Max(value = 10)
 	private Integer dependentsNumber;
 
 	/**
 	 * 世帯主名
 	 */
 	@Size(max = 100)
-	@NotNull
+	@NotBlank
 	private String householdName;
 
 	/**
@@ -189,16 +202,22 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 健康保険の標準報酬
 	 */
-	private Short healthCompensation;
+	@Min(value = 0)
+	@Max(value = 200000000)
+	private Integer healthCompensation;
 
 	/**
 	 * 保険者番号
 	 */
+	@Size(max = 20)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String insurerNumber;
 
 	/**
 	 * 被保険者整理番号
 	 */
+	@Size(max = 20)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String insuredPersonnelNumber;
 
 	/**
@@ -210,11 +229,15 @@ public class EmployeeInfoEditForm {
 	/**
 	 * 厚生年金の標準報酬
 	 */
-	private Short welfareCompensation;
+	@Min(value = 0)
+	@Max(value = 200000000)
+	private Integer welfareCompensation;
 
 	/**
 	 * 基礎年金番号
 	 */
+	@Size(max = 20)
+	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String welfareNumber;
 
 	/**
@@ -227,52 +250,71 @@ public class EmployeeInfoEditForm {
 	 * 基本給
 	 */
 	@NotNull
-	@Max(value = 900000000)
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer basicSalary;
 
 	/**
 	 * 役職手当
 	 */
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer jobAllowance;
 
 	/**
 	 * 資格手当
 	 */
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer requirementsAllowance;
 
 	/**
 	 * 住宅手当
 	 */
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer housingAllowance;
 
 	/**
 	 * 家族手当
 	 */
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer familyAllowance;
 
 	/**
 	 * その他の手当
 	 */
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer otherAllowance;
 
 	/**
 	 * 非課税交通費
 	 */
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer taxExpense;
 
 	/**
 	 * 旅行積立金
 	 */
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer travelFund;
 
 	/**
 	 * 借入等返済
 	 */
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer repaymentBorrowings;
 
 	/**
 	 * その他の控除
 	 */
+	@Min(value = 0)
+	@Max(value = 200000000)
 	private Integer otherDeductions;
 
 	/**
@@ -713,7 +755,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * @return healthCompensation
 	 */
-	public Short getHealthCompensation() {
+	public Integer getHealthCompensation() {
 		return healthCompensation;
 	}
 
@@ -721,7 +763,7 @@ public class EmployeeInfoEditForm {
 	 * @param healthCompensation
 	 *            セットする healthCompensation
 	 */
-	public void setHealthCompensation(Short healthCompensation) {
+	public void setHealthCompensation(Integer healthCompensation) {
 		this.healthCompensation = healthCompensation;
 	}
 
@@ -743,7 +785,7 @@ public class EmployeeInfoEditForm {
 	/**
 	 * @return welfareCompensation
 	 */
-	public Short getWelfareCompensation() {
+	public Integer getWelfareCompensation() {
 		return welfareCompensation;
 	}
 
@@ -751,7 +793,7 @@ public class EmployeeInfoEditForm {
 	 * @param welfareCompensation
 	 *            セットする welfareCompensation
 	 */
-	public void setWelfareCompensation(Short welfareCompensation) {
+	public void setWelfareCompensation(Integer welfareCompensation) {
 		this.welfareCompensation = welfareCompensation;
 	}
 
