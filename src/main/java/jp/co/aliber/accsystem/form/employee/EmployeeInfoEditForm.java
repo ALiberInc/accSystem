@@ -203,7 +203,7 @@ public class EmployeeInfoEditForm {
 	 * 健康保険の標準報酬
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer healthCompensation;
 
 	/**
@@ -230,7 +230,7 @@ public class EmployeeInfoEditForm {
 	 * 厚生年金の標準報酬
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer welfareCompensation;
 
 	/**
@@ -251,70 +251,70 @@ public class EmployeeInfoEditForm {
 	 */
 	@NotNull
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer basicSalary;
 
 	/**
 	 * 役職手当
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer jobAllowance;
 
 	/**
 	 * 資格手当
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer requirementsAllowance;
 
 	/**
 	 * 住宅手当
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer housingAllowance;
 
 	/**
 	 * 家族手当
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer familyAllowance;
 
 	/**
 	 * その他の手当
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer otherAllowance;
 
 	/**
 	 * 非課税交通費
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer taxExpense;
 
 	/**
 	 * 旅行積立金
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer travelFund;
 
 	/**
 	 * 借入等返済
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer repaymentBorrowings;
 
 	/**
 	 * その他の控除
 	 */
 	@Min(value = 0)
-	@Max(value = 200000000)
+	@Max(value = 200_000_000)
 	private Integer otherDeductions;
 
 	/**
