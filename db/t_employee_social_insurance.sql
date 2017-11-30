@@ -4,11 +4,11 @@ create table "public".t_employee_social_insurance (
   , employ_insur_join_flg smallint not null
   , health_insur_join_flg smallint not null
   , health_insur_join_catagory smallint
-  , health_insur_standard_reward_level smallint
+  , health_insur_standard_reward_level integer
   , insurers_no character varying(20)
   , insured_sort_no character varying(20)
   , welfare_join_flg boolean not null
-  , welfare_standard_reward_level smallint
+  , welfare_standard_reward_level integer
   , basic_welfare_no character varying(20)
   , welfare_fund_join_flg boolean not null
   , delete_flg boolean default false not null

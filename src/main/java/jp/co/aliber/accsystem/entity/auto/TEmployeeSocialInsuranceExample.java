@@ -505,52 +505,52 @@ public class TEmployeeSocialInsuranceExample {
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelEqualTo(Short value) {
+        public Criteria andHealthInsurStandardRewardLevelEqualTo(Integer value) {
             addCriterion("health_insur_standard_reward_level =", value, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelNotEqualTo(Short value) {
+        public Criteria andHealthInsurStandardRewardLevelNotEqualTo(Integer value) {
             addCriterion("health_insur_standard_reward_level <>", value, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelGreaterThan(Short value) {
+        public Criteria andHealthInsurStandardRewardLevelGreaterThan(Integer value) {
             addCriterion("health_insur_standard_reward_level >", value, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelGreaterThanOrEqualTo(Short value) {
+        public Criteria andHealthInsurStandardRewardLevelGreaterThanOrEqualTo(Integer value) {
             addCriterion("health_insur_standard_reward_level >=", value, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelLessThan(Short value) {
+        public Criteria andHealthInsurStandardRewardLevelLessThan(Integer value) {
             addCriterion("health_insur_standard_reward_level <", value, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelLessThanOrEqualTo(Short value) {
+        public Criteria andHealthInsurStandardRewardLevelLessThanOrEqualTo(Integer value) {
             addCriterion("health_insur_standard_reward_level <=", value, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelIn(List<Short> values) {
+        public Criteria andHealthInsurStandardRewardLevelIn(List<Integer> values) {
             addCriterion("health_insur_standard_reward_level in", values, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelNotIn(List<Short> values) {
+        public Criteria andHealthInsurStandardRewardLevelNotIn(List<Integer> values) {
             addCriterion("health_insur_standard_reward_level not in", values, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelBetween(Short value1, Short value2) {
+        public Criteria andHealthInsurStandardRewardLevelBetween(Integer value1, Integer value2) {
             addCriterion("health_insur_standard_reward_level between", value1, value2, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andHealthInsurStandardRewardLevelNotBetween(Short value1, Short value2) {
+        public Criteria andHealthInsurStandardRewardLevelNotBetween(Integer value1, Integer value2) {
             addCriterion("health_insur_standard_reward_level not between", value1, value2, "healthInsurStandardRewardLevel");
             return (Criteria) this;
         }
@@ -765,52 +765,52 @@ public class TEmployeeSocialInsuranceExample {
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelEqualTo(Short value) {
+        public Criteria andWelfareStandardRewardLevelEqualTo(Integer value) {
             addCriterion("welfare_standard_reward_level =", value, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelNotEqualTo(Short value) {
+        public Criteria andWelfareStandardRewardLevelNotEqualTo(Integer value) {
             addCriterion("welfare_standard_reward_level <>", value, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelGreaterThan(Short value) {
+        public Criteria andWelfareStandardRewardLevelGreaterThan(Integer value) {
             addCriterion("welfare_standard_reward_level >", value, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelGreaterThanOrEqualTo(Short value) {
+        public Criteria andWelfareStandardRewardLevelGreaterThanOrEqualTo(Integer value) {
             addCriterion("welfare_standard_reward_level >=", value, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelLessThan(Short value) {
+        public Criteria andWelfareStandardRewardLevelLessThan(Integer value) {
             addCriterion("welfare_standard_reward_level <", value, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelLessThanOrEqualTo(Short value) {
+        public Criteria andWelfareStandardRewardLevelLessThanOrEqualTo(Integer value) {
             addCriterion("welfare_standard_reward_level <=", value, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelIn(List<Short> values) {
+        public Criteria andWelfareStandardRewardLevelIn(List<Integer> values) {
             addCriterion("welfare_standard_reward_level in", values, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelNotIn(List<Short> values) {
+        public Criteria andWelfareStandardRewardLevelNotIn(List<Integer> values) {
             addCriterion("welfare_standard_reward_level not in", values, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelBetween(Short value1, Short value2) {
+        public Criteria andWelfareStandardRewardLevelBetween(Integer value1, Integer value2) {
             addCriterion("welfare_standard_reward_level between", value1, value2, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
 
-        public Criteria andWelfareStandardRewardLevelNotBetween(Short value1, Short value2) {
+        public Criteria andWelfareStandardRewardLevelNotBetween(Integer value1, Integer value2) {
             addCriterion("welfare_standard_reward_level not between", value1, value2, "welfareStandardRewardLevel");
             return (Criteria) this;
         }
