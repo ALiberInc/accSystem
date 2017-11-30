@@ -278,17 +278,16 @@
 							</p>
 						</div> <input type="text" th:field="*{householdName}" maxlength="20" />
 					</td>
-					<th class="tdbg text-center">
+					<th class="tdbg text-center">続柄</th>
+					<td>
 						<div th:if="${#fields.hasErrors('relationship')}"
 							class="error-after">
 							<p>
 								<i></i>
 								<th:block th:errors="*{relationship}"></th:block>
 							</p>
-						</div> 続柄
-					</th>
-					<td><input type="text" th:field="*{relationship}"
-						maxlength="4" /></td>
+						</div> <input type="text" th:field="*{relationship}" maxlength="4" />
+					</td>
 				</tr>
 				<tr>
 					<th class="tdbg text-center">条約免除</th>
@@ -332,7 +331,7 @@
 								th:selected="${employeeInfoEditForm.insuranceFlag} == 0">加入</option>
 							<option value="1"
 								th:selected="${employeeInfoEditForm.insuranceFlag} == 1">加入（徴収なし）</option>
-							<option value="1"
+							<option value="2"
 								th:selected="${employeeInfoEditForm.insuranceFlag} == 2">非加入</option>
 					</select>
 					</td>
@@ -352,7 +351,7 @@
 								th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 0">加入:介護非該当</option>
 							<option value="1"
 								th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 1">加入:介護該当者</option>
-							<option value="1"
+							<option value="2"
 								th:selected="${employeeInfoEditForm.healthInsuranceFlag} == 2">非加入</option>
 					</select>
 					</td>

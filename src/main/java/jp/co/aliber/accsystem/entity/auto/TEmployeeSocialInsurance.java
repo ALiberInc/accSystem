@@ -55,7 +55,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    private Short healthInsurStandardRewardLevel;
+    private Integer healthInsurStandardRewardLevel;
 
     /**
      *
@@ -91,7 +91,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    private Short welfareStandardRewardLevel;
+    private Integer welfareStandardRewardLevel;
 
     /**
      *
@@ -284,7 +284,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public Short getHealthInsurStandardRewardLevel() {
+    public Integer getHealthInsurStandardRewardLevel() {
         return healthInsurStandardRewardLevel;
     }
 
@@ -296,7 +296,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public void setHealthInsurStandardRewardLevel(Short healthInsurStandardRewardLevel) {
+    public void setHealthInsurStandardRewardLevel(Integer healthInsurStandardRewardLevel) {
         this.healthInsurStandardRewardLevel = healthInsurStandardRewardLevel;
     }
 
@@ -380,7 +380,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public Short getWelfareStandardRewardLevel() {
+    public Integer getWelfareStandardRewardLevel() {
         return welfareStandardRewardLevel;
     }
 
@@ -392,7 +392,7 @@ public class TEmployeeSocialInsurance {
      *
      * @mbg.generated
      */
-    public void setWelfareStandardRewardLevel(Short welfareStandardRewardLevel) {
+    public void setWelfareStandardRewardLevel(Integer welfareStandardRewardLevel) {
         this.welfareStandardRewardLevel = welfareStandardRewardLevel;
     }
 
