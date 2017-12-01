@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
-	<classPathEntry location="C:/Users/zhong_zengqiang/.m2/repository/org/postgresql/postgresql/42.1.3/postgresql-42.1.3.jar"/>
+	<classPathEntry location="C:/Users/zhong_zengqiang/.m2/repository/org/postgresql/postgresql/42.1.4/postgresql-42.1.4.jar"/>
 
 	<context id="context1">
 		<commentGenerator>
