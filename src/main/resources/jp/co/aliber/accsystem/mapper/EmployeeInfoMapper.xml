@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.aliber.accsystem.mapper.EmployeeInfoMapper">
-	<resultMap id="BaseResultMap"
-		type="jp.co.aliber.accsystem.entity.EmployeeInfo">
+	<resultMap id="BaseResultMap" type="jp.co.aliber.accsystem.entity.EmployeeInfo">
+		<result column="employee_id" jdbcType="VARCHAR" property="employeeId" />
+		<result column="employee_no" jdbcType="VARCHAR" property="employeeNo" />
 		<result column="last_name" jdbcType="VARCHAR" property="lastName" />
 		<result column="first_name" jdbcType="VARCHAR" property="firstName" />
-		<result column="employee_no" jdbcType="BIGINT" property="employeeNo" />
+		<result column="mail_address" jdbcType="VARCHAR" property="mailAddress" />
 		<result column="dept_name" jdbcType="VARCHAR" property="deptName" />
 	</resultMap>
-	<select id="selectNameDeptName" resultMap="BaseResultMap">
+	<select id="selectEmployeeInfo" resultMap="BaseResultMap">
 		select
 		te.last_name
 		, te.first_name
@@ -23,4 +24,22 @@
 		te.comp_id = #{compId} and te.employee_id = #{employeeId}
 	</select>
 
+	<select id="selectEmployeeInfoList" resultMap="BaseResultMap">
+		select
+		te.employee_id
+		, te.employee_no
+		, te.last_name
+		, te.first_name
+		, te.mail_address
+		, tcd.dept_name
+		FROM
+		t_employee as te
+		left join t_company_department as tcd
+		on te.dept_id = tcd.dept_id
+		and te.comp_id = tcd.comp_id
+		where
+		te.comp_id = #{compId}
+		order by
+		te.employee_no
+	</select>
 </mapper>

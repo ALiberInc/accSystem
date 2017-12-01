@@ -42,13 +42,13 @@
 				<th class="td4 text-center" colspan="2">メールアドレス</th>
 			</tr>
 			<tr
-				th:each="TEmployee,iterStat : ${salaryStatementForm.listTEmployee}">
+				th:each="TEmployee,iterStat : ${salaryStatementForm.employeeInfoList}">
 				<td class=" text-center"><input name="salaryCheckBox"
 					type='checkbox' th:value="${TEmployee.employeeId}" /></td>
 				<td class="text-center" th:text="${TEmployee.employeeNo}"></td>
 				<td class="text-center"
 					th:text="${TEmployee.lastName} + ' ' +${TEmployee.firstName}"></td>
-				<td class="text-center" th:text="${TEmployee.deptId}"></td>
+				<td class="text-center" th:text="${TEmployee.deptName}"></td>
 				<td class="text-center" th:text="${TEmployee.mailAddress}"></td>
 				<td><input type="hidden" name="employeeName"
 					th:value="${TEmployee.lastName}+${TEmployee.firstName}" /></td>

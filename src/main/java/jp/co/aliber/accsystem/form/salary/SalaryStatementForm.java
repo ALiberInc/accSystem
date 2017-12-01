@@ -2,11 +2,11 @@ package jp.co.aliber.accsystem.form.salary;
 
 import java.util.List;
 
-import jp.co.aliber.accsystem.entity.auto.TEmployee;
+import jp.co.aliber.accsystem.entity.EmployeeInfo;
 
 public class SalaryStatementForm {
 
-	private List<TEmployee> listTEmployee;
+	private List<EmployeeInfo> employeeInfoList;
 
 	private Integer compId;
 	// 選択年
@@ -25,18 +25,17 @@ public class SalaryStatementForm {
 	private List<String> monthList;
 
 	/**
-	 * @return listTEmployee
+	 * @return employeeInfoList
 	 */
-	public List<TEmployee> getListTEmployee() {
-		return listTEmployee;
+	public List<EmployeeInfo> getEmployeeInfoList() {
+		return employeeInfoList;
 	}
 
 	/**
-	 * @param listTEmployee
-	 *            セットする listTEmployee
+	 * @param employeeInfoList セットする employeeInfoList
 	 */
-	public void setListTEmployee(List<TEmployee> listTEmployee) {
-		this.listTEmployee = listTEmployee;
+	public void setEmployeeInfoList(List<EmployeeInfo> employeeInfoList) {
+		this.employeeInfoList = employeeInfoList;
 	}
 
 	/**

@@ -18,12 +18,12 @@
 				<th class="td3">氏名</th>
 				<th class="td4">部署</th>
 			</tr>
-			<tr th:each="TEmployee,iterStat : ${employeeInfoForm.listTEmployee}">
+			<tr th:each="TEmployee,iterStat : ${employeeInfoForm.employeeInfoList}">
 				<td><button type="button" class="btn btn-info btn-sm"
-						name="show_btn" th:id="${TEmployee.employeeId}">選択</button></td>
+						name="show_btn" th:id="${TEmployee.employeeId}">編集</button></td>
 				<td th:text="${TEmployee.employeeNo}"></td>
 				<td th:text="${TEmployee.lastName}+' '+${TEmployee.firstName}"></td>
-				<td th:text="${TEmployee.deptId}"></td>
+				<td th:text="${TEmployee.deptName}"></td>
 			</tr>
 		</table>
 	</div>

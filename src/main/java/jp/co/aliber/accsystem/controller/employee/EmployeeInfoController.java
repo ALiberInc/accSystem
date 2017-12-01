@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.aliber.accsystem.entity.auto.TEmployee;
+import jp.co.aliber.accsystem.entity.EmployeeInfo;
 import jp.co.aliber.accsystem.form.employee.EmployeeInfoForm;
 import jp.co.aliber.accsystem.security.LoginUser;
 import jp.co.aliber.accsystem.service.employee.EmployeeService;
@@ -55,8 +55,8 @@ public class EmployeeInfoController {
 		}
 
 		// 從業員情報リストを取得
-		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
-		form.setListTEmployee(listTEmployee);
+		List<EmployeeInfo> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
+		form.setEmployeeInfoList(listTEmployee);
 		return "employee/employee_info";
 	}
 }

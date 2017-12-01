@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.aliber.accsystem.ImmutableValues;
-import jp.co.aliber.accsystem.entity.auto.TEmployee;
+import jp.co.aliber.accsystem.entity.EmployeeInfo;
 import jp.co.aliber.accsystem.form.common.MessageForm;
 import jp.co.aliber.accsystem.form.salary.SalaryStatementForm;
 import jp.co.aliber.accsystem.security.LoginUser;
@@ -89,8 +89,8 @@ public class SalaryStatementController {
 		form.setSalaryMonth(StringUtils.leftPad(thisMonth + "", 2, '0'));
 
 		// 從業員情報リストを取得
-		List<TEmployee> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
-		form.setListTEmployee(listTEmployee);
+		List<EmployeeInfo> listTEmployee = tEmployeeService.getListTEmployee(loginUser.getUser().getCompId());
+		form.setEmployeeInfoList(listTEmployee);
 
 		// 会社ID
 		form.setCompId(loginUser.getUser().getCompId());

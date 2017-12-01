@@ -82,7 +82,7 @@ public class UtilService {
 		// 各従業員の給与明細を格納
 		List<SalaryBean> salaryBeanList = new ArrayList<>();
 		for (Integer employeeId : oneOrMoreEmployeeId) {
-			EmployeeInfo employeeInfo = employeeInfoMapper.selectNameDeptName(compId, employeeId);
+			EmployeeInfo employeeInfo = employeeInfoMapper.selectEmployeeInfo(compId, employeeId);
 
 			if (employeeInfo == null) {
 				return null;
